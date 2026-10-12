@@ -1,64 +1,32 @@
 try{
 (function(){
   var lens=document.getElementById('lens'),txt=document.getElementById('heroText'),tag=document.getElementById('heroTag'),
-      sec=document.getElementById('top'),cam=document.getElementById('cam'),stage=document.getElementById('cam3d'),hint=document.getElementById('camHint');
+      sec=document.getElementById('top'),cam=document.getElementById('cam'),stage=document.getElementById('cam3d'),hint=document.getElementById('camHint'),wel=document.getElementById('camWelcome');
   var clamp=function(v){return Math.min(1,Math.max(0,v))},base=lens.offsetWidth||320;
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var P1=reduce?0:Math.round(innerHeight*0.75);           /* مسافة السحب لمرحلة تحريك زاوية الكاميرا */
+  var P1=reduce?0:Math.round(innerHeight*0.75);           /* مسافة مرحلة الكاميرا */
   if(!reduce)sec.style.height='calc(200vh + '+P1+'px)';
-  /* ===== نموذج كاميرا ثلاثي الأبعاد (CSS 3D) ===== */
-  var SMALL=innerWidth<700,PI=Math.PI,LY=6,LENS_D=156,ZCAP=208,PERSP=1400;
-  function mk(par,css,cls){var d=document.createElement('div');if(cls)d.className=cls;d.style.cssText=css||'';par.appendChild(d);return d}
-  function sh(k){var a=k<1?((1-k)*.78).toFixed(2):((k-1)*.24).toFixed(2),c=k<1?'0,0,0':'255,255,255';return 'linear-gradient(rgba('+c+','+a+'),rgba('+c+','+a+'))'}
-  function box(par,w,h,d,x,y,z,mat){
-    var g=mk(par,'transform:translate3d('+x+'px,'+y+'px,'+z+'px)','p3');
-    [[w,h,'translateZ('+d/2+'px)',1],[w,h,'rotateY(180deg) translateZ('+d/2+'px)',.5],[d,h,'rotateY(90deg) translateZ('+w/2+'px)',.72],[d,h,'rotateY(-90deg) translateZ('+w/2+'px)',.58],[w,d,'rotateX(90deg) translateZ('+h/2+'px)',1.3],[w,d,'rotateX(-90deg) translateZ('+h/2+'px)',.4]].forEach(function(f){
-      mk(g,'width:'+f[0]+'px;height:'+f[1]+'px;left:'+(-f[0]/2)+'px;top:'+(-f[1]/2)+'px;transform:'+f[2]+';background:'+sh(f[3])+','+mat,'fc')});
-    return g}
-  function cyl(par,r,len,x,y,z,n,col,up){if(SMALL)n=Math.max(14,Math.round(n*.6));
-    var g=mk(par,'transform:translate3d('+x+'px,'+y+'px,'+z+'px)'+(up?' rotateX(90deg)':''),'p3'),w=(2*PI*r/n*1.05).toFixed(2);
-    for(var i=0;i<n;i++){var a=i*360/n,b=.5+.5*Math.cos((a+28)*PI/180);
-      mk(g,'width:'+w+'px;height:'+len+'px;left:'+(-w/2)+'px;top:'+(-len/2)+'px;transform:rotateZ('+a+'deg) translateY('+(-r)+'px) rotateX(90deg);background:'+col(b,i),'fc')}
-    return g}
-  function disc(g,r,z,bg,inner){var d=mk(g,'width:'+2*r+'px;height:'+2*r+'px;left:'+(-r)+'px;top:'+(-r)+'px;border-radius:50%;transform:translateZ('+z+'px);background:'+bg,'fc');if(inner)d.innerHTML=inner;return d}
-  var dark=function(b){return 'hsl(220,8%,'+(6+15*b).toFixed(1)+'%)'},
-      ridge=function(b,i){return 'hsl(220,8%,'+((i%2?4:11)+13*b).toFixed(1)+'%)'},
-      silver=function(b){return 'hsl(220,10%,'+(36+46*b).toFixed(1)+'%)'},
-      gold=function(b){return 'hsl(37,78%,'+(30+42*b).toFixed(1)+'%)'},
-      knurl=function(b,i){return 'hsl(220,6%,'+((i%2?24:34)+30*b).toFixed(1)+'%)'};
-  var BODY='linear-gradient(160deg,#3a3c44,#1e1f24 55%,#2b2c32)',
-      TOP='linear-gradient(180deg,#44464e,#2a2b31)',
-      GRIP='radial-gradient(circle at 3px 3px,rgba(255,255,255,.09) 1px,transparent 1.6px) 0 0/6px 6px,linear-gradient(160deg,#2a2b30,#121215)',
-      SILV='linear-gradient(135deg,#eceef3,#9ca2af 50%,#d4d8e0)';
-  box(cam,300,178,80,0,0,0,BODY);
-  box(cam,84,178,46,-108,0,63,GRIP);
-  box(cam,78,40,64,0,-109,-6,TOP);
-  box(cam,48,5,38,0,-133,-6,SILV);
-  box(cam,8,16,16,-154,-56,8,SILV);box(cam,8,16,16,154,-56,8,SILV);
-  var d1=cyl(cam,24,14,92,-96,8,30,knurl,true);disc(d1,24,7,'linear-gradient(135deg,#d9dce3,#8f95a3)');
-  var d2=cyl(cam,12,8,-108,-92,63,20,dark,true);disc(d2,12,4,'radial-gradient(circle at 35% 30%,#9a9ea9,#2b2c31)');
-  var d3=cyl(cam,15,10,52,-94,2,24,knurl,true);disc(d3,15,5,'linear-gradient(135deg,#caced6,#7e8492)');
-  cyl(cam,52,14,0,LY,47,32,silver);
-  cyl(cam,70,70,0,LY,89,36,dark);
-  cyl(cam,76,70,0,LY,159,40,ridge);
-  cyl(cam,78,14,0,LY,201,36,gold);
-  var front=mk(cam,'transform:translate3d(0,'+LY+'px,0)','p3');
-  disc(front,78,ZCAP,'#07080c','<svg viewBox="0 0 200 200" style="width:100%;height:100%;display:block"><use href="#lensFace"/></svg>');
-  mk(cam,'left:36px;top:-76px;transform:translateZ(40.8px);font:700 24px Arial,Helvetica,sans-serif;letter-spacing:.3em;color:#cfd2da;white-space:nowrap','fc').textContent='SONY';
-  mk(cam,'left:98px;top:44px;transform:translateZ(40.8px);font:700 15px Arial,sans-serif;color:#9da2ae','fc').textContent='α7';
-  mk(cam,'left:-22px;top:-35px;width:44px;height:70px;border-radius:5px;transform:translate3d(-150.8px,22px,-6px) rotateY(-90deg);background:linear-gradient(#17181c,#0f1013)','fc');
-  mk(cam,'left:-114px;top:-58px;width:10px;height:10px;border-radius:50%;transform:translateZ(86.6px);background:radial-gradient(circle at 40% 35%,#ffb36b,#5a2d12)','fc');
-  /* ===== التحكم بالسحب ===== */
-  var sEnd=320*PERSP/(LENS_D*PERSP+320*ZCAP);
+  /* ===== كاميرا سوني واقعية (صورة مقصوصة + دوران ثلاثي الأبعاد) ===== */
+  var IW=1000,IH=936,LX=.31,LY2=.73,LW=.47;
+  var img=document.createElement('img');img.alt='';img.draggable=false;img.decoding='async';img.setAttribute('fetchpriority','high');img.src='assets/img/sony-a7.webp';
+  img.style.cssText='position:absolute;display:block;max-width:none;filter:drop-shadow(0 30px 40px rgba(0,0,0,.7)) drop-shadow(0 0 60px rgba(242,180,90,.18))';
+  cam.appendChild(img);
+  var W=0,H=0,DY=0;
+  function size(){W=Math.min(innerWidth*.86,innerHeight*.6*IW/IH,700);H=W*IH/IW;DY=Math.min(34,innerHeight*.05);
+    img.style.width=W+'px';img.style.height=H+'px';img.style.left=(-LX*W)+'px';img.style.top=(-LY2*H)+'px'}
+  size();
+  var sway=0;
   function ease(c){return c<.5?4*c*c*c:1-Math.pow(-2*c+2,3)/2}
   function update(){
     var y=window.scrollY,c=P1?clamp(y/P1):1,e=ease(c),z=Math.max(0,y-P1);
     if(!reduce){
-      var s0=Math.min(innerWidth/(innerWidth<700?600:440),innerHeight/430),s=s0+(sEnd-s0)*e;
-      cam.style.transform='translateY('+(-LY*s*e).toFixed(2)+'px) scale('+s.toFixed(4)+') rotateX('+(-15*(1-e)).toFixed(2)+'deg) rotateY('+(64*(1-e)).toFixed(2)+'deg) rotateZ('+(-4*(1-e)).toFixed(2)+'deg)';
+      var k=1-e,sEnd=Math.max(1.1,340/(LW*W)),s=1+(sEnd-1)*e;
+      var ry=-24*k+sway*k,rx=8*k-Math.abs(sway)*.12*k;
+      cam.style.transform='translate3d('+(((LX-.5)*W)*k).toFixed(1)+'px,'+((((LY2-.5)*H)+DY)*k).toFixed(1)+'px,0) scale('+s.toFixed(4)+') rotateY('+ry.toFixed(2)+'deg) rotateX('+rx.toFixed(2)+'deg) rotateZ('+(2*k).toFixed(2)+'deg)';
       stage.style.opacity=1-clamp((c-.84)/.16);stage.style.visibility=c>=1?'hidden':'visible';cam.style.willChange=c>=1?'auto':'transform';
       hint.style.opacity=1-clamp(c/.22);
-    }else{stage.style.display='none';hint.style.display='none'}
+      if(wel)wel.style.opacity=1-clamp(c/.3);
+    }else{stage.style.display='none';hint.style.display='none';if(wel)wel.style.display='none'}
     var la=reduce?1:clamp((c-.78)/.22);
     var sc=1+4*clamp(z/300),sz=base*sc;
     lens.style.width=sz+'px';lens.style.height=sz+'px';lens.style.borderWidth=(4*sc)+'px';lens.style.opacity=la;
@@ -66,8 +34,34 @@ try{
     tag.style.opacity=clamp((z-250)/200);
     tag.style.pointerEvents=z>350?'auto':'none';
   }
-  var tk=false;function req(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;update()})}}
-  window.addEventListener('scroll',req,{passive:true});window.addEventListener('resize',req);update();
+  /* ===== دوران تلقائي: أول سحب يدير الكاميرا ويفتح العدسة تلقائيًا ===== */
+  var auto=false,lastY=window.scrollY,tk=false;
+  function req(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;update()})}}
+  function go(to){
+    if(auto||reduce)return;auto=true;
+    var from=window.scrollY,t0=performance.now(),d=Math.max(900,Math.abs(to-from)/P1*2000);
+    (function f(t){
+      var p=clamp((t-t0)/d);window.scrollTo({top:from+(to-from)*ease(p),behavior:'instant'});update();
+      if(p<1)requestAnimationFrame(f);else{auto=false;lastY=window.scrollY}
+    })(t0);
+  }
+  var block=function(e){if(auto&&e.cancelable)e.preventDefault()};
+  window.addEventListener('wheel',block,{passive:false});window.addEventListener('touchmove',block,{passive:false});
+  window.addEventListener('keydown',function(e){if(auto&&[32,33,34,35,36,38,40].indexOf(e.keyCode)>-1)e.preventDefault()});
+  var ua=-1e9,nav=0;
+  ['wheel','touchstart','touchmove','keydown','mousedown'].forEach(function(ev){window.addEventListener(ev,function(){ua=performance.now()},{passive:true})});
+  document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a[href^="#"]')){nav=performance.now()+2500}});
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY,dy=y-lastY,now=performance.now();
+    if(!auto){lastY=y;if(!reduce&&P1&&y>3&&y<P1-3&&dy!==0&&now-ua<700&&now>nav){go(dy>0?P1:0);return}}
+    req();
+  },{passive:true});
+  window.addEventListener('resize',function(){size();req()});
+  /* حركة هادئة تلقائية قبل السحب */
+  if(!reduce){(function idle(t){
+    if(window.scrollY<P1){sway=Math.sin(t/1200)*13;update()}
+    requestAnimationFrame(idle)})(0)}
+  update();
 })();
 }catch(e){console.error(e)}
 try{
