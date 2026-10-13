@@ -24,6 +24,7 @@ try{
       var ry=-24*k+sway*k,rx=8*k-Math.abs(sway)*.12*k;
       cam.style.transform='translate3d('+(((LX-.5)*W)*k).toFixed(1)+'px,'+((((LY2-.5)*H)+DY)*k).toFixed(1)+'px,0) scale('+s.toFixed(4)+') rotateY('+ry.toFixed(2)+'deg) rotateX('+rx.toFixed(2)+'deg) rotateZ('+(2*k).toFixed(2)+'deg)';
       stage.style.opacity=1-clamp((c-.84)/.16);stage.style.visibility=c>=1?'hidden':'visible';cam.style.willChange=c>=1?'auto':'transform';
+      if(window.CAM3D)window.CAM3D.set(e,sway);
       hint.style.opacity=1-clamp(c/.22);
       if(wel)wel.style.opacity=1-clamp(c/.3);
     }else{stage.style.display='none';hint.style.display='none';if(wel)wel.style.display='none'}
