@@ -72,7 +72,7 @@ function init() {
   /* ---------- المجسم (الوحدة = سم، الواجهة باتجاه +Z) ---------- */
   const model = new THREE.Group();
   const add = (geo, mat, x = 0, y = 0, z = 0, parent = model) => { const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); parent.add(m); return m; };
-  const cylZ = (r1, r2, len, seg = 72) => { const g = new THREE.CylinderGeometry(r1, r2, len, seg, 1); g.rotateX(Math.PI / 2); return g; };
+  const cylZ = (r1, r2, len, seg = 72, open = false) => { const g = new THREE.CylinderGeometry(r1, r2, len, seg, 1, open); g.rotateX(Math.PI / 2); return g; };
 
   // الجسم
   add(new RoundedBoxGeometry(12.6, 7.2, 3.8, 6, 0.55), M.body, 0.2, 0, 0);
@@ -114,15 +114,18 @@ function init() {
   // العدسة
   const lens = new THREE.Group(); lens.position.set(LX, LY, 2.4); model.add(lens);
   let z = 0;
-  const seg = (r1, r2, len, mat) => { add(cylZ(r1, r2, len), mat, 0, 0, z + len / 2, lens); z += len; };
+  const seg = (r1, r2, len, mat, open) => { add(cylZ(r1, r2, len, 72, open), mat, 0, 0, z + len / 2, lens); z += len; };
   seg(3.15, 3.25, 0.7, M.shell);
   seg(3.3, 3.3, 1.6, M.body);
   seg(3.45, 3.45, 2.8, M.rubber);      // حلقة الزوم
   seg(3.38, 3.38, 0.35, M.shell);
   seg(3.4, 3.4, 0.12, M.gold);         // حلقة ذهبية بلون الهوية
   seg(3.38, 3.38, 0.9, M.shell);
-  seg(3.48, 3.48, 1.5, M.rubber);      // حلقة التركيز
-  seg(3.5, 3.62, 0.9, M.shell);
+  seg(3.48, 3.48, 1.5, M.rubber, true);      // حلقة التركيز
+  seg(3.5, 3.62, 0.9, M.shell, true);
+  // تجويف داخلي داكن خلف الزجاج
+  const tube = add(cylZ(3.0, 3.0, 2.6, 72, true), new THREE.MeshStandardMaterial({ color: 0x050507, roughness: 0.9, side: THREE.BackSide }), 0, 0, z - 1.3, lens);
+  add(new THREE.CircleGeometry(3.0, 64), M.dark, 0, 0, z - 2.55, lens);
   const FRONT = z;
   // واجهة العدسة: حافة + زجاج + طبقات داخلية
   add(new THREE.TorusGeometry(3.42, 0.2, 16, 96), M.shell, 0, 0, FRONT, lens);
