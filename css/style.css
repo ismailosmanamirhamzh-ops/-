@@ -53,3 +53,13 @@
 /* زر الهيدر لا ينقسم على سطرين في الجوال */
 header .btn,#langBtn{white-space:nowrap}
 @media(max-width:420px){header nav{padding-inline:1rem}header .btn{padding-inline:.9rem}}
+
+/* ===== طريقة عملي: الخانات تطلع من تحت عند الوصول للقسم ===== */
+.pr-anim .pr-up,.pr-anim .pr-step{opacity:0;transform:translateY(70px) scale(.97);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--d,0)*140ms + 120ms)}
+.pr-anim .pr-up{transform:translateY(30px)}
+.pr-anim .pr-h{--d:0}.pr-anim .pr-sub{--d:.5}
+.pr-anim .pr-in .pr-up,.pr-anim .pr-in .pr-step{opacity:1;transform:none}
+.pr-anim .pr-in .pr-step:hover{transform:translateY(-6px);transition-delay:0s}
+.pr-anim .pr-in .pr-n{animation:prn .8s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--d,0)*140ms + 450ms)}
+@keyframes prn{from{opacity:0;transform:translateY(14px) scale(.6)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pr-anim .pr-up,.pr-anim .pr-step{opacity:1;transform:none;transition:none}}

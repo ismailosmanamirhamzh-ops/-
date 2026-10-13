@@ -409,3 +409,14 @@ try{
   setActive(idx,true);render();
 })();
 }catch(e){console.error(e)}
+try{
+(function(){
+  /* طريقة عملي: تفعيل الحركة فقط مع JavaScript ومن دون تقليل الحركة، فالقسم يبقى ظاهرًا في أي حالة أخرى */
+  var sec=document.getElementById('process');
+  if(!sec||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  if(sec.getBoundingClientRect().top<innerHeight*.85)return;
+  document.documentElement.classList.add('pr-anim');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){sec.classList.add('pr-in');io.disconnect()}})},{threshold:.2,rootMargin:'0px 0px -10% 0px'});
+  io.observe(sec);
+})();
+}catch(e){console.error(e)}
