@@ -119,3 +119,13 @@ header nav>a:first-child{white-space:nowrap}
 .reel p{margin-top:.25rem;font-size:.88rem;line-height:1.7;color:var(--mute)}
 @media(max-width:900px){.reels{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:min(68vw,17rem);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.75rem;margin-inline:-1.5rem;padding-inline:1.5rem;scrollbar-width:thin}.reel{scroll-snap-align:center}}
 @media (prefers-reduced-motion:reduce){.reel{opacity:1;transform:none;transition:none}}
+
+/* طريقة عملي: حركة لكل شريحة على حدة */
+.pr-anim .pr-up,.pr-anim .pr-step{opacity:0;transform:translateY(90px) scale(.96);transition:opacity .8s ease,transform 1s cubic-bezier(.16,.84,.24,1);transition-delay:0s}
+.pr-anim .pr-up{transform:translateY(40px)}
+@media(min-width:768px){.pr-anim .pr-step{transition-delay:calc(var(--d,0)*130ms)}}
+.pr-anim .pr-up.pr-on,.pr-anim .pr-step.pr-on{opacity:1;transform:none}
+.pr-anim .pr-step.pr-on:hover{transform:translateY(-6px);transition-delay:0s}
+.pr-anim .pr-step.pr-on .pr-n{animation:prn .8s cubic-bezier(.3,1.6,.5,1) both;animation-delay:.35s}
+/* جاهز ترفع مبيعاتك: كل نقطة في سطر واحد */
+.cf-pts li{white-space:nowrap;font-size:clamp(.8rem,3.7vw,1rem)}
