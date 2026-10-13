@@ -420,3 +420,17 @@ try{
   io.observe(sec);
 })();
 }catch(e){console.error(e)}
+
+try{
+(function(){
+  /* قائمة الجوال */
+  var b=document.getElementById('menuBtn'),m=document.getElementById('mnav');if(!b||!m)return;
+  var en=function(){return document.documentElement.lang==='en'};
+  function open(){m.hidden=false;requestAnimationFrame(function(){m.classList.add('open')});b.setAttribute('aria-expanded','true');b.setAttribute('aria-label',en()?'Close menu':'إغلاق القائمة');document.documentElement.classList.add('mnav-lock');var f=m.querySelector('a');f&&f.focus({preventScroll:true})}
+  function close(back){m.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label',en()?'Open menu':'فتح القائمة');document.documentElement.classList.remove('mnav-lock');setTimeout(function(){if(b.getAttribute('aria-expanded')==='false')m.hidden=true},300);if(back)b.focus()}
+  b.addEventListener('click',function(){b.getAttribute('aria-expanded')==='true'?close():open()});
+  m.addEventListener('click',function(e){if(e.target===m)close();var a=e.target.closest('a');if(a)close()});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&b.getAttribute('aria-expanded')==='true')close(true)});
+  addEventListener('resize',function(){if(innerWidth>=768&&b.getAttribute('aria-expanded')==='true')close()});
+})();
+}catch(e){console.error(e)}
