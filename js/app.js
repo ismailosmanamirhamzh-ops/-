@@ -434,3 +434,30 @@ try{
   addEventListener('resize',function(){if(innerWidth>=768&&b.getAttribute('aria-expanded')==='true')close()});
 })();
 }catch(e){console.error(e)}
+
+try{
+(function(){
+  /* الريلز: تشغيل تلقائي صامت عند الظهور، وزر للصوت */
+  var list=document.querySelector('.reels');if(!list)return;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var items=[].slice.call(list.querySelectorAll('.reel'));
+  var en=function(){return document.documentElement.lang==='en'};
+  if(!('IntersectionObserver' in window)||reduce){document.documentElement.classList.add('no-reel-anim')}
+  else{new IntersectionObserver(function(es,o){if(es[0].isIntersecting){list.classList.add('in');o.disconnect()}},{threshold:.15}).observe(list)}
+  function play(r){var v=r.querySelector('video');var p=v.play();if(p&&p.catch)p.catch(function(){});r.classList.add('playing')}
+  function pause(r){r.querySelector('video').pause();r.classList.remove('playing')}
+  items.forEach(function(r){
+    var v=r.querySelector('video'),pb=r.querySelector('.reel-play'),sb=r.querySelector('.reel-snd');
+    v.addEventListener('click',function(){v.paused?play(r):pause(r)});
+    pb.addEventListener('click',function(){play(r)});
+    sb.addEventListener('click',function(){
+      var on=v.muted;
+      items.forEach(function(o){var ov=o.querySelector('video');ov.muted=true;var b=o.querySelector('.reel-snd');b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',en()?'Turn sound on':'تشغيل الصوت')});
+      if(on){v.muted=false;sb.setAttribute('aria-pressed','true');sb.setAttribute('aria-label',en()?'Mute':'كتم الصوت');play(r)}
+    });
+  });
+  if(reduce||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var r=e.target;if(e.intersectionRatio>=.6)play(r);else if(!r.querySelector('video').muted&&e.intersectionRatio>0){}else pause(r)})},{threshold:[0,.6]});
+  items.forEach(function(r){io.observe(r)});
+})();
+}catch(e){console.error(e)}
