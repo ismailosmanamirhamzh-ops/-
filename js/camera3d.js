@@ -202,6 +202,31 @@ function init() {
     fired = true; flashT = performance.now();
     fl.animate([{ opacity: 0 }, { opacity: 0.95, offset: 0.08 }, { opacity: 0.35, offset: 0.35 }, { opacity: 0 }], { duration: 650, easing: 'ease-out' });
     if (navigator.vibrate) try { navigator.vibrate(18); } catch (_) {}
+    shutter();
+  }
+  /* صوت غالق الكاميرا: تكتين قصيرتين مولّدتين بالصوت الرقمي، بلا ملفات.
+     المتصفح يسمح بالصوت فقط بعد أن يضغط الزائر على شيء في الصفحة؛ غير ذلك نسكت بهدوء. */
+  let actx = null;
+  function shutter() {
+    try {
+      const ua = navigator.userActivation;
+      if (ua && !ua.hasBeenActive) return;
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+      actx = actx || new AC();
+      if (actx.state === 'suspended') actx.resume();
+      if (actx.state !== 'running' && !(ua && ua.hasBeenActive)) return;
+      const t0 = actx.currentTime + 0.01;
+      const click = (t, dur, freq, vol) => {
+        const n = Math.floor(actx.sampleRate * dur), buf = actx.createBuffer(1, n, actx.sampleRate), d = buf.getChannelData(0);
+        for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 3);
+        const src = actx.createBufferSource(); src.buffer = buf;
+        const bp = actx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = freq; bp.Q.value = 0.9;
+        const g = actx.createGain(); g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        src.connect(bp).connect(g).connect(actx.destination); src.start(t);
+      };
+      click(t0, 0.045, 3200, 0.35);          // فتح الغالق
+      click(t0 + 0.075, 0.06, 2200, 0.28);   // إغلاقه
+    } catch (_) {}
   }
   function flashLight() {
     if (flashT < 0) return;
