@@ -183,14 +183,39 @@ function init() {
     renderer.render(scene, cam);
   }
 
-  function loop() { frame(); requestAnimationFrame(loop); }
+  function loop() { flashLight(); frame(); requestAnimationFrame(loop); }
 
   stage.appendChild(cv);
   if (oldCam) oldCam.style.display = 'none';
   size();
   new IntersectionObserver(es => { visible = es[0].isIntersecting; dirty = true; }).observe(stage);
   addEventListener('resize', size);
-  window.CAM3D = { set(e, sway) { if (e !== E || sway !== SW) { E = e; SW = sway; dirty = true; } } };
+  /* ---------- فلاش التصوير: مرة واحدة لما تكتمل اللفة والعدسة مواجهة للزائر ---------- */
+  const host = stage.parentElement;
+  const fl = document.createElement('div');
+  fl.setAttribute('aria-hidden', 'true');
+  fl.style.cssText = 'position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 46%,rgba(255,255,255,1) 0,rgba(255,250,235,.92) 18%,rgba(255,236,200,.55) 42%,rgba(255,220,170,0) 72%)';
+  host.appendChild(fl);
+  const pop = new THREE.PointLight(0xffffff, 0, 60, 1.5); pop.position.set(0, 2, 30); scene.add(pop);
+  let fired = false, flashT = -1;
+  function flash() {
+    fired = true; flashT = performance.now();
+    fl.animate([{ opacity: 0 }, { opacity: 0.95, offset: 0.08 }, { opacity: 0.35, offset: 0.35 }, { opacity: 0 }], { duration: 650, easing: 'ease-out' });
+    if (navigator.vibrate) try { navigator.vibrate(18); } catch (_) {}
+  }
+  function flashLight() {
+    if (flashT < 0) return;
+    const t = (performance.now() - flashT) / 420;
+    pop.intensity = t < 1 ? 900 * Math.pow(1 - t, 2) : 0;
+    if (t >= 1) flashT = -1;
+    dirty = true;
+  }
+
+  window.CAM3D = { set(e, sway) {
+    if (e !== E || sway !== SW) { E = e; SW = sway; dirty = true; }
+    if (!fired && e >= 0.97) flash();
+    if (fired && e < 0.4) fired = false;   // يرجع جاهز لو رجع الزائر لأعلى الصفحة
+  } };
   requestAnimationFrame(loop);
   document.documentElement.classList.add('cam3d-on');
 }
