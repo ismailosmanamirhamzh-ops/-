@@ -61,7 +61,7 @@ function init() {
     dark: new THREE.MeshStandardMaterial({ color: 0x07070a, roughness: 0.5, metalness: 0.2 }),
     gold: new THREE.MeshStandardMaterial({ color: 0xf2b45a, roughness: 0.25, metalness: 1 }),
     screen: new THREE.MeshPhysicalMaterial({ color: 0x050608, roughness: 0.08, metalness: 0, clearcoat: 1 }),
-    glass: new THREE.MeshPhysicalMaterial({ color: 0x020308, roughness: 0.0, metalness: 0.0, clearcoat: 1, clearcoatRoughness: 0.0, iridescence: 1, iridescenceIOR: 1.7, iridescenceThicknessRange: [250, 700], envMapIntensity: 1.6, transparent: true, opacity: 0.55, depthWrite: false }),
+    glass: new THREE.MeshPhysicalMaterial({ color: 0x020308, roughness: 0.0, metalness: 0.0, clearcoat: 0.4, clearcoatRoughness: 0.0, iridescence: 1, iridescenceIOR: 1.7, iridescenceThicknessRange: [250, 700], envMapIntensity: 0.22, transparent: true, opacity: 0.4, depthWrite: false }),
     inner: new THREE.MeshPhysicalMaterial({ color: 0x0c0a22, roughness: 0.12, metalness: 0.6, iridescence: 1, iridescenceIOR: 2.0, iridescenceThicknessRange: [300, 800], emissive: 0x1b0f3a, emissiveIntensity: 0.6, envMapIntensity: 1.4 }),
     coat: new THREE.MeshBasicMaterial({ color: 0x7a5cff, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending, depthWrite: false }),
     coat2: new THREE.MeshBasicMaterial({ color: 0x36e0b0, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false }),
@@ -141,7 +141,7 @@ function init() {
   const LENS_R = 3.62, LENS_FRONT_Z = 2.4 + FRONT;
 
   // توسيط المجسم حول مركزه
-  model.position.set(-0.6, 0, -2.5);
+  model.position.set(-0.3, 0, -4.0);
   const pivot = new THREE.Group(); pivot.add(model); scene.add(pivot);
 
   /* ---------- الحالة والرسم ---------- */
