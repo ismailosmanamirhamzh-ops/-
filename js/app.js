@@ -301,7 +301,7 @@ try{
       ring=document.querySelector('.sv-ring'),cd=document.getElementById('centerDisplay'),ct=document.getElementById('centerTitle'),
       cs=document.getElementById('centerDesc'),ci=document.getElementById('centerIcon'),cm=document.getElementById('centerDescM');
   if(!nodes.length||!sec)return;
-  var N=nodes.length,STEP=360/N,PER=60,circle=document.querySelector('.sv-circle'),Wc=circle.offsetWidth;               /* PER = مسافة التمرير لكل دائرة (vh) */
+  var N=nodes.length,STEP=360/N,PER=48,circle=document.querySelector('.sv-circle'),Wc=circle.offsetWidth;               /* PER = مسافة التمرير لكل دائرة (vh) */
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var tr=function(x){return window.trI?window.trI(x):x},en=function(){return document.documentElement.lang==='en'};
   var base=nodes.map(function(_,i){return -90+STEP*i});
@@ -326,83 +326,39 @@ try{
   function geom(){var top=sec.getBoundingClientRect().top+pageYOffset;return {top:top,T:Math.max(1,sec.offsetHeight-inner.offsetHeight)}}
   function posOf(i){var g=geom();return g.top+i*g.T/(N-1)}
   function pinned(){var g=geom(),y=pageYOffset;return y>=g.top-1&&y<=g.top+g.T+1}
-  function render(){
-    var g=geom(),f=reduce?Math.max(0,shown):Math.min(N-1,Math.max(0,(pageYOffset-g.top)/g.T*(N-1)));
-    var R=-STEP*f;
-    var r=Wc/2;nodes.forEach(function(n,i){var a=(base[i]+R)*Math.PI/180;n.style.translate='calc(-50% + '+(r*Math.cos(a)).toFixed(1)+'px) calc(-50% + '+(r*Math.sin(a)).toFixed(1)+'px)'});
+  /* الدوران يتبع التمرير الطبيعي مباشرة مع تنعيم خفيف — بدون حجز عجلة الماوس أو اللمس */
+  var cur=0,target=0,raf=0;
+  function draw(f){
+    var R=-STEP*f,r=Wc/2;
+    nodes.forEach(function(n,i){var a=(base[i]+R)*Math.PI/180;n.style.translate='calc(-50% + '+(r*Math.cos(a)).toFixed(1)+'px) calc(-50% + '+(r*Math.sin(a)).toFixed(1)+'px)'});
     if(ring)ring.style.transform='rotate('+(-R*0.6).toFixed(2)+'deg)';
     var a=Math.round(f);if(a!==shown)setActive(a,shown<0);
   }
-  /* حركة سلسة للصفحة نفسها، تتحكم بها الدائرة */
-  function glide(y1,dur,done){
-    if(anim)return;var y0=pageYOffset;if(Math.abs(y1-y0)<1){done&&done();return}
+  function tick(){
+    raf=0;var d=target-cur;
+    cur=Math.abs(d)<0.002?target:cur+d*0.14;
+    draw(cur);
+    if(cur!==target)raf=requestAnimationFrame(tick);
+  }
+  function render(){
+    var g=geom();
+    target=reduce?Math.max(0,shown):Math.min(N-1,Math.max(0,(pageYOffset-g.top)/g.T*(N-1)));
+    if(reduce){cur=target;draw(cur);return}
+    if(!raf)raf=requestAnimationFrame(tick);
+  }
+  /* الضغط على نقطة أو دائرة: انتقال ناعم لموضعها */
+  function glide(y1,dur){
+    if(anim)return;var y0=pageYOffset;if(Math.abs(y1-y0)<1)return;
     anim=true;var h=document.documentElement,t0=performance.now();h.style.scrollBehavior='auto';
-    (function tick(t){
-      var k=Math.min(1,(t-t0)/dur),e=k*k*k*(k*(6*k-15)+10);
-      window.scrollTo(0,y0+(y1-y0)*e);lastY=pageYOffset;render();
-      if(k<1)requestAnimationFrame(tick);else{h.style.scrollBehavior='';anim=false;busyUntil=performance.now()+200;done&&done()}
+    (function step(t){
+      var k=Math.min(1,(t-t0)/dur),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+      window.scrollTo(0,y0+(y1-y0)*e);render();
+      if(k<1)requestAnimationFrame(step);else{h.style.scrollBehavior='';anim=false}
     })(t0);
   }
-  function stepTo(i){i=Math.max(0,Math.min(N-1,i));var from=idx;glide(posOf(i),Math.min(1300,640+170*Math.abs(i-from)),function(){idx=i})}
-  function go(i){if(reduce){setActive(i);render();return}stepTo(i)}
+  function go(i){i=Math.max(0,Math.min(N-1,i));if(reduce){setActive(i);render();return}glide(posOf(i),Math.min(1100,520+140*Math.abs(i-Math.round(cur))))}
   nodes.forEach(function(n,i){n.addEventListener('click',function(){go(i)})});
-  if(!reduce){
-    /* عجلة الماوس / اللمس: كل تمريرة = دائرة واحدة فقط */
-    addEventListener('wheel',function(e){
-      if(e.ctrlKey)return;var d=e.deltaMode===1?e.deltaY*32:e.deltaY;if(!d)return;
-      var now=performance.now(),ad=Math.abs(d),fresh=(now-lastT>150)||(ad>lastAbs*1.25+6);lastT=now;lastAbs=ad;recent=now;
-      if(anim){e.preventDefault();return}
-      var g=geom(),y=pageYOffset;
-      if(!pinned()){                                   /* اقتراب من القسم: توقف عند حافته بسلاسة */
-        if(d>0&&y<g.top&&y+d>=g.top-1){e.preventDefault();if(now>=busyUntil)glide(g.top,500,function(){idx=0;busyUntil=performance.now()+800})}
-        else if(d<0&&y>g.top+g.T&&y+d<=g.top+g.T+1){e.preventDefault();if(now>=busyUntil)glide(g.top+g.T,500,function(){idx=N-1;busyUntil=performance.now()+800})}
-        return;
-      }
-      var dir=d>0?1:-1,can=dir>0?idx<N-1:idx>0;
-      if(!can)return;                                  /* آخر دائرة أو الأولى: اترك الصفحة تكمل */
-      e.preventDefault();
-      if(now<busyUntil||!fresh)return;
-      stepTo(idx+dir);
-    },{passive:false});
-    var ty=0,th=false;
-    addEventListener('touchstart',function(e){ty=e.touches[0].clientY;th=false},{passive:true});
-    addEventListener('touchmove',function(e){
-      recent=performance.now();
-      if(anim){if(e.cancelable)e.preventDefault();return}
-      if(!pinned())return;
-      var dy=ty-e.touches[0].clientY,dir=dy>0?1:-1,can=dir>0?idx<N-1:idx>0;
-      if(!can)return;
-      if(e.cancelable)e.preventDefault();
-      if(!th&&Math.abs(dy)>36&&performance.now()>=busyUntil){th=true;stepTo(idx+dir)}
-    },{passive:false});
-    addEventListener('keydown',function(e){
-      var t=e.target;if(t&&/INPUT|TEXTAREA|SELECT/.test(t.tagName))return;
-      var dir=0;if(e.key==='ArrowDown'||e.key==='PageDown'||(e.key===' '&&!e.shiftKey))dir=1;else if(e.key==='ArrowUp'||e.key==='PageUp'||(e.key===' '&&e.shiftKey))dir=-1;
-      if(!dir||!pinned())return;
-      if(anim){e.preventDefault();return}
-      if(dir>0?idx>=N-1:idx<=0)return;
-      e.preventDefault();if(performance.now()>=busyUntil)stepTo(idx+dir);
-    });
-  }
-  /* تمرير عادي (شريط التمرير، الاندفاع باللمس): لا نسمح بتخطي دوائر */
-  addEventListener('scroll',function(){
-    if(anim)return;
-    var g=geom(),y=pageYOffset,py=lastY;lastY=y;
-    if(!reduce&&performance.now()-recent<1200){
-      var h=document.documentElement;
-      if(py<g.top-2&&y>g.top+2){h.style.scrollBehavior='auto';window.scrollTo(0,g.top);h.style.scrollBehavior='';idx=0;y=g.top}
-      else if(py>g.top+g.T+2&&y<g.top+g.T-2){h.style.scrollBehavior='auto';window.scrollTo(0,g.top+g.T);h.style.scrollBehavior='';idx=N-1;y=g.top+g.T}
-    }
-    if(y<g.top)idx=0;else if(y>g.top+g.T)idx=N-1;
-    render();
-    clearTimeout(snapT);if(reduce)return;
-    snapT=setTimeout(function(){
-      if(anim)return;var g2=geom(),y2=pageYOffset;if(y2<g2.top||y2>g2.top+g2.T)return;
-      var f=(y2-g2.top)/g2.T*(N-1),near=Math.round(f);
-      if(Math.abs(y2-posOf(near))<=2){idx=near;return}
-      stepTo(f>idx?Math.min(N-1,idx+1):Math.max(0,idx-1));
-    },140);
-  },{passive:true});
+  addEventListener('scroll',render,{passive:true});
   addEventListener('resize',function(){Wc=circle.offsetWidth;render()});
   window.addEventListener('langchange',function(){fill(nodes[Math.max(0,shown)]);paintHint()});
   var g0=geom(),f0=reduce?0:Math.min(N-1,Math.max(0,(pageYOffset-g0.top)/g0.T*(N-1)));idx=Math.round(f0);
