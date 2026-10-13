@@ -119,3 +119,4 @@ header nav>a:first-child{white-space:nowrap}
 .reel p{margin-top:.25rem;font-size:.88rem;line-height:1.7;color:var(--mute)}
 @media(max-width:900px){.reels{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:min(68vw,17rem);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.75rem;margin-inline:-1.5rem;padding-inline:1.5rem;scrollbar-width:thin}.reel{scroll-snap-align:center}}
 @media (prefers-reduced-motion:reduce){.reel{opacity:1;transform:none;transition:none}}
+.reels-tags{list-style:none;padding:0;margin:1rem 0 0;display:flex;flex-wrap:wrap;gap:.5rem}.reels-tags li{border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:.3rem .85rem;font-size:.82rem;background:rgba(255,255,255,.04)}
