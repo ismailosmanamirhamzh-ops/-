@@ -61,8 +61,11 @@ function init() {
     dark: new THREE.MeshStandardMaterial({ color: 0x07070a, roughness: 0.5, metalness: 0.2 }),
     gold: new THREE.MeshStandardMaterial({ color: 0xf2b45a, roughness: 0.25, metalness: 1 }),
     screen: new THREE.MeshPhysicalMaterial({ color: 0x050608, roughness: 0.08, metalness: 0, clearcoat: 1 }),
-    glass: new THREE.MeshPhysicalMaterial({ color: 0x0b0d1e, roughness: 0.03, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.02, iridescence: 1, iridescenceIOR: 1.55, iridescenceThicknessRange: [180, 620], envMapIntensity: 2.6, transparent: true, opacity: 0.62, depthWrite: false }),
-    inner: new THREE.MeshPhysicalMaterial({ color: 0x1a1446, roughness: 0.05, metalness: 0.2, iridescence: 0.8, iridescenceIOR: 1.8, envMapIntensity: 2 }),
+    glass: new THREE.MeshPhysicalMaterial({ color: 0x020308, roughness: 0.0, metalness: 0.0, clearcoat: 1, clearcoatRoughness: 0.0, iridescence: 1, iridescenceIOR: 1.7, iridescenceThicknessRange: [250, 700], envMapIntensity: 1.6, transparent: true, opacity: 0.55, depthWrite: false }),
+    inner: new THREE.MeshPhysicalMaterial({ color: 0x0c0a22, roughness: 0.12, metalness: 0.6, iridescence: 1, iridescenceIOR: 2.0, iridescenceThicknessRange: [300, 800], emissive: 0x1b0f3a, emissiveIntensity: 0.6, envMapIntensity: 1.4 }),
+    coat: new THREE.MeshBasicMaterial({ color: 0x7a5cff, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending, depthWrite: false }),
+    coat2: new THREE.MeshBasicMaterial({ color: 0x36e0b0, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending, depthWrite: false }),
+    glint: new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false }),
     red: new THREE.MeshStandardMaterial({ color: 0xc8463a, roughness: 0.4, emissive: 0x3a0806 })
   };
 
@@ -130,6 +133,11 @@ function init() {
   add(new THREE.TorusGeometry(2.0, 0.07, 8, 96), M.metal, 0, 0, FRONT - 1.35, lens);
   add(new THREE.TorusGeometry(1.2, 0.05, 8, 96), M.metal, 0, 0, FRONT - 1.38, lens);
   add(new THREE.CircleGeometry(0.75, 48), M.dark, 0, 0, FRONT - 1.37, lens);
+  // انعكاسات طبقات الطلاء والوميض
+  add(new THREE.RingGeometry(1.55, 1.75, 96, 1, 0.4, 2.2), M.coat, 0, 0, FRONT - 0.6, lens);
+  add(new THREE.RingGeometry(0.95, 1.08, 96, 1, 3.4, 1.9), M.coat2, 0, 0, FRONT - 0.7, lens);
+  const gl = add(new THREE.CircleGeometry(0.42, 32), M.glint, -1.25, 1.2, FRONT - 0.25, lens); gl.scale.set(1.6, 0.55, 1); gl.rotation.z = 0.7;
+  add(new THREE.CircleGeometry(0.16, 24), M.glint, 1.1, -1.05, FRONT - 0.3, lens);
   const LENS_R = 3.62, LENS_FRONT_Z = 2.4 + FRONT;
 
   // توسيط المجسم حول مركزه
@@ -165,7 +173,7 @@ function init() {
     const dStart = Math.max(fitW, fitH, 34);
     const targetPx = Math.min(W, H) * 0.215;                       // نصف قطر العدسة النهائي على الشاشة
     const dEnd = LENS_R * (H / 2) / (targetPx * tanH);
-    const t = sm(e);
+    const t = sm(Math.min(1, Math.max(0, (e - 0.35) / 0.65)));
     const tx = lerp(0, lensWorld.x, t), ty = lerp(0.4, lensWorld.y, t), tz = lerp(0, lensWorld.z, t);
     cam.position.set(tx, ty + lerp(2.2, 0, t), tz + lerp(dStart, dEnd, t));
     cam.lookAt(tx, ty, tz);
