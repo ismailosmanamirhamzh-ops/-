@@ -386,3 +386,6 @@ linear-gradient(currentColor,currentColor) 100% 100%/16px 1.5px,linear-gradient(
 .fp{opacity:0;filter:blur(12px);transform:translateY(14px);clip-path:inset(0 0 0 100%);transition:opacity .9s ease,filter 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1),clip-path 1.1s cubic-bezier(.65,0,.35,1)}
 html[lang=en] .fp{clip-path:inset(0 100% 0 0)}
 .fp.fp-on{opacity:1;filter:none;transform:none;clip-path:inset(0 -5% 0 -5%)}
+/* ===== خط العناوين: Noto Sans Arabic (مجاني، رخصة OFL) نصف مضغوط ===== */
+h1,h2,h3,h4,.hero-name,.pr-h,.xp-h,.tag-h,.cam-welcome b,.cf-ok h3{font-family:'Noto Sans Arabic',Cairo,sans-serif!important;font-stretch:87.5%;font-weight:900}
+.svx-t h3,.lz h3,.pr-step h3,.reel h4,.fq-i summary,.adv-h b{font-family:'Noto Sans Arabic',Cairo,sans-serif!important;font-stretch:87.5%;font-weight:800}
