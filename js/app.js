@@ -723,3 +723,16 @@ try{
   var ctk=false;addEventListener('scroll',function(){if(!ctk){ctk=true;requestAnimationFrame(function(){ctk=false;chk()})}},{passive:true});addEventListener('resize',chk);chk();
 })();
 }catch(e){console.error(e)}
+try{
+/* ===== عناوين الأقسام تدخل بضبط تركيز ومسح من اليمين، مثل عنوان مشهد ===== */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;
+  var hs=[].filter.call(document.querySelectorAll('main section h2, section h2'),function(h){return !h.closest('#top')&&!h.classList.contains('pr-up')&&h.id!=='wkH'&&h.getBoundingClientRect().top>innerHeight});
+  /* نراقب الموقع بالتمرير بدل IntersectionObserver، لأن قص العنوان (clip-path) يخلي المراقب يحسبه مخفي */
+  hs.forEach(function(h){h.classList.add('fp')});
+  var tk=false;
+  function chk(){tk=false;hs=hs.filter(function(h){if(h.getBoundingClientRect().top<innerHeight*.85){h.classList.add('fp-on');return false}return true});if(!hs.length)removeEventListener('scroll',req)}
+  function req(){if(!tk){tk=true;requestAnimationFrame(chk)}}
+  addEventListener('scroll',req,{passive:true});chk();
+})();
+}catch(e){console.error(e)}
