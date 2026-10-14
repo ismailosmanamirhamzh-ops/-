@@ -202,7 +202,7 @@ function init() {
   function flash() {
     fired = true; flashT = performance.now();
     fl.animate([{ opacity: 0 }, { opacity: 0.95, offset: 0.08 }, { opacity: 0.35, offset: 0.35 }, { opacity: 0 }], { duration: 650, easing: 'ease-out' });
-    if (navigator.vibrate) try { navigator.vibrate(18); } catch (_) {}
+    if (navigator.vibrate&&(!navigator.userActivation||navigator.userActivation.hasBeenActive)) try { navigator.vibrate(18); } catch (_) {}
     shutter();
   }
   /* صوت غالق الكاميرا: تكتين قصيرتين مولّدتين بالصوت الرقمي، بلا ملفات.

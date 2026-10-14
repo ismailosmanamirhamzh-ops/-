@@ -323,3 +323,56 @@ html[lang=en] .adv-me{align-self:flex-end}
 .adv-c.adv-wa{background:#25D366;border-color:#25D366;color:#062b16}
 @media(max-width:560px){.adv{inset-inline:.6rem;width:auto;bottom:calc(5.2rem + env(safe-area-inset-bottom,0px));max-height:calc(100vh - 7rem)}.adv-fab{inset-inline-end:.9rem;bottom:calc(.9rem + env(safe-area-inset-bottom,0px))}}
 @media(prefers-reduced-motion:reduce){.adv,.adv-fab{transition:none}.adv-fab.in{animation:none}}
+/* ===== هوية موحّدة: زوايا الكادر ===== */
+.vfb{position:absolute;inset:.85rem;pointer-events:none;z-index:2;opacity:.55;transition:opacity .4s,inset .5s cubic-bezier(.2,.8,.2,1);background:
+linear-gradient(currentColor,currentColor) 0 0/16px 1.5px,linear-gradient(currentColor,currentColor) 0 0/1.5px 16px,
+linear-gradient(currentColor,currentColor) 100% 0/16px 1.5px,linear-gradient(currentColor,currentColor) 100% 0/1.5px 16px,
+linear-gradient(currentColor,currentColor) 0 100%/16px 1.5px,linear-gradient(currentColor,currentColor) 0 100%/1.5px 16px,
+linear-gradient(currentColor,currentColor) 100% 100%/16px 1.5px,linear-gradient(currentColor,currentColor) 100% 100%/1.5px 16px;background-repeat:no-repeat;color:#fff}
+/* ===== الخدمات: كادرات المشاهد ===== */
+.svx{padding:6rem 1.25rem;background:linear-gradient(180deg,var(--ink),#000)}
+.svx-in{max-width:72rem;margin:0 auto}
+.svx .sv-sub{margin-top:1rem;max-width:40rem;line-height:2;color:var(--mute)}
+.svx-grid{list-style:none;padding:0;margin:2.6rem 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:21rem;gap:1rem}
+.svx-c:first-child{grid-column:span 2}
+.svx-c{position:relative;overflow:hidden;border-radius:.6rem;background:#111;isolation:isolate;border:1px solid rgba(255,255,255,.07)}
+.svx-c img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.75);transform:scale(1.03);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s}
+.svx-c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 20%,rgba(0,0,0,.88) 78%);z-index:1}
+.svx-n{position:absolute;top:1.35rem;inset-inline-start:1.5rem;z-index:3;font:600 .72rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:.45rem}
+.svx-n::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#e5383b;box-shadow:0 0 8px #e5383b;opacity:0;transition:opacity .3s}
+.svx-t{position:absolute;inset:auto 0 0 0;z-index:3;padding:1.5rem 1.6rem 1.6rem}
+.svx-t h3{font:900 clamp(1.2rem,2.2vw,1.55rem)/1.4 Cairo,sans-serif}
+.svx-t p{margin-top:.45rem;color:#cfd3dd;line-height:1.85;font-size:.93rem;max-width:34rem}
+.svx-c:hover img,.svx-c:focus-within img{transform:scale(1.09);filter:saturate(1) brightness(.85)}
+.svx-c:hover .vfb{opacity:1;inset:1.1rem;color:var(--amber)}
+.svx-c:hover .svx-n::before{opacity:1}
+@media(max-width:900px){.svx-grid{grid-template-columns:1fr;grid-auto-rows:auto}.svx-c:first-child{grid-column:auto}.svx-c{min-height:19rem;display:flex}.svx-t{position:relative;margin-top:auto}}
+/* ===== العدسات: مدى البعد البؤري ===== */
+.lz-grid{margin-top:2.6rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.lz{position:relative;padding:2rem 1.6rem 1.7rem;border-radius:.6rem;background:linear-gradient(160deg,#14151b,#0b0c10);border:1px solid rgba(255,255,255,.07);overflow:hidden}
+.lz:hover .vfb{opacity:1;color:var(--amber)}
+.lz-k{font:600 .7rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;color:var(--amber)}
+.lz-fl{margin-top:.9rem;display:flex;align-items:baseline;gap:.35rem}
+.lz-fl b{font:900 clamp(2.6rem,5vw,3.6rem)/1 Cairo,sans-serif;background:linear-gradient(180deg,#fff,#c9ccd6);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.02em}
+.lz-fl small{font:600 .9rem ui-monospace,Menlo,Consolas,monospace;color:var(--mute)}
+.lz-sc{position:relative;margin:1.4rem 0 2rem;height:2px;background:rgba(255,255,255,.12)}
+.lz-r{position:absolute;top:-3px;height:8px;left:var(--l);width:var(--w);border-radius:4px;background:var(--amber);box-shadow:0 0 14px rgba(242,180,90,.7);transform-origin:left;animation:lzin 1.2s .2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes lzin{from{transform:scaleX(0)}}
+.lz-sc span{position:absolute;top:10px;transform:translateX(-50%);font:500 .62rem ui-monospace,Menlo,Consolas,monospace;color:rgba(255,255,255,.38)}
+.lz-sc span::before{content:"";position:absolute;left:50%;top:-10px;width:1px;height:6px;background:rgba(255,255,255,.25)}
+.lz h3{font:900 1.2rem Cairo,sans-serif}
+.lz p{margin-top:.35rem;color:var(--mute);line-height:1.85;font-size:.93rem}
+@media(max-width:900px){.lz-grid{grid-template-columns:1fr}}
+/* ===== النتائج: شريط قراءات ===== */
+#stats{gap:0!important;border-block:1px solid rgba(255,255,255,.1);counter-reset:st}
+#stats .stat{background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:1.6rem .8rem 1.4rem!important;position:relative;counter-increment:st}
+#stats .stat+.stat{border-inline-start:1px solid rgba(255,255,255,.1)!important}
+#stats .stat::before{content:"0" counter(st);display:block;font:600 .68rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;color:var(--amber);margin-bottom:.7rem}
+@media(max-width:767px){#stats .stat:nth-child(3){border-inline-start:0!important}#stats .stat:nth-child(n+3){border-top:1px solid rgba(255,255,255,.1)!important}}
+#experience article.glass{position:relative;border-radius:.6rem!important;background:linear-gradient(160deg,#14151b,#0b0c10)!important;border:1px solid rgba(255,255,255,.07)!important}
+/* ===== الشركاء: تتر النهاية ===== */
+.pc{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;margin:0!important;width:11rem!important;border-inline-end:1px solid rgba(255,255,255,.08)!important;filter:grayscale(1) brightness(1.15);opacity:.62;transition:filter .4s,opacity .4s,transform .5s cubic-bezier(.2,.8,.2,1)!important}
+.pc:hover,.pc:focus-visible{filter:none;opacity:1;transform:scale(1.08)!important;box-shadow:none!important}
+#stats .stat{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.svx .sv-sub{margin:1rem 0 0;max-width:40rem;font-size:1rem;text-align:start}
+.ab-k+h2,.ab-k+.xp-h{margin-top:.4rem}
