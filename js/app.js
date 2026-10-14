@@ -707,8 +707,17 @@ try{
   panel.querySelector('.adv-x').addEventListener('click',function(){close();fab.focus()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&fab.classList.contains('open')){close();fab.focus()}});
   /* تظهر الدائرة بعد أول تمرير، ومعها تلميح "عندك سؤال؟" مرة وحدة */
-  var shown=false;
-  function chk(){if(shown||scrollY<120)return;shown=true;fab.classList.add('in');setTimeout(function(){if(!fab.classList.contains('open')){fab.classList.add('tip');setTimeout(function(){fab.classList.remove('tip')},5000)}},2500)}
-  addEventListener('scroll',chk,{passive:true});chk();
+  /* تظهر بعد ما تخلص مقدمة الكاميرا، وتختفي عند قسم "تواصل معي" */
+  var shown=false,hero=document.getElementById('top'),ct=document.getElementById('contact'),atContact=false;
+  function chk(){
+    var past=!hero||hero.getBoundingClientRect().bottom<innerHeight*.5;
+    var vis=past&&!atContact;
+    if(vis&&!shown){shown=true;setTimeout(function(){if(!fab.classList.contains('open')&&!fab.classList.contains('hid')){fab.classList.add('tip');setTimeout(function(){fab.classList.remove('tip')},5000)}},2500)}
+    fab.classList.toggle('in',vis||fab.classList.contains('open'));
+    fab.classList.toggle('hid',!vis&&!fab.classList.contains('open'));
+    if(!vis)fab.classList.remove('tip');
+  }
+  if(ct&&'IntersectionObserver' in window)new IntersectionObserver(function(es){atContact=es[0].isIntersecting;chk()},{threshold:.2}).observe(ct);
+  var ctk=false;addEventListener('scroll',function(){if(!ctk){ctk=true;requestAnimationFrame(function(){ctk=false;chk()})}},{passive:true});addEventListener('resize',chk);chk();
 })();
 }catch(e){console.error(e)}
