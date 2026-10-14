@@ -212,7 +212,7 @@ html.cur-on,html.cur-on body,html.cur-on a,html.cur-on button,html.cur-on [role=
 .pola-slot{position:absolute;left:-6%;right:-6%;top:0;height:.9rem;border-radius:.5rem;background:linear-gradient(#2a2a30,#121216);box-shadow:inset 0 -3px 0 #000,0 6px 14px -6px rgba(0,0,0,.9);z-index:2}
 .pola{margin:0;background:#f6f3ec;padding:.65rem .65rem 0;border-radius:.2rem;box-shadow:0 25px 45px -18px rgba(0,0,0,.85);transform-origin:50% 0}
 .pola-ph{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:#1d1b18}
-.pola-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.pola-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
 .pola-dev{position:absolute;inset:0;background:linear-gradient(160deg,#4b4540,#26221f);opacity:0}
 .pola-cap{padding:.7rem .2rem .9rem;text-align:center;color:#222;font:800 .95rem/1.5 Cairo,sans-serif;display:flex;flex-direction:column}
 .pola-cap span{font-size:.8rem;color:#8a7f70}
