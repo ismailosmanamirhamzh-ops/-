@@ -230,3 +230,7 @@ html.cur-on,html.cur-on body,html.cur-on a,html.cur-on button,html.cur-on [role=
 .vid-snd.on{padding:0;width:2.4rem;justify-content:center}.vid-snd.on .vid-snd-l{display:none}
 .vid-snd:not(.on){animation:sndpulse 2.4s ease-in-out infinite}
 @keyframes sndpulse{50%{box-shadow:0 0 0 6px rgba(242,180,90,.18)}}
+/* ===== بوكيه من أنا ===== */
+.ab-photo .bk{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.ab-photo.bk-on{background:#050507;touch-action:pan-y}
+.ab-photo.bk-on img{opacity:.12;filter:blur(2px) saturate(.9);transition:opacity .3s}
