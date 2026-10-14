@@ -755,7 +755,7 @@ try{
   function anim(svg,keys,dur){
     if(reduce){draw(svg,keys[keys.length-1]);return}
     var t0=performance.now(),seg=keys.length-1;
-    (function f(now){var k=Math.min(1,(now-t0)/dur),x=k*seg,i=Math.min(seg-1,Math.floor(x)),u=x-i;u=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
+    (function f(now){var k=Math.max(0,Math.min(1,(now-t0)/dur)),x=k*seg,i=Math.min(seg-1,Math.floor(x)),u=x-i;u=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
       draw(svg,keys[i]+(keys[i+1]-keys[i])*u);if(k<1)requestAnimationFrame(f)})(t0);
   }
   svgs.forEach(function(s){draw(s,reduce?OPEN:0)});
