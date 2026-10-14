@@ -138,24 +138,40 @@ try{
 }catch(e){console.error(e)}
 try{
 (function(){
-  var v=document.getElementById('adVideo'),b=document.getElementById('adPlay');
-  if(!v||!b)return;
-  v.removeAttribute('controls');
-  // ضع هنا رابط الفيديو (mp4 مباشر أو رابط يوتيوب). اتركه فارغًا لاستخدام الفيديو المدمج.
-  var VIDEO_URL="";
-  b.addEventListener('click',function(){
-    var yt=VIDEO_URL.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);
-    if(yt){
-      var f=document.createElement('iframe');
-      f.src='https://www.youtube.com/embed/'+yt[1]+'?autoplay=1&rel=0&playsinline=1';
-      f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title='إعلان نكهة تهامية';
-      f.style.cssText='width:100%;height:100%;border:0';
-      v.replaceWith(f);b.style.display='none';return;
-    }
-    if(VIDEO_URL)v.src=VIDEO_URL;
-    v.setAttribute('controls','');b.style.display='none';v.play();
-  });
-  v.addEventListener('pause',function(){if(v.ended)b.style.display='flex'});
+  /* إعلان نكهة تهامية: يشتغل تلقائيًا عند الظهور، ويشغّل الصوت تلقائيًا إذا سمح المتصفح،
+     والصوت يخفت تدريجيًا كل ما نزل الزائر عنه، ويتوقف لما يطلع من الشاشة */
+  var v=document.getElementById('adVideo'),b=document.getElementById('adPlay'),sb=document.getElementById('adSnd');
+  if(!v)return;
+  v.removeAttribute('controls');v.muted=true;
+  var en=function(){return document.documentElement.lang==='en'};
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var userOff=false,ratio=0,tk=false,paused=false;
+  function canSound(){var ua=navigator.userActivation;return !userOff&&(!ua||ua.hasBeenActive)}
+  function ui(){var on=!v.muted;if(sb){sb.setAttribute('aria-pressed',on?'true':'false');sb.setAttribute('aria-label',on?(en()?'Mute':'كتم الصوت'):(en()?'Turn sound on':'تشغيل الصوت'));sb.classList.toggle('on',on)}}
+  function solo(){document.dispatchEvent(new CustomEvent('snd-solo',{detail:v}))}
+  function go(){var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;ui();v.play().catch(function(){})});if(b)b.style.display='none'}
+  function apply(){
+    tk=false;
+    var r=v.getBoundingClientRect(),vh=innerHeight,vis=Math.max(0,Math.min(r.bottom,vh)-Math.max(r.top,0));
+    ratio=r.height?vis/r.height:0;
+    if(ratio<.08){if(!v.paused)v.pause();return}
+    if(ratio>=.5&&v.paused&&!paused)go();
+    var vol=Math.min(1,Math.max(0,(ratio-.15)/.6));
+    try{v.volume=vol}catch(_){}
+    var want=canSound()&&![].some.call(document.querySelectorAll('.reel video'),function(x){return !x.muted})&&ratio>=.3;
+    if(want&&v.muted&&ratio>=.5){v.muted=false;solo();ui();setTimeout(function(){if(v.paused&&!paused){v.muted=true;userOff=true;ui();go()}},150)}
+    else if(!v.muted&&ratio<.3){v.muted=true;ui()}
+  }
+  function req(){if(!tk){tk=true;requestAnimationFrame(apply)}}
+  if(!reduce){addEventListener('scroll',req,{passive:true});addEventListener('resize',req);
+    ['pointerdown','keydown'].forEach(function(ev){addEventListener(ev,function(){setTimeout(req,50)},{passive:true})});req()}
+  else if(b)b.style.display='flex';
+  if(b)b.addEventListener('click',function(){paused=false;go();if(!userOff){v.muted=false;solo();ui()}});
+  v.addEventListener('click',function(){if(v.paused){paused=false;go()}else{v.pause();paused=true}});
+  if(sb)sb.addEventListener('click',function(e){e.stopPropagation();
+    if(v.muted){userOff=false;v.muted=false;try{v.volume=1}catch(_){}solo();if(v.paused){paused=false;go()}}else{v.muted=true;userOff=true}ui()});
+  document.addEventListener('snd-solo',function(e){if(e.detail!==v&&!v.muted){v.muted=true;ui()}});
+  ui();
 })();
 }catch(e){console.error(e)}
 try{
@@ -464,9 +480,15 @@ try{
     sb.addEventListener('click',function(){
       var on=v.muted;
       items.forEach(function(o){var ov=o.querySelector('video');ov.muted=true;var b=o.querySelector('.reel-snd');b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',en()?'Turn sound on':'تشغيل الصوت')});
-      if(on){v.muted=false;sb.setAttribute('aria-pressed','true');sb.setAttribute('aria-label',en()?'Mute':'كتم الصوت');play(r)}
+      if(on){v.muted=false;sb.setAttribute('aria-pressed','true');sb.setAttribute('aria-label',en()?'Mute':'كتم الصوت');play(r);document.dispatchEvent(new CustomEvent('snd-solo',{detail:v}))}
     });
   });
+  function muteR(r){var v=r.querySelector('video'),b=r.querySelector('.reel-snd');v.muted=true;b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',en()?'Turn sound on':'تشغيل الصوت')}
+  document.addEventListener('snd-solo',function(e){items.forEach(function(r){if(r.querySelector('video')!==e.detail&&!r.querySelector('video').muted)muteR(r)})});
+  /* الريل اللي صوته شغّال: يخفت صوته مع النزول ويُكتم لما يطلع من الشاشة */
+  var ftk=false;addEventListener('scroll',function(){if(ftk)return;ftk=true;requestAnimationFrame(function(){ftk=false;
+    items.forEach(function(r){var v=r.querySelector('video');if(v.muted)return;var b=v.getBoundingClientRect(),vis=Math.max(0,Math.min(b.bottom,innerHeight)-Math.max(b.top,0)),q=b.height?vis/b.height:0;
+      try{v.volume=Math.min(1,Math.max(0,(q-.15)/.6))}catch(_){}if(q<.25)muteR(r)})})},{passive:true});
   if(reduce||!('IntersectionObserver' in window))return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){var r=e.target;if(e.intersectionRatio>=.6)play(r);else if(!r.querySelector('video').muted&&e.intersectionRatio>0){}else pause(r)})},{threshold:[0,.6]});
   items.forEach(function(r){io.observe(r)});
@@ -533,14 +555,6 @@ try{
     document.addEventListener('mouseleave',function(){c.classList.remove('cur-in')});
     addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'){c.classList.add('cur-dn');setTimeout(function(){c.classList.remove('cur-dn')},220)}},{passive:true});
   }
-  /* المس للتركيز: مربع تركيز مكان الإصبع على الصور والفيديوهات */
-  var TAP='.wed,.work,.reel-v,.vid,.ab-photo,.pc,.xp-media,#camPhoto';
-  addEventListener('pointerdown',function(e){
-    if(e.pointerType!=='touch'||!e.target.closest||!e.target.closest(TAP))return;
-    var b=document.createElement('i');b.className='tap-af';b.setAttribute('aria-hidden','true');
-    b.style.left=e.clientX+'px';b.style.top=e.clientY+'px';document.body.appendChild(b);
-    setTimeout(function(){b.remove()},950);
-  },{passive:true});
 })();
 /* ===== طريقة عملي كشريط فيلم: الكادرات تنكشف للضوء مع النزول ===== */
 (function(){

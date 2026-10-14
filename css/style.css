@@ -191,11 +191,6 @@ html.cur-on,html.cur-on body,html.cur-on a,html.cur-on button,html.cur-on [role=
 .cur-form{opacity:0!important}
 .cur-dn .cur-r{transform:scale(.7)}
 .cur-link.cur-dn .cur-r{transform:scale(1.25)}
-/* ===== المس للتركيز ===== */
-.tap-af{position:fixed;z-index:9999;width:74px;height:74px;margin:-37px 0 0 -37px;pointer-events:none;border:1.5px solid #ffd60a;box-shadow:0 0 0 1px rgba(0,0,0,.25);animation:tapaf .9s ease forwards}
-.tap-af::before,.tap-af::after{content:"";position:absolute;background:#ffd60a}
-.tap-af::before{left:50%;top:-1px;width:1.5px;height:7px}.tap-af::after{left:-1px;top:50%;width:7px;height:1.5px}
-@keyframes tapaf{0%{transform:scale(1.5);opacity:0}18%{opacity:1}45%{transform:scale(.92)}60%{transform:scale(1)}70%{opacity:1}78%{opacity:.4}86%{opacity:1}100%{opacity:0;transform:scale(1)}}
 /* ===== طريقة عملي: شريط فيلم ===== */
 .pr-grid.film{position:relative;gap:.5rem;padding:2.4rem .6rem;border-radius:.9rem;background:#0c0c0e;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 40px 80px -40px rgba(0,0,0,.9);grid-template-columns:repeat(4,minmax(0,1fr));--sx:0px}
 .pr-grid.film::before,.pr-grid.film::after{content:"";position:absolute;left:0;right:0;height:.6rem;background-image:linear-gradient(90deg,rgba(236,226,206,.22) 0 14px,transparent 14px);background-size:28px 100%;background-repeat:repeat-x;background-position:var(--sx) 0;border-radius:2px}
@@ -230,3 +225,8 @@ html.cur-on,html.cur-on body,html.cur-on a,html.cur-on button,html.cur-on [role=
 @keyframes polaimg{from{filter:sepia(.8) saturate(.6) brightness(1.3)}to{filter:none}}
 .pola-go h3,.pola-go p,.pola-go .cf-again{animation:pin .6s 1.1s cubic-bezier(.2,.8,.2,1) both}
 @media(prefers-reduced-motion:reduce){.pola-go .pola,.pola-go .pola-dev,.pola-go .pola-ph img{animation:none}.pola-go .pola-dev{opacity:0}}
+
+.vid-snd{width:auto;padding:0 .8rem 0 .7rem;gap:.45rem;display:flex;align-items:center;border-radius:2rem;font:800 .78rem Cairo,sans-serif;bottom:.9rem;inset-inline-end:.9rem;height:2.4rem}
+.vid-snd.on{padding:0;width:2.4rem;justify-content:center}.vid-snd.on .vid-snd-l{display:none}
+.vid-snd:not(.on){animation:sndpulse 2.4s ease-in-out infinite}
+@keyframes sndpulse{50%{box-shadow:0 0 0 6px rgba(242,180,90,.18)}}
