@@ -204,14 +204,14 @@ try{
     var ws=document.querySelectorAll('#intro .w');
     stmAr=[].map.call(ws,function(w){return w.textContent});
     [].forEach.call(ws,function(w,i){w.textContent=STM[i]||''});
-    document.title='Ismueil Osman | Growth Marketer & Cinematic Photographer';
+    document.title='Ismueil Osman | Photographer, Marketer & Ad Designer in Saudi Arabia';
   }
   function toAr(){
     store.forEach(function(p){p[0].nodeValue=p[1]});store=[];
     phStore.forEach(function(p){p[0].setAttribute('placeholder',p[1])});phStore=[];
     var ws=document.querySelectorAll('#intro .w');
     [].forEach.call(ws,function(w,i){if(stmAr[i]!==undefined)w.textContent=stmAr[i]});
-    document.title='إسماعيل عثمان | مسوّق نمو ومصوّر سينمائي للعلامات التجارية';
+    document.title='إسماعيل عثمان | مصور ومسوق ومصمم إعلانات في السعودية';
   }
   function set(l){
     if(l===lang)return;
