@@ -66,6 +66,27 @@ try{
 })();
 }catch(e){console.error(e)}
 try{
+/* خلفية الواجهة: مونتاج قصير من الأعمال والكواليس */
+(function(){
+  var v=document.getElementById('heroVid'),ph=document.getElementById('heroPhoto'),top=document.getElementById('top');
+  if(!v)return;
+  var c=navigator.connection;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||(c&&c.saveData)){v.remove();return}
+  var cur='';
+  function pick(){
+    var want=innerWidth/innerHeight>1.05?'assets/media/hero-bg-wide.mp4':'assets/media/hero-bg-portrait.mp4';
+    if(want===cur)return;cur=want;v.src=want;v.load();var p=v.play();if(p&&p.catch)p.catch(function(){});
+  }
+  v.addEventListener('playing',function(){v.classList.add('on');if(ph)ph.classList.add('off')});
+  pick();
+  var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(pick,400)});
+  if(top&&'IntersectionObserver' in window)new IntersectionObserver(function(es){
+    if(es[0].isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause();
+  }).observe(top);
+  document.addEventListener('visibilitychange',function(){if(document.hidden)v.pause();else if(top.getBoundingClientRect().bottom>0)v.play().catch(function(){})});
+})();
+}catch(e){console.error(e)}
+try{
 (function(){
   var ph=document.getElementById('heroPhoto'),cp=document.getElementById('camPhoto');
   if(ph&&cp)cp.src=ph.currentSrc||ph.src;

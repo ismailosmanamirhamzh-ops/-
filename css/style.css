@@ -129,3 +129,6 @@ header nav>a:first-child{white-space:nowrap}
 .pr-anim .pr-step.pr-on .pr-n{animation:prn .8s cubic-bezier(.3,1.6,.5,1) both;animation-delay:.35s}
 /* جاهز ترفع مبيعاتك: كل نقطة في سطر واحد */
 .cf-pts li{white-space:nowrap;font-size:clamp(.8rem,3.7vw,1rem)}
+
+#heroVid{opacity:0;transition:opacity 1.4s ease;pointer-events:none}#heroVid.on{opacity:.85}#heroPhoto{transition:opacity 1.4s ease}#heroPhoto.off{opacity:0!important}
+@media(min-width:901px){.reels{grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem}}

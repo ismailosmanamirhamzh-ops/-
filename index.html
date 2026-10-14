@@ -111,6 +111,7 @@
 <section id="top" class="relative bg-black">
   <div class="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
     <img id="heroPhoto" src="assets/img/hero-1600.webp" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1600.webp 1600w" sizes="100vw" width="1600" height="2842" fetchpriority="high" decoding="async" alt="إسماعيل عثمان يصوّر بكاميرا احترافية في فعالية" class="absolute inset-0 w-full h-full object-cover opacity-45" style="object-position:60% 30%">
+    <video id="heroVid" class="absolute inset-0 w-full h-full object-cover" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
     <div class="absolute inset-0" style="background:radial-gradient(ellipse at 50% 45%,rgba(7,8,12,.15),rgba(0,0,0,.85) 80%),linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.2) 40%,rgba(0,0,0,.9))"></div>
 
     <div class="cam-glow" aria-hidden="true"></div>
@@ -353,6 +354,17 @@
         </div>
         <h4 data-en="Eid date mini cakes">ميني كيك التمر للعيد</h4>
         <p data-en="Product film for an Eid campaign, styled in the brand colours and packaging.">تصوير منتج لحملة العيد بألوان الهوية والتغليف.</p>
+      </li>
+      <li class="reel" style="--i:4">
+        <div class="reel-v">
+          <video src="assets/media/reel-5.mp4" poster="assets/img/reel-5.webp" muted loop playsinline preload="none" aria-label="مشروب BEANSAI البارد"></video>
+          <span class="reel-n" dir="ltr">05</span>
+          <span class="reel-d" dir="ltr">0:10</span>
+          <button type="button" class="reel-play" aria-label="تشغيل"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></button>
+          <button type="button" class="reel-snd" aria-label="تشغيل الصوت" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path class="x" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="w" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </div>
+        <h4 data-en="BEANSAI iced drink">مشروب BEANSAI البارد</h4>
+        <p data-en="A fast-paced drink spot built around the pour, the texture and the final hero shot.">إعلان مشروب سريع الإيقاع يبرز السكب والقوام واللقطة الختامية.</p>
       </li>
     </ol>
   </div>
