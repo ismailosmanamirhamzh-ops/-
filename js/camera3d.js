@@ -12,7 +12,7 @@ function init() {
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-  } catch (e) { return; }
+  } catch (e) { document.documentElement.classList.remove('c3p'); return; }
   const DPR = Math.min(window.devicePixelRatio || 1, 2);
   renderer.setPixelRatio(DPR);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -187,6 +187,7 @@ function init() {
 
   stage.appendChild(cv);
   if (oldCam) oldCam.style.display = 'none';
+  document.documentElement.classList.remove('c3p');
   size();
   new IntersectionObserver(es => { visible = es[0].isIntersecting; dirty = true; }).observe(stage);
   addEventListener('resize', size);
