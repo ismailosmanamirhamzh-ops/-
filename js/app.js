@@ -572,3 +572,31 @@ try{
   addEventListener('scroll',req,{passive:true});addEventListener('resize',req);run();
 })();
 }catch(e){console.error(e)}
+try{
+/* ===== الكلاكيت: ينطبق بضربة لما يوصل له الزائر، وبعدها تنكتب المعلومات ===== */
+(function(){
+  var c=document.getElementById('clap');if(!c)return;
+  [].forEach.call(c.querySelectorAll('.ab-facts>div'),function(d,i){d.style.setProperty('--i',i)});
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window)){c.classList.add('clap-done');return}
+  c.classList.add('clap-anim');
+  var actx=null;
+  function clack(){
+    try{var ua=navigator.userActivation;if(ua&&!ua.hasBeenActive)return;
+      var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;actx=actx||new AC();if(actx.state==='suspended')actx.resume();
+      var t=actx.currentTime+.01,n=Math.floor(actx.sampleRate*.07),buf=actx.createBuffer(1,n,actx.sampleRate),d=buf.getChannelData(0);
+      for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,4);
+      var s=actx.createBufferSource();s.buffer=buf;var f=actx.createBiquadFilter();f.type='bandpass';f.frequency.value=1500;f.Q.value=.8;
+      var g=actx.createGain();g.gain.value=.55;s.connect(f).connect(g).connect(actx.destination);s.start(t);
+    }catch(e){}
+  }
+  var io=new IntersectionObserver(function(es){
+    if(!es[0].isIntersecting)return;io.disconnect();
+    setTimeout(function(){
+      c.classList.add('clap-go');
+      setTimeout(function(){clack();if(navigator.vibrate)try{navigator.vibrate(12)}catch(e){}c.classList.add('clap-on')},250);
+      setTimeout(function(){c.classList.add('clap-done');c.classList.remove('clap-go')},700);
+    },350);
+  },{threshold:.55});
+  io.observe(c);
+})();
+}catch(e){console.error(e)}
