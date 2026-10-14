@@ -6,14 +6,9 @@ try{
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var P1=reduce?0:Math.round(innerHeight*0.75);           /* مسافة مرحلة الكاميرا */
   if(!reduce)sec.style.height='calc(200vh + '+P1+'px)';
-  /* ===== كاميرا سوني واقعية (صورة مقصوصة + دوران ثلاثي الأبعاد) ===== */
-  var IW=1000,IH=936,LX=.31,LY2=.73,LW=.47;
-  var img=document.createElement('img');img.alt='';img.draggable=false;img.decoding='async';img.setAttribute('fetchpriority','high');img.src='assets/img/sony-a7.webp';
-  img.style.cssText='position:absolute;display:block;max-width:none;filter:drop-shadow(0 30px 40px rgba(0,0,0,.7)) drop-shadow(0 0 60px rgba(242,180,90,.18))';
-  cam.appendChild(img);
-  var W=0,H=0,DY=0;
-  function size(){W=Math.min(innerWidth*.86,innerHeight*.6*IW/IH,700);H=W*IH/IW;DY=Math.min(34,innerHeight*.05);
-    img.style.width=W+'px';img.style.height=H+'px';img.style.left=(-LX*W)+'px';img.style.top=(-LY2*H)+'px'}
+  /* الكاميرا الوحيدة الآن هي المجسّم ثلاثي الأبعاد (camera3d.js)؛ الصورة القديمة حُذفت */
+  var W=0,H=0,DY=0,LX=.31,LY2=.73,LW=.47;
+  function size(){W=Math.min(innerWidth*.86,innerHeight*.6*1000/936,700);H=W*936/1000;DY=Math.min(34,innerHeight*.05)}
   size();
   var sway=0;
   function ease(c){return c<.5?4*c*c*c:1-Math.pow(-2*c+2,3)/2}
