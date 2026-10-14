@@ -624,3 +624,91 @@ try{
   });
 })();
 }catch(e){console.error(e)}
+try{
+/* ===== المستشار السريع: دائرة عائمة تجاوب عن الخدمات وتقترح الأنسب، وتحوّل لواتساب ===== */
+(function(){
+  var WA='966574395924';
+  var en=function(){return document.documentElement.lang==='en'},T=function(a,e){return en()?e:a};
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var fab=document.createElement('button');fab.type='button';fab.className='adv-fab';fab.setAttribute('aria-expanded','false');fab.setAttribute('aria-controls','advPanel');
+  fab.innerHTML='<img src="assets/img/icon-192.png?v=2" alt="" width="56" height="56"><i class="adv-dot"></i><span class="adv-tip"></span>';
+  var panel=document.createElement('div');panel.className='adv';panel.id='advPanel';panel.setAttribute('role','dialog');panel.hidden=true;
+  panel.innerHTML='<div class="adv-h"><img src="assets/img/icon-192.png?v=2" alt="" width="40" height="40"><div><b class="adv-n"></b><small class="adv-s"></small></div><button type="button" class="adv-x"><span aria-hidden="true">✕</span></button></div><div class="adv-log" aria-live="polite"></div><div class="adv-q"></div>';
+  document.body.appendChild(panel);document.body.appendChild(fab);
+  var log=panel.querySelector('.adv-log'),qs=panel.querySelector('.adv-q'),ans={},started=false;
+  function labels(){
+    fab.setAttribute('aria-label',T('اسأل مساعد إسماعيل','Ask Ismueil\'s assistant'));fab.querySelector('.adv-tip').textContent=T('عندك سؤال؟ اسألني','Got a question? Ask me');
+    panel.setAttribute('aria-label',T('مساعد إسماعيل','Ismueil\'s assistant'));panel.querySelector('.adv-n').textContent=T('مساعد إسماعيل','Ismueil\'s assistant');
+    panel.querySelector('.adv-s').textContent=T('يرد فورًا · يوصلك لإسماعيل على واتساب','Instant replies · connects you to Ismueil on WhatsApp');
+    panel.querySelector('.adv-x').setAttribute('aria-label',T('إغلاق','Close'));
+  }
+  labels();
+  function scroll(){log.scrollTop=log.scrollHeight}
+  function me(t){var d=document.createElement('div');d.className='adv-m adv-me';d.textContent=t;log.appendChild(d);scroll()}
+  function bot(html,cb){
+    var d=document.createElement('div');d.className='adv-m adv-bot adv-typing';d.innerHTML='<span class="fq-ty" style="display:flex"><i></i><i></i><i></i></span>';log.appendChild(d);scroll();
+    setTimeout(function(){d.classList.remove('adv-typing');d.innerHTML=html;if(cb)cb();log.scrollTop=d.offsetHeight<log.clientHeight-16?log.scrollHeight:d.offsetTop-12},reduce?0:550);
+  }
+  function chips(list){
+    qs.innerHTML='';
+    list.forEach(function(c){
+      var b=document.createElement(c.href?'a':'button');b.className='adv-c'+(c.wa?' adv-wa':'');b.textContent=c.t;
+      if(c.href){b.href=c.href;b.target='_blank';b.rel='noopener'}else{b.type='button';b.addEventListener('click',function(){qs.innerHTML='';if(!c.silent)me(c.t);c.go()})}
+      qs.appendChild(b);
+    });
+  }
+  function waLink(msg){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(msg)}
+  function menu(){chips([
+    {t:T('وش الخدمات؟','What do you offer?'),go:services},
+    {t:T('هل يناسب نشاطي؟','Is it right for my business?'),go:fit1},
+    {t:T('كم التكلفة؟','How much does it cost?'),go:cost},
+    {t:T('شوف أعماله','See his work'),go:work},
+    {t:T('راسل إسماعيل مباشرة','Message Ismueil directly'),href:waLink(T('السلام عليكم، تواصلت معك من موقعك','Hi Ismueil, I found you through your website')),wa:true}
+  ])}
+  function start(){
+    started=true;
+    bot(T('أهلًا 👋 أنا مساعد إسماعيل.<br>أقدر أعرّفك على خدماته وأقترح لك الأنسب لنشاطك في أقل من دقيقة. وش تحب تعرف؟','Hi 👋 I\'m Ismueil\'s assistant.<br>I can walk you through his services and suggest what fits your business in under a minute. What would you like to know?'),menu);
+  }
+  function services(){
+    bot(T('إسماعيل مصوّر ومسوّق ومصمّم في السعودية، ويشتغل على مشروعك من الفكرة حتى النتيجة:<ul><li><b>تصوير إعلانات</b> المطاعم والمنتجات، فيديوهات قصيرة وصور</li><li><b>مونتاج</b> وتصحيح ألوان</li><li><b>إدارة حملات</b> سناب وتيك توك وميتا وGoogle</li><li><b>تصميم</b> منشورات وهوية بصرية</li><li><b>تغطية</b> الفعاليات والمؤتمرات</li></ul>تتعامل معه مباشرة بدون وسطاء.',
+      'Ismueil is a photographer, marketer and designer in Saudi Arabia who takes your project from idea to result:<ul><li><b>Ad shoots</b> for restaurants and products, short videos and photos</li><li><b>Editing</b> and colour grading</li><li><b>Ad campaigns</b> on Snapchat, TikTok, Meta and Google</li><li><b>Design</b> for posts and visual identity</li><li><b>Event</b> and conference coverage</li></ul>You work with him directly, no middlemen.'),
+      function(){chips([{t:T('هل يناسب نشاطي؟','Is it right for my business?'),go:fit1},{t:T('كم التكلفة؟','How much does it cost?'),go:cost},{t:T('شوف أعماله','See his work'),go:work}])});
+  }
+  var SECT=[['مطعم أو كافيه','Restaurant or café','r'],['متجر أو منتج','Store or product','p'],['عقار','Real estate','e'],['فعالية أو مناسبة','Event or occasion','v'],['شيء آخر','Something else','o']];
+  var GOAL=[['أبي أزيد مبيعاتي','Increase my sales','s'],['أبي محتوى لحساباتي','Content for my accounts','c'],['عندي افتتاح أو إطلاق','A launch or opening','l'],['أبي تغطية حدث','Cover an event','v']];
+  var HAS=[['لا، أبدأ من الصفر','No, starting from scratch','n'],['عندي محتوى ويحتاج إعلانات','I have content, need ads','y']];
+  function pick(arr,key,next){chips(arr.map(function(a){return {t:T(a[0],a[1]),go:function(){ans[key]=a;next()}}}))}
+  function fit1(){ans={};bot(T('تمام، ٣ أسئلة سريعة.<br><b>١/٣</b> وش نوع نشاطك؟','Great, 3 quick questions.<br><b>1/3</b> What kind of business is it?'),function(){pick(SECT,'s',fit2)})}
+  function fit2(){bot(T('<b>٢/٣</b> وش أهم هدف عندك الحين؟','<b>2/3</b> What\'s your main goal right now?'),function(){pick(GOAL,'g',function(){if(ans.g[2]==='v'){ans.h=null;rec()}else fit3()})})}
+  function fit3(){bot(T('<b>٣/٣</b> عندك صور وفيديوهات جاهزة؟','<b>3/3</b> Do you already have photos and videos?'),function(){pick(HAS,'h',rec)})}
+  function rec(){
+    var s=ans.s[2],g=ans.g[2],h=ans.h&&ans.h[2],r;
+    if(g==='v')r=T('<b>تغطية فعالية متكاملة</b>: تصوير فوتوغرافي وفيديو للحدث، مع مقطع ملخّص قصير جاهز للنشر على حساباتك.','<b>Full event coverage</b>: photo and video of the event, plus a short recap video ready to post.');
+    else if(g==='l')r=T('<b>باقة إطلاق</b>: فيديو تشويقي قبل الافتتاح (مثل إعلان Arina في أعماله)، وتصوير '+(s==='r'?'المنيو والأطباق':'المنتجات والمكان')+'، وحملة إعلانية تجيب أول العملاء.','<b>Launch package</b>: a teaser video before opening (like the Arina ad in his work), a shoot of your '+(s==='r'?'menu and dishes':'products and space')+', and an ad campaign to bring in the first customers.');
+    else if(g==='s'&&h==='y')r=T('<b>إدارة حملات إعلانية</b> على سناب وتيك توك وميتا وGoogle، مع متابعة الأرقام وتحسين الإعلانات لين ترتفع المبيعات.','<b>Ad campaign management</b> on Snapchat, TikTok, Meta and Google, tracking the numbers and optimising until sales rise.');
+    else if(g==='s')r=T('<b>من التصوير حتى النتيجة</b>: يصوّر لك إعلانات قصيرة'+(s==='r'?' مثل إعلانات المطاعم في أعماله':'')+'، ويطلقها في حملة على المنصة المناسبة، ويتابع الأرقام ويحسّنها.','<b>From shoot to results</b>: short ads'+(s==='r'?' like the restaurant ads in his work':'')+', launched as a campaign on the right platform, with the numbers tracked and optimised.');
+    else r=T('<b>محتوى شهري</b>: فيديوهات قصيرة وصور وتصاميم بهوية واحدة، جاهزة للنشر على حساباتك.','<b>Monthly content</b>: short videos, photos and designs in one consistent identity, ready to post.');
+    var sum=T('السلام عليكم إسماعيل، جيتك من موقعك.\nنوع النشاط: '+ans.s[0]+'\nالهدف: '+ans.g[0]+(ans.h?'\nالمحتوى: '+ans.h[0]:'')+'\nأبي أعرف أكثر عن الخدمة المقترحة.',
+      'Hi Ismueil, I came from your website.\nBusiness: '+ans.s[1]+'\nGoal: '+ans.g[1]+(ans.h?'\nContent: '+ans.h[1]:'')+'\nI\'d like to know more about the suggested service.');
+    bot(T('بناءً على إجاباتك، الأنسب لك:<br>','Based on your answers, the best fit is:<br>')+r+T('<br><br>أرسل اختياراتك لإسماعيل، ويرد عليك بخطة وسعر واضح.','<br><br>Send your answers to Ismueil and he\'ll reply with a clear plan and price.'),
+      function(){chips([{t:T('أرسلها لإسماعيل على واتساب','Send to Ismueil on WhatsApp'),href:waLink(sum),wa:true},{t:T('ابدأ من جديد','Start over'),go:fit1},{t:T('القائمة الرئيسية','Main menu'),go:function(){bot(T('وش تحب تعرف بعد؟','What else would you like to know?'),menu)}}])});
+  }
+  function cost(){
+    bot(T('التكلفة تعتمد على عدد المقاطع وأيام التصوير والخدمات اللي تحتاجها، فإسماعيل يحدد السعر بعد ما يفهم مشروعك. التواصل والاستفسار بدون أي التزام.','Pricing depends on the number of videos, shoot days and services you need, so Ismueil quotes after understanding your project. Asking is free, no commitment.'),
+      function(){chips([{t:T('ساعدني أحدد احتياجي','Help me figure out what I need'),go:fit1},{t:T('اسأله عن السعر على واتساب','Ask him for a price on WhatsApp'),href:waLink(T('السلام عليكم إسماعيل، أبي أعرف تكلفة مشروع','Hi Ismueil, I\'d like a quote for a project')),wa:true}])});
+  }
+  function work(){
+    bot(T('في أعماله إعلانات مطاعم قصيرة، وتصوير قيادات شركات، وتصوير منشد، وأعراس. أوديك لها؟','His work includes short restaurant ads, executive portraits, a nasheed artist shoot and weddings. Shall I take you there?'),
+      function(){chips([{t:T('ودّني للأعمال','Take me there'),silent:false,go:function(){close();var w=document.getElementById('work');if(w)w.scrollIntoView({behavior:reduce?'auto':'smooth'})}},{t:T('القائمة الرئيسية','Main menu'),go:function(){bot(T('وش تحب تعرف بعد؟','What else would you like to know?'),menu)}}])});
+  }
+  function open(){labels();panel.hidden=false;requestAnimationFrame(function(){panel.classList.add('on')});fab.classList.add('open');fab.setAttribute('aria-expanded','true');fab.classList.remove('tip');if(!started)start();setTimeout(function(){var b=qs.querySelector('.adv-c')||panel.querySelector('.adv-x');if(b)b.focus({preventScroll:true})},reduce?0:650)}
+  function close(){panel.classList.remove('on');fab.classList.remove('open');fab.setAttribute('aria-expanded','false');setTimeout(function(){if(!panel.classList.contains('on'))panel.hidden=true},300)}
+  fab.addEventListener('click',function(){fab.classList.contains('open')?close():open()});
+  panel.querySelector('.adv-x').addEventListener('click',function(){close();fab.focus()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&fab.classList.contains('open')){close();fab.focus()}});
+  /* تظهر الدائرة بعد أول تمرير، ومعها تلميح "عندك سؤال؟" مرة وحدة */
+  var shown=false;
+  function chk(){if(shown||scrollY<120)return;shown=true;fab.classList.add('in');setTimeout(function(){if(!fab.classList.contains('open')){fab.classList.add('tip');setTimeout(function(){fab.classList.remove('tip')},5000)}},2500)}
+  addEventListener('scroll',chk,{passive:true});chk();
+})();
+}catch(e){console.error(e)}
