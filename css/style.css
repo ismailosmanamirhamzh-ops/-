@@ -407,3 +407,7 @@ div:has(> #langBtn){gap:.3rem!important}
 #langBtn{padding:.4rem .6rem;font-size:.74rem}
 div:has(> #langBtn) > a.btn{padding-inline:.8rem!important;font-size:.8rem}
 }
+/* سبع حسابات: صف واحد على الكمبيوتر، وعلى الجوال 3 + 3 + الأخير في المنتصف */
+.sc-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem 0}
+.sc-row>.sc{flex:0 0 33.333%}
+@media(min-width:760px){.sc-row>.sc{flex-basis:14.285%}}
