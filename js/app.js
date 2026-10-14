@@ -34,6 +34,41 @@ try{
     txt.style.opacity=la*(1-clamp(z/200));
     tag.style.opacity=clamp((z-250)/200);
     tag.style.pointerEvents=z>350?'auto':'none';
+    if(!reduce)shoot(c,z);
+  }
+  /* ===== شاشة الكاميرا (Viewfinder) + قفل التركيز على الاسم + الفلاش ===== */
+  var host=stage.parentElement,vf=null,tc=null,vfOn=false,vfT0=0,shot=false,afTimer=0,fb=null;
+  var h1=txt.querySelector('h1'),af=null;
+  if(!reduce){
+    vf=document.createElement('div');vf.className='vf';vf.setAttribute('aria-hidden','true');vf.dir='ltr';
+    vf.innerHTML='<i class="vf-c tl"></i><i class="vf-c tr"></i><i class="vf-c bl"></i><i class="vf-c br"></i>'+
+      '<div class="vf-top"><span class="vf-rec"><b></b>REC</span><span class="vf-tc">00:00:00:00</span><span class="vf-fmt">4K · 25p</span></div>'+
+      '<div class="vf-bot"><span>ISO 800</span><span>1/125</span><span>f/2.8</span><span class="vf-ev">±0.0</span><span class="vf-bat"><i></i>88%</span></div>';
+    host.appendChild(vf);tc=vf.querySelector('.vf-tc');
+    if(h1){af=document.createElement('span');af.className='af';af.setAttribute('aria-hidden','true');af.innerHTML='<i></i><i></i><i></i><i></i>';h1.appendChild(af)}
+  }
+  function pad(n){return(n<10?'0':'')+n}
+  function tick(t){
+    if(!vfOn)return;
+    var f=Math.floor((t-vfT0)/40),fr=f%25,sec=Math.floor(f/25);
+    tc.textContent='00:'+pad(Math.floor(sec/60)%60)+':'+pad(sec%60)+':'+pad(fr);
+    requestAnimationFrame(tick);
+  }
+  function flash(){
+    if(window.CAM3D&&window.CAM3D.flash){window.CAM3D.flash();return}
+    if(!fb){fb=document.createElement('div');fb.className='vf-flash';fb.setAttribute('aria-hidden','true');host.appendChild(fb)}
+    if(fb.animate)fb.animate([{opacity:0},{opacity:.95,offset:.08},{opacity:.35,offset:.35},{opacity:0}],{duration:650,easing:'ease-out'});
+    if(navigator.vibrate)try{navigator.vibrate(18)}catch(_){}
+  }
+  function shoot(c,z){
+    var o=clamp((c-.5)/.3)*(1-clamp((z-120)/180));
+    vf.style.opacity=o;
+    if(o>0&&!vfOn){vfOn=true;vfT0=performance.now();requestAnimationFrame(tick)}else if(o<=0&&vfOn)vfOn=false;
+    if(c>=.999&&!shot){
+      shot=true;txt.classList.remove('af-lock');void txt.offsetWidth;txt.classList.add('af-go');vf.classList.add('vf-af');
+      clearTimeout(afTimer);
+      afTimer=setTimeout(function(){txt.classList.add('af-lock');vf.classList.add('vf-lock');flash()},820);
+    }else if(c<.4&&shot){shot=false;clearTimeout(afTimer);txt.classList.remove('af-go','af-lock');vf.classList.remove('vf-af','vf-lock')}
   }
   /* ===== دوران تلقائي: أول سحب يدير الكاميرا ويفتح العدسة تلقائيًا ===== */
   var auto=false,lastY=window.scrollY,tk=false;
@@ -436,5 +471,42 @@ try{
   if(reduce||!('IntersectionObserver' in window))return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){var r=e.target;if(e.intersectionRatio>=.6)play(r);else if(!r.querySelector('video').muted&&e.intersectionRatio>0){}else pause(r)})},{threshold:[0,.6]});
   items.forEach(function(r){io.observe(r)});
+})();
+}catch(e){console.error(e)}
+
+try{
+/* ===== فتحة العدسة: قسم "من أنا" ينكشف بشفرات الغالق ===== */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var ab=document.getElementById('about');if(!ab)return;
+  var tk=false,done=false,C=Math.cos(Math.PI/8);
+  function run(){
+    tk=false;
+    var r=ab.getBoundingClientRect(),vh=innerHeight;
+    if(r.top>vh||r.bottom<0){ab.style.clipPath=r.top>vh?'polygon(50% 0,50% 0,50% 0)':'none';return}
+    var p=Math.min(1,Math.max(0,(vh-r.top)/(vh*.8)));
+    if(p>=1){if(ab.style.clipPath!=='none')ab.style.clipPath='none';return}
+    var w=r.width,h=r.height,cx=w/2,cy=Math.min(h,Math.max(0,vh*.55-r.top));
+    var maxR=Math.hypot(Math.max(cx,w-cx),Math.max(cy,h-cy))/C*1.02;
+    var e=p*p*(3-2*p),R=Math.max(1,maxR*e),rot=(1-e)*1.2,pts=[];
+    for(var k=0;k<8;k++){var a=rot+k*Math.PI/4;pts.push((cx+R*Math.cos(a)).toFixed(1)+'px '+(cy+R*Math.sin(a)).toFixed(1)+'px')}
+    ab.style.clipPath='polygon('+pts.join(',')+')';
+  }
+  function req(){if(!tk){tk=true;requestAnimationFrame(run)}}
+  addEventListener('scroll',req,{passive:true});addEventListener('resize',req);run();
+})();
+/* ===== ضبط التركيز: صور الأعمال تبدأ ضبابية وتتضح لما تدخل الشاشة ===== */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;
+  var els=document.querySelectorAll('#work .wed, #work .work');if(!els.length)return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);
+    el.classList.add('rf-on');setTimeout(function(){el.classList.add('rf-done')},1600);
+  })},{threshold:.35,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){
+    if(el.getBoundingClientRect().top<innerHeight*.9)return;   /* اللي ظاهر من البداية يبقى واضح */
+    var b=document.createElement('i');b.className='rf-b';b.setAttribute('aria-hidden','true');el.appendChild(b);
+    el.classList.add('rf');io.observe(el);
+  });
 })();
 }catch(e){console.error(e)}

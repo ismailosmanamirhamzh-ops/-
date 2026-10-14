@@ -143,3 +143,37 @@ header nav>a:first-child{white-space:nowrap}
 .fq-i summary:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:1rem}
 
 .c3p #cam{visibility:hidden}#cam3d canvas{animation:c3in .7s ease both}@keyframes c3in{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+/* ===== Viewfinder ===== */
+.vf{position:absolute;inset:clamp(5.2rem,11vh,6.5rem) clamp(.9rem,3vw,2rem) clamp(1rem,3vh,2rem);z-index:5;pointer-events:none;opacity:0;font:600 clamp(.62rem,1.7vw,.8rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.08em;color:rgba(255,255,255,.82);text-shadow:0 1px 3px rgba(0,0,0,.8)}
+.vf-c{position:absolute;width:clamp(1.4rem,4vw,2.4rem);height:clamp(1.4rem,4vw,2.4rem);border:2px solid rgba(255,255,255,.75);transition:border-color .3s}
+.vf-c.tl{top:0;left:0;border-right:0;border-bottom:0}.vf-c.tr{top:0;right:0;border-left:0;border-bottom:0}.vf-c.bl{bottom:0;left:0;border-right:0;border-top:0}.vf-c.br{bottom:0;right:0;border-left:0;border-top:0}
+.vf-top,.vf-bot{position:absolute;left:clamp(2rem,6vw,3.4rem);right:clamp(2rem,6vw,3.4rem);display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.vf-top{top:.35rem}.vf-bot{bottom:.35rem}
+.vf-rec{display:flex;align-items:center;gap:.45rem;color:#fff}.vf-rec b{width:.6em;height:.6em;border-radius:50%;background:#e5383b;box-shadow:0 0 10px #e5383b;animation:vfblink 1.2s steps(2,start) infinite}
+@keyframes vfblink{to{visibility:hidden}}
+.vf-bat{display:flex;align-items:center;gap:.35rem}.vf-bat i{width:1.6em;height:.8em;border:1.5px solid currentColor;border-radius:2px;background:linear-gradient(90deg,currentColor 80%,transparent 80%) padding-box;background-clip:content-box;padding:1px}
+.vf.vf-lock .vf-c{border-color:var(--amber)}
+@media(max-width:560px){.vf-fmt,.vf-ev{display:none}}
+.vf-flash{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 46%,#fff 0,rgba(255,250,235,.92) 18%,rgba(255,236,200,.55) 42%,rgba(255,220,170,0) 72%)}
+/* ===== قفل التركيز على الاسم ===== */
+.hero-name{position:relative;display:inline-block}
+.af{position:absolute;inset:-.35em -.55em;pointer-events:none;opacity:0}
+.af i{position:absolute;width:.55em;height:.55em;border:2px solid #fff;transition:border-color .2s}
+.af i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}.af i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}.af i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}.af i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
+.af-go .af{animation:afhunt .82s cubic-bezier(.3,.7,.3,1) forwards}
+.af-lock .af i{border-color:#4ade80}
+.af-lock .af{animation:aflock 1.4s ease forwards}
+@keyframes afhunt{0%{opacity:0;transform:scale(1.45)}25%{opacity:1}55%{transform:scale(.93)}75%{transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+@keyframes aflock{0%,30%{opacity:1;transform:scale(1)}100%{opacity:.75;transform:scale(1)}}
+/* ===== ضبط التركيز في الأعمال ===== */
+.rf img{filter:blur(9px) saturate(.75)}
+.rf.rf-on img{animation:rack 1.25s cubic-bezier(.25,.7,.25,1) backwards;filter:none}
+@keyframes rack{0%{filter:blur(9px) saturate(.75)}55%{filter:blur(0) saturate(1)}70%{filter:blur(1.8px) saturate(1)}100%{filter:blur(0) saturate(1)}}
+.rf-b{position:absolute;inset:14%;z-index:2;pointer-events:none;opacity:0;background:
+linear-gradient(#fff,#fff) 0 0/18px 2px,linear-gradient(#fff,#fff) 0 0/2px 18px,
+linear-gradient(#fff,#fff) 100% 0/18px 2px,linear-gradient(#fff,#fff) 100% 0/2px 18px,
+linear-gradient(#fff,#fff) 0 100%/18px 2px,linear-gradient(#fff,#fff) 0 100%/2px 18px,
+linear-gradient(#fff,#fff) 100% 100%/18px 2px,linear-gradient(#fff,#fff) 100% 100%/2px 18px;background-repeat:no-repeat}
+.rf-on .rf-b{animation:rfb 1.5s ease forwards}
+@keyframes rfb{0%{opacity:0;transform:scale(1.15)}20%{opacity:.9}55%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+.rf-done .rf-b{display:none}

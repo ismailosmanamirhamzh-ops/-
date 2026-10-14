@@ -239,9 +239,7 @@ function init() {
 
   window.CAM3D = { set(e, sway) {
     if (e !== E || sway !== SW) { E = e; SW = sway; dirty = true; }
-    if (!fired && e >= 0.97) flash();
-    if (fired && e < 0.4) fired = false;   // يرجع جاهز لو رجع الزائر لأعلى الصفحة
-  } };
+  }, flash };   /* الفلاش يطلقه app.js بعد ما يقفل التركيز على الاسم */
   requestAnimationFrame(loop);
   document.documentElement.classList.add('cam3d-on');
 }
