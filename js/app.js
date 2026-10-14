@@ -600,3 +600,27 @@ try{
   io.observe(c);
 })();
 }catch(e){console.error(e)}
+try{
+/* ===== الأسئلة الشائعة كمحادثة: السؤال فقاعة من العميل، والجواب يجي بعد "يكتب…" ===== */
+(function(){
+  var list=document.querySelector('.fq-chat');if(!list)return;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  [].forEach.call(list.querySelectorAll('details.fq-i'),function(d){
+    var p=d.querySelector('p');if(!p)return;
+    var row=document.createElement('div');row.className='fq-a';
+    var av=document.createElement('img');av.className='fq-av';av.src='assets/img/icon-192.png?v=2';av.alt='';av.width=34;av.height=34;av.setAttribute('aria-hidden','true');
+    var bub=document.createElement('div');bub.className='fq-b';
+    var ty=document.createElement('span');ty.className='fq-ty';ty.setAttribute('aria-hidden','true');ty.innerHTML='<i></i><i></i><i></i>';
+    var meta=document.createElement('span');meta.className='fq-m';meta.setAttribute('aria-hidden','true');meta.innerHTML='<b>✓✓</b>';
+    p.parentNode.insertBefore(row,p);bub.appendChild(ty);bub.appendChild(p);bub.appendChild(meta);row.appendChild(av);row.appendChild(bub);
+    var t=0;
+    d.addEventListener('toggle',function(){
+      clearTimeout(t);
+      if(!d.open){d.classList.remove('typing','shown');return}
+      if(reduce){d.classList.add('shown');return}
+      d.classList.remove('shown');d.classList.add('typing');
+      t=setTimeout(function(){d.classList.remove('typing');d.classList.add('shown')},700);
+    });
+  });
+})();
+}catch(e){console.error(e)}
