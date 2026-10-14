@@ -143,6 +143,97 @@ function init() {
   add(new THREE.CircleGeometry(0.16, 24), M.glint, 1.1, -1.05, FRONT - 0.3, lens);
   const LENS_R = 3.62, LENS_FRONT_Z = 2.4 + FRONT;
 
+  /* ---------- هوية إسماعيل على الكاميرا: الاسم والعدسة الذهبية بدل شعار الشركة المصنّعة ---------- */
+  try {
+    const GOLD = '#f2b45a', SILVER = '#d7dae0';
+    const canvasTex = (w, h, draw) => {
+      const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h);
+      const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); return t;
+    };
+    const decalMat = (map, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ map, transparent: true, roughness: 0.32, metalness: 0.55, polygonOffset: true, polygonOffsetFactor: -2, depthWrite: false }, o));
+    /* رسم فتحة العدسة (نفس شعار الموقع) بثقوب شفافة */
+    const aperture = (g, cx, cy, s, col) => {
+      const t = 0.6, r = (4 + 26 * t) * s, ph = (1 - t) * 35 * Math.PI / 180, R = 41 * s, V = [];
+      for (let i = 0; i < 6; i++) { const a = ph + i * Math.PI / 3 - Math.PI / 2; V.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); }
+      g.save();
+      g.strokeStyle = col; g.lineWidth = 5 * s; g.beginPath(); g.arc(cx, cy, 46 * s, 0, 7); g.stroke();
+      g.fillStyle = col; g.beginPath(); g.arc(cx, cy, R, 0, 7); g.fill();
+      g.globalCompositeOperation = 'destination-out';
+      g.beginPath(); V.forEach((p, i) => i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.closePath(); g.fill();
+      g.lineWidth = 3 * s; g.lineCap = 'round';
+      for (let i = 0; i < 6; i++) {
+        const [x, y] = V[i], n = V[(i + 1) % 6]; let dx = x - n[0], dy = y - n[1]; const L = Math.hypot(dx, dy); dx /= L; dy /= L;
+        const px = x - cx, py = y - cy, b = 2 * (px * dx + py * dy), c = px * px + py * py - R * R, k = (-b + Math.sqrt(b * b - 4 * c)) / 2;
+        g.beginPath(); g.moveTo(x, y); g.lineTo(x + dx * k, y + dy * k); g.stroke();
+      }
+      g.restore();
+    };
+
+    // اللوحة الأمامية فوق العدسة: العدسة الذهبية + ISMUEIL محفورة بالفضي
+    const plate = canvasTex(1024, 256, (g, w, h) => {
+      aperture(g, 118, h / 2, 1.9, GOLD);
+      g.fillStyle = SILVER; g.font = '700 132px "Helvetica Neue",Arial,sans-serif'; g.textBaseline = 'middle';
+      if ('letterSpacing' in g) g.letterSpacing = '14px';
+      g.fillText('ISMUEIL', 238, h / 2 + 6);
+    });
+    add(new THREE.PlaneGeometry(3.7, 0.925), decalMat(plate), 0.9, 4.5, 1.8);
+
+    // اسم صغير على المقبض
+    const grip = canvasTex(512, 128, (g, w, h) => {
+      g.fillStyle = GOLD; g.font = '700 64px "Helvetica Neue",Arial,sans-serif'; g.textBaseline = 'middle'; g.textAlign = 'center';
+      if ('letterSpacing' in g) g.letterSpacing = '10px';
+      g.fillText('OSMAN', w / 2, h / 2);
+    });
+    add(new THREE.PlaneGeometry(2.0, 0.5), decalMat(grip, { metalness: 0.8, roughness: 0.25 }), 5.0, 1.9, 1.91);
+
+    // غطاء ذهبي بشكل العدسة فوق قرص الأوضاع
+    const cap = canvasTex(256, 256, (g, w) => aperture(g, w / 2, w / 2, 2.6, GOLD));
+    const capM = add(new THREE.PlaneGeometry(1.25, 1.25), decalMat(cap, { metalness: 0.9, roughness: 0.22 }), 4.3, 4.39, -0.6);
+    capM.rotation.x = -Math.PI / 2;
+
+    // الحلقة الأمامية للعدسة: كتابة دائرية مثل العدسات الحقيقية
+    const ring = canvasTex(1024, 1024, (g, w) => {
+      const c = w / 2, ro = c, ri = c * 2.85 / 3.45, rt = c * 3.1 / 3.45;
+      g.fillStyle = '#08080b'; g.beginPath(); g.arc(c, c, ro, 0, 7); g.arc(c, c, ri, 0, 7, true); g.fill();
+      g.textBaseline = 'middle'; g.textAlign = 'center';
+      const write = (txt, start, col, size) => {
+        g.font = `600 ${size}px "Helvetica Neue",Arial,sans-serif`; g.fillStyle = col;
+        let a = start;
+        for (const ch of txt) {
+          const cw = g.measureText(ch).width + size * 0.18;
+          a += cw / 2 / rt;
+          g.save(); g.translate(c, c); g.rotate(a); g.translate(0, -rt); g.fillText(ch, 0, 0); g.restore();
+          a += cw / 2 / rt;
+        }
+        return a;
+      };
+      let a = write('ISMUEIL OSMAN', -1.55, GOLD, 42);
+      a = write('  ·  FILM · DESIGN · GROWTH', a, SILVER, 36);
+      write('35mm  1:1.4   Ø67', 1.65, SILVER, 36);
+    });
+    const ringMesh = lens.children.find(m => m.geometry && m.geometry.type === 'RingGeometry' && m.material === M.dark);
+    if (ringMesh) ringMesh.material = new THREE.MeshStandardMaterial({ map: ring, transparent: true, roughness: 0.55, metalness: 0.1 });
+
+    // الشاشة الخلفية تعرض صورة من أعمالي مع واجهة الكاميرا
+    const scr = lens.parent.children.find(m => m.geometry && m.geometry.type === 'PlaneGeometry' && m.material === M.screen);
+    const img = new Image();
+    img.onload = () => {
+      const t = canvasTex(1024, 630, (g, w, h) => {
+        const s = Math.max(w / img.width, h / img.height), iw = img.width * s, ih = img.height * s;
+        g.drawImage(img, (w - iw) / 2, (h - ih) / 2, iw, ih);
+        g.fillStyle = 'rgba(0,0,0,.35)'; g.fillRect(0, 0, w, 54); g.fillRect(0, h - 54, w, 54);
+        g.fillStyle = '#fff'; g.font = '600 30px "Helvetica Neue",Arial,sans-serif'; g.textBaseline = 'middle';
+        g.fillText('1/250   F1.4   ISO 100', 28, h - 27);
+        g.textAlign = 'right'; g.fillStyle = GOLD; g.fillText('● REC 4K', w - 28, 27);
+        g.textAlign = 'left'; g.fillStyle = '#fff'; g.fillText('ISMUEIL OSMAN', 28, 27);
+        g.strokeStyle = GOLD; g.lineWidth = 4; const bx = w / 2, by = h / 2, bs = 70, bl = 22;
+        [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(([sx, sy]) => { g.beginPath(); g.moveTo(bx + sx * bs, by + sy * (bs - bl)); g.lineTo(bx + sx * bs, by + sy * bs); g.lineTo(bx + sx * (bs - bl), by + sy * bs); g.stroke(); });
+      });
+      if (scr) { scr.material = new THREE.MeshBasicMaterial({ map: t, toneMapped: false, color: 0xd8d8d8 }); dirty = true; }
+    };
+    img.src = 'assets/img/studio-lighting.webp';
+  } catch (e) { console.error(e); }
+
   // توسيط المجسم حول مركزه
   model.position.set(-0.3, 0, -4.0);
   const pivot = new THREE.Group(); pivot.add(model); scene.add(pivot);
