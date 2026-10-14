@@ -326,7 +326,11 @@ try{
       .catch(function(){setStatus(T('تعذّر الإرسال الآن. ','Could not send right now. ')+'<a href="'+mailtoFallback(d)+'">'+T('أرسلها عبر بريدك مباشرة','Send it via your email app')+'</a>',true)})
       .then(function(){clearTimeout(to);btn.disabled=false;btn.classList.remove('busy');btn.querySelector('.cf-lbl').textContent=T('إرسال الرسالة','Send Message')});
   });
-  function showOk(){f.hidden=true;$('cf-ok').hidden=false;var h=$('cf-ok').querySelector('h3');if(h){h.tabIndex=-1;h.focus({preventScroll:true})}f.reset();F.other.hidden=true}
+  function showOk(){
+    var nm=F.name.value.trim().split(/\s+/)[0]||'',pn=$('pola-name');if(pn)pn.textContent=nm?T('شكرًا '+nm,'Thanks '+nm):'';
+    var ok=$('cf-ok');ok.classList.remove('pola-go');void ok.offsetWidth;ok.classList.add('pola-go');
+    try{if(window.CAM3D&&window.CAM3D.shutter)window.CAM3D.shutter();if(navigator.vibrate)navigator.vibrate(18)}catch(x){}
+    f.hidden=true;$('cf-ok').hidden=false;var h=$('cf-ok').querySelector('h3');if(h){h.tabIndex=-1;h.focus({preventScroll:true})}f.reset();F.other.hidden=true}
   $('cf-again').addEventListener('click',function(){$('cf-ok').hidden=true;f.hidden=false;setStatus('');F.name.focus()});
 })();
 }catch(e){console.error(e)}
@@ -503,5 +507,54 @@ try{
     var b=document.createElement('i');b.className='rf-b';b.setAttribute('aria-hidden','true');el.appendChild(b);
     el.classList.add('rf');io.observe(el);
   });
+})();
+}catch(e){console.error(e)}
+
+try{
+/* ===== مؤشر حلقة التركيز (كمبيوتر) + المس للتركيز (جوال) ===== */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var en=function(){return document.documentElement.lang==='en'};
+  var MEDIA='video,.reel-v,.vid,#adPlay',ZOOM='.wed',LINK='a,button,[role="button"],summary,label,.sv-node',FORM='input,textarea,select';
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+    var c=document.createElement('div');c.className='cur';c.setAttribute('aria-hidden','true');c.innerHTML='<i class="cur-r"></i><span class="cur-l"></span>';
+    document.body.appendChild(c);document.documentElement.classList.add('cur-on');
+    var lb=c.querySelector('.cur-l'),x=-100,y=-100,tx=-100,ty=-100,run=false,st='';
+    function set(s){if(s===st)return;st=s;c.className='cur'+(s?' cur-'+s:'');
+      lb.textContent=s==='play'?(en()?'Play ▶':'شاهد ▶'):s==='zoom'?(en()?'View':'تكبير'):''}
+    function loop(){x+=(tx-x)*.22;y+=(ty-y)*.22;c.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+      if(Math.abs(tx-x)+Math.abs(ty-y)>.3)requestAnimationFrame(loop);else run=false}
+    addEventListener('pointermove',function(e){
+      if(e.pointerType!=='mouse')return;tx=e.clientX;ty=e.clientY;c.classList.add('cur-in');
+      if(!run){run=true;requestAnimationFrame(loop)}
+      var t=e.target;if(!t.closest){set('');return}
+      set(t.closest(FORM)?'form':t.closest(MEDIA)?'play':t.closest(ZOOM)?'zoom':t.closest(LINK)?'link':'');
+    },{passive:true});
+    document.addEventListener('mouseleave',function(){c.classList.remove('cur-in')});
+    addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'){c.classList.add('cur-dn');setTimeout(function(){c.classList.remove('cur-dn')},220)}},{passive:true});
+  }
+  /* المس للتركيز: مربع تركيز مكان الإصبع على الصور والفيديوهات */
+  var TAP='.wed,.work,.reel-v,.vid,.ab-photo,.pc,.xp-media,#camPhoto';
+  addEventListener('pointerdown',function(e){
+    if(e.pointerType!=='touch'||!e.target.closest||!e.target.closest(TAP))return;
+    var b=document.createElement('i');b.className='tap-af';b.setAttribute('aria-hidden','true');
+    b.style.left=e.clientX+'px';b.style.top=e.clientY+'px';document.body.appendChild(b);
+    setTimeout(function(){b.remove()},950);
+  },{passive:true});
+})();
+/* ===== طريقة عملي كشريط فيلم: الكادرات تنكشف للضوء مع النزول ===== */
+(function(){
+  var ol=document.querySelector('.pr-grid.film');if(!ol)return;
+  var steps=ol.querySelectorAll('.pr-step');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){steps.forEach(function(s){s.classList.add('ex')});return}
+  ol.classList.add('film-on');var tk=false;
+  function run(){tk=false;var r=ol.getBoundingClientRect(),vh=innerHeight;
+    var p=Math.min(1,Math.max(0,(vh*.82-r.top)/(r.height+vh*.25)));
+    ol.style.setProperty('--sx',(p*-260).toFixed(1)+'px');
+    var n=Math.min(steps.length,Math.floor(p*steps.length*1.15+.35));
+    steps.forEach(function(s,i){s.classList.toggle('ex',i<n);s.classList.toggle('gate',i===n-1)});
+  }
+  function req(){if(!tk){tk=true;requestAnimationFrame(run)}}
+  addEventListener('scroll',req,{passive:true});addEventListener('resize',req);run();
 })();
 }catch(e){console.error(e)}
