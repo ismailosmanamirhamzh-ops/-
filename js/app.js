@@ -296,7 +296,7 @@ try{
   /* ربط النموذج بالبريد: خدمة FormSubmit المجانية. أول رسالة ترسلها تصلك معها رسالة تفعيل على بريدك، اضغط الرابط فيها مرة واحدة.
      لاستخدام Formspree بدلًا منها: ضع رابط نموذجك هنا مثل https://formspree.io/f/xxxxxxxx */
   var FORM_ENDPOINT='https://formsubmit.co/ajax/ismailosmanamirhamzh@gmail.com';
-  var OWNER_EMAIL='ismailosmanamirhamzh@gmail.com';
+  var OWNER_EMAIL='hello@ismueilosman.com';
   var f=document.getElementById('cf'); if(!f)return;
   var $=function(id){return document.getElementById(id)};
   var T=function(ar,en){return document.documentElement.lang==='en'?en:ar};
