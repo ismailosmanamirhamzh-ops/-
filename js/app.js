@@ -50,6 +50,7 @@ try{
     requestAnimationFrame(tick);
   }
   function flash(){
+    if(window.APX)window.APX.snap();
     if(window.CAM3D&&window.CAM3D.flash){window.CAM3D.flash();return}
     if(!fb){fb=document.createElement('div');fb.className='vf-flash';fb.setAttribute('aria-hidden','true');host.appendChild(fb)}
     if(fb.animate)fb.animate([{opacity:0},{opacity:.95,offset:.08},{opacity:.35,offset:.35},{opacity:0}],{duration:650,easing:'ease-out'});
@@ -734,5 +735,35 @@ try{
   function chk(){tk=false;hs=hs.filter(function(h){if(h.getBoundingClientRect().top<innerHeight*.85){h.classList.add('fp-on');return false}return true});if(!hs.length)removeEventListener('scroll',req)}
   function req(){if(!tk){tk=true;requestAnimationFrame(chk)}}
   addEventListener('scroll',req,{passive:true});chk();
+})();
+}catch(e){console.error(e)}
+try{
+/* ===== فتحة العدسة في الشعار: ترسم بالـJS، تنفتح عند التحميل، وتنغلق وتنفتح عند المرور وعند فلاش الكاميرا ===== */
+(function(){
+  var svgs=[].slice.call(document.querySelectorAll('.apx'));if(!svgs.length)return;
+  var NS='http://www.w3.org/2000/svg',OPEN=.6,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function draw(svg,t){
+    var r=4+26*t,ph=(1-t)*35*Math.PI/180,R=41,V=[],i,h='';
+    for(i=0;i<6;i++){var a=ph+i*Math.PI/3-Math.PI/2;V.push([r*Math.cos(a),r*Math.sin(a)])}
+    h+='<circle r="46" fill="none" stroke="#f2b45a" stroke-width="5"/><circle r="'+R+'" fill="#f2b45a"/>';
+    h+='<polygon fill="#07080c" points="'+V.map(function(p){return p[0].toFixed(2)+','+p[1].toFixed(2)}).join(' ')+'"/><g stroke="#07080c" stroke-width="3" stroke-linecap="round">';
+    for(i=0;i<6;i++){var x=V[i][0],y=V[i][1],n=V[(i+1)%6],dx=x-n[0],dy=y-n[1],L=Math.hypot(dx,dy);dx/=L;dy/=L;
+      var b=2*(x*dx+y*dy),c=x*x+y*y-R*R,s=(-b+Math.sqrt(b*b-4*c))/2;
+      h+='<line x1="'+x.toFixed(2)+'" y1="'+y.toFixed(2)+'" x2="'+(x+dx*s).toFixed(2)+'" y2="'+(y+dy*s).toFixed(2)+'"/>'}
+    svg.innerHTML=h+'</g>';svg._t=t;
+  }
+  function anim(svg,keys,dur){
+    if(reduce){draw(svg,keys[keys.length-1]);return}
+    var t0=performance.now(),seg=keys.length-1;
+    (function f(now){var k=Math.min(1,(now-t0)/dur),x=k*seg,i=Math.min(seg-1,Math.floor(x)),u=x-i;u=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
+      draw(svg,keys[i]+(keys[i+1]-keys[i])*u);if(k<1)requestAnimationFrame(f)})(t0);
+  }
+  svgs.forEach(function(s){draw(s,reduce?OPEN:0)});
+  /* أول ما تفتح الصفحة: العدسة تنفتح */
+  setTimeout(function(){svgs.forEach(function(s){anim(s,[0,OPEN+.12,OPEN],1100)})},350);
+  /* المرور على الشعار: تنغلق وتنفتح مثل لقطة */
+  svgs.forEach(function(s){var a=s.closest('a,.ft-brand');if(a)a.addEventListener('mouseenter',function(){anim(s,[s._t||OPEN,.05,OPEN],650)})});
+  /* فلاش الكاميرا في الواجهة يحرّك عدسة الشعار */
+  window.APX={snap:function(){svgs.forEach(function(s){anim(s,[OPEN,0,OPEN],520)})}};
 })();
 }catch(e){console.error(e)}
