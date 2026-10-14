@@ -389,3 +389,4 @@ html[lang=en] .fp{clip-path:inset(0 100% 0 0)}
 /* ===== خط العناوين: Noto Sans Arabic (مجاني، رخصة OFL) نصف مضغوط ===== */
 h1,h2,h3,h4,.hero-name,.pr-h,.xp-h,.tag-h,.cam-welcome b,.cf-ok h3{font-family:'Noto Sans Arabic',Cairo,sans-serif!important;font-stretch:87.5%;font-weight:900}
 .svx-t h3,.lz h3,.pr-step h3,.reel h4,.fq-i summary,.adv-h b{font-family:'Noto Sans Arabic',Cairo,sans-serif!important;font-stretch:87.5%;font-weight:800}
+h3.one-line{white-space:nowrap;font-size:clamp(1.05rem,5.4vw,2.25rem)!important;line-height:1.4}
