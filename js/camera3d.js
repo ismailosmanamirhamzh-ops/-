@@ -341,7 +341,7 @@ function init() {
   function pickMode() { setMode(heroVis ? 'hero' : (insVis && insStage ? 'ins' : 'dock')); if (mode === 'ins') insProg(); visible = true; dirty = true; }
   /* تفكيك: كل قطعة تبتعد باتجاهها، وتلف شوي */
   const OFF_L = { lens: [0, 0.4, 11], sensor: [0, 0.2, 5.2], top: [0, 6.8, -0.5], screen: [0, -0.4, -9], card: [2.6, -6.6, 2.6], battery: [-7.5, -4.6, 1.5] };
-  const OFF_P = { lens: [0, -4.6, 6.6], sensor: [0, 2.8, 4.6], top: [0, 9.2, 0], screen: [0, -1.6, -7.5], card: [-3.4, -10.2, -2.3], battery: [-3, 5.2, -2] };
+  const OFF_P = { lens: [0, -4.6, 6.6], sensor: [0, 2.8, 4.6], top: [0, 9.2, 0], screen: [0, -1.6, -7.5], card: [-4.6, -7.4, -3.2], battery: [-3, 5.2, -2] };
   const SPIN = { lens: [0, 0, 0.9], sensor: [0.35, 0.5, 0], top: [0.3, 0, 0.2], screen: [-0.25, 0.4, 0], card: [0.6, -0.8, 0.5], battery: [-0.4, 0.7, -0.3] };
   function explode(a) {
     if (a === exNow) return; exNow = a;
