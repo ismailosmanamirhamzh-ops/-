@@ -454,3 +454,7 @@ div:has(> #langBtn) > a.btn{padding-inline:.8rem!important;font-size:.8rem}
 }
 @media(prefers-reduced-motion:reduce){.fq-hd small i{animation:none}}
 @media(max-width:999px){.fq-grid{display:flex;flex-direction:column}.fq-side{display:contents}.fq-side .fq-more{order:3}.fq-win{order:2}}
+/* إصلاح: في النسخة الإنجليزية كانت قاعدة اتجاه القص تغلب قاعدة الظهور، فتبقى العناوين وقيم الكلاكيت مخفية */
+html[lang=en] .fp.fp-on,[dir=ltr] .fp.fp-on{clip-path:inset(0 -5% 0 -5%)}
+[dir=ltr] .clap-anim.clap-on .ab-facts dd,html[lang=en] .clap-anim.clap-on .ab-facts dd,html[lang=en] .clap-on .ab-facts dd{clip-path:inset(0 0 0 0)}
+@media(min-width:1000px){.fq-side h2{font-size:2.6rem!important;line-height:1.15}}
