@@ -102,7 +102,7 @@ try{
   var v=document.getElementById('heroVid'),ph=document.getElementById('heroPhoto'),top=document.getElementById('top');
   if(!v)return;
   var c=navigator.connection;
-  if(c&&c.saveData){v.remove();return}  /* يشتغل حتى مع «تقليل الحركة»؛ نوقفه فقط لو الزائر مفعّل توفير البيانات */
+  /* يشتغل على كل الأجهزة، حتى مع «تقليل الحركة» أو «توفير البيانات» (الملف أقل من 1 ميقا) */
   var cur='';
   function pick(){
     var want=innerWidth/innerHeight>1.05?'assets/media/hero-bg-wide.mp4':'assets/media/hero-bg-portrait.mp4';
@@ -110,8 +110,10 @@ try{
   }
   v.addEventListener('playing',function(){v.classList.add('on');if(ph)ph.classList.add('off')});
   /* نأجّل تحميل فيديو الخلفية لين تخلص الصفحة تحميلها، عشان الواجهة والمجسّم ياخذون الأولوية */
-  function later(){(window.requestIdleCallback||function(f){setTimeout(f,300)})(pick,{timeout:1500})}
-  if(document.readyState==='complete')later();else addEventListener('load',later,{once:true});
+  function later(){(window.requestIdleCallback||function(f){setTimeout(f,300)})(pick,{timeout:500})}
+  /* نبدأ بعد ما تظهر الواجهة بلحظة، بدون انتظار تحميل كل شيء (الجوال على نت بطيء كان ينتظر طويل) */
+  var fired=false;function once(){if(fired)return;fired=true;later()}
+  if(document.readyState==='complete')once();else{addEventListener('load',once,{once:true});setTimeout(once,1200)}
   var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(pick,400)});
   /* وضع توفير الطاقة في الآيفون يمنع التشغيل التلقائي: نعيد المحاولة مع أول لمسة أو سحب */
   function kick(){if(!cur)pick();if(v.paused&&top.getBoundingClientRect().bottom>0){var p=v.play();if(p&&p.catch)p.catch(function(){})}}
