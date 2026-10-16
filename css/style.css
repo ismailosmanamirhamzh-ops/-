@@ -543,3 +543,10 @@ html.cam3d-on[lang=en] .ins-list li>span{direction:ltr;text-align:left}
   .ins-cap strong{display:block;font:800 1rem Tajawal,sans-serif;color:var(--text)}
   .ins-cap em{display:block;font:500 .82rem Tajawal,sans-serif;font-style:normal;color:rgba(236,238,244,.75)}
 }
+/* زر تشغيل الصوت في المقدمة */
+.snd-hint{display:inline-flex;align-items:center;gap:.45rem;margin-top:.9rem;padding:.5rem .95rem;border-radius:999px;border:1px solid rgba(242,180,90,.45);background:rgba(10,11,16,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#ECEEF4;font:600 .8rem Tajawal,sans-serif;cursor:pointer;pointer-events:auto;text-shadow:none;transition:background .25s,border-color .25s,opacity .4s,transform .4s}
+.snd-hint svg{width:1rem;height:1rem;color:var(--amber);animation:sndp 1.6s ease-in-out infinite}
+.snd-hint:hover{background:rgba(242,180,90,.15);border-color:var(--amber)}
+.snd-hint.done{opacity:0;transform:scale(.9);pointer-events:none}
+@keyframes sndp{50%{transform:scale(1.18)}}
+.cam-hint .hero-chev{display:block;margin-inline:auto}

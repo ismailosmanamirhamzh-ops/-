@@ -750,6 +750,16 @@ window.SND=(function(){
     if(!on)[].forEach.call(document.querySelectorAll('video'),function(v){v.muted=true});
     else if(window.CAM3D&&CAM3D.shutter)CAM3D.shutter(.5)});
   ui();document.body.appendChild(b);
+  /* زر «شغّل الصوت» في المقدمة: الضغطة نفسها تسمح للمتصفح بتشغيل الصوت */
+  var h=document.getElementById('sndHint');
+  if(h){
+    function hl(){var t=h.querySelector('span');if(t)t.textContent=en()?'Turn sound on for the full experience':'شغّل الصوت للتجربة كاملة'}
+    hl();window.addEventListener('langchange',hl);
+    h.addEventListener('click',function(){on=true;try{localStorage.setItem('snd','1')}catch(e){}ui();
+      if(window.CAM3D){CAM3D.unlock&&CAM3D.unlock();CAM3D.shutter&&CAM3D.shutter(.5)}h.classList.add('done')});
+    var ua=navigator.userActivation;
+    if(!on)h.classList.add('done');
+  }
   return{on:function(){return on}};
 })();
 }catch(e){console.error(e)}

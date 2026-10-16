@@ -408,7 +408,7 @@ function init() {
   new IntersectionObserver(es => { heroVis = es[0].isIntersecting; pickMode(); }).observe(stage);
   if (insStage) new IntersectionObserver(es => { insVis = es[0].isIntersecting; pickMode(); }).observe(insStage);
   function insProg() { if (!insSec) return; const r = insSec.getBoundingClientRect(); insP = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight))); }
-  addEventListener('scroll', () => { if (mode === 'ins') { insProg(); dirty = true; } else if (docked && !reduceM) dirty = true; }, { passive: true });
+  addEventListener('scroll', () => { if (mode === 'ins') { insProg(); dirty = true; if (!reduceM && ((insP > 0.05 && insP < 0.38) || (insP > 0.83 && insP < 0.97))) zoomFrom(insP * 2.2, 0.35 + insP * 0.4); } else if (docked && !reduceM) dirty = true; }, { passive: true });
   insProg();
   addEventListener('resize', size);
   /* ---------- فلاش التصوير: مرة واحدة لما تكتمل اللفة والعدسة مواجهة للزائر ---------- */
@@ -428,6 +428,52 @@ function init() {
   /* صوت غالق الكاميرا: تكتين قصيرتين مولّدتين بالصوت الرقمي، بلا ملفات.
      المتصفح يسمح بالصوت فقط بعد أن يضغط الزائر على شيء في الصفحة؛ غير ذلك نسكت بهدوء. */
   let actx = null;
+  /* ---------- صوت محرّك الزوم: يشتغل مع سرعة التمرير، ويسكت لما يوقف الزائر ---------- */
+  function audio() {
+    if (window.SND && !window.SND.on()) return null;
+    const ua = navigator.userActivation;
+    if (ua && !ua.hasBeenActive) return null;
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+    try { actx = actx || new AC(); if (actx.state === 'suspended') actx.resume(); } catch (_) { return null; }
+    return actx.state === 'running' || (ua && ua.hasBeenActive) ? actx : null;
+  }
+  let zs = null, zT = 0, zAcc = 0;
+  function zoomSound(v, pitch) {
+    try {
+      const ctx = audio(); if (!ctx) return;
+      if (!zs) {
+        const n = ctx.sampleRate * 2, buf = ctx.createBuffer(1, n, ctx.sampleRate), d = buf.getChannelData(0);
+        let b = 0; for (let i = 0; i < n; i++) { b = 0.97 * b + 0.03 * (Math.random() * 2 - 1); d[i] = b * 6; }   // ضجيج ناعم مثل محرّك صغير
+        const src = ctx.createBufferSource(); src.buffer = buf; src.loop = true;
+        const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 3.5; bp.frequency.value = 900;
+        const g = ctx.createGain(); g.gain.value = 0;
+        src.connect(bp).connect(g).connect(ctx.destination); src.start();
+        const osc = ctx.createOscillator(); osc.type = 'sawtooth'; osc.frequency.value = 80;
+        const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 520;
+        const og = ctx.createGain(); og.gain.value = 0;
+        osc.connect(lp).connect(og).connect(ctx.destination); osc.start();
+        zs = { g, og, bp, osc };
+      }
+      const now = ctx.currentTime, amp = Math.min(1, Math.abs(v) * 2.4);
+      zs.g.gain.setTargetAtTime(0.11 * amp, now, 0.03);
+      zs.og.gain.setTargetAtTime(0.022 * amp, now, 0.03);
+      zs.bp.frequency.setTargetAtTime(650 + pitch * 1700 + amp * 300, now, 0.06);
+      zs.osc.frequency.setTargetAtTime(62 + pitch * 70 + amp * 35, now, 0.06);
+      // تكّات خفيفة مثل حلقة الزوم وهي تلف
+      zAcc += Math.abs(v) * 0.016;
+      if (zAcc > 0.06) { zAcc = 0; const t = now + 0.005, o = ctx.createOscillator(), tg = ctx.createGain(); o.type = 'square'; o.frequency.value = 2600 + pitch * 900;
+        tg.gain.setValueAtTime(0.0001, t); tg.gain.exponentialRampToValueAtTime(0.012, t + 0.002); tg.gain.exponentialRampToValueAtTime(0.0001, t + 0.018);
+        o.connect(tg).connect(ctx.destination); o.start(t); o.stop(t + 0.02); }
+      clearTimeout(zT);
+      zT = setTimeout(() => { const t = ctx.currentTime; zs.g.gain.setTargetAtTime(0, t, 0.07); zs.og.gain.setTargetAtTime(0, t, 0.07); }, 110);
+    } catch (_) {}
+  }
+  let zPrev = 0, zPrevT = 0;
+  function zoomFrom(x, pitch) {   // x: قيمة تتغير مع التمرير (0..1)
+    const t = performance.now(), dt = Math.max(16, t - zPrevT), v = (x - zPrev) / dt * 1000;
+    zPrev = x; zPrevT = t;
+    if (Math.abs(v) > 0.02 && dt < 400) zoomSound(v, pitch);
+  }
   function shutter(vol = 1, beep = false) {
     try {
       if (window.SND && !window.SND.on()) return;
@@ -465,8 +511,9 @@ function init() {
   }
 
   window.CAM3D = { set(e, sway) {
+    if (e !== E && mode === 'hero' && !reduceM && e < 0.999) zoomFrom(e, e);
     if (e !== E || sway !== SW) { E = e; SW = sway; dirty = true; }
-  }, flash, shutter,
+  }, flash, shutter, unlock() { audio(); },
     /* لقطة لكل قسم جديد: الكاميرا المرافقة تومض وتطلق الغالق */
     shot() {
       if (!docked) return;
