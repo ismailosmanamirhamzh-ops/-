@@ -239,6 +239,32 @@ function init() {
     img.src = 'assets/img/studio-lighting.webp';
   } catch (e) { console.error(e); }
 
+  /* ---------- قطع الكاميرا لقسم «من الداخل»: كل قطعة = خدمة ---------- */
+  const parts = {};
+  ['lens', 'sensor', 'top', 'screen', 'card', 'battery', 'body'].forEach(k => { parts[k] = new THREE.Group(); });
+  [...model.children].forEach(o => {
+    let k = 'body';
+    const p = o.position;
+    if (o === lens || (Math.abs(p.x - LX) < 0.01 && Math.abs(p.y - LY) < 0.01 && p.z > 1.8 && p.z < 2.4)) k = 'lens';
+    else if (p.y >= 3.3) k = 'top';
+    else if (p.z <= -1.9 && p.y < 2.2) k = 'screen';
+    parts[k].add(o);
+  });
+  // قطع داخلية مخفية داخل الجسم، تظهر فقط لما تتفكك الكاميرا
+  const sensorM = new THREE.MeshPhysicalMaterial({ color: 0x0b3328, roughness: 0.12, metalness: 0.75, iridescence: 1, iridescenceIOR: 1.9, iridescenceThicknessRange: [200, 750], emissive: 0x0b4a36, emissiveIntensity: 0.55 });
+  add(new RoundedBoxGeometry(4.8, 3.6, 0.35, 2, 0.1), M.shell, LX, LY, 1.05, parts.sensor);
+  add(new THREE.PlaneGeometry(3.7, 2.5), sensorM, LX, LY, 1.24, parts.sensor);
+  add(new RoundedBoxGeometry(4.0, 2.8, 0.06, 1, 0.02), M.gold, LX, LY, 1.22, parts.sensor);
+  const cardM = new THREE.MeshStandardMaterial({ color: 0x15161b, roughness: 0.35, metalness: 0.3 });
+  add(new RoundedBoxGeometry(2.4, 3.2, 0.24, 2, 0.08), cardM, 4.2, -1.3, -0.3, parts.card);
+  add(new THREE.PlaneGeometry(2.1, 0.9), M.gold, 4.2, -0.2, -0.17, parts.card);
+  for (let i = 0; i < 6; i++) add(new THREE.BoxGeometry(0.22, 0.55, 0.05), M.gold, 3.3 + i * 0.36, -2.55, -0.17, parts.card);
+  add(new RoundedBoxGeometry(2.1, 5.2, 2.3, 3, 0.3), M.dark, -4.6, -0.7, 0.7, parts.battery);
+  add(new RoundedBoxGeometry(2.16, 0.5, 2.36, 2, 0.15), M.gold, -4.6, 1.2, 0.7, parts.battery);
+  add(new RoundedBoxGeometry(0.9, 0.35, 0.9, 2, 0.1), M.metal, -4.6, 2.05, 0.7, parts.battery);
+  Object.values(parts).forEach(g => model.add(g));
+  const PART_C = { lens: [LX, LY, 2.4 + FRONT * 0.55], sensor: [LX, LY, 1.2], top: [0.9, 4.4, 0], screen: [1.3, -0.6, -2.2], card: [4.2, -1.3, -0.3], battery: [-4.6, -0.6, 0.7] };
+
   // توسيط المجسم حول مركزه
   model.position.set(-0.3, 0, -4.0);
   const pivot = new THREE.Group(); pivot.add(model); scene.add(pivot);
@@ -246,18 +272,21 @@ function init() {
   /* ---------- الحالة والرسم ---------- */
   let W = 1, H = 1, E = 0, SW = 0, dirty = true, visible = true;
   let docked = false, shotT = -1;   // الكاميرا المرافقة في زاوية الشاشة
+  let mode = 'hero', insP = 0, exNow = -1;   // hero | ins | dock
   const lerp = (a, b, t) => a + (b - a) * t;
   const sm = t => t * t * (3 - 2 * t);
   const lensWorld = new THREE.Vector3();
 
   function size() {
-    const r = (docked ? dock : stage).getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
+    const r = (mode === 'dock' ? dock : mode === 'ins' ? insStage : stage).getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
     renderer.setSize(W, H, false); cam.aspect = W / H; cam.updateProjectionMatrix(); dirty = true;
   }
 
   function frame() {
     if (!dirty || !visible) return;
     dirty = false;
+    if (mode === 'ins') { insFrame(); return; }
+    explode(0);
     if (docked) { dockFrame(); return; }
     const e = E, k = 1 - e;
     // دوران كامل 360° + زاوية بداية ثلاثة أرباع، وينتهي والعدسة مواجهة
@@ -298,11 +327,70 @@ function init() {
   dock.addEventListener('pointerenter', () => { dock.setAttribute('aria-label', dockLabel()); dock.title = dockLabel(); });
   dock.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: reduceM ? 'auto' : 'smooth' }); });
   document.body.appendChild(dock);
-  function setDock(on) {
-    if (on === docked) return;
-    docked = on; (on ? dock : stage).appendChild(cv);
-    document.documentElement.classList.toggle('c3-docked', on);
+  const insSec = document.getElementById('inside'), insStage = document.getElementById('insStage');
+  const insLb = insSec ? [...insSec.querySelectorAll('.ins-list li')] : [];
+  let heroVis = true, insVis = false;
+  function setMode(m) {
+    if (m === mode) return;
+    mode = m; docked = m === 'dock';
+    (m === 'dock' ? dock : m === 'ins' ? insStage : stage).appendChild(cv);
+    document.documentElement.classList.toggle('c3-docked', docked);
+    if (insSec) insSec.classList.toggle('ins-live', m === 'ins');
     size();
+  }
+  function pickMode() { setMode(heroVis ? 'hero' : (insVis && insStage ? 'ins' : 'dock')); if (mode === 'ins') insProg(); visible = true; dirty = true; }
+  /* تفكيك: كل قطعة تبتعد باتجاهها، وتلف شوي */
+  const OFF_L = { lens: [0, 0.4, 11], sensor: [0, 0.2, 5.2], top: [0, 6.8, -0.5], screen: [0, -0.4, -9], card: [2.6, -6.6, 2.6], battery: [-7.5, -4.6, 1.5] };
+  const OFF_P = { lens: [0, -4.6, 6.6], sensor: [0, 2.8, 4.6], top: [0, 9.2, 0], screen: [0, -1.6, -7.5], card: [-3.4, -10.2, -2.3], battery: [-3, 5.2, -2] };
+  const SPIN = { lens: [0, 0, 0.9], sensor: [0.35, 0.5, 0], top: [0.3, 0, 0.2], screen: [-0.25, 0.4, 0], card: [0.6, -0.8, 0.5], battery: [-0.4, 0.7, -0.3] };
+  function explode(a) {
+    if (a === exNow) return; exNow = a;
+    const O = cam.aspect < 0.85 ? OFF_P : OFF_L;
+    for (const k in O) { const g = parts[k], o = O[k], r = SPIN[k]; g.position.set(o[0] * a, o[1] * a, o[2] * a); g.rotation.set(r[0] * a, r[1] * a, r[2] * a); }
+  }
+  const tmpV = new THREE.Vector3();
+  let insFlashed = false, lastAct = -2, capLang = '';
+  const insCap = insSec && insSec.querySelector('.ins-cap');
+  function insFrame() {
+    const p = reduceM ? 0.6 : insP;
+    const cl = v => Math.min(1, Math.max(0, v));
+    const a = sm(cl((p - 0.06) / 0.3)) * (1 - sm(cl((p - 0.84) / 0.12)));
+    exNow = -1; explode(a);
+    const portrait = cam.aspect < 0.85;
+    pivot.rotation.y = lerp(-0.35, portrait ? 0.62 : 0.95, sm(cl(p / 0.5))) - (portrait ? 0 : 0.25) * sm(cl((p - 0.5) / 0.4));
+    pivot.rotation.x = lerp(0.12, 0.3, a);
+    pivot.rotation.z = 0;
+    pivot.updateMatrixWorld(true);
+    const tanH = Math.tan(THREE.MathUtils.degToRad(cam.fov / 2));
+    const bw = lerp(18, portrait ? 24 : 31, a), bh = lerp(15, portrait ? 33 : 20, a);
+    const d = Math.max(bw / (2 * tanH * cam.aspect), bh / (2 * tanH)) * 1.08;
+    cam.position.set(0, 0.6, d); cam.lookAt(0, 0.2, 0);
+    renderer.render(scene, cam);
+    // تسميات القطع: تتبع كل قطعة على الشاشة، والنشطة تتغير مع التمرير
+    const act = a > 0.85 ? Math.min(4, Math.floor(cl((p - 0.36) / 0.48) * 5)) : -1;
+    const lws = insLb.map(li => li.offsetWidth);
+    insLb.forEach((li, i) => {
+      const k = li.dataset.p, c = PART_C[k]; if (!c) return;
+      tmpV.set(c[0], c[1], c[2]).applyMatrix4(parts[k].matrixWorld);
+      tmpV.project(cam);
+      let x = (tmpV.x * 0.5 + 0.5) * W, y = (-tmpV.y * 0.5 + 0.5) * H;
+      const right = x > W * 0.5, lw = lws[i] + 10;
+      x = right ? Math.min(x, W - lw) : Math.max(x, lw);   // التسمية ما تطلع برا الشاشة
+      y = Math.min(H - 28, Math.max(28, y));
+      li.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      li.classList.toggle('flip', right);
+      li.classList.toggle('show', a > 0.8);
+      li.classList.toggle('act', i === act);
+    });
+    const lang = document.documentElement.lang;
+    if (act !== lastAct || lang !== capLang) {
+      if (act !== lastAct && act >= 0 && !reduceM) shutter(0.25, true);
+      lastAct = act; capLang = lang;
+      if (insCap) { const sp = act >= 0 && insLb[act].querySelector('span'); insCap.innerHTML = sp ? '<b dir="ltr">0' + (act + 1) + '</b>' + sp.innerHTML : ''; insCap.classList.toggle('on', !!sp); }
+    }
+    // لما تتركب من جديد: فلاش وصوت غالق
+    if (p > 0.97 && !insFlashed && !reduceM) { insFlashed = true; flashT = performance.now(); shutter(0.6); }
+    if (p < 0.9) insFlashed = false;
   }
   function dockFrame() {
     const st = window.scrollY || 0;
@@ -317,8 +405,11 @@ function init() {
     cam.position.set(0, 0.6, d); cam.lookAt(0, 0.2, 0);
     renderer.render(scene, cam);
   }
-  new IntersectionObserver(es => { setDock(!es[0].isIntersecting); visible = true; dirty = true; }).observe(stage);
-  addEventListener('scroll', () => { if (docked && !reduceM) dirty = true; }, { passive: true });
+  new IntersectionObserver(es => { heroVis = es[0].isIntersecting; pickMode(); }).observe(stage);
+  if (insStage) new IntersectionObserver(es => { insVis = es[0].isIntersecting; pickMode(); }).observe(insStage);
+  function insProg() { if (!insSec) return; const r = insSec.getBoundingClientRect(); insP = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight))); }
+  addEventListener('scroll', () => { if (mode === 'ins') { insProg(); dirty = true; } else if (docked && !reduceM) dirty = true; }, { passive: true });
+  insProg();
   addEventListener('resize', size);
   /* ---------- فلاش التصوير: مرة واحدة لما تكتمل اللفة والعدسة مواجهة للزائر ---------- */
   const host = stage.parentElement;

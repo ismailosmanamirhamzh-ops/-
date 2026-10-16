@@ -495,3 +495,51 @@ html[lang=en] .one-line,[dir=ltr] .one-line{white-space:normal;text-wrap:balance
 .svf::after{content:"";position:absolute;inset:0;background:#fff;opacity:0;border-radius:4px}
 .svf.lock::after{animation:svfsnap .4s ease-out}
 @keyframes svfsnap{0%{opacity:0}15%{opacity:.22}100%{opacity:0}}
+/* ===== من الداخل: الكاميرا تتفكك وكل قطعة خدمة ===== */
+.ins{position:relative;padding:5rem 1.5rem 3rem}
+.ins-pin{max-width:72rem;margin:0 auto}
+.ins-head{text-align:start;max-width:46rem}
+.ins-box{position:relative}
+.ins-stage{display:none}
+.ins-list{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
+.ins-list li{display:flex;gap:.7rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:1rem;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}
+.ins-list b{font:700 .8rem 'Cairo',sans-serif;color:var(--amber);letter-spacing:.06em;padding-top:.15rem}
+.ins-list strong{display:block;font:800 1.05rem Tajawal,sans-serif;color:var(--text)}
+.ins-list em{display:block;font:500 .9rem Tajawal,sans-serif;font-style:normal;color:rgba(236,238,244,.7);margin-top:.15rem}
+.ins-list i{display:none}
+/* وضع ثلاثي الأبعاد: القسم يتثبّت والكاميرا تتفكك مع التمرير */
+.c3p .ins,.cam3d-on .ins{height:330vh;padding:0}
+.c3p .ins-pin,.cam3d-on .ins-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;max-width:none;overflow:hidden;padding:clamp(5.5rem,11vh,7rem) clamp(1.25rem,5vw,4rem) 1rem}
+.c3p .ins-head,.cam3d-on .ins-head{max-width:72rem;width:100%;margin:0 auto;position:relative;z-index:3}
+.c3p .ins-box,.cam3d-on .ins-box{flex:1;min-height:0;margin:0 calc(-1*clamp(1.25rem,5vw,4rem))}
+.c3p .ins-stage,.cam3d-on .ins-stage{display:block;position:absolute;inset:0}
+.c3p .ins-list,.cam3d-on .ins-list{position:absolute;inset:0;margin:0;display:block;pointer-events:none;z-index:2}
+.cam3d-on .ins-list li{position:absolute;left:0;top:0;padding:0;background:none;border:0;border-radius:0;gap:.5rem;align-items:center;white-space:nowrap;opacity:0;transition:opacity .45s ease;will-change:transform}
+.c3p .ins-list li{opacity:0}
+.cam3d-on .ins-list li.show{opacity:.55}
+.cam3d-on .ins-list li.act{opacity:1}
+.cam3d-on .ins-list li>i{display:block;width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(242,180,90,.18),0 0 14px rgba(242,180,90,.8);margin-inline-start:-5px;flex:none}
+.cam3d-on .ins-list li>span,.cam3d-on .ins-list li>b{transform:translateX(0)}
+.cam3d-on .ins-list li>span{padding:.45rem .75rem;border-radius:.7rem;background:rgba(10,11,16,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(242,180,90,.28)}
+.cam3d-on .ins-list li.act>span{border-color:var(--amber);box-shadow:0 10px 30px -10px rgba(242,180,90,.5)}
+.cam3d-on .ins-list li strong{font-size:.95rem}
+.cam3d-on .ins-list li em{font-size:.8rem}
+/* التسمية تطلع للخارج: يمين القطعة لو القطعة يمين الشاشة، ويسارها لو يسار */
+.cam3d-on .ins-list li{direction:ltr;translate:0 -50%}
+.cam3d-on .ins-list li>span{direction:rtl;text-align:right}
+html.cam3d-on[lang=en] .ins-list li>span{direction:ltr;text-align:left}
+.cam3d-on .ins-list li:not(.flip){flex-direction:row-reverse;translate:-100% -50%}
+.cam3d-on .ins-list li:not(.flip)>i{margin-inline-start:0;margin-right:-5px}
+@media(max-width:640px){.cam3d-on .ins-list li strong{font-size:.85rem}.cam3d-on .ins-list li em{font-size:.72rem}.cam3d-on .ins-list li>span{padding:.35rem .55rem}.cam3d-on .ins-list li>b{display:none}}
+@media(prefers-reduced-motion:reduce){.c3p .ins,.cam3d-on .ins{height:100vh;height:100svh}}
+.ins-cap{display:none}
+@media(max-width:640px){
+  .cam3d-on .ins-list li>span{display:none}
+  .cam3d-on .ins-list li>b{display:grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:rgba(10,11,16,.75);border:1px solid rgba(242,180,90,.45);font-size:.7rem;padding:0}
+  .cam3d-on .ins-list li.act>b{background:var(--amber);color:#111;border-color:var(--amber)}
+  .cam3d-on .ins-cap{display:flex;position:absolute;left:1rem;right:1rem;bottom:calc(5.2rem + env(safe-area-inset-bottom,0px));z-index:3;gap:.7rem;align-items:center;padding:.8rem 1rem;border-radius:1rem;background:rgba(10,11,16,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(242,180,90,.4);opacity:0;transform:translateY(10px);transition:opacity .35s,transform .35s;pointer-events:none}
+  .cam3d-on .ins-cap.on{opacity:1;transform:none}
+  .ins-cap>b{font:800 .85rem 'Cairo',sans-serif;color:var(--amber)}
+  .ins-cap strong{display:block;font:800 1rem Tajawal,sans-serif;color:var(--text)}
+  .ins-cap em{display:block;font:500 .82rem Tajawal,sans-serif;font-style:normal;color:rgba(236,238,244,.75)}
+}
