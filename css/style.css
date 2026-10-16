@@ -462,3 +462,8 @@ html[lang=en] .fp.fp-on,[dir=ltr] .fp.fp-on{clip-path:inset(0 -5% 0 -5%)}
 /* صورة ثابتة للكاميرا: تظهر إذا تعذّر المجسّم ثلاثي الأبعاد (WebGL/المكتبة/ذاكرة الجوال) */
 .cam3d{background:url(../assets/media/cam-still.webp) 50% 50%/min(62%,30rem) auto no-repeat}.c3p .cam3d,.cam3d-on .cam3d{background-image:none}
 .cam-hint small{display:block;font:500 .85rem Tajawal,sans-serif;color:rgba(236,238,244,.75);text-shadow:0 1px 10px rgba(0,0,0,.6);margin:.25rem 0 .1rem}
+
+/* منع أي عنصر يطلع عن عرض الشاشة (كان يحصل في الإنجليزي لأن الاتجاه من اليسار لليمين يوسّع الصفحة) */
+html{overflow-x:hidden}@supports(overflow:clip){html{overflow-x:clip}}
+html[lang=en] .one-line,[dir=ltr] .one-line{white-space:normal;text-wrap:balance}
+.pf-row{grid-template-columns:repeat(4,minmax(0,1fr))}@media(max-width:360px){.pf-row{gap:.5rem}.pf-row .sc .ic{width:2.8rem;height:2.8rem;border-radius:.95rem}}
