@@ -550,3 +550,6 @@ html.cam3d-on[lang=en] .ins-list li>span{direction:ltr;text-align:left}
 .snd-hint.done{opacity:0;transform:scale(.9);pointer-events:none}
 @keyframes sndp{50%{transform:scale(1.18)}}
 .cam-hint .hero-chev{display:block;margin-inline:auto}
+/* علامة التوثيق بجانب الاسم (حساب واتساب أعمال موثّق) */
+.fq-nm{display:inline-flex;align-items:center;gap:.3rem}
+.vbadge{width:1.05rem;height:1.05rem;flex:none;filter:drop-shadow(0 0 6px rgba(29,155,240,.35))}
