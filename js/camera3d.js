@@ -408,7 +408,7 @@ function init() {
   new IntersectionObserver(es => { heroVis = es[0].isIntersecting; pickMode(); }).observe(stage);
   if (insStage) new IntersectionObserver(es => { insVis = es[0].isIntersecting; pickMode(); }).observe(insStage);
   function insProg() { if (!insSec) return; const r = insSec.getBoundingClientRect(); insP = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight))); }
-  addEventListener('scroll', () => { if (mode === 'ins') { insProg(); dirty = true; if (!reduceM && ((insP > 0.05 && insP < 0.38) || (insP > 0.83 && insP < 0.97))) zoomFrom(insP * 2.2, 0.35 + insP * 0.4); } else if (docked && !reduceM) dirty = true; }, { passive: true });
+  addEventListener('scroll', () => { if (mode === 'ins') { insProg(); dirty = true; } else if (docked && !reduceM) dirty = true; }, { passive: true });
   insProg();
   addEventListener('resize', size);
   /* ---------- فلاش التصوير: مرة واحدة لما تكتمل اللفة والعدسة مواجهة للزائر ---------- */
@@ -464,15 +464,15 @@ function init() {
       if (zAcc > 0.06) { zAcc = 0; const t = now + 0.005, o = ctx.createOscillator(), tg = ctx.createGain(); o.type = 'square'; o.frequency.value = 2600 + pitch * 900;
         tg.gain.setValueAtTime(0.0001, t); tg.gain.exponentialRampToValueAtTime(0.012, t + 0.002); tg.gain.exponentialRampToValueAtTime(0.0001, t + 0.018);
         o.connect(tg).connect(ctx.destination); o.start(t); o.stop(t + 0.02); }
-      clearTimeout(zT);
-      zT = setTimeout(() => { const t = ctx.currentTime; zs.g.gain.setTargetAtTime(0, t, 0.07); zs.og.gain.setTargetAtTime(0, t, 0.07); }, 110);
+      clearTimeout(zT); zT = setTimeout(zoomStop, 70);   // يسكت فور ما توقف العدسة
     } catch (_) {}
   }
+  function zoomStop() { clearTimeout(zT); if (!zs || !actx) return; const t = actx.currentTime; zs.g.gain.setTargetAtTime(0, t, 0.025); zs.og.gain.setTargetAtTime(0, t, 0.025); }
   let zPrev = 0, zPrevT = 0;
   function zoomFrom(x, pitch) {   // x: قيمة تتغير مع التمرير (0..1)
     const t = performance.now(), dt = Math.max(16, t - zPrevT), v = (x - zPrev) / dt * 1000;
     zPrev = x; zPrevT = t;
-    if (Math.abs(v) > 0.02 && dt < 400) zoomSound(v, pitch);
+    if (Math.abs(v) > 0.02 && dt < 400) zoomSound(v, pitch); else if (dt >= 400) zoomStop();
   }
   function shutter(vol = 1, beep = false) {
     try {
@@ -511,7 +511,7 @@ function init() {
   }
 
   window.CAM3D = { set(e, sway) {
-    if (e !== E && mode === 'hero' && !reduceM && e < 0.999) zoomFrom(e, e);
+    if (e !== E && mode === 'hero' && !reduceM) { const z = Math.min(1, Math.max(0, (e - 0.35) / 0.65)), z0 = Math.min(1, Math.max(0, (E - 0.35) / 0.65)); if (z !== z0) zoomFrom(z, z); else zoomStop(); }
     if (e !== E || sway !== SW) { E = e; SW = sway; dirty = true; }
   }, flash, shutter, unlock() { audio(); },
     /* لقطة لكل قسم جديد: الكاميرا المرافقة تومض وتطلق الغالق */
