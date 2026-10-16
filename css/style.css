@@ -467,3 +467,31 @@ html[lang=en] .fp.fp-on,[dir=ltr] .fp.fp-on{clip-path:inset(0 -5% 0 -5%)}
 html{overflow-x:hidden}@supports(overflow:clip){html{overflow-x:clip}}
 html[lang=en] .one-line,[dir=ltr] .one-line{white-space:normal;text-wrap:balance}
 .pf-row{grid-template-columns:repeat(4,minmax(0,1fr))}@media(max-width:360px){.pf-row{gap:.5rem}.pf-row .sc .ic{width:2.8rem;height:2.8rem;border-radius:.95rem}}
+/* ===== الكاميرا المرافقة: بعد المقدمة تنتقل لزاوية الشاشة وتلتقط كل مشهد ===== */
+.c3dock{position:fixed;z-index:55;bottom:calc(1rem + env(safe-area-inset-bottom,0px));inset-inline-start:1rem;width:6.6rem;height:5.4rem;padding:0;border:0;border-radius:1.2rem;background:radial-gradient(closest-side,rgba(242,180,90,.16),rgba(242,180,90,0) 78%);cursor:pointer;visibility:hidden;opacity:0;transform:translateY(18px) scale(.7);transition:opacity .45s ease,transform .7s cubic-bezier(.2,1.4,.4,1),visibility 0s .7s;-webkit-tap-highlight-color:transparent}
+.cam3d-on.c3-docked .c3dock{visibility:visible;opacity:1;transform:none;transition:opacity .45s ease,transform .7s cubic-bezier(.2,1.4,.4,1),visibility 0s}
+.c3dock:hover{transform:scale(1.07)!important}
+.c3dock:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.c3dock::after{content:"";position:absolute;inset:-30%;border-radius:50%;pointer-events:none;opacity:0;background:radial-gradient(circle,rgba(255,255,255,.95) 0,rgba(255,236,200,.5) 30%,rgba(255,220,170,0) 65%)}
+.c3dock.shot::after{animation:dkfl .55s ease-out}
+@keyframes dkfl{0%{opacity:0}10%{opacity:1}100%{opacity:0}}
+.sndt{position:fixed;z-index:56;bottom:calc(6.9rem + env(safe-area-inset-bottom,0px));inset-inline-start:1.55rem;width:2.3rem;height:2.3rem;border-radius:50%;border:1px solid rgba(242,180,90,.45);background:rgba(10,11,16,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--amber);display:grid;place-items:center;padding:0;cursor:pointer;visibility:hidden;opacity:0;transform:scale(.6);transition:opacity .4s,transform .5s cubic-bezier(.2,1.4,.4,1),visibility 0s .5s}
+.sndt svg{width:1.1rem;height:1.1rem}
+.sndt.off{color:rgba(236,238,244,.55);border-color:rgba(236,238,244,.25)}
+.cam3d-on.c3-docked .sndt{visibility:visible;opacity:1;transform:none;transition:opacity .4s .15s,transform .5s .15s cubic-bezier(.2,1.4,.4,1),visibility 0s}
+.sndt:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+@media(max-width:640px){.c3dock{width:4.6rem;height:3.9rem;inset-inline-start:.6rem;bottom:calc(.8rem + env(safe-area-inset-bottom,0px))}.sndt{width:2rem;height:2rem;bottom:calc(4.9rem + env(safe-area-inset-bottom,0px));inset-inline-start:.9rem}}
+/* إطار العدسة اللي يقفل على عنوان كل مشهد */
+.svf{position:fixed;left:0;top:0;width:0;height:0;z-index:45;pointer-events:none;opacity:0;transform:scale(1.14);transform-origin:center}
+.svf.on{opacity:1;transform:none;transition:opacity .25s ease,transform .45s cubic-bezier(.2,.9,.25,1)}
+.svf.out{opacity:0;transform:scale(.97);transition:opacity .55s ease,transform .6s ease}
+.svf i{position:absolute;width:16px;height:16px;border:2px solid var(--amber);filter:drop-shadow(0 0 6px rgba(242,180,90,.55))}
+.svf i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}.svf i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
+.svf i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}.svf i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
+.svf.lock i{border-color:#7CFFA8;filter:drop-shadow(0 0 6px rgba(124,255,168,.6));transition:border-color .15s}
+.svf b{position:absolute;bottom:100%;inset-inline-start:0;margin-bottom:6px;display:flex;align-items:center;gap:6px;font:600 .68rem/1 'Cairo',ui-monospace,monospace;letter-spacing:.08em;color:rgba(255,255,255,.9);direction:ltr;white-space:nowrap;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+.svf b s{width:7px;height:7px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 8px #ff3b3b;animation:svfrec 1s steps(2) infinite}
+@keyframes svfrec{50%{opacity:.2}}
+.svf::after{content:"";position:absolute;inset:0;background:#fff;opacity:0;border-radius:4px}
+.svf.lock::after{animation:svfsnap .4s ease-out}
+@keyframes svfsnap{0%{opacity:0}15%{opacity:.22}100%{opacity:0}}

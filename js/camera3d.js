@@ -245,18 +245,20 @@ function init() {
 
   /* ---------- الحالة والرسم ---------- */
   let W = 1, H = 1, E = 0, SW = 0, dirty = true, visible = true;
+  let docked = false, shotT = -1;   // الكاميرا المرافقة في زاوية الشاشة
   const lerp = (a, b, t) => a + (b - a) * t;
   const sm = t => t * t * (3 - 2 * t);
   const lensWorld = new THREE.Vector3();
 
   function size() {
-    const r = stage.getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
+    const r = (docked ? dock : stage).getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
     renderer.setSize(W, H, false); cam.aspect = W / H; cam.updateProjectionMatrix(); dirty = true;
   }
 
   function frame() {
     if (!dirty || !visible) return;
     dirty = false;
+    if (docked) { dockFrame(); return; }
     const e = E, k = 1 - e;
     // دوران كامل 360° + زاوية بداية ثلاثة أرباع، وينتهي والعدسة مواجهة
     pivot.rotation.y = -(Math.PI * 2 + 0.75) * k + SW * 0.012 * k;
@@ -287,7 +289,36 @@ function init() {
   if (oldCam) oldCam.style.display = 'none';
   document.documentElement.classList.remove('c3p');
   size();
-  new IntersectionObserver(es => { visible = es[0].isIntersecting; dirty = true; }).observe(stage);
+  /* ---------- الكاميرا المرافقة: بعد المقدمة تنتقل نفس الكاميرا لزاوية الشاشة وترافق الزائر ---------- */
+  const reduceM = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const dock = document.createElement('button');
+  dock.type = 'button'; dock.className = 'c3dock';
+  const dockLabel = () => document.documentElement.lang === 'en' ? 'Back to top' : 'العودة للأعلى';
+  dock.setAttribute('aria-label', dockLabel()); dock.title = dockLabel();
+  dock.addEventListener('pointerenter', () => { dock.setAttribute('aria-label', dockLabel()); dock.title = dockLabel(); });
+  dock.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: reduceM ? 'auto' : 'smooth' }); });
+  document.body.appendChild(dock);
+  function setDock(on) {
+    if (on === docked) return;
+    docked = on; (on ? dock : stage).appendChild(cv);
+    document.documentElement.classList.toggle('c3-docked', on);
+    size();
+  }
+  function dockFrame() {
+    const st = window.scrollY || 0;
+    let kick = 0;
+    if (shotT >= 0) { const t = (performance.now() - shotT) / 520; if (t >= 1) shotT = -1; else { kick = Math.sin(t * Math.PI); dirty = true; } }
+    pivot.rotation.y = reduceM ? -0.55 : -0.55 + Math.sin(st * 0.0011) * 0.5;
+    pivot.rotation.x = 0.16 + kick * 0.12;
+    pivot.rotation.z = -0.03;
+    pivot.updateMatrixWorld(true);
+    const tanH = Math.tan(THREE.MathUtils.degToRad(cam.fov / 2));
+    const d = Math.max(13.5 / (2 * tanH * cam.aspect), 11 / (2 * tanH)) * 1.5 * (1 + kick * 0.05);
+    cam.position.set(0, 0.6, d); cam.lookAt(0, 0.2, 0);
+    renderer.render(scene, cam);
+  }
+  new IntersectionObserver(es => { setDock(!es[0].isIntersecting); visible = true; dirty = true; }).observe(stage);
+  addEventListener('scroll', () => { if (docked && !reduceM) dirty = true; }, { passive: true });
   addEventListener('resize', size);
   /* ---------- فلاش التصوير: مرة واحدة لما تكتمل اللفة والعدسة مواجهة للزائر ---------- */
   const host = stage.parentElement;
@@ -306,8 +337,9 @@ function init() {
   /* صوت غالق الكاميرا: تكتين قصيرتين مولّدتين بالصوت الرقمي، بلا ملفات.
      المتصفح يسمح بالصوت فقط بعد أن يضغط الزائر على شيء في الصفحة؛ غير ذلك نسكت بهدوء. */
   let actx = null;
-  function shutter() {
+  function shutter(vol = 1, beep = false) {
     try {
+      if (window.SND && !window.SND.on()) return;
       const ua = navigator.userActivation;
       if (ua && !ua.hasBeenActive) return;
       const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
@@ -323,8 +355,14 @@ function init() {
         const g = actx.createGain(); g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
         src.connect(bp).connect(g).connect(actx.destination); src.start(t);
       };
-      click(t0, 0.045, 3200, 0.35);          // فتح الغالق
-      click(t0 + 0.075, 0.06, 2200, 0.28);   // إغلاقه
+      if (beep) {   // صفّارة تأكيد التركيز قبل اللقطة، مثل الكاميرات الحقيقية
+        [0, 0.07].forEach(dt => { const o = actx.createOscillator(), g = actx.createGain(); o.type = 'sine'; o.frequency.value = 2400;
+          g.gain.setValueAtTime(0.0001, t0 + dt); g.gain.exponentialRampToValueAtTime(0.05 * vol, t0 + dt + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t0 + dt + 0.05);
+          o.connect(g).connect(actx.destination); o.start(t0 + dt); o.stop(t0 + dt + 0.06); });
+      }
+      const s0 = t0 + (beep ? 0.2 : 0);
+      click(s0, 0.045, 3200, 0.35 * vol);          // فتح الغالق
+      click(s0 + 0.075, 0.06, 2200, 0.28 * vol);   // إغلاقه
     } catch (_) {}
   }
   function flashLight() {
@@ -337,7 +375,13 @@ function init() {
 
   window.CAM3D = { set(e, sway) {
     if (e !== E || sway !== SW) { E = e; SW = sway; dirty = true; }
-  }, flash, shutter };   /* الفلاش يطلقه app.js بعد ما يقفل التركيز على الاسم */
+  }, flash, shutter,
+    /* لقطة لكل قسم جديد: الكاميرا المرافقة تومض وتطلق الغالق */
+    shot() {
+      if (!docked) return;
+      if (!reduceM) { shotT = performance.now(); flashT = shotT; dock.classList.remove('shot'); void dock.offsetWidth; dock.classList.add('shot'); }
+      shutter(0.55, true); dirty = true;
+    } };   /* الفلاش يطلقه app.js بعد ما يقفل التركيز على الاسم */
   requestAnimationFrame(loop);
   document.documentElement.classList.add('cam3d-on');
 }
