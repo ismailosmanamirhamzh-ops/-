@@ -461,3 +461,4 @@ html[lang=en] .fp.fp-on,[dir=ltr] .fp.fp-on{clip-path:inset(0 -5% 0 -5%)}
 
 /* صورة ثابتة للكاميرا: تظهر إذا تعذّر المجسّم ثلاثي الأبعاد (WebGL/المكتبة/ذاكرة الجوال) */
 .cam3d{background:url(../assets/media/cam-still.webp) 50% 50%/min(62%,30rem) auto no-repeat}.c3p .cam3d,.cam3d-on .cam3d{background-image:none}
+.cam-hint small{display:block;font:500 .85rem Tajawal,sans-serif;color:rgba(236,238,244,.75);text-shadow:0 1px 10px rgba(0,0,0,.6);margin:.25rem 0 .1rem}
