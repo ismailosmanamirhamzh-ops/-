@@ -458,3 +458,6 @@ div:has(> #langBtn) > a.btn{padding-inline:.8rem!important;font-size:.8rem}
 html[lang=en] .fp.fp-on,[dir=ltr] .fp.fp-on{clip-path:inset(0 -5% 0 -5%)}
 [dir=ltr] .clap-anim.clap-on .ab-facts dd,html[lang=en] .clap-anim.clap-on .ab-facts dd,html[lang=en] .clap-on .ab-facts dd{clip-path:inset(0 0 0 0)}
 @media(min-width:1000px){.fq-side h2{font-size:2.6rem!important;line-height:1.15}}
+
+/* صورة ثابتة للكاميرا: تظهر إذا تعذّر المجسّم ثلاثي الأبعاد (WebGL/المكتبة/ذاكرة الجوال) */
+.cam3d{background:url(../assets/media/cam-still.webp) 50% 50%/min(62%,30rem) auto no-repeat}.c3p .cam3d,.cam3d-on .cam3d{background-image:none}

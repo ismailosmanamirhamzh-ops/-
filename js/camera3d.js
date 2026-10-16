@@ -6,7 +6,12 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const stage = document.getElementById('cam3d');
 const oldCam = document.getElementById('cam');
-if (stage && !matchMedia('(prefers-reduced-motion:reduce)').matches) init();
+/* يعمل حتى مع «تقليل الحركة» في الآيفون: يظهر المجسّم ثابتاً بلا دوران. وإذا فشل أي شيء تبقى صورة الكاميرا الثابتة. */
+if (stage) { try { init(); } catch (e) { fail(); } }
+function fail() {
+  const d = document.documentElement; d.classList.remove('c3p', 'cam3d-on');
+  const c = stage && stage.querySelector('canvas'); if (c) c.remove();
+}
 
 function init() {
   let renderer;
@@ -274,7 +279,9 @@ function init() {
     renderer.render(scene, cam);
   }
 
-  function loop() { flashLight(); frame(); requestAnimationFrame(loop); }
+  let dead = false;
+  function loop() { if (dead) return; try { flashLight(); frame(); } catch (e) { dead = true; fail(); return; } requestAnimationFrame(loop); }
+  cv.addEventListener('webglcontextlost', ev => { ev.preventDefault(); dead = true; fail(); });
 
   stage.appendChild(cv);
   if (oldCam) oldCam.style.display = 'none';
