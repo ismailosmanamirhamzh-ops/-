@@ -102,7 +102,7 @@ try{
   var v=document.getElementById('heroVid'),ph=document.getElementById('heroPhoto'),top=document.getElementById('top');
   if(!v)return;
   var c=navigator.connection;
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches||(c&&c.saveData)){v.remove();return}
+  if(c&&c.saveData){v.remove();return}  /* يشتغل حتى مع «تقليل الحركة»؛ نوقفه فقط لو الزائر مفعّل توفير البيانات */
   var cur='';
   function pick(){
     var want=innerWidth/innerHeight>1.05?'assets/media/hero-bg-wide.mp4':'assets/media/hero-bg-portrait.mp4';
@@ -113,6 +113,9 @@ try{
   function later(){(window.requestIdleCallback||function(f){setTimeout(f,300)})(pick,{timeout:1500})}
   if(document.readyState==='complete')later();else addEventListener('load',later,{once:true});
   var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(pick,400)});
+  /* وضع توفير الطاقة في الآيفون يمنع التشغيل التلقائي: نعيد المحاولة مع أول لمسة أو سحب */
+  function kick(){if(!cur)pick();if(v.paused&&top.getBoundingClientRect().bottom>0){var p=v.play();if(p&&p.catch)p.catch(function(){})}}
+  ['touchstart','pointerdown','scroll','keydown'].forEach(function(ev){addEventListener(ev,kick,{passive:true,once:true})});
   if(top&&'IntersectionObserver' in window)new IntersectionObserver(function(es){
     if(es[0].isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause();
   }).observe(top);
