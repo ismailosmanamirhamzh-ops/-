@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://ismueilosman.com/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ismueilosman.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ismueilosman.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ismueilosman.com/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://ismueilosman.com/assets/img/ismueil-osman.jpg</image:loc></image:image>
@@ -13,5 +16,12 @@
     <video:video><video:thumbnail_loc>https://ismueilosman.com/assets/img/reel-3.webp</video:thumbnail_loc><video:title>قريبًا: Arina | إعلان مطعم قصير من تصوير إسماعيل عثمان</video:title><video:description>إعلان تشويقي لافتتاح مطعم، من المطبخ حتى الطبق. فيديو عمودي لسناب شات وتيك توك وإنستغرام، تصوير ومونتاج إسماعيل عثمان.</video:description><video:content_loc>https://ismueilosman.com/assets/media/reel-3.mp4</video:content_loc><video:duration>13</video:duration><video:publication_date>2026-10-13T23:13:02+03:00</video:publication_date></video:video>
     <video:video><video:thumbnail_loc>https://ismueilosman.com/assets/img/reel-4.webp</video:thumbnail_loc><video:title>ميني كيك التمر للعيد | إعلان مطعم قصير من تصوير إسماعيل عثمان</video:title><video:description>تصوير منتج لحملة العيد بألوان الهوية والتغليف. فيديو عمودي لسناب شات وتيك توك وإنستغرام، تصوير ومونتاج إسماعيل عثمان.</video:description><video:content_loc>https://ismueilosman.com/assets/media/reel-4.mp4</video:content_loc><video:duration>23</video:duration><video:publication_date>2026-10-13T23:13:02+03:00</video:publication_date></video:video>
     <video:video><video:thumbnail_loc>https://ismueilosman.com/assets/img/reel-5.webp</video:thumbnail_loc><video:title>مشروب BEANSAI البارد | إعلان مطعم قصير من تصوير إسماعيل عثمان</video:title><video:description>إعلان مشروب سريع الإيقاع يبرز السكب والقوام واللقطة الختامية. فيديو عمودي لسناب شات وتيك توك وإنستغرام، تصوير ومونتاج إسماعيل عثمان.</video:description><video:content_loc>https://ismueilosman.com/assets/media/reel-5.mp4</video:content_loc><video:duration>10</video:duration><video:publication_date>2026-10-14T08:30:34+03:00</video:publication_date></video:video>
+  </url>
+  <url>
+    <loc>https://ismueilosman.com/?lang=en</loc>
+    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ismueilosman.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ismueilosman.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ismueilosman.com/"/>
   </url>
 </urlset>

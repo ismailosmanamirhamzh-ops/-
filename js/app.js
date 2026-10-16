@@ -283,7 +283,7 @@ try{
   btn.addEventListener('click',function(){set(lang==='ar'?'en':'ar')});
   /* ?lang=en أو #en يفتح الموقع بالإنجليزي مباشرة (لروابط المشاركة ولجان الجوائز) */
   var qp=(location.search.match(/[?&]lang=(en|ar)/)||[])[1]||(/^#en$/i.test(location.hash)?'en':'');
-  if(qp)set(qp);else{try{if(localStorage.getItem('lang')==='en')set('en')}catch(e){}}
+  if(qp){set(qp);if(qp==='en'){var cl=document.querySelector('link[rel=canonical]');if(cl)cl.href='https://ismueilosman.com/?lang=en'}}else{try{if(localStorage.getItem('lang')==='en')set('en')}catch(e){}}
 
   /* الضغط على شعار شريك */
   var plb=document.getElementById('plb'),pc=plb.querySelector('.pcard'),pi=pc.querySelector('img'),pn=pc.querySelector('b');
