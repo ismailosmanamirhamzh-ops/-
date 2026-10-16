@@ -553,3 +553,6 @@ html.cam3d-on[lang=en] .ins-list li>span{direction:ltr;text-align:left}
 /* علامة التوثيق بجانب الاسم (حساب واتساب أعمال موثّق) */
 .fq-nm{display:inline-flex;align-items:center;gap:.3rem}
 .vbadge{width:1.05rem;height:1.05rem;flex:none;filter:drop-shadow(0 0 6px rgba(29,155,240,.35))}
+/* عنوان «من الداخل» في سطر واحد */
+#insH{white-space:nowrap;font-size:clamp(1.05rem,5.7vw,3rem)!important;line-height:1.3}
+html[lang=en] #insH{font-size:clamp(1rem,5.4vw,3rem)!important}
