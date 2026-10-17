@@ -438,10 +438,10 @@ function init() {
   /* ---------- صوت محرّك الزوم: يشتغل مع سرعة التمرير، ويسكت لما يوقف الزائر ---------- */
   function audio() {
     if (window.SND && !window.SND.on()) return null;
-    const ua = navigator.userActivation;
-    if (ua && !ua.hasBeenActive) return null;
     const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+    // نحاول دائماً: بعض المتصفحات تسمح بالصوت تلقائياً (زائر متكرر، أو الموقع مضاف للشاشة الرئيسية)
     try { actx = actx || new AC(); if (actx.state === 'suspended') actx.resume(); } catch (_) { return null; }
+    const ua = navigator.userActivation;
     return actx.state === 'running' || (ua && ua.hasBeenActive) ? actx : null;
   }
   let zs = null, zT = 0, zAcc = 0;
@@ -483,13 +483,7 @@ function init() {
   }
   function shutter(vol = 1, beep = false) {
     try {
-      if (window.SND && !window.SND.on()) return;
-      const ua = navigator.userActivation;
-      if (ua && !ua.hasBeenActive) return;
-      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
-      actx = actx || new AC();
-      if (actx.state === 'suspended') actx.resume();
-      if (actx.state !== 'running' && !(ua && ua.hasBeenActive)) return;
+      if (!audio()) return;
       const t0 = actx.currentTime + 0.01;
       const click = (t, dur, freq, vol) => {
         const n = Math.floor(actx.sampleRate * dur), buf = actx.createBuffer(1, n, actx.sampleRate), d = buf.getChannelData(0);
