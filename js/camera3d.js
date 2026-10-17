@@ -351,6 +351,10 @@ function init() {
   const tmpV = new THREE.Vector3();
   let insFlashed = false, lastAct = -2, capLang = '';
   const insCap = insSec && insSec.querySelector('.ins-cap');
+  let insFl = null;
+  if (insStage) { insFl = document.createElement('div'); insFl.setAttribute('aria-hidden', 'true');
+    insFl.style.cssText = 'position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.95) 0,rgba(255,244,225,.6) 25%,rgba(255,220,170,0) 65%)';
+    insStage.parentElement.appendChild(insFl); }
   function insFrame() {
     const p = reduceM ? 0.6 : insP;
     const cl = v => Math.min(1, Math.max(0, v));
@@ -384,13 +388,16 @@ function init() {
     });
     const lang = document.documentElement.lang;
     if (act !== lastAct || lang !== capLang) {
-      if (act !== lastAct && act >= 0 && !reduceM) shutter(0.25, true);
+      if (act !== lastAct && act >= 0 && !reduceM) shutter(0.5, true);   // لقطة لكل قطعة/خدمة
       lastAct = act; capLang = lang;
       if (insCap) { const sp = act >= 0 && insLb[act].querySelector('span'); insCap.innerHTML = sp ? '<b dir="ltr">0' + (act + 1) + '</b>' + sp.innerHTML : ''; insCap.classList.toggle('on', !!sp); }
     }
     // لما تتركب من جديد: فلاش وصوت غالق
-    if (p > 0.97 && !insFlashed && !reduceM) { insFlashed = true; flashT = performance.now(); shutter(0.6); }
-    if (p < 0.9) insFlashed = false;
+    if (p > 0.94 && !insFlashed && !reduceM) {
+      insFlashed = true; flashT = performance.now(); shutter(1);
+      if (insFl) insFl.animate([{ opacity: 0 }, { opacity: 0.85, offset: 0.08 }, { opacity: 0.3, offset: 0.35 }, { opacity: 0 }], { duration: 650, easing: 'ease-out' });
+    }
+    if (p < 0.85) insFlashed = false;
   }
   function dockFrame() {
     const st = window.scrollY || 0;
