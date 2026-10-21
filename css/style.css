@@ -618,3 +618,12 @@ html.c3x:not(.cam3d-on) .ins-stage{background:url(../assets/media/cam-still.webp
 .mnav-pdf,.mnav-wa{display:block;text-align:center;margin-top:.6rem;font:700 .95rem Tajawal,sans-serif;text-decoration:none;color:var(--text);padding:.75rem;border-radius:999px;border:1px solid rgba(242,180,90,.4)}
 .mnav-wa{border:0;color:var(--mute);padding:.4rem;font-size:.9rem}
 .mnav-pdf:hover{border-color:var(--amber);color:var(--amber)}
+.hcta{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;flex:none;text-decoration:none;color:#0b0c10;background:var(--amber);border-radius:999px;padding:.32rem 1.15rem;line-height:1.05;font-family:Cairo,'Tajawal',sans-serif;box-shadow:0 6px 18px rgba(242,180,90,.25);transition:filter .2s,transform .2s}
+.hcta:hover{filter:brightness(1.07)}
+.hcta-1{font-weight:900;font-size:.86rem}
+.hcta-2{font-weight:700;font-size:.86rem;opacity:.85}
+html[lang=en] .hcta{flex-direction:row;gap:.3rem;padding:.55rem 1.1rem}
+html[lang=en] .hcta-2{opacity:1;font-weight:900}
+header nav{gap:.6rem}
+@media(max-width:420px){.hcta{padding:.28rem .85rem}.hcta-1,.hcta-2{font-size:.78rem}.lang-btn{padding-inline:.7rem!important;font-size:.8rem!important}header nav{padding-inline:.9rem!important}}
+@media(max-width:360px){header nav{padding-inline:.6rem!important;gap:.35rem}.brand-t{font-size:.9rem}.lang-btn{padding-inline:.55rem!important}.menu-btn{width:38px;height:38px}.hcta{padding:.26rem .7rem}}
