@@ -586,3 +586,4 @@ html.c3x:not(.cam3d-on) .ins-stage{background:url(../assets/media/cam-still.webp
 .svx-tags{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.45rem}
 .svx-tags li{font:600 .85rem Tajawal,sans-serif;padding:.35rem .8rem;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:rgba(236,238,244,.85)}
 @media(max-width:900px){.svx-area{grid-template-columns:1fr}}
+.svx-cities li.all{grid-column:1/-1;justify-content:center}
