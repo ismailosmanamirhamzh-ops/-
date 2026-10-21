@@ -570,10 +570,19 @@ html.c3x:not(.cam3d-on) .ins-stage{background:url(../assets/media/cam-still.webp
 .vrf a:hover,.vrf a:focus-visible{border-color:var(--amber);color:var(--amber)}
 .vrf a.vrf-rv{color:#0b0c10;background:var(--amber);border-color:var(--amber);font-weight:800}
 .vrf a.vrf-rv:hover,.vrf a.vrf-rv:focus-visible{color:#0b0c10;filter:brightness(1.08)}
-.svx-area{margin-top:1.6rem}
-.svx-cities{color:var(--mute);line-height:1.9}
-.svx-cities b{color:var(--amber);font-weight:800}
-.svx-tags{list-style:none;padding:0;margin:.9rem 0 0;display:flex;flex-wrap:wrap;gap:.45rem}
-.svx-tags li{font:600 .85rem Tajawal,sans-serif;padding:.35rem .8rem;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:rgba(236,238,244,.85)}
 .svx-t h3 .h3-m{display:block}
 .svx-t h3 .h3-s{display:block;margin-top:.1rem;font-size:.72em;font-weight:700;color:var(--amber);letter-spacing:.01em}
+.svx-area{margin-top:2rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:1rem}
+.svx-loc,.svx-g{padding:1.2rem 1.3rem;border-radius:1rem;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025)}
+.svx-area h4{font:800 .95rem Cairo,sans-serif;color:var(--amber);margin:0 0 .8rem;letter-spacing:.02em}
+.svx-cities{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.svx-cities li{display:flex;align-items:center;gap:.45rem;font:700 .95rem Tajawal,sans-serif;color:var(--text);padding:.55rem .7rem;border-radius:.7rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07)}
+.svx-cities li svg{width:1rem;height:1rem;flex:none;fill:rgba(242,180,90,.7)}
+.svx-cities li.base{border-color:rgba(242,180,90,.55);background:rgba(242,180,90,.1)}
+.svx-cities li.base svg{fill:var(--amber)}
+.svx-remote{margin:.8rem 0 0;font-size:.88rem;line-height:1.8;color:var(--mute)}
+.svx-groups{display:grid;gap:1rem}
+.svx-loc{align-self:start}
+.svx-tags{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.svx-tags li{font:600 .85rem Tajawal,sans-serif;padding:.35rem .8rem;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:rgba(236,238,244,.85)}
+@media(max-width:900px){.svx-area{grid-template-columns:1fr}}
