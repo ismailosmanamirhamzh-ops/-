@@ -570,3 +570,8 @@ html.c3x:not(.cam3d-on) .ins-stage{background:url(../assets/media/cam-still.webp
 .vrf a:hover,.vrf a:focus-visible{border-color:var(--amber);color:var(--amber)}
 .vrf a.vrf-rv{color:#0b0c10;background:var(--amber);border-color:var(--amber);font-weight:800}
 .vrf a.vrf-rv:hover,.vrf a.vrf-rv:focus-visible{color:#0b0c10;filter:brightness(1.08)}
+.svx-area{margin-top:1.6rem}
+.svx-cities{color:var(--mute);line-height:1.9}
+.svx-cities b{color:var(--amber);font-weight:800}
+.svx-tags{list-style:none;padding:0;margin:.9rem 0 0;display:flex;flex-wrap:wrap;gap:.45rem}
+.svx-tags li{font:600 .85rem Tajawal,sans-serif;padding:.35rem .8rem;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:rgba(236,238,244,.85)}
