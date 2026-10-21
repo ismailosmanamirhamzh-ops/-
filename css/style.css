@@ -564,3 +564,9 @@ html[lang=en] #insH{font-size:clamp(1rem,5.4vw,3rem)!important}
 
 /* fallback when 3D fails after the pinned layout is already on screen: keep layout (no CLS), show still camera + labels */
 html.c3x:not(.cam3d-on) .ins-stage{background:url(../assets/media/cam-still.webp) 50% 6%/min(58%,20rem) auto no-repeat}html.c3x:not(.cam3d-on) .ins-list{display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem;padding:1rem}html.c3x:not(.cam3d-on) .ins-list li{opacity:.9}
+.vrf{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem;margin-top:1rem;max-width:44rem;font:600 .85rem Tajawal,sans-serif}
+.vrf-k{color:var(--mute);margin-inline-end:.15rem}
+.vrf a{color:var(--text);text-decoration:none;padding:.35rem .75rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);transition:border-color .25s,color .25s}
+.vrf a:hover,.vrf a:focus-visible{border-color:var(--amber);color:var(--amber)}
+.vrf a.vrf-rv{color:#0b0c10;background:var(--amber);border-color:var(--amber);font-weight:800}
+.vrf a.vrf-rv:hover,.vrf a.vrf-rv:focus-visible{color:#0b0c10;filter:brightness(1.08)}
