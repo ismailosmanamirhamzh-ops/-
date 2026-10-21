@@ -615,3 +615,6 @@ html.c3x:not(.cam3d-on) .ins-stage{background:url(../assets/media/cam-still.webp
 .sa-cities li{padding:1.05rem .3rem}
 .sa-all{grid-area:a}
 }
+.mnav-pdf,.mnav-wa{display:block;text-align:center;margin-top:.6rem;font:700 .95rem Tajawal,sans-serif;text-decoration:none;color:var(--text);padding:.75rem;border-radius:999px;border:1px solid rgba(242,180,90,.4)}
+.mnav-wa{border:0;color:var(--mute);padding:.4rem;font-size:.9rem}
+.mnav-pdf:hover{border-color:var(--amber);color:var(--amber)}
