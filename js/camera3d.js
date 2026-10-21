@@ -339,7 +339,7 @@ function init() {
     if (insSec) insSec.classList.toggle('ins-live', m === 'ins');
     size();
   }
-  function pickMode() { setMode(heroVis ? 'hero' : (insVis && insStage ? 'ins' : 'dock')); if (mode === 'ins') insProg(); visible = true; dirty = true; }
+  function pickMode() { const was = mode; setMode(heroVis ? 'hero' : (insVis && insStage ? 'ins' : 'dock')); if (mode === 'ins') { insProg(); if (reduceM && was !== 'ins') shutter(0.9, true); } visible = true; dirty = true; }
   /* تفكيك: كل قطعة تبتعد باتجاهها، وتلف شوي */
   const OFF_L = { lens: [0, 0.4, 11], sensor: [0, 0.2, 5.2], top: [0, 6.8, -0.5], screen: [0, -0.4, -9], card: [2.6, -6.6, 2.6], battery: [-7.5, -4.6, 1.5] };
   const OFF_P = { lens: [0, -4.6, 6.6], sensor: [0, 2.8, 4.6], top: [0, 9.2, 0], screen: [0, -1.6, -7.5], card: [-4.6, -7.4, -3.2], battery: [-3, 5.2, -2] };
@@ -389,14 +389,15 @@ function init() {
     });
     const lang = document.documentElement.lang;
     if (act !== lastAct || lang !== capLang) {
-      if (act !== lastAct && act >= 0 && !reduceM) shutter(0.5, true);   // لقطة لكل قطعة/خدمة
+      if (act !== lastAct && act >= 0) shutter(0.9, true);   // لقطة لكل قطعة/خدمة (الصوت يشتغل حتى مع «تقليل الحركة»)
       lastAct = act; capLang = lang;
       if (insCap) { const sp = act >= 0 && insLb[act].querySelector('span'); insCap.innerHTML = sp ? '<b dir="ltr">0' + (act + 1) + '</b>' + sp.innerHTML : ''; insCap.classList.toggle('on', !!sp); }
     }
     // لما تتركب من جديد: فلاش وصوت غالق
-    if (p > 0.94 && !insFlashed && !reduceM) {
-      insFlashed = true; flashT = performance.now(); shutter(1);
-      if (insFl) insFl.animate([{ opacity: 0 }, { opacity: 0.85, offset: 0.08 }, { opacity: 0.3, offset: 0.35 }, { opacity: 0 }], { duration: 650, easing: 'ease-out' });
+    if (p > 0.94 && !insFlashed) {
+      insFlashed = true; shutter(1);
+      if (!reduceM) flashT = performance.now();
+      if (insFl && !reduceM) insFl.animate([{ opacity: 0 }, { opacity: 0.85, offset: 0.08 }, { opacity: 0.3, offset: 0.35 }, { opacity: 0 }], { duration: 650, easing: 'ease-out' });
     }
     if (p < 0.85) insFlashed = false;
   }
