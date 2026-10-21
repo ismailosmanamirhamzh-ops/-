@@ -25,7 +25,7 @@ try{
     }else{stage.style.display='none';hint.style.display='none';if(wel)wel.style.display='none'}
     var la=reduce?1:clamp((c-.78)/.22);
     var sc=1+4*clamp(z/300),sz=base*sc;
-    lens.style.width=sz+'px';lens.style.height=sz+'px';lens.style.borderWidth=(4*sc)+'px';lens.style.opacity=la;
+    lens.style.transform=sc>1?'scale('+sc.toFixed(4)+')':'';lens.style.opacity=la;
     txt.style.opacity=la*(1-clamp(z/200));
     tag.style.opacity=clamp((z-250)/200);
     tag.style.pointerEvents=z>350?'auto':'none';

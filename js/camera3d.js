@@ -9,7 +9,7 @@ const oldCam = document.getElementById('cam');
 /* يعمل حتى مع «تقليل الحركة» في الآيفون: يظهر المجسّم ثابتاً بلا دوران. وإذا فشل أي شيء تبقى صورة الكاميرا الثابتة. */
 if (stage) { try { init(); } catch (e) { fail(); } }
 function fail() {
-  const d = document.documentElement; d.classList.remove('c3p', 'cam3d-on');
+  const d = document.documentElement; d.classList.add('c3p'); d.classList.remove('cam3d-on'); if (window.__c3fail) window.__c3fail(); else d.classList.remove('c3p');
   const c = stage && stage.querySelector('canvas'); if (c) c.remove();
 }
 
@@ -17,7 +17,7 @@ function init() {
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-  } catch (e) { document.documentElement.classList.remove('c3p'); return; }
+  } catch (e) { if (window.__c3fail) window.__c3fail(); else document.documentElement.classList.remove('c3p'); return; }
   const DPR = Math.min(window.devicePixelRatio || 1, 2);
   renderer.setPixelRatio(DPR);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -316,6 +316,7 @@ function init() {
 
   stage.appendChild(cv);
   if (oldCam) oldCam.style.display = 'none';
+  document.documentElement.classList.add('cam3d-on');
   document.documentElement.classList.remove('c3p');
   size();
   /* ---------- الكاميرا المرافقة: بعد المقدمة تنتقل نفس الكاميرا لزاوية الشاشة وترافق الزائر ---------- */

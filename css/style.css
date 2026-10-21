@@ -460,7 +460,7 @@ html[lang=en] .fp.fp-on,[dir=ltr] .fp.fp-on{clip-path:inset(0 -5% 0 -5%)}
 @media(min-width:1000px){.fq-side h2{font-size:2.6rem!important;line-height:1.15}}
 
 /* صورة ثابتة للكاميرا: تظهر إذا تعذّر المجسّم ثلاثي الأبعاد (WebGL/المكتبة/ذاكرة الجوال) */
-.cam3d{background:url(../assets/media/cam-still.webp) 50% 50%/min(62%,30rem) auto no-repeat}.c3p .cam3d,.cam3d-on .cam3d{background-image:none}
+.cam3d{background:url(../assets/media/cam-still.webp) 50% 50%/min(62%,30rem) auto no-repeat}.cam3d-on .cam3d{background-image:none}
 .cam-hint small{display:block;font:500 .85rem Tajawal,sans-serif;color:rgba(236,238,244,.75);text-shadow:0 1px 10px rgba(0,0,0,.6);margin:.25rem 0 .1rem}
 
 /* منع أي عنصر يطلع عن عرض الشاشة (كان يحصل في الإنجليزي لأن الاتجاه من اليسار لليمين يوسّع الصفحة) */
@@ -561,3 +561,6 @@ html[lang=en] #insH{font-size:clamp(1rem,5.4vw,3rem)!important}
 .press-k{display:block;font:700 .8rem Tajawal,sans-serif;color:var(--amber);letter-spacing:.04em}
 .press-t{display:block;margin-top:.35rem;font:800 1.15rem/1.6 Cairo,sans-serif}
 .press-m{display:block;margin-top:.25rem;font-size:.85rem;color:var(--mute)}
+
+/* fallback when 3D fails after the pinned layout is already on screen: keep layout (no CLS), show still camera + labels */
+html.c3x:not(.cam3d-on) .ins-stage{background:url(../assets/media/cam-still.webp) 50% 6%/min(58%,20rem) auto no-repeat}html.c3x:not(.cam3d-on) .ins-list{display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem;padding:1rem}html.c3x:not(.cam3d-on) .ins-list li{opacity:.9}
