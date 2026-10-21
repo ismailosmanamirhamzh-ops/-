@@ -555,8 +555,22 @@ try{
   if(matchMedia('(hover:hover) and (pointer:fine)').matches){
     var c=document.createElement('div');c.className='cur';c.setAttribute('aria-hidden','true');c.innerHTML='<i class="cur-r"></i><span class="cur-l"></span>';
     document.body.appendChild(c);document.documentElement.classList.add('cur-on');
+    /* المؤشر نفسه = فتحة عدسة الشعار: تنقفل شوي على الروابط، وتلقط عند الضغط */
+    var ap=document.createElementNS('http://www.w3.org/2000/svg','svg');ap.setAttribute('class','cur-a');ap.setAttribute('viewBox','-50 -50 100 100');c.querySelector('.cur-r').appendChild(ap);
+    var at=.62,ag=.62,arun=false;
+    function adraw(t,fa){var r=5+26*t,ph=(1-t)*35*Math.PI/180,R=41,V=[],i,h,P;
+      for(i=0;i<6;i++){var a=ph+i*Math.PI/3-Math.PI/2;V.push([r*Math.cos(a),r*Math.sin(a)])}
+      P='M'+R+',0A'+R+','+R+' 0 1,0 -'+R+',0A'+R+','+R+' 0 1,0 '+R+',0ZM'+V.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join('L')+'Z';
+      h='<circle r="46" fill="none" stroke="#f2b45a" stroke-width="5"/><path fill="#f2b45a" fill-opacity="'+fa+'" fill-rule="evenodd" d="'+P+'"/><g stroke="#f2b45a" stroke-width="3.2" stroke-linecap="round">';
+      for(i=0;i<6;i++){var X=V[i][0],Y=V[i][1],n=V[(i+1)%6],dx=X-n[0],dy=Y-n[1],L=Math.hypot(dx,dy);dx/=L;dy/=L;
+        var b=2*(X*dx+Y*dy),cc=X*X+Y*Y-R*R,k=(-b+Math.sqrt(b*b-4*cc))/2;
+        h+='<line x1="'+X.toFixed(1)+'" y1="'+Y.toFixed(1)+'" x2="'+(X+dx*k).toFixed(1)+'" y2="'+(Y+dy*k).toFixed(1)+'"/>'}
+      ap.innerHTML=h+'</g>'}
+    function aloop(){at+=(ag-at)*.25;adraw(at,st==='link'?.38:.22);if(Math.abs(ag-at)>.004)requestAnimationFrame(aloop);else{at=ag;adraw(at,st==='link'?.38:.22);arun=false}}
+    function aim(t){ag=t;if(!arun){arun=true;requestAnimationFrame(aloop)}}
+    adraw(at,.22);
     var lb=c.querySelector('.cur-l'),x=-100,y=-100,tx=-100,ty=-100,run=false,st='';
-    function set(s){if(s===st)return;st=s;c.className='cur'+(s?' cur-'+s:'');
+    function set(s){if(s===st)return;st=s;c.className='cur'+(s?' cur-'+s:'');aim(s==='link'?.32:.62);
       lb.textContent=s==='play'?(en()?'Play ▶':'شاهد ▶'):s==='zoom'?(en()?'View':'تكبير'):''}
     function loop(){x+=(tx-x)*.22;y+=(ty-y)*.22;c.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
       if(Math.abs(tx-x)+Math.abs(ty-y)>.3)requestAnimationFrame(loop);else run=false}
@@ -567,7 +581,7 @@ try{
       set(t.closest(FORM)?'form':t.closest(MEDIA)?'play':t.closest(ZOOM)?'zoom':t.closest(LINK)?'link':'');
     },{passive:true});
     document.addEventListener('mouseleave',function(){c.classList.remove('cur-in')});
-    addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'){c.classList.add('cur-dn');setTimeout(function(){c.classList.remove('cur-dn')},220)}},{passive:true});
+    addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'){c.classList.add('cur-dn');aim(.02);setTimeout(function(){c.classList.remove('cur-dn');aim(st==='link'?.32:.62)},180)}},{passive:true});
   }
 })();
 /* ===== طريقة عملي كشريط فيلم: الكادرات تنكشف للضوء مع النزول ===== */
