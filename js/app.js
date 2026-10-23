@@ -4,8 +4,8 @@ try{
       sec=document.getElementById('top'),cam=document.getElementById('cam'),stage=document.getElementById('cam3d'),hint=document.getElementById('camHint'),wel=document.getElementById('camWelcome');
   var clamp=function(v){return Math.min(1,Math.max(0,v))},base=lens.offsetWidth||320;
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var P1=reduce?0:Math.round(innerHeight*0.75);           /* مسافة مرحلة الكاميرا */
-  if(!reduce)sec.style.height='calc(200vh + '+P1+'px)';
+  var P1=reduce?0:Math.round(innerHeight*0.42);           /* مسافة مرحلة الكاميرا (مختصرة) */
+  if(!reduce)sec.style.height='calc(100vh + '+(P1+470)+'px)';
   /* الكاميرا الوحيدة الآن هي المجسّم ثلاثي الأبعاد (camera3d.js)؛ الصورة القديمة حُذفت */
   var W=0,H=0,DY=0,LX=.31,LY2=.73,LW=.47;
   function size(){W=Math.min(innerWidth*.86,innerHeight*.6*1000/936,700);H=W*936/1000;DY=Math.min(34,innerHeight*.05)}

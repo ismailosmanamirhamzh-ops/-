@@ -397,6 +397,15 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
 .ph.pf:hover .vfb{color:var(--amber);inset:1.95rem .7rem .7rem}
 .pf img{position:relative;height:100%}
 
+.nav-l .lng{font:800 .78rem/1 var(--mono);letter-spacing:.06em;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.55rem .7rem;cursor:pointer}
+.nav-l .lng:hover{border-color:var(--amber);color:var(--amber)}
+.cs-h .lb2{font:700 .8rem Tajawal,sans-serif;letter-spacing:.02em}
+.pk i{font:600 .8rem Tajawal,sans-serif;letter-spacing:0}
+[dir=ltr] .lb-n.p{right:auto;left:.8rem;transform:translateY(-50%) scaleX(-1)}
+[dir=ltr] .lb-n.x{left:auto;right:.8rem;transform:translateY(-50%) scaleX(-1)}
+[dir=ltr] .pq{left:auto;right:1.6rem}
+[dir=ltr] .wh-h em::after{transform-origin:left}
+
 </style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500)})})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
@@ -410,6 +419,7 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
     <a class="hm" href="/">الرئيسية</a>
     <a class="hi" href="/" aria-label="الرئيسية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 11.5h3V21h5.5v-6h3v6H19v-9.5h3z"/></svg></a>
     <a class="hm" href="/consultation/">استشارة مجانية</a>
+    <button class="lng" id="langBtn" type="button" lang="en" aria-label="Switch to English">EN</button>
     <a class="wa" href="https://wa.me/966574395924?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%D9%83%20%D9%88%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>واتساب</a>
   </nav>
 </header>
@@ -474,10 +484,10 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
 <main>
   <section class="cat" id="video" data-cat="video">
     <div class="wrap">
-      <header class="sh fade"><p class="ab-k">فيديو وإعلانات <b dir="ltr">· SHOWREEL</b></p><h2 class="fit">إعلانات تشدّ وتبيع</h2><p class="d">فيديوهات عمودية أصوّرها وأمنتجها لسناب شات وتيك توك وإنستقرام. تشتغل لحالها وأنت تمرر، واضغط على أي فيديو للصوت.</p></header>
+      <header class="sh fade"><p class="ab-k">فيديو وإعلانات</p><h2 class="fit">إعلانات تشدّ وتبيع</h2><p class="d">فيديوهات عمودية أصوّرها وأمنتجها لسناب شات وتيك توك وإنستقرام. تشتغل لحالها وأنت تمرر، واضغط على أي فيديو للصوت.</p></header>
       <article class="feat fade">
         <div class="vv"><i class="vfb" aria-hidden="true"></i><video data-src="/assets/media/ad-nakhat-tihamiya.mp4" poster="/assets/img/poster-nakhat-tihamiya.webp" preload="none" loop playsinline aria-label="إعلان نكهة تهامية: الفطور"></video><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button></div>
-        <div class="tx"><span class="new" dir="ltr">LATEST · أحدث عمل</span><h3>إعلان نكهة تهامية<span>عرض الفطور</span></h3><p>إعلان عمودي قصير يقدّم عرض الفطور بلقطات قريبة تُبرز تفاصيل الطعام، من التصوير حتى المونتاج.</p><div class="chips" dir="ltr"><span class="chip">AD FILM</span><span class="chip">SHOOT</span><span class="chip">EDIT · GRADE</span><span class="chip">9:16</span></div></div>
+        <div class="tx"><span class="new">أحدث عمل</span><h3>إعلان نكهة تهامية<span>عرض الفطور</span></h3><p>إعلان عمودي قصير يقدّم عرض الفطور بلقطات قريبة تُبرز تفاصيل الطعام، من التصوير حتى المونتاج.</p><div class="chips"><span class="chip">إعلان فيديو</span><span class="chip">تصوير</span><span class="chip">مونتاج وتلوين</span><span class="chip" dir="ltr">9:16</span></div></div>
       </article>
       <div class="reels">
         <article class="vc fade"><div class="vv"><i class="vfb" aria-hidden="true"></i><video data-src="/assets/media/reel-1.mp4" poster="/assets/img/reel-1.webp" preload="none" loop playsinline aria-label="شاورما على السيخ"></video><span class="vd" dir="ltr">0:35</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button><div class="vt"><h3>شاورما على السيخ</h3><p>قص قريب وتغليف وصوص بإيقاع سريع يناسب الريلز.</p></div></div></article>
@@ -490,16 +500,16 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
 
   <section class="cat" id="marketing" data-cat="marketing">
     <div class="wrap">
-      <header class="sh fade"><p class="ab-k">تسويق وحملات <b dir="ltr">· GROWTH</b></p><h2 class="fit">أرقام، مو بس منشورات</h2><p class="d">أدير الحملات من الفكرة حتى قياس النتيجة، على منصات الإعلان الرئيسية.</p></header>
+      <header class="sh fade"><p class="ab-k">تسويق وحملات</p><h2 class="fit">أرقام، مو بس منشورات</h2><p class="d">أدير الحملات من الفكرة حتى قياس النتيجة، على منصات الإعلان الرئيسية.</p></header>
       <div class="mk">
-        <div class="mc fade"><span class="lb2" dir="ltr">BRANDS</span><b class="n" dir="ltr"><i>+</i>7</b><h3>علامات تجارية</h3><p>عملت معها في التسويق والمحتوى والتصوير، أغلبها مطاعم.</p></div>
-        <div class="mc fade"><span class="lb2" dir="ltr">PEAK GROWTH</span><b class="n" dir="ltr">35<i>%</i></b><h3>نمو في المبيعات</h3><p>أعلى نمو حققته الحملات لإحدى العلامات، و15% لعلامات أخرى.</p></div>
-        <div class="mc fade"><span class="lb2" dir="ltr">PLATFORMS</span><b class="n">4</b><h3>منصات إعلانية</h3><div class="pl" dir="ltr"><span>Google Ads</span><span>Snapchat Ads</span><span>TikTok Ads</span><span>Meta Ads</span></div></div>
-        <div class="mc fade"><span class="lb2" dir="ltr">COVERAGE</span><b class="n" style="font-size:clamp(1.7rem,4.6vw,2.4rem)">مكة</b><h3>وكل المملكة</h3><p>تصوير ميداني في مكة وجدة والرياض وخميس مشيط، وحملات عن بُعد.</p></div>
+        <div class="mc fade"><b class="n" dir="ltr"><i>+</i>7</b><h3>علامات تجارية</h3><p>عملت معها في التسويق والمحتوى والتصوير، أغلبها مطاعم.</p></div>
+        <div class="mc fade"><b class="n" dir="ltr">35<i>%</i></b><h3>نمو في المبيعات</h3><p>أعلى نمو حققته الحملات لإحدى العلامات، و15% لعلامات أخرى.</p></div>
+        <div class="mc fade"><b class="n">4</b><h3>منصات إعلانية</h3><div class="pl" dir="ltr"><span>Google Ads</span><span>Snapchat Ads</span><span>TikTok Ads</span><span>Meta Ads</span></div></div>
+        <div class="mc fade"><b class="n" style="font-size:clamp(1.7rem,4.6vw,2.4rem)">مكة</b><h3>وكل المملكة</h3><p>تصوير ميداني في مكة وجدة والرياض وخميس مشيط، وحملات عن بُعد.</p></div>
         <div class="mc wd fade"><h3>وش يشمل الشغل</h3><ol><li>خطة الحملة</li><li>الاستهداف</li><li>المحتوى الإعلاني</li><li>إدارة الميزانية</li><li>القياس والتقارير</li><li>تحسين مستمر</li></ol></div>
       </div>
       <div class="cs fade">
-        <i class="vfb" aria-hidden="true"></i><div class="cs-hud" dir="ltr" aria-hidden="true"><span class="rec">CASE 01</span><span>ADS · RESULTS</span></div><div class="cs-h"><span class="lb2" dir="ltr">CASE STUDY · RESTAURANT BRAND</span><h3 class="fit">78 مليون ظهور لعلامة مطاعم واحدة</h3><p>أدرت حملات علامة مطاعم سعودية على Google وSnapchat وTikTok: الاستهداف، والمحتوى الإعلاني، وتعزيز محتوى المؤثرين بإعلانات مدفوعة، وقياس النتيجة.</p></div>
+        <i class="vfb" aria-hidden="true"></i><div class="cs-hud" dir="ltr" aria-hidden="true"><span class="rec">CASE 01</span><span>ADS · RESULTS</span></div><div class="cs-h"><span class="lb2">دراسة حالة · علامة مطاعم</span><h3 class="fit">78 مليون ظهور لعلامة مطاعم واحدة</h3><p>أدرت حملات علامة مطاعم سعودية على Google وSnapchat وTikTok: الاستهداف، والمحتوى الإعلاني، وتعزيز محتوى المؤثرين بإعلانات مدفوعة، وقياس النتيجة.</p></div>
         <div class="cs-k">
           <div><b><span class="cnt" data-n="78">78</span><i>M+</i></b><span>ظهور إعلاني</span></div>
           <div><b><span class="cnt" data-n="412">412</span><i>K+</i></b><span>ريال ميزانيات أدرتها</span></div>
@@ -509,19 +519,19 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
         <div class="cs-p">
           <article class="csp g">
             <header><i class="dot" aria-hidden="true"></i><h4 dir="ltr">Google Ads</h4></header>
-            <figure class="ph pf"><span class="mon" dir="ltr" aria-hidden="true">● LIVE DASHBOARD</span><img src="/assets/img/proof-google.webp" alt="لقطة من لوحة Google Ads: 31 مليون ظهور و406 آلاف نقرة" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>Google Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
+            <figure class="ph pf"><img src="/assets/img/proof-google.webp" alt="لقطة من لوحة Google Ads: 31 مليون ظهور و406 آلاف نقرة" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>Google Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
             <ul><li><span>الظهور</span><b dir="ltr">31,073,723</b></li><li><span>النقرات</span><b dir="ltr">406,931</b></li><li><span>إجراءات العملاء</span><b dir="ltr">185,761</b></li><li><span>الإنفاق</span><b dir="ltr">182,559 SAR</b></li></ul>
             <p class="eff">إجراءات مثل طلب الاتجاهات للفرع والاتصال، بتكلفة <b>أقل من ريال</b> للإجراء</p>
           </article>
           <article class="csp s">
             <header><i class="dot" aria-hidden="true"></i><h4 dir="ltr">Snapchat Ads</h4></header>
-            <figure class="ph pf"><span class="mon" dir="ltr" aria-hidden="true">● LIVE DASHBOARD</span><img src="/assets/img/proof-snap.webp" alt="لقطة من لوحة Snapchat Ads: 31 مليون ظهور و3.1 مليون مشاهدة فيديو" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>Snapchat Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
+            <figure class="ph pf"><img src="/assets/img/proof-snap.webp" alt="لقطة من لوحة Snapchat Ads: 31 مليون ظهور و3.1 مليون مشاهدة فيديو" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>Snapchat Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
             <ul><li><span>الظهور</span><b dir="ltr">31,333,355</b></li><li><span>مشاهدات الفيديو</span><b dir="ltr">3,116,346</b></li><li><span>الإنفاق</span><b dir="ltr">$49,569</b></li></ul>
             <p class="eff"><b>633 ألف</b> مشاهدة كاملة لـ15 ثانية</p>
           </article>
           <article class="csp t">
             <header><i class="dot" aria-hidden="true"></i><h4 dir="ltr">TikTok Ads</h4></header>
-            <figure class="ph pf"><span class="mon" dir="ltr" aria-hidden="true">● LIVE DASHBOARD</span><img src="/assets/img/proof-tiktok.webp" alt="لقطة من لوحة TikTok Ads: 86 حملة و15.8 مليون ظهور" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>TikTok Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
+            <figure class="ph pf"><img src="/assets/img/proof-tiktok.webp" alt="لقطة من لوحة TikTok Ads: 86 حملة و15.8 مليون ظهور" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>TikTok Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
             <ul><li><span>الظهور</span><b dir="ltr">15,869,746</b></li><li><span>الحملات</span><b dir="ltr">86</b></li><li><span>الإنفاق</span><b dir="ltr">44,024 SAR</b></li></ul>
             <p class="eff">تكلفة الألف ظهور <b>2.77 ريال</b></p>
           </article>
@@ -534,49 +544,48 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
 
   <section class="cat" id="corporate" data-cat="corporate">
     <div class="wrap">
-      <header class="sh fade"><p class="ab-k">تصوير الشركات <b dir="ltr">· CORPORATE</b></p><h2 class="fit">قيادات شؤون الغذاء</h2><p class="d">جلسة لقيادات شركة شؤون الغذاء: إضاءة طبيعية ناعمة، ولقطات عفوية أثناء الاجتماعات، إلى جانب بورتريه رسمي.</p></header>
+      <header class="sh fade"><p class="ab-k">تصوير الشركات</p><h2 class="fit">قيادات شؤون الغذاء</h2><p class="d">جلسة لقيادات شركة شؤون الغذاء: إضاءة طبيعية ناعمة، ولقطات عفوية أثناء الاجتماعات، إلى جانب بورتريه رسمي.</p></header>
       <div class="pg c3">
-        <figure class="ph w2 fade"><img src="/assets/img/executives-2.webp" alt="بورتريه داخلي ضمن جلسة تصوير شؤون الغذاء" loading="lazy" decoding="async" style="object-position:50% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 01</span><figcaption>بورتريه داخلي<span>تصوير شركات</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/executives-1.webp" alt="لقطة عفوية لقيادي في شركة شؤون الغذاء" loading="lazy" decoding="async" style="object-position:55% 32%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 02</span><figcaption>لقطة عفوية<span>تصوير شركات</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/executives-3.webp" alt="بورتريه رسمي" loading="lazy" decoding="async" style="object-position:50% 28%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 03</span><figcaption>بورتريه رسمي<span>تصوير شركات</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/executives-4.webp" alt="أثناء الاجتماع" loading="lazy" decoding="async" style="object-position:55% 40%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 04</span><figcaption>أثناء الاجتماع<span>تصوير شركات</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/executives-5.webp" alt="في مكتب الشركة" loading="lazy" decoding="async" style="object-position:50% 55%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 05</span><figcaption>في مكتب الشركة<span>تصوير شركات</span></figcaption></figure>
+        <figure class="ph w2 fade"><img src="/assets/img/executives-1.webp" alt="لقطة عفوية لقيادي في شركة شؤون الغذاء" loading="lazy" decoding="async" style="object-position:55% 32%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 01</span><figcaption>لقطة عفوية<span>تصوير شركات</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/executives-3.webp" alt="بورتريه رسمي" loading="lazy" decoding="async" style="object-position:50% 28%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 02</span><figcaption>بورتريه رسمي<span>تصوير شركات</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/executives-4.webp" alt="أثناء الاجتماع" loading="lazy" decoding="async" style="object-position:55% 40%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 03</span><figcaption>أثناء الاجتماع<span>تصوير شركات</span></figcaption></figure>
+        <figure class="ph w2 fade"><img src="/assets/img/executives-5.webp" alt="في مكتب الشركة" loading="lazy" decoding="async" style="object-position:50% 55%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 04</span><figcaption>في مكتب الشركة<span>تصوير شركات</span></figcaption></figure>
       </div>
     </div>
   </section>
 
   <section class="cat" id="portrait" data-cat="portrait">
     <div class="wrap">
-      <header class="sh fade"><p class="ab-k">بورتريه وجلسات <b dir="ltr">· PORTRAIT</b></p><h2 class="fit">جلسة المنشد العسيري</h2><p class="d">جلسة تصوير المنشد عبد الرحمن العسيري: إضاءة دافئة وخلفية مكتبة خشبية، تلتقط حركة اليدين وتعابير الحديث.</p></header>
+      <header class="sh fade"><p class="ab-k">بورتريه وجلسات</p><h2 class="fit">جلسة المنشد العسيري</h2><p class="d">جلسة تصوير المنشد عبد الرحمن العسيري: إضاءة دافئة وخلفية مكتبة خشبية، تلتقط حركة اليدين وتعابير الحديث.</p></header>
       <div class="pg">
-        <figure class="ph fade"><img src="/assets/img/nasheed-1.webp" alt="لقطة تعبيرية للمنشد عبد الرحمن العسيري" loading="lazy" decoding="async" style="object-position:40% 35%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 06</span><figcaption>لقطة تعبيرية<span>بورتريه</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/nasheed-2.webp" alt="المنشد عبد الرحمن العسيري أثناء الحديث" loading="lazy" decoding="async" style="object-position:60% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 07</span><figcaption>أثناء الحديث<span>بورتريه</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/nasheed-3.webp" alt="بورتريه جانبي للمنشد عبد الرحمن العسيري" loading="lazy" decoding="async" style="object-position:40% 40%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 08</span><figcaption>بورتريه جانبي<span>بورتريه</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/nasheed-4.webp" alt="لقطة عفوية للمنشد عبد الرحمن العسيري" loading="lazy" decoding="async" style="object-position:65% 35%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 09</span><figcaption>لقطة عفوية<span>بورتريه</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/nasheed-1.webp" alt="لقطة تعبيرية للمنشد عبد الرحمن العسيري" loading="lazy" decoding="async" style="object-position:40% 35%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 05</span><figcaption>لقطة تعبيرية<span>بورتريه</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/nasheed-2.webp" alt="المنشد عبد الرحمن العسيري أثناء الحديث" loading="lazy" decoding="async" style="object-position:60% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 06</span><figcaption>أثناء الحديث<span>بورتريه</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/nasheed-3.webp" alt="بورتريه جانبي للمنشد عبد الرحمن العسيري" loading="lazy" decoding="async" style="object-position:40% 40%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 07</span><figcaption>بورتريه جانبي<span>بورتريه</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/nasheed-4.webp" alt="لقطة عفوية للمنشد عبد الرحمن العسيري" loading="lazy" decoding="async" style="object-position:65% 35%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 08</span><figcaption>لقطة عفوية<span>بورتريه</span></figcaption></figure>
       </div>
     </div>
   </section>
 
   <section class="cat" id="weddings" data-cat="weddings">
     <div class="wrap">
-      <header class="sh fade"><p class="ab-k">أعراس ومناسبات <b dir="ltr">· WEDDINGS</b></p><h2 class="fit">لحظات ما تتكرر</h2><p class="d">لقطات ليلية بإضاءة دافئة وخلفيات ضبابية، تحفظ التفاصيل الصغيرة وملامح اللحظة.</p></header>
+      <header class="sh fade"><p class="ab-k">أعراس ومناسبات</p><h2 class="fit">لحظات ما تتكرر</h2><p class="d">لقطات ليلية بإضاءة دافئة وخلفيات ضبابية، تحفظ التفاصيل الصغيرة وملامح اللحظة.</p></header>
       <div class="pg">
-        <figure class="ph fade"><img src="/assets/img/wedding-1.webp" alt="بورتريه ليلي في عرس" loading="lazy" decoding="async" style="object-position:50% 32%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 10</span><figcaption>بورتريه ليلي<span>أعراس</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/wedding-2.webp" alt="تفاصيل الخاتم في عرس" loading="lazy" decoding="async" style="object-position:55% 62%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 11</span><figcaption>تفاصيل الخاتم<span>أعراس</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/wedding-3.webp" alt="لقطة جانبية في عرس" loading="lazy" decoding="async" style="object-position:45% 34%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 12</span><figcaption>لقطة جانبية<span>أعراس</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/wedding-4.webp" alt="بورتريه أنيق في عرس" loading="lazy" decoding="async" style="object-position:50% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 13</span><figcaption>بورتريه أنيق<span>أعراس</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/wedding-1.webp" alt="بورتريه ليلي في عرس" loading="lazy" decoding="async" style="object-position:50% 32%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 09</span><figcaption>بورتريه ليلي<span>أعراس</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/wedding-2.webp" alt="تفاصيل الخاتم في عرس" loading="lazy" decoding="async" style="object-position:55% 62%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 10</span><figcaption>تفاصيل الخاتم<span>أعراس</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/wedding-3.webp" alt="لقطة جانبية في عرس" loading="lazy" decoding="async" style="object-position:45% 34%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 11</span><figcaption>لقطة جانبية<span>أعراس</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/wedding-4.webp" alt="بورتريه أنيق في عرس" loading="lazy" decoding="async" style="object-position:50% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 12</span><figcaption>بورتريه أنيق<span>أعراس</span></figcaption></figure>
       </div>
     </div>
   </section>
 
   <section class="cat" id="design" data-cat="design">
     <div class="wrap">
-      <header class="sh fade"><p class="ab-k">تصميم وهوية بصرية <b dir="ltr">· IDENTITY</b></p><h2 class="fit">هوية تُعرف من أول نظرة</h2><p class="d">هويتي الشخصية من تصميمي: من الشعار والألوان حتى بطاقة العمل وقوالب السوشيال. نفس المنهج أطبّقه مع علامات عملائي.</p></header>
+      <header class="sh fade"><p class="ab-k">تصميم وهوية بصرية</p><h2 class="fit">هوية تُعرف من أول نظرة</h2><p class="d">هويتي الشخصية من تصميمي: من الشعار والألوان حتى بطاقة العمل وقوالب السوشيال. نفس المنهج أطبّقه مع علامات عملائي.</p></header>
       <div class="pg c2">
-        <figure class="ph fade"><img src="/assets/img/brand-logo.webp" alt="شعار إسماعيل عثمان: فتحة عدسة بست شفرات" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 14</span><figcaption>الشعار<span>هوية بصرية</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/brand-colors.webp" alt="ألوان وخطوط هوية إسماعيل عثمان" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 15</span><figcaption>الألوان والخطوط<span>هوية بصرية</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/brand-card.webp" alt="تصميم بطاقة عمل إسماعيل عثمان" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 16</span><figcaption>بطاقة العمل<span>مطبوعات</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/brand-social.webp" alt="قوالب سوشيال ميديا لهوية إسماعيل عثمان" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 17</span><figcaption>قوالب السوشيال ميديا<span>تصميم محتوى</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/brand-logo.webp" alt="شعار إسماعيل عثمان: فتحة عدسة بست شفرات" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 13</span><figcaption>الشعار<span>هوية بصرية</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/brand-colors.webp" alt="ألوان وخطوط هوية إسماعيل عثمان" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 14</span><figcaption>الألوان والخطوط<span>هوية بصرية</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/brand-card.webp" alt="تصميم بطاقة عمل إسماعيل عثمان" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 15</span><figcaption>بطاقة العمل<span>مطبوعات</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/brand-social.webp" alt="قوالب سوشيال ميديا لهوية إسماعيل عثمان" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 16</span><figcaption>قوالب السوشيال ميديا<span>تصميم محتوى</span></figcaption></figure>
       </div>
       <div class="ask fade"><div><h3>تبغى هوية لنشاطك؟</h3><p>أرسل لك نماذج تناسب نشاطك مباشرة.</p></div><a href="https://wa.me/966574395924?text=%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B4%D9%88%D9%81%20%D9%86%D9%85%D8%A7%D8%B0%D8%AC%20%D9%85%D9%86%20%D8%AA%D8%B5%D8%A7%D9%85%D9%8A%D9%85%D9%83" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>اطلب النماذج</a></div>
     </div>
@@ -584,76 +593,76 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
 
   <section class="cat" id="bts" data-cat="bts">
     <div class="wrap">
-      <header class="sh fade"><p class="ab-k">خلف الكواليس <b dir="ltr">· BTS</b></p><h2 class="fit">استوديو يجيك لين عندك</h2><p class="d">معدات احترافية خاصة واستوديو متنقل: Sony α7 V، وجيمبال DJI، وإضاءة Godox.</p></header>
+      <header class="sh fade"><p class="ab-k">خلف الكواليس</p><h2 class="fit">استوديو يجيك لين عندك</h2><p class="d">معدات احترافية خاصة واستوديو متنقل: Sony α7 V، وجيمبال DJI، وإضاءة Godox.</p></header>
       <div class="pg c3">
-        <figure class="ph w2 fade"><img src="/assets/img/nakhat-branch.webp" alt="نكهة تهامية: واجهة الفرع من الداخل" loading="lazy" decoding="async" style="object-position:50% 38%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 18</span><figcaption>تصوير فرع مطعم<span>إعلان علامة تجارية</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/behind-the-camera.webp" alt="إسماعيل عثمان يصوّر بكاميرا سوني على مثبّت DJI" loading="lazy" decoding="async" style="object-position:50% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 19</span><figcaption>خلف الكاميرا<span>أثناء التصوير</span></figcaption></figure>
-        <figure class="ph fade"><img src="/assets/img/studio-lighting.webp" alt="استوديو بإضاءة احترافية" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 20</span><figcaption>إضاءة وتصوير<span>استوديو متنقل</span></figcaption></figure>
+        <figure class="ph w2 fade"><img src="/assets/img/nakhat-branch.webp" alt="نكهة تهامية: واجهة الفرع من الداخل" loading="lazy" decoding="async" style="object-position:50% 38%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 17</span><figcaption>تصوير فرع مطعم<span>إعلان علامة تجارية</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/behind-the-camera.webp" alt="إسماعيل عثمان يصوّر بكاميرا سوني على مثبّت DJI" loading="lazy" decoding="async" style="object-position:50% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 18</span><figcaption>خلف الكاميرا<span>أثناء التصوير</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/studio-lighting.webp" alt="استوديو بإضاءة احترافية" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 19</span><figcaption>إضاءة وتصوير<span>استوديو متنقل</span></figcaption></figure>
       </div>
     </div>
   </section>
 
   <section id="services" class="svx cat" data-cat="services" aria-labelledby="svH">
   <div class="svx-in">
-    <p class="ab-k">خدماتي <b dir="ltr" style="font:600 .72rem/1 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.45);letter-spacing:.14em">· SERVICES</b></p>
-    <h2 id="svH" class="fit">ما أقدّمه لك</h2>
-    <p class="sv-sub">تصوير وتسويق وتصميم في السعودية: خمس خدمات، وشخص واحد مسؤول عن النتيجة.</p>
+    <p class="ab-k" data-en="Services">خدماتي</p>
+    <h2 id="svH" class="fit" data-en="What I Do For You">ما أقدّمه لك</h2>
+    <p class="sv-sub" data-en="Photography, marketing and design in Saudi Arabia: five services, one person accountable for the result.">تصوير وتسويق وتصميم في السعودية: خمس خدمات، وشخص واحد مسؤول عن النتيجة.</p>
     <ol class="svx-grid">
       <li class="svx-c fade" style="--i:0">
         <img src="/assets/img/nakhat-branch.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 40%">
         <i class="vfb" aria-hidden="true"></i>
         <span class="svx-n" dir="ltr" aria-hidden="true">SC 01</span>
-        <div class="svx-t"><h3><span class="h3-m">نمو العلامات التجارية</span><span class="h3-s">والتسويق الرقمي</span></h3><p>أدير حملاتك الإعلانية على Google وسناب شات وتيك توك وإنستقرام، وأبني حضورًا رقميًا متكاملًا لنشاطك. أقرأ أرقامك وأحسّن إعلاناتك باستمرار لأرفع مبيعاتك وأحقق لك عائدًا حقيقيًا على الاستثمار.</p></div>
+        <div class="svx-t"><h3><span class="h3-m" data-en="Brand growth">نمو العلامات التجارية</span><span class="h3-s" data-en="&amp; digital marketing">والتسويق الرقمي</span></h3><p data-en="I run your ad campaigns on Google, Snapchat, TikTok and Instagram, and build a complete digital presence for your business. I read your numbers and keep optimising your ads to lift sales and deliver a real return on investment.">أدير حملاتك الإعلانية على Google وسناب شات وتيك توك وإنستقرام، وأبني حضورًا رقميًا متكاملًا لنشاطك. أقرأ أرقامك وأحسّن إعلاناتك باستمرار لأرفع مبيعاتك وأحقق لك عائدًا حقيقيًا على الاستثمار.</p></div>
       </li>
       <li class="svx-c fade" style="--i:1">
         <img src="/assets/img/behind-the-camera.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 30%">
         <i class="vfb" aria-hidden="true"></i>
         <span class="svx-n" dir="ltr" aria-hidden="true">SC 02</span>
-        <div class="svx-t"><h3><span class="h3-m">إنتاج سينمائي</span><span class="h3-s">وتصوير</span></h3><p>أضع بين يديك استوديو متكامل. أصور بدقة ووضوح عالٍ، وأنفذ المونتاج وتصحيح الألوان بأعلى معايير الجودة لأحول أفكارك إلى مشاهد بصرية تعلق في الذاكرة.</p></div>
+        <div class="svx-t"><h3><span class="h3-m" data-en="Cinematic production">إنتاج سينمائي</span><span class="h3-s" data-en="&amp; filming">وتصوير</span></h3><p data-en="A complete studio at your service. I shoot in high resolution and handle editing and colour grading to the highest standard, turning your ideas into scenes people remember.">أضع بين يديك استوديو متكامل. أصور بدقة ووضوح عالٍ، وأنفذ المونتاج وتصحيح الألوان بأعلى معايير الجودة لأحول أفكارك إلى مشاهد بصرية تعلق في الذاكرة.</p></div>
       </li>
       <li class="svx-c fade" style="--i:2">
         <img src="/assets/img/hero-800.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 25%">
         <i class="vfb" aria-hidden="true"></i>
         <span class="svx-n" dir="ltr" aria-hidden="true">SC 03</span>
-        <div class="svx-t"><h3><span class="h3-m">تغطية المؤتمرات</span><span class="h3-s">والفعاليات</span></h3><p>أقدم توثيقًا ميدانيًا احترافيًا لفعالياتك ومعارضك ومؤتمراتك الكبرى، وألتقط أهم اللحظات بمعدات تليق بحجم حدثك ومكانة ضيوفك.</p></div>
+        <div class="svx-t"><h3><span class="h3-m" data-en="Conference">تغطية المؤتمرات</span><span class="h3-s" data-en="&amp; event coverage">والفعاليات</span></h3><p data-en="Professional on-the-ground coverage of your events, exhibitions and major conferences, capturing the key moments with gear that matches the scale of your event.">أقدم توثيقًا ميدانيًا احترافيًا لفعالياتك ومعارضك ومؤتمراتك الكبرى، وألتقط أهم اللحظات بمعدات تليق بحجم حدثك ومكانة ضيوفك.</p></div>
       </li>
       <li class="svx-c fade" style="--i:3">
         <img src="/assets/img/poster-nakhat-tihamiya.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 35%">
         <i class="vfb" aria-hidden="true"></i>
         <span class="svx-n" dir="ltr" aria-hidden="true">SC 04</span>
-        <div class="svx-t"><h3><span class="h3-m">التصميم</span><span class="h3-s">والهوية البصرية</span></h3><p>أصنع لك هوية بصرية مميزة: المطبوعات وقوائم الطعام واللوحات الإعلانية وتصاميم السوشيال ميديا التي تترجم قوة علامتك التجارية.</p></div>
+        <div class="svx-t"><h3><span class="h3-m" data-en="Design">التصميم</span><span class="h3-s" data-en="&amp; visual identity">والهوية البصرية</span></h3><p data-en="A distinctive visual identity: print, menus, billboards and social media designs that express the strength of your brand.">أصنع لك هوية بصرية مميزة: المطبوعات وقوائم الطعام واللوحات الإعلانية وتصاميم السوشيال ميديا التي تترجم قوة علامتك التجارية.</p></div>
       </li>
       <li class="svx-c fade" style="--i:4">
         <img src="/assets/img/reel-2.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 45%">
         <i class="vfb" aria-hidden="true"></i>
         <span class="svx-n" dir="ltr" aria-hidden="true">SC 05</span>
-        <div class="svx-t"><h3><span class="h3-m">التصوير التجاري</span><span class="h3-s">والمطاعم</span></h3><p>أبرز تفاصيل منتجاتك وأطباقك بأفضل الزوايا والإضاءة السينمائية، ليجذب منتجك عملاءك ويحفّزهم على الشراء.</p></div>
+        <div class="svx-t"><h3><span class="h3-m" data-en="Commercial photography">التصوير التجاري</span><span class="h3-s" data-en="&amp; restaurants">والمطاعم</span></h3><p data-en="I bring out the detail of your products and dishes with the best angles and cinematic lighting, so your product draws customers in and moves them to buy.">أبرز تفاصيل منتجاتك وأطباقك بأفضل الزوايا والإضاءة السينمائية، ليجذب منتجك عملاءك ويحفّزهم على الشراء.</p></div>
       </li>
     </ol>
     <div class="sa fade">
       <div class="sa-map">
         <i class="vfb" aria-hidden="true"></i>
         <span class="sa-k" dir="ltr" aria-hidden="true">● COVERAGE</span>
-        <h4>أخدم في</h4>
-        <div class="sa-hq"><span class="sa-pulse" aria-hidden="true"></span><strong>مكة المكرمة</strong><em>المقر</em></div>
-        <ul class="sa-cities"><li>جدة</li><li>الرياض</li><li>خميس مشيط</li></ul>
-        <p class="sa-all"><b>جميع مناطق المملكة:</b><span>إدارة الحملات الإعلانية والتصميم عن بُعد.</span></p>
+        <h4 data-en="Where I work">أخدم في</h4>
+        <div class="sa-hq"><span class="sa-pulse" aria-hidden="true"></span><strong data-en="Makkah">مكة المكرمة</strong><em data-en="Base">المقر</em></div>
+        <ul class="sa-cities"><li data-en="Jeddah">جدة</li><li data-en="Riyadh">الرياض</li><li data-en="Khamis Mushait">خميس مشيط</li></ul>
+        <p class="sa-all"><b data-en="All regions of Saudi Arabia:">جميع مناطق المملكة:</b><span data-en="ad campaign management and design, remotely.">إدارة الحملات الإعلانية والتصميم عن بُعد.</span></p>
       </div>
       <div class="sa-gs">
         <article class="sa-g">
           <header><span class="sa-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4a1 1 0 0 0 1 1h2l4 4V5L6 9H4a1 1 0 0 0-1 1zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg></span><b class="sa-no" dir="ltr">01</b></header>
-          <h4>التسويق والإعلانات</h4>
-          <ul><li>تسويق رقمي</li><li>إدارة الحملات الإعلانية</li><li>إعلانات سناب شات وتيك توك</li><li>إعلانات Google وإنستقرام</li><li>إدارة حسابات التواصل الاجتماعي</li></ul>
+          <h4 data-en="Marketing &amp; Ads">التسويق والإعلانات</h4>
+          <ul><li data-en="Digital marketing">تسويق رقمي</li><li data-en="Ad campaign management">إدارة الحملات الإعلانية</li><li data-en="Snapchat &amp; TikTok Ads">إعلانات سناب شات وتيك توك</li><li data-en="Google &amp; Instagram Ads">إعلانات Google وإنستقرام</li><li data-en="Social media management">إدارة حسابات التواصل الاجتماعي</li></ul>
         </article>
         <article class="sa-g">
           <header><span class="sa-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zm0-2a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg></span><b class="sa-no" dir="ltr">02</b></header>
-          <h4>التصوير والإنتاج</h4>
-          <ul><li>تصوير إعلانات المطاعم</li><li>تصوير المنتجات</li><li>تصوير الأطباق والمنيو</li><li>مونتاج الفيديو</li><li>تغطية الفعاليات والافتتاحات</li></ul>
+          <h4 data-en="Photo &amp; Production">التصوير والإنتاج</h4>
+          <ul><li data-en="Restaurant ad photography">تصوير إعلانات المطاعم</li><li data-en="Product photography">تصوير المنتجات</li><li data-en="Food &amp; menu photography">تصوير الأطباق والمنيو</li><li data-en="Video editing">مونتاج الفيديو</li><li data-en="Event &amp; opening coverage">تغطية الفعاليات والافتتاحات</li></ul>
         </article>
         <article class="sa-g sa-dz">
           <header><span class="sa-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zm17.7-10.2a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><b class="sa-no" dir="ltr">03</b></header>
-          <h4>التصميم</h4>
-          <ul><li>الهوية البصرية والشعارات</li><li>تصميم السوشيال ميديا</li><li>الإعلانات الرقمية والبنرات</li><li>المنيو وقوائم الطعام</li><li>البوسترات واللوحات الإعلانية</li><li>المطبوعات: بروشور، فلاير، كروت</li><li>التغليف والملصقات</li><li>البروفايل والعروض التقديمية</li><li>الإنفوجرافيك</li><li>أغلفة الفيديو والثمبنيل</li></ul>
+          <h4 data-en="Design">التصميم</h4>
+          <ul><li data-en="Visual identity &amp; logos">الهوية البصرية والشعارات</li><li data-en="Social media design">تصميم السوشيال ميديا</li><li data-en="Digital ads &amp; banners">الإعلانات الرقمية والبنرات</li><li data-en="Menus">المنيو وقوائم الطعام</li><li data-en="Posters &amp; billboards">البوسترات واللوحات الإعلانية</li><li data-en="Print: brochures, flyers, cards">المطبوعات: بروشور، فلاير، كروت</li><li data-en="Packaging &amp; labels">التغليف والملصقات</li><li data-en="Company profiles &amp; presentations">البروفايل والعروض التقديمية</li><li data-en="Infographics">الإنفوجرافيك</li><li data-en="Video covers &amp; thumbnails">أغلفة الفيديو والثمبنيل</li></ul>
         </article>
       </div>
     </div>
@@ -662,11 +671,11 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
 
   <section class="prs" aria-labelledby="prH">
     <div class="wrap">
-      <header class="sh fade"><p class="ab-k">في الإعلام <b dir="ltr">· PRESS</b></p><h2 id="prH" class="fit">أكتب عن اللي أشتغل فيه</h2><p class="d">مقالات رأي عن التسويق والمحتوى المرئي للمطاعم، منشورة في الصحف السعودية.</p></header>
+      <header class="sh fade"><p class="ab-k">في الإعلام</p><h2 id="prH" class="fit">أكتب عن اللي أشتغل فيه</h2><p class="d">مقالات رأي عن التسويق والمحتوى المرئي للمطاعم، منشورة في الصحف السعودية.</p></header>
       <a class="pcard fade" href="https://www.alwatan.com.sa/article/1187359" target="_blank" rel="noopener">
         <i class="vfb" aria-hidden="true"></i>
         <span class="pq" aria-hidden="true">”</span>
-        <span class="pk"><b>صحيفة الوطن</b><i dir="ltr">OPINION · 16.10.2026</i></span>
+        <span class="pk"><b>صحيفة الوطن</b><i>مقال رأي · 16 أكتوبر 2026</i></span>
         <h3 class="fit">المحتوى المرئي لغة المطاعم الجديدة</h3>
         <p>رأيي في كيف صار المحتوى المرئي أول تواصل بين المطعم وعميله، وليش يحتاج يُعامل كاستثمار مب كمصروف.</p>
         <span class="pgo">اقرأ المقال<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5l-7 7 7 7 1.4-1.4L9.8 13H20v-2H9.8l5.6-5.6z"/></svg></span>
@@ -781,6 +790,83 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
   var cio='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;cio.unobserve(e.target);var el=e.target,n=parseFloat(el.dataset.n),d=+el.dataset.d||0,t0=performance.now();(function f(t){var p=Math.min(1,(t-t0)/1400);p=1-Math.pow(1-p,3);el.textContent=(n*p).toFixed(d);if(p<1)requestAnimationFrame(f)})(t0)})},{threshold:.6}):null;
   if(cio&&!matchMedia('(prefers-reduced-motion:reduce)').matches)$('.cnt').forEach(function(el){el.textContent='0';cio.observe(el)});
   reveal();
+  /* ===== English version ===== */
+  var EN={
+  "إسماعيل":"Ismueil","عثمان":"Osman","الرئيسية":"Home","استشارة مجانية":"Free consultation","واتساب":"WhatsApp",
+  "معرض الأعمال":"Portfolio","أعمال":"Work that","تبيع":"sells","، مو بس تنعرض":", not just shows",
+  "إعلانات فيديو، وتصوير، وتصميم، وحملات تسويق صنعتها لمطاعم وعلامات تجارية في المملكة.":"Video ads, photography, design and marketing campaigns I've made for restaurants and brands across Saudi Arabia.",
+  "علامات تجارية":"Brands","أعلى نمو مبيعات":"Peak sales growth","منصات إعلانية":"Ad platforms","شاهد الأعمال":"See the work","تواصل واتساب":"Chat on WhatsApp",
+  "بالتعاون مع":"In collaboration with","علامات عملت معها":"Brands I've worked with","مطاعم وشركات في مكة وجدة والرياض وخميس مشيط.":"Restaurants and companies in Makkah, Jeddah, Riyadh and Khamis Mushait.",
+  "الكل":"All","فيديو وإعلانات":"Video & ads","تسويق وحملات":"Marketing","تصوير الشركات":"Corporate","بورتريه":"Portrait","أعراس ومناسبات":"Weddings & events","تصميم وهوية":"Design & identity","خلف الكواليس":"Behind the scenes","خدماتي":"Services",
+  "إعلانات تشدّ وتبيع":"Ads that grab and sell",
+  "فيديوهات عمودية أصوّرها وأمنتجها لسناب شات وتيك توك وإنستقرام. تشتغل لحالها وأنت تمرر، واضغط على أي فيديو للصوت.":"Vertical videos I shoot and edit for Snapchat, TikTok and Instagram. They play as you scroll; tap any video for sound.",
+  "اضغط للصوت":"Tap for sound","أحدث عمل":"Latest work","إعلان نكهة تهامية":"Nakhat Tihamiya ad","عرض الفطور":"Breakfast offer",
+  "إعلان عمودي قصير يقدّم عرض الفطور بلقطات قريبة تُبرز تفاصيل الطعام، من التصوير حتى المونتاج.":"A short vertical ad for the breakfast offer, with close-ups that bring out every detail of the food. Shot and edited end to end.",
+  "إعلان فيديو":"Video ad","تصوير":"Filming","مونتاج وتلوين":"Edit & grade",
+  "شاورما على السيخ":"Shawarma on the spit","قص قريب وتغليف وصوص بإيقاع سريع يناسب الريلز.":"Close-up carving, wrapping and sauce, cut fast for Reels.",
+  "مشويات وباستا وبيتزا":"Grills, pasta & pizza","لهب وبخار وجبن ذايب، بإضاءة دافئة تبرز القوام.":"Flame, steam and melting cheese, lit warm to show the texture.",
+  "قريبًا: Arina":"Coming soon: Arina","إعلان تشويقي لافتتاح مطعم، من المطبخ حتى الطبق.":"A teaser for a restaurant opening, from the kitchen to the plate.",
+  "ميني كيك التمر للعيد":"Eid date mini cakes","تصوير منتج لحملة العيد بألوان الهوية والتغليف.":"Product shoot for the Eid campaign in the brand's colours and packaging.",
+  "مشروب BEANSAI البارد":"BEANSAI iced drink","إعلان مشروب سريع الإيقاع يبرز السكب والقوام واللقطة الختامية.":"A fast-paced drink ad built around the pour, the texture and the final shot.",
+  "أرقام، مو بس منشورات":"Numbers, not just posts","أدير الحملات من الفكرة حتى قياس النتيجة، على منصات الإعلان الرئيسية.":"I run campaigns from the idea to the measured result, on the major ad platforms.",
+  "عملت معها في التسويق والمحتوى والتصوير، أغلبها مطاعم.":"Worked with on marketing, content and photography, mostly restaurants.",
+  "نمو في المبيعات":"Sales growth","أعلى نمو حققته الحملات لإحدى العلامات، و15% لعلامات أخرى.":"The highest growth my campaigns delivered for one brand, and 15% for others.",
+  "مكة":"Makkah","وكل المملكة":"and all of Saudi","تصوير ميداني في مكة وجدة والرياض وخميس مشيط، وحملات عن بُعد.":"On-site shoots in Makkah, Jeddah, Riyadh and Khamis Mushait, and campaigns run remotely.",
+  "وش يشمل الشغل":"What the work covers","خطة الحملة":"Campaign plan","الاستهداف":"Targeting","المحتوى الإعلاني":"Ad creative","إدارة الميزانية":"Budget management","القياس والتقارير":"Tracking & reports","تحسين مستمر":"Continuous optimisation",
+  "دراسة حالة · علامة مطاعم":"Case study · Restaurant brand","78 مليون ظهور لعلامة مطاعم واحدة":"78 million impressions for one restaurant brand",
+  "أدرت حملات علامة مطاعم سعودية على Google وSnapchat وTikTok: الاستهداف، والمحتوى الإعلاني، وتعزيز محتوى المؤثرين بإعلانات مدفوعة، وقياس النتيجة.":"I ran a Saudi restaurant brand's campaigns on Google, Snapchat and TikTok: targeting, ad creative, paid boosting of influencer content, and measuring the result.",
+  "ظهور إعلاني":"Ad impressions","ريال ميزانيات أدرتها":"SAR in budgets managed","نقرة على الإعلانات":"Ad clicks","مشاهدة فيديو":"Video views",
+  "لقطة من لوحة الإعلانات":"From the ads dashboard","الظهور":"Impressions","النقرات":"Clicks","إجراءات العملاء":"Customer actions","الإنفاق":"Spend",
+  "إجراءات مثل طلب الاتجاهات للفرع والاتصال، بتكلفة":"Actions like branch directions and calls, at","أقل من ريال":"under 1 SAR","للإجراء":"per action",
+  "مشاهدات الفيديو":"Video views","633 ألف":"633K","مشاهدة كاملة لـ15 ثانية":"full 15-second views","الحملات":"Campaigns","تكلفة الألف ظهور":"Cost per 1,000 impressions","2.77 ريال":"2.77 SAR",
+  "لقطات حقيقية من لوحات الإعلانات، وأُخفيت بيانات العميل حفاظًا على خصوصيته.":"Real screenshots from the ad dashboards, with client details hidden to protect their privacy.",
+  "أبغى نتائج مثلها لنشاطي":"I want results like these",
+  "قيادات شؤون الغذاء":"Food Affairs executives","جلسة لقيادات شركة شؤون الغذاء: إضاءة طبيعية ناعمة، ولقطات عفوية أثناء الاجتماعات، إلى جانب بورتريه رسمي.":"A session with Food Affairs Co. executives: soft natural light, candid moments in meetings, and formal portraits.",
+  "تصوير شركات":"Corporate","لقطة عفوية":"Candid moment","بورتريه رسمي":"Formal portrait","أثناء الاجتماع":"In the meeting","في مكتب الشركة":"At the office",
+  "بورتريه وجلسات":"Portrait sessions","جلسة المنشد العسيري":"Abdulrahman Al-Asiri session","جلسة تصوير المنشد عبد الرحمن العسيري: إضاءة دافئة وخلفية مكتبة خشبية، تلتقط حركة اليدين وتعابير الحديث.":"A portrait session with nasheed artist Abdulrahman Al-Asiri: warm light against a wooden bookcase, catching his gestures and expressions as he speaks.",
+  "لقطة تعبيرية":"Expressive shot","أثناء الحديث":"Mid-conversation","بورتريه جانبي":"Profile portrait",
+  "لحظات ما تتكرر":"Moments that never repeat","لقطات ليلية بإضاءة دافئة وخلفيات ضبابية، تحفظ التفاصيل الصغيرة وملامح اللحظة.":"Night shots with warm light and soft backgrounds that keep the small details and the feeling of the moment.",
+  "بورتريه ليلي":"Night portrait","أعراس":"Weddings","تفاصيل الخاتم":"Ring details","لقطة جانبية":"Side shot","بورتريه أنيق":"Elegant portrait",
+  "تصميم وهوية بصرية":"Design & visual identity","هوية تُعرف من أول نظرة":"An identity known at first glance",
+  "هويتي الشخصية من تصميمي: من الشعار والألوان حتى بطاقة العمل وقوالب السوشيال. نفس المنهج أطبّقه مع علامات عملائي.":"My own identity, designed by me: from the logo and colours to the business card and social templates. I bring the same approach to my clients' brands.",
+  "الشعار":"Logo","هوية بصرية":"Visual identity","الألوان والخطوط":"Colours & type","بطاقة العمل":"Business card","مطبوعات":"Print","قوالب السوشيال ميديا":"Social media templates","تصميم محتوى":"Content design",
+  "تبغى هوية لنشاطك؟":"Need an identity for your business?","أرسل لك نماذج تناسب نشاطك مباشرة.":"I'll send you samples that fit your business.","اطلب النماذج":"Request samples",
+  "استوديو يجيك لين عندك":"A studio that comes to you","معدات احترافية خاصة واستوديو متنقل: Sony α7 V، وجيمبال DJI، وإضاءة Godox.":"My own professional gear and a mobile studio: Sony α7 V, a DJI gimbal and Godox lighting.",
+  "تصوير فرع مطعم":"Restaurant branch shoot","إعلان علامة تجارية":"Brand ad","خلف الكاميرا":"Behind the camera","أثناء التصوير":"On set","إضاءة وتصوير":"Lighting & shooting","استوديو متنقل":"Mobile studio",
+  "في الإعلام":"In the press","أكتب عن اللي أشتغل فيه":"I write about what I do","مقالات رأي عن التسويق والمحتوى المرئي للمطاعم، منشورة في الصحف السعودية.":"Opinion pieces on marketing and visual content for restaurants, published in Saudi newspapers.",
+  "صحيفة الوطن":"Al-Watan newspaper","مقال رأي · 16 أكتوبر 2026":"Opinion · 16 October 2026","المحتوى المرئي لغة المطاعم الجديدة":"Visual content: the new language of restaurants",
+  "رأيي في كيف صار المحتوى المرئي أول تواصل بين المطعم وعميله، وليش يحتاج يُعامل كاستثمار مب كمصروف.":"Why visual content has become a restaurant's first contact with its customers, and why it should be treated as an investment, not an expense.",
+  "اقرأ المقال":"Read the article (Arabic)","كل كتاباتي في صحيفة الوطن ←":"All my writing in Al-Watan →",
+  "الخطوة الجاية":"Next step","نشاطك يستاهل يبيع أكثر":"Your business deserves to sell more","كلمني اليوم وأقترح لك خطة تصوير وتسويق تناسب نشاطك، والاستشارة الأولى مجانية.":"Message me today and I'll suggest a filming and marketing plan for your business. The first consultation is free.",
+  "احجز استشارة مجانية":"Book a free consultation","مشاهدة البروفايل":"View profile","كتاباتي في صحيفة الوطن":"My writing in Al-Watan"
+  };
+  var ENA={"إسماعيل عثمان، الصفحة الرئيسية":"Ismueil Osman, home","روابط":"Links","الرئيسية":"Home","أقسام الأعمال":"Work sections","تشغيل":"Play","روابط الموقع":"Site links","عرض الصورة":"Image viewer","إغلاق":"Close","السابقة":"Previous","التالية":"Next",
+  "إعلان نكهة تهامية: الفطور":"Nakhat Tihamiya ad: breakfast","شاورما على السيخ":"Shawarma on the spit","مشويات وباستا وبيتزا":"Grills, pasta & pizza","قريبًا: Arina":"Coming soon: Arina","ميني كيك التمر للعيد":"Eid date mini cakes","مشروب BEANSAI البارد":"BEANSAI iced drink",
+  "لقطة من لوحة Google Ads: 31 مليون ظهور و406 آلاف نقرة":"Google Ads dashboard: 31M impressions and 406K clicks","لقطة من لوحة Snapchat Ads: 31 مليون ظهور و3.1 مليون مشاهدة فيديو":"Snapchat Ads dashboard: 31M impressions and 3.1M video views","لقطة من لوحة TikTok Ads: 86 حملة و15.8 مليون ظهور":"TikTok Ads dashboard: 86 campaigns and 15.8M impressions",
+  "لقطة عفوية لقيادي في شركة شؤون الغذاء":"Candid shot of a Food Affairs executive","بورتريه رسمي":"Formal portrait","أثناء الاجتماع":"In the meeting","في مكتب الشركة":"At the office",
+  "لقطة تعبيرية للمنشد عبد الرحمن العسيري":"Expressive shot of Abdulrahman Al-Asiri","المنشد عبد الرحمن العسيري أثناء الحديث":"Abdulrahman Al-Asiri mid-conversation","بورتريه جانبي للمنشد عبد الرحمن العسيري":"Profile portrait of Abdulrahman Al-Asiri","لقطة عفوية للمنشد عبد الرحمن العسيري":"Candid shot of Abdulrahman Al-Asiri",
+  "بورتريه ليلي في عرس":"Night portrait at a wedding","تفاصيل الخاتم في عرس":"Ring details at a wedding","لقطة جانبية في عرس":"Side shot at a wedding","بورتريه أنيق في عرس":"Elegant wedding portrait",
+  "شعار إسماعيل عثمان: فتحة عدسة بست شفرات":"Ismueil Osman logo: a six-blade aperture","ألوان وخطوط هوية إسماعيل عثمان":"Ismueil Osman brand colours and type","تصميم بطاقة عمل إسماعيل عثمان":"Ismueil Osman business card design","قوالب سوشيال ميديا لهوية إسماعيل عثمان":"Ismueil Osman social media templates",
+  "نكهة تهامية: واجهة الفرع من الداخل":"Nakhat Tihamiya: inside the branch","إسماعيل عثمان يصوّر بكاميرا سوني على مثبّت DJI":"Ismueil Osman filming with a Sony camera on a DJI gimbal","استوديو بإضاءة احترافية":"Studio with professional lighting"};
+  var lang='ar',store=[],astore=[],lb_=document.getElementById('langBtn');
+  var TT={ar:document.title,en:'Portfolio: video, photography & marketing for restaurants and brands | Ismueil Osman'};
+  function toEn(){
+    var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;
+    while((n=w.nextNode())){var p=n.parentNode;if(!p||p.nodeName==='SCRIPT'||p.nodeName==='STYLE')continue;
+      var raw=n.nodeValue,k=raw.replace(/\s+/g,' ').trim();if(!k)continue;var ov=p.getAttribute&&p.getAttribute('data-en'),t=ov||EN[k];
+      if(t){store.push([n,raw]);n.nodeValue=raw.match(/^\s*/)[0]+t+raw.match(/\s*$/)[0]}}
+    $('[alt],[aria-label],[title]').forEach(function(el){['alt','aria-label','title'].forEach(function(a){var v=el.getAttribute(a);if(v&&(ENA[v]||EN[v])){astore.push([el,a,v]);el.setAttribute(a,ENA[v]||EN[v])}})});
+    $('.pc img').forEach(function(im){var v=im.getAttribute('alt');if(v&&/^شعار/.test(v)){astore.push([im,'alt',v]);im.setAttribute('alt','Brand logo')}});
+  }
+  function toAr(){store.forEach(function(s){s[0].nodeValue=s[1]});store=[];astore.forEach(function(s){s[0].setAttribute(s[1],s[2])});astore=[]}
+  function setLang(l){if(l===lang)return;lang=l;var h=document.documentElement;
+    if(l==='en'){toEn();h.lang='en';h.dir='ltr';lb_.textContent='ع';lb_.setAttribute('lang','ar');lb_.setAttribute('aria-label','التبديل إلى العربية')}
+    else{toAr();h.lang='ar';h.dir='rtl';lb_.textContent='EN';lb_.setAttribute('lang','en');lb_.setAttribute('aria-label','Switch to English')}
+    document.title=TT[l];try{localStorage.setItem('lang',l)}catch(e){}fit();
+  }
+  lb_.addEventListener('click',function(){setLang(lang==='ar'?'en':'ar')});
+  var qp=(location.search.match(/[?&]lang=(en|ar)/)||[])[1];
+  if(qp)setLang(qp);else{try{if(localStorage.getItem('lang')==='en')setLang('en')}catch(e){}}
   var h=location.hash.slice(1);if(h&&document.querySelector('.cat[data-cat="'+h+'"]'))show(h,false);
 })();
 </script>
