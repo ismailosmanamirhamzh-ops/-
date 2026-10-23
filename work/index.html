@@ -372,6 +372,31 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
 .cs-n{margin-top:1.2rem;font:600 .8rem Tajawal,sans-serif;color:rgba(255,255,255,.45)}
 .cs-b{margin-top:1.2rem}
 
+/* case study: cinematic pass */
+.cs{position:relative;overflow:hidden;isolation:isolate;background:radial-gradient(70% 55% at 100% 0%,rgba(242,180,90,.14),transparent 60%),radial-gradient(60% 50% at 0% 100%,rgba(242,180,90,.06),transparent 60%),linear-gradient(180deg,#0b0c11,#050507)}
+.cs::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cs>.vfb{inset:.9rem;opacity:.45}
+.cs-hud{display:flex;justify-content:space-between;align-items:center;margin:-.4rem 0 1.2rem;font:600 .66rem/1 var(--mono);letter-spacing:.18em;color:rgba(255,255,255,.55)}
+.cs-hud .rec{display:flex;align-items:center;gap:.45rem}
+.cs-hud .rec::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#e5383b;box-shadow:0 0 10px #e5383b;animation:blink 1.2s steps(2) infinite}
+.cs-k b{background:linear-gradient(180deg,#fff 30%,#c9ccd6);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.cs-k b i{-webkit-text-fill-color:var(--amber)}
+.cs-k>div{position:relative}
+.csp{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(0,0,0,.4))}
+.csp::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;opacity:.9}
+.csp.g::before{background:linear-gradient(90deg,#4285f4,#34a853,#fbbc05,#ea4335)}
+.csp.s::before{background:#fffc00}
+.csp.t::before{background:linear-gradient(90deg,#25f4ee,#fe2c55)}
+.pf{padding:1.7rem .45rem .45rem;background:#0d0e13;border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 40px -18px rgba(0,0,0,.9),inset 0 0 0 1px rgba(0,0,0,.6)}
+.pf img{border-radius:.35rem;filter:saturate(.75) brightness(.78) contrast(1.05);transition:filter .6s,transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.ph.pf:hover img{filter:none;transform:scale(1.03)}
+.pf::after{inset:1.7rem .45rem .45rem;border-radius:.35rem;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.75))}
+.pf .mon{position:absolute;top:.55rem;inset-inline-start:.7rem;z-index:3;font:600 .58rem/1 var(--mono);letter-spacing:.16em;color:rgba(255,255,255,.55)}
+.pf .mon::first-letter{color:#e5383b}
+.pf .vfb{color:#fff;inset:2.1rem .9rem .9rem;opacity:.6}
+.ph.pf:hover .vfb{color:var(--amber);inset:1.95rem .7rem .7rem}
+.pf img{position:relative;height:100%}
+
 </style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500)})})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
@@ -474,7 +499,7 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
         <div class="mc wd fade"><h3>وش يشمل الشغل</h3><ol><li>خطة الحملة</li><li>الاستهداف</li><li>المحتوى الإعلاني</li><li>إدارة الميزانية</li><li>القياس والتقارير</li><li>تحسين مستمر</li></ol></div>
       </div>
       <div class="cs fade">
-        <div class="cs-h"><span class="lb2" dir="ltr">CASE STUDY · RESTAURANT BRAND</span><h3 class="fit">78 مليون ظهور لعلامة مطاعم واحدة</h3><p>أدرت حملات علامة مطاعم سعودية على Google وSnapchat وTikTok: الاستهداف، والمحتوى الإعلاني، وتعزيز محتوى المؤثرين بإعلانات مدفوعة، وقياس النتيجة.</p></div>
+        <i class="vfb" aria-hidden="true"></i><div class="cs-hud" dir="ltr" aria-hidden="true"><span class="rec">CASE 01</span><span>ADS · RESULTS</span></div><div class="cs-h"><span class="lb2" dir="ltr">CASE STUDY · RESTAURANT BRAND</span><h3 class="fit">78 مليون ظهور لعلامة مطاعم واحدة</h3><p>أدرت حملات علامة مطاعم سعودية على Google وSnapchat وTikTok: الاستهداف، والمحتوى الإعلاني، وتعزيز محتوى المؤثرين بإعلانات مدفوعة، وقياس النتيجة.</p></div>
         <div class="cs-k">
           <div><b><span class="cnt" data-n="78">78</span><i>M+</i></b><span>ظهور إعلاني</span></div>
           <div><b><span class="cnt" data-n="412">412</span><i>K+</i></b><span>ريال ميزانيات أدرتها</span></div>
@@ -484,19 +509,19 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
         <div class="cs-p">
           <article class="csp g">
             <header><i class="dot" aria-hidden="true"></i><h4 dir="ltr">Google Ads</h4></header>
-            <figure class="ph pf"><img src="/assets/img/proof-google.webp" alt="لقطة من لوحة Google Ads: 31 مليون ظهور و406 آلاف نقرة" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>Google Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
+            <figure class="ph pf"><span class="mon" dir="ltr" aria-hidden="true">● LIVE DASHBOARD</span><img src="/assets/img/proof-google.webp" alt="لقطة من لوحة Google Ads: 31 مليون ظهور و406 آلاف نقرة" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>Google Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
             <ul><li><span>الظهور</span><b dir="ltr">31,073,723</b></li><li><span>النقرات</span><b dir="ltr">406,931</b></li><li><span>إجراءات العملاء</span><b dir="ltr">185,761</b></li><li><span>الإنفاق</span><b dir="ltr">182,559 SAR</b></li></ul>
             <p class="eff">إجراءات مثل طلب الاتجاهات للفرع والاتصال، بتكلفة <b>أقل من ريال</b> للإجراء</p>
           </article>
           <article class="csp s">
             <header><i class="dot" aria-hidden="true"></i><h4 dir="ltr">Snapchat Ads</h4></header>
-            <figure class="ph pf"><img src="/assets/img/proof-snap.webp" alt="لقطة من لوحة Snapchat Ads: 31 مليون ظهور و3.1 مليون مشاهدة فيديو" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>Snapchat Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
+            <figure class="ph pf"><span class="mon" dir="ltr" aria-hidden="true">● LIVE DASHBOARD</span><img src="/assets/img/proof-snap.webp" alt="لقطة من لوحة Snapchat Ads: 31 مليون ظهور و3.1 مليون مشاهدة فيديو" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>Snapchat Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
             <ul><li><span>الظهور</span><b dir="ltr">31,333,355</b></li><li><span>مشاهدات الفيديو</span><b dir="ltr">3,116,346</b></li><li><span>الإنفاق</span><b dir="ltr">$49,569</b></li></ul>
             <p class="eff"><b>633 ألف</b> مشاهدة كاملة لـ15 ثانية</p>
           </article>
           <article class="csp t">
             <header><i class="dot" aria-hidden="true"></i><h4 dir="ltr">TikTok Ads</h4></header>
-            <figure class="ph pf"><img src="/assets/img/proof-tiktok.webp" alt="لقطة من لوحة TikTok Ads: 86 حملة و15.8 مليون ظهور" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>TikTok Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
+            <figure class="ph pf"><span class="mon" dir="ltr" aria-hidden="true">● LIVE DASHBOARD</span><img src="/assets/img/proof-tiktok.webp" alt="لقطة من لوحة TikTok Ads: 86 حملة و15.8 مليون ظهور" loading="lazy" decoding="async"><i class="vfb" aria-hidden="true"></i><figcaption>TikTok Ads<span>لقطة من لوحة الإعلانات</span></figcaption></figure>
             <ul><li><span>الظهور</span><b dir="ltr">15,869,746</b></li><li><span>الحملات</span><b dir="ltr">86</b></li><li><span>الإنفاق</span><b dir="ltr">44,024 SAR</b></li></ul>
             <p class="eff">تكلفة الألف ظهور <b>2.77 ريال</b></p>
           </article>
