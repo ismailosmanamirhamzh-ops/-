@@ -4,20 +4,21 @@ try{
       sec=document.getElementById('top'),cam=document.getElementById('cam'),stage=document.getElementById('cam3d'),hint=document.getElementById('camHint'),wel=document.getElementById('camWelcome');
   var clamp=function(v){return Math.min(1,Math.max(0,v))},base=lens.offsetWidth||320;
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var P1=reduce?0:Math.round(innerHeight*0.42);           /* مسافة مرحلة الكاميرا (مختصرة) */
+  var P1=reduce?0:Math.round(innerHeight*0.6);            /* مسافة الدوران: أطول شوي عشان تكون الحركة هادئة */
   if(!reduce)sec.style.height='calc(100vh + '+(P1+470)+'px)';
   /* الكاميرا الوحيدة الآن هي المجسّم ثلاثي الأبعاد (camera3d.js)؛ الصورة القديمة حُذفت */
   var W=0,H=0,DY=0,LX=.31,LY2=.73,LW=.47;
   function size(){W=Math.min(innerWidth*.86,innerHeight*.6*1000/936,700);H=W*936/1000;DY=Math.min(34,innerHeight*.05)}
   size();
-  var sway=0,sy=window.scrollY-sec.offsetTop;
-  function ease(c){return c<.5?4*c*c*c:1-Math.pow(-2*c+2,3)/2}
+  var sway=0,secTop=sec.offsetTop,sy=window.scrollY-secTop;
+  function c3on(){return document.documentElement.classList.contains('cam3d-on')}
+  function ease(c){return .5-.5*Math.cos(Math.PI*c)}   /* منحنى ناعم بدون قفزة في النص */
   function update(){
     var y=sy,c=P1?clamp(y/P1):1,e=ease(c),z=Math.max(0,y-P1);
     if(!reduce){
       var k=1-e,sEnd=Math.max(1.1,340/(LW*W)),s=1+(sEnd-1)*e;
       var ry=-24*k+sway*k,rx=8*k-Math.abs(sway)*.12*k;
-      cam.style.transform='translate3d('+(((LX-.5)*W)*k).toFixed(1)+'px,'+((((LY2-.5)*H)+DY)*k).toFixed(1)+'px,0) scale('+s.toFixed(4)+') rotateY('+ry.toFixed(2)+'deg) rotateX('+rx.toFixed(2)+'deg) rotateZ('+(2*k).toFixed(2)+'deg)';
+      if(!c3on())cam.style.transform='translate3d('+(((LX-.5)*W)*k).toFixed(1)+'px,'+((((LY2-.5)*H)+DY)*k).toFixed(1)+'px,0) scale('+s.toFixed(4)+') rotateY('+ry.toFixed(2)+'deg) rotateX('+rx.toFixed(2)+'deg) rotateZ('+(2*k).toFixed(2)+'deg)';
       stage.style.opacity=1-clamp((c-.84)/.16);stage.style.visibility=c>=1?'hidden':'visible';cam.style.willChange=c>=1?'auto':'transform';
       if(window.CAM3D)window.CAM3D.set(e,sway);
       hint.style.opacity=1-clamp(c/.22);
@@ -68,19 +69,23 @@ try{
   }
   /* ===== الدوران مربوط بالتمرير مباشرة مع تنعيم (بدون سحب الصفحة أو حجز اللمس) ===== */
   var run=false,secVis=true;
+  var lt=0;
   function loop(t){
-    var ty=window.scrollY-sec.offsetTop;
-    var d=ty-sy;sy=Math.abs(d)<.4?ty:sy+d*.16;
-    if(!reduce&&sy<P1&&sy>-innerHeight)sway+=((Math.sin(t/1200)*13)-sway)*.08;
+    var dt=lt?Math.min(64,t-lt):16;lt=t;
+    var ty=window.scrollY-secTop;
+    /* تنعيم مبني على الوقت: نفس الإحساس على 60 و120 هيرتز */
+    var d=ty-sy,a=1-Math.exp(-dt/85);sy=Math.abs(d)<.3?ty:sy+d*a;
+    if(!reduce&&sy<P1&&sy>-innerHeight)sway+=((Math.sin(t/2200)*6)-sway)*(1-Math.exp(-dt/400));
     update();
     var idle=sy===ty&&(reduce||sy>=P1||sy<=-innerHeight);
-    if(secVis&&!document.hidden&&!idle)requestAnimationFrame(loop);else run=false;
+    if(secVis&&!document.hidden&&!idle)requestAnimationFrame(loop);else{run=false;lt=0}
   }
   function kick(){if(!run){run=true;requestAnimationFrame(loop)}}
   if('IntersectionObserver' in window)new IntersectionObserver(function(es){secVis=es[0].isIntersecting;if(secVis)kick()},{rootMargin:'200px 0px'}).observe(sec);
   window.addEventListener('scroll',kick,{passive:true});
   document.addEventListener('visibilitychange',function(){if(!document.hidden)kick()});
-  window.addEventListener('resize',function(){size();kick()});
+  window.addEventListener('resize',function(){secTop=sec.offsetTop;size();kick()});
+  addEventListener('load',function(){secTop=sec.offsetTop;kick()});
   kick();
   update();
 })();

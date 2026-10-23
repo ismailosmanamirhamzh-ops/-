@@ -279,8 +279,10 @@ function init() {
   const lensWorld = new THREE.Vector3();
 
   function size() {
-    const r = (mode === 'dock' ? dock : mode === 'ins' ? insStage : stage).getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
-    renderer.setSize(W, H, false); cam.aspect = W / H; cam.updateProjectionMatrix(); dirty = true;
+    const r = (mode === 'dock' ? dock : mode === 'ins' ? insStage : stage).getBoundingClientRect();
+    const w = Math.max(1, Math.round(r.width)), h = Math.max(1, Math.round(r.height));
+    if (w === W && h === H) return;   // ما نعيد بناء اللوحة إذا المقاس ما تغيّر (يمنع الوميض مع شريط عنوان الجوال)
+    W = w; H = h; renderer.setSize(W, H, false); cam.aspect = W / H; cam.updateProjectionMatrix(); dirty = true;
   }
 
   function frame() {
@@ -291,7 +293,7 @@ function init() {
     if (docked) { dockFrame(); return; }
     const e = E, k = 1 - e;
     // دوران كامل 360° + زاوية بداية ثلاثة أرباع، وينتهي والعدسة مواجهة
-    pivot.rotation.y = -(Math.PI * 2 + 0.75) * k + SW * 0.012 * k;
+    pivot.rotation.y = -(Math.PI + 0.6) * k + SW * 0.012 * k;   // نص لفة هادئة بدل لفة كاملة سريعة
     pivot.rotation.x = 0.32 * k - Math.abs(SW) * 0.002 * k;
     pivot.rotation.z = -0.06 * k;
     pivot.updateMatrixWorld(true);
@@ -429,6 +431,7 @@ function init() {
   addEventListener('scroll', () => { if (mode === 'ins') { insProg(); dirty = true; } else if (docked && !reduceM) dirty = true; }, { passive: true });
   insProg();
   addEventListener('resize', size);
+  if ('ResizeObserver' in window) { const ro = new ResizeObserver(() => size()); [stage, dock, insStage].forEach(el => el && ro.observe(el)); }
   /* ---------- فلاش التصوير: مرة واحدة لما تكتمل اللفة والعدسة مواجهة للزائر ---------- */
   const host = stage.parentElement;
   const fl = document.createElement('div');
