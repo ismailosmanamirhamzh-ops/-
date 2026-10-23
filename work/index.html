@@ -14,309 +14,562 @@
 <meta property="og:url" content="https://ismueilosman.com/work/">
 <meta property="og:image" content="https://ismueilosman.com/assets/img/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#07080c">
+<meta name="theme-color" content="#000000">
 <link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png?v=2">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Noto+Sans+Arabic:wdth,wght@87.5,700;87.5,800;87.5,900&family=Tajawal:wght@400;500;600;700;800&display=swap">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://ismueilosman.com/work/#page","url":"https://ismueilosman.com/work/","name":"أعمالي | إسماعيل عثمان","inLanguage":"ar","isPartOf":{"@id":"https://ismueilosman.com/#website"},"about":{"@id":"https://ismueilosman.com/#person"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://ismueilosman.com/"},{"@type":"ListItem","position":2,"name":"أعمالي","item":"https://ismueilosman.com/work/"}]}]}</script>
+<link rel="preload" as="image" href="/assets/img/poster-nakhat-tihamiya.webp">
 <style>
-:root{--ink:#07080c;--panel:#10121a;--amber:#f2b45a;--text:#eceef4;--mute:#a9afbf;--line:rgba(255,255,255,.09)}
+.pmask{direction:ltr;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.pt{display:flex;gap:0;width:max-content;padding:.9rem 0;animation:pt 36s linear infinite}
+.pt.rev{animation-duration:44s;animation-direction:reverse}
+.pmask:hover .pt{animation-play-state:paused}
+@keyframes pt{to{transform:translateX(-50%)}}
+.pc{margin:0 1.1rem 0 0;box-sizing:border-box;flex:0 0 auto;width:10.5rem;height:6.5rem;display:flex;align-items:center;justify-content:center;padding:.9rem 1.1rem;border-radius:1.1rem;background:#000;border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 40px -22px rgba(0,0,0,.9);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;animation:bob 6s ease-in-out infinite}
+.pc:nth-child(2n){animation-delay:-2s}
+.pc:nth-child(3n){animation-delay:-4s}
+.pc.dk{background:#000}
+.pc img{max-width:100%;max-height:100%;object-fit:contain}
+.pc:hover{transform:translateY(-12px) scale(1.06);box-shadow:0 26px 50px -18px rgba(242,180,90,.6)}
+@media(prefers-reduced-motion:reduce){.pt{animation:pt 36s linear infinite!important}.pt.rev{animation-duration:44s!important;animation-direction:reverse!important}.pc{animation:none!important}}
+.pc{cursor:pointer}
+.sv-sub{max-width:32rem;margin:.8rem auto 1.6rem;line-height:1.9;font-size:.9rem;color:var(--mute)}
+@media(min-width:640px){.sv-sub{font-size:1rem;margin-bottom:2.2rem}}
+.ab-k{font:700 .85rem Tajawal,sans-serif;letter-spacing:.08em;color:var(--amber);text-transform:uppercase}
+@keyframes vfblink{to{visibility:hidden}}
+.vfb{position:absolute;inset:.85rem;pointer-events:none;z-index:2;opacity:.55;transition:opacity .4s,inset .5s cubic-bezier(.2,.8,.2,1);background:
+linear-gradient(currentColor,currentColor) 0 0/16px 1.5px,linear-gradient(currentColor,currentColor) 0 0/1.5px 16px,
+linear-gradient(currentColor,currentColor) 100% 0/16px 1.5px,linear-gradient(currentColor,currentColor) 100% 0/1.5px 16px,
+linear-gradient(currentColor,currentColor) 0 100%/16px 1.5px,linear-gradient(currentColor,currentColor) 0 100%/1.5px 16px,
+linear-gradient(currentColor,currentColor) 100% 100%/16px 1.5px,linear-gradient(currentColor,currentColor) 100% 100%/1.5px 16px;background-repeat:no-repeat;color:#fff}
+.svx{padding:6rem 1.25rem;background:linear-gradient(180deg,var(--ink),#000)}
+.svx-in{max-width:72rem;margin:0 auto}
+.svx .sv-sub{margin-top:1rem;max-width:40rem;line-height:2;color:var(--mute)}
+.svx-grid{list-style:none;padding:0;margin:2.6rem 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:21rem;gap:1rem}
+.svx-c:first-child{grid-column:span 2}
+.svx-c{position:relative;overflow:hidden;border-radius:.6rem;background:#111;isolation:isolate;border:1px solid rgba(255,255,255,.07)}
+.svx-c img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.75);transform:scale(1.03);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s}
+.svx-c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 20%,rgba(0,0,0,.88) 78%);z-index:1}
+.svx-n{position:absolute;top:1.35rem;inset-inline-start:1.5rem;z-index:3;font:600 .72rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:.45rem}
+.svx-n::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#e5383b;box-shadow:0 0 8px #e5383b;opacity:0;transition:opacity .3s}
+.svx-t{position:absolute;inset:auto 0 0 0;z-index:3;padding:1.5rem 1.6rem 1.6rem}
+.svx-t h3{font:900 clamp(1.2rem,2.2vw,1.55rem)/1.4 Cairo,sans-serif}
+.svx-t p{margin-top:.45rem;color:#cfd3dd;line-height:1.85;font-size:.93rem;max-width:34rem}
+.svx-c:hover img,.svx-c:focus-within img{transform:scale(1.09);filter:saturate(1) brightness(.85)}
+.svx-c:hover .vfb{opacity:1;inset:1.1rem;color:var(--amber)}
+.svx-c:hover .svx-n::before{opacity:1}
+@media(max-width:900px){.svx-grid{grid-template-columns:1fr;grid-auto-rows:auto}.svx-c:first-child{grid-column:auto}.svx-c{min-height:19rem;display:flex}.svx-t{position:relative;margin-top:auto}}
+.pc{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;margin:0!important;width:11rem!important;border-inline-end:1px solid rgba(255,255,255,.08)!important;filter:grayscale(1) brightness(1.15);opacity:.62;transition:filter .4s,opacity .4s,transform .5s cubic-bezier(.2,.8,.2,1)!important}
+.pc:hover,.pc:focus-visible{filter:none;opacity:1;transform:scale(1.08)!important;box-shadow:none!important}
+.svx .sv-sub{margin:1rem 0 0;max-width:40rem;font-size:1rem;text-align:start}
+.ab-k+h2,.ab-k+.xp-h{margin-top:.4rem}
+.svx-in{max-width:69rem}
+.ab-k{display:flex;align-items:center;gap:.6rem}
+.ab-k::before{content:"";width:1.6rem;height:1px;background:currentColor;opacity:.8}
+.svx-t h3{font-family:'Noto Sans Arabic',Cairo,sans-serif!important;font-stretch:87.5%;font-weight:800}
+.svx-t h3 .h3-m{display:block}
+.svx-t h3 .h3-s{display:block;margin-top:.1rem;font-size:.72em;font-weight:700;color:var(--amber);letter-spacing:.01em}
+.sa{margin-top:2.2rem;display:grid;grid-template-columns:1fr;gap:1rem}
+.sa-map{position:relative;overflow:hidden;padding:2.6rem 1.6rem 1.5rem;border-radius:1.1rem;border:1px solid rgba(242,180,90,.22);background:radial-gradient(120% 90% at 85% 0%,rgba(242,180,90,.16),transparent 55%),linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));display:flex;flex-direction:column}
+.sa-map:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/100% 26px,linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/26px 100%;mask:radial-gradient(90% 80% at 50% 40%,#000,transparent)}
+.sa-map .vfb{opacity:.45}
+.sa-k{position:absolute;top:1.25rem;inset-inline-end:1.5rem;font:600 .66rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.18em;color:var(--amber)}
+.sa h4{font:900 1.35rem/1.3 Cairo,sans-serif;color:var(--text);margin:0}
+.sa-hq{position:relative;display:flex;align-items:center;gap:.75rem;margin-top:1.4rem;padding:1rem 1.1rem;border-radius:.9rem;background:linear-gradient(90deg,rgba(242,180,90,.18),rgba(242,180,90,.04));border:1px solid rgba(242,180,90,.45)}
+.sa-hq strong{font:900 1.45rem/1.2 Cairo,sans-serif;color:var(--text)}
+.sa-hq em{margin-inline-start:auto;font:700 .72rem/1 Tajawal,sans-serif;font-style:normal;color:#0b0c10;background:var(--amber);padding:.35rem .6rem;border-radius:999px}
+.sa-pulse{position:relative;width:.75rem;height:.75rem;flex:none;border-radius:50%;background:var(--amber);box-shadow:0 0 12px rgba(242,180,90,.8)}
+.sa-pulse:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid var(--amber);animation:saP 2s ease-out infinite}
+@keyframes saP{from{transform:scale(.4);opacity:1}to{transform:scale(1.8);opacity:0}}
+@media(prefers-reduced-motion:reduce){.sa-pulse:after{animation:none;opacity:.5}}
+.sa-cities{list-style:none;margin:.9rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(255,255,255,.08);border-radius:.8rem;overflow:hidden}
+.sa-cities li{text-align:center;padding:.75rem .3rem;font:800 .95rem Cairo,sans-serif;color:var(--text);background:rgba(255,255,255,.025);white-space:nowrap}
+.sa-cities li+li{border-inline-start:1px solid rgba(255,255,255,.08)}
+.sa-all{margin:auto 0 0;padding-top:1.1rem;display:flex;align-items:baseline;gap:.4rem;white-space:nowrap;font-size:clamp(.57rem,2.8vw,.95rem);border-top:1px dashed rgba(255,255,255,.12);margin-top:1.2rem}
+.sa-all b{font:800 1em Tajawal,sans-serif;color:var(--amber)}
+.sa-all span{font:600 .9em Tajawal,sans-serif;color:var(--mute)}
+.sa-gs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.sa-dz{grid-column:1/-1}
+.sa-dz ul{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:1.5rem}
+@media(max-width:1000px){.sa-dz ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sa-g{position:relative;padding:1.4rem 1.3rem 1.3rem;border-radius:1.1rem;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012));transition:border-color .3s,transform .3s,background .3s}
+.sa-g:hover{border-color:rgba(242,180,90,.45);transform:translateY(-3px);background:linear-gradient(180deg,rgba(242,180,90,.08),rgba(255,255,255,.012))}
+.sa-g header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.sa-ic{display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:.8rem;background:rgba(242,180,90,.12);border:1px solid rgba(242,180,90,.3)}
+.sa-ic svg{width:1.3rem;height:1.3rem;fill:var(--amber)}
+.sa-no{font:600 .75rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;color:rgba(255,255,255,.35)}
+.sa-g h4{font-size:1.15rem;margin-bottom:.8rem}
+.sa-g ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.sa-g li{position:relative;padding-inline-start:1.1rem;font:600 .93rem/1.55 Tajawal,sans-serif;color:rgba(236,238,244,.82)}
+.sa-g li:before{content:"";position:absolute;inset-inline-start:0;top:.6em;width:.42rem;height:.42rem;border-radius:2px;background:var(--amber);transform:rotate(45deg);opacity:.85}
+@media(max-width:760px){.sa-gs{grid-template-columns:1fr}.sa-dz ul{grid-template-columns:1fr}}
+@media(min-width:900px){.sa-map{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.3fr);grid-template-areas:"t hq ct" "a a a";align-items:center;column-gap:1.4rem;padding:2.4rem 2rem 1.4rem}.sa-map h4{grid-area:t;padding-inline-end:.4rem}.sa-hq{grid-area:hq;margin:0}.sa-cities{grid-area:ct;margin:0}.sa-cities li{padding:1.05rem .3rem}.sa-all{grid-area:a}}
+
+:root{--ink:#07080c;--panel:#0e1016;--amber:#f2b45a;--text:#eceef4;--mute:#a9afbf;--line:rgba(255,255,255,.08);--mono:ui-monospace,Menlo,Consolas,monospace}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{overflow-x:hidden;font-family:Tajawal,system-ui,sans-serif;background:var(--ink);color:var(--text);line-height:1.7;
-  background-image:radial-gradient(60% 40% at 85% -5%,rgba(242,180,90,.14),transparent 60%)}
+html{-webkit-text-size-adjust:100%;background:#000}
+body{overflow-x:hidden;font-family:Tajawal,system-ui,sans-serif;background:var(--ink);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
 a{color:inherit}img,video{display:block;max-width:100%}
-.top{max-width:76rem;margin:0 auto;padding:1.2rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font:900 1.15rem Cairo,sans-serif}
-.brand b{color:var(--amber)}.brand svg{width:1.6rem;height:1.6rem}
-.back{font:700 .9rem Tajawal,sans-serif;text-decoration:none;color:var(--mute);padding:.5rem .95rem;border:1px solid var(--line);border-radius:999px;white-space:nowrap}
-.back:hover{color:var(--text);border-color:rgba(242,180,90,.5)}
-.hd{max-width:76rem;margin:0 auto;padding:1.5rem 1.25rem 1rem;text-align:center}
-.kick{display:inline-block;padding:.3rem .85rem;border:1px solid rgba(242,180,90,.45);border-radius:999px;color:var(--amber);font:700 .82rem Tajawal,sans-serif;background:rgba(242,180,90,.07)}
-h1{font:900 clamp(2.2rem,8vw,3.8rem)/1.15 Cairo,sans-serif;margin:.8rem 0 .5rem}
-h1 span{color:var(--amber)}
-.lead{max-width:40rem;margin:0 auto;color:var(--mute);font-size:clamp(1rem,3.5vw,1.15rem)}
-.tabs{position:sticky;top:0;z-index:20;background:rgba(7,8,12,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);margin-top:1.6rem}
-.tabs-in{max-width:76rem;margin:0 auto;padding:.75rem 1.25rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none}
+h1,h2,h3,h4{font-family:Cairo,sans-serif}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+::selection{background:var(--amber);color:#111}
+
+/* ── header ── */
+.nav{position:fixed;top:calc(.75rem + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:40;width:min(72rem,calc(100% - 1.5rem));display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.5rem .55rem .5rem 1rem;border-radius:999px;background:rgba(10,11,16,.55);border:1px solid rgba(255,255,255,.1);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);transition:background .3s,transform .4s}
+.nav.hide{transform:translate(-50%,-140%)}
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font:900 1.05rem Cairo,sans-serif;white-space:nowrap}
+.brand b{color:var(--amber)}.brand svg{width:1.7rem;height:1.7rem;flex:none}
+.nav-l{display:flex;align-items:center;gap:.35rem}
+.nav-l a{text-decoration:none;font:700 .86rem Tajawal,sans-serif;color:var(--mute);padding:.5rem .8rem;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
+.nav-l a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.nav-l .wa{background:#25d366;color:#04140a;display:inline-flex;align-items:center;gap:.4rem;font-weight:800}
+.nav-l .wa:hover{background:#2ee06f;color:#04140a}
+.nav-l .wa svg{width:1rem;height:1rem;fill:currentColor}
+@media(max-width:560px){.nav-l .hm{display:none}.brand{font-size:.98rem}}
+
+/* ── hero ── */
+.wh{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;background:#000}
+.mos{position:absolute;inset:-25% -8%;display:grid;grid-template-columns:repeat(6,1fr);gap:.9rem;transform:rotate(-7deg) scale(1.05);z-index:-3;opacity:.95}
+.mos-c{display:flex;flex-direction:column;gap:.9rem;animation:mup 60s linear infinite;will-change:transform}
+.mos-c:nth-child(even){animation-name:mdn;animation-duration:70s}
+.mos-c img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:.5rem;filter:saturate(.7) brightness(.5) contrast(1.05)}
+@keyframes mup{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes mdn{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+@media(max-width:1100px){.mos{grid-template-columns:repeat(4,1fr)}.mos-c:nth-child(n+5){display:none}}
+@media(max-width:700px){.mos{grid-template-columns:repeat(3,1fr);gap:.6rem;inset:-15% -25%}.mos-c{gap:.6rem}.mos-c:nth-child(n+4){display:none}}
+.wh-shade{position:absolute;inset:0;z-index:-2;background:
+ linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.3) 22%,rgba(0,0,0,.5) 48%,rgba(0,0,0,.95) 82%,#07080c 100%),
+ radial-gradient(90% 70% at 85% 80%,rgba(0,0,0,.7),transparent 70%)}
+.wh-grain{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wh>.vfb{inset:calc(4.6rem + env(safe-area-inset-top,0px)) 1rem 1rem;opacity:.5}
+.hud{position:absolute;top:calc(5.4rem + env(safe-area-inset-top,0px));left:1.9rem;right:1.9rem;display:flex;justify-content:space-between;align-items:center;font:600 .7rem/1 var(--mono);letter-spacing:.16em;color:rgba(255,255,255,.72);pointer-events:none}
+.hud .rec{display:flex;align-items:center;gap:.45rem}
+.hud .rec::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:#e5383b;box-shadow:0 0 10px #e5383b;animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+.hud .mid{position:absolute;left:50%;transform:translateX(-50%)}
+@media(max-width:560px){.hud .mid{display:none}}
+.wh-in{position:relative;width:100%;max-width:72rem;margin:0 auto;padding:0 1.9rem calc(3.2rem + env(safe-area-inset-bottom,0px))}
+.wh-k{margin-bottom:.9rem}
+.wh-h{font:900 clamp(1.6rem,8.8vw,5rem)/1.12 Cairo,sans-serif;white-space:nowrap;letter-spacing:-.01em;text-shadow:0 10px 40px rgba(0,0,0,.6)}
+.wh-h em{font-style:normal;color:var(--amber);position:relative}
+.wh-h em::after{content:"";position:absolute;inset-inline:0;bottom:-.12em;height:.08em;background:var(--amber);border-radius:2px;transform:scaleX(0);transform-origin:right;animation:ul 1s .6s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes ul{to{transform:scaleX(1)}}
+.wh-p{margin-top:.9rem;max-width:36rem;color:#cfd3dd;font-size:clamp(.98rem,2.6vw,1.15rem);line-height:1.9}
+.wh-st{list-style:none;display:flex;gap:0;margin-top:1.6rem;border-top:1px solid rgba(255,255,255,.12);max-width:34rem}
+.wh-st li{flex:1;padding:1rem .4rem 0;border-inline-start:1px solid rgba(255,255,255,.1);padding-inline-start:1rem}
+.wh-st li:first-child{border:0;padding-inline-start:0}
+.wh-st b{display:block;font:900 clamp(1.5rem,5vw,2.1rem)/1 Cairo,sans-serif;color:var(--text)}
+.wh-st b i{font-style:normal;color:var(--amber)}
+.wh-st span{display:block;margin-top:.35rem;font:600 .8rem Tajawal,sans-serif;color:var(--mute);white-space:nowrap}
+.wh-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.95rem 1.5rem;border-radius:999px;font:800 1rem Cairo,sans-serif;text-decoration:none;white-space:nowrap;transition:transform .25s,box-shadow .25s,background .25s}
+.btn svg{width:1.15rem;height:1.15rem;fill:currentColor}
+.btn.p{background:var(--amber);color:#111;box-shadow:0 14px 40px -14px rgba(242,180,90,.8)}
+.btn.p:hover{transform:translateY(-2px);box-shadow:0 18px 44px -12px rgba(242,180,90,.95)}
+.btn.g{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:var(--text);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.btn.g:hover{border-color:#25d366;color:#25d366}
+@media(max-width:420px){.wh-in{padding-inline:1.4rem}.btn{flex:1;padding:.9rem 1rem;font-size:.95rem}.hud{left:1.4rem;right:1.4rem}}
+@media(prefers-reduced-motion:reduce){.mos-c{animation:none}}
+
+/* ── partners strip ── */
+.ps{padding:4.5rem 0 3.5rem;background:linear-gradient(180deg,#07080c,#000)}
+.ps .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.ps .pmask{margin-top:2rem}
+.pc{cursor:default}
+
+/* ── tabs ── */
+.tabs{position:sticky;top:0;z-index:30;background:rgba(0,0,0,.82);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-block:1px solid var(--line)}
+.tabs-in{max-width:72rem;margin:0 auto;padding:.7rem 1.25rem;display:flex;gap:.45rem;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity}
 .tabs-in::-webkit-scrollbar{display:none}
-.tab{flex:none;padding:.55rem 1rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--mute);font:700 .9rem Tajawal,sans-serif;cursor:pointer;white-space:nowrap;transition:.2s}
-.tab:hover{color:var(--text);border-color:rgba(242,180,90,.45)}
-.tab[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:#111}
-main{max-width:76rem;margin:0 auto;padding:0 1.25rem 3rem}
-.cat{padding-top:3.2rem;scroll-margin-top:4.5rem}
+.tab{flex:none;scroll-snap-align:center;padding:.55rem 1.05rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--mute);font:700 .9rem Tajawal,sans-serif;cursor:pointer;white-space:nowrap;transition:color .2s,border-color .2s,background .2s}
+.tab:hover{color:var(--text);border-color:rgba(255,255,255,.25)}
+.tab[aria-pressed="true"]{background:var(--text);border-color:var(--text);color:#000}
+
+/* ── sections ── */
+.cat{padding:5.5rem 0 1rem;scroll-margin-top:3.6rem;background:#000}
+.cat:nth-of-type(even){background:linear-gradient(180deg,#000,var(--ink) 30%,var(--ink) 70%,#000)}
 .cat[hidden]{display:none}
-.cat-h{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.3rem}
-.cat-h h2{font:900 clamp(1.45rem,5vw,2.2rem)/1.3 Cairo,sans-serif}
-.cat-h h2 small{display:block;font:700 .8rem Tajawal,sans-serif;color:var(--amber);letter-spacing:.06em}
-.cat-h p{max-width:34rem;color:var(--mute);font-size:.95rem}
-.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
-.chip{font:700 .75rem Tajawal,sans-serif;padding:.25rem .65rem;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:#d5d9e3}
-/* videos */
-.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(44%,13.5rem),1fr));gap:.8rem}
-.vc{background:var(--panel);border:1px solid var(--line);border-radius:1.1rem;overflow:hidden}
-.vv{position:relative;aspect-ratio:9/16;background:#000;cursor:pointer}
-.vv video{width:100%;height:100%;object-fit:cover}
-.vp{position:absolute;inset:0;margin:auto;width:3.6rem;height:3.6rem;border-radius:50%;border:0;background:rgba(242,180,90,.95);display:grid;place-items:center;cursor:pointer;transition:opacity .3s,transform .3s;box-shadow:0 10px 30px -8px rgba(0,0,0,.8)}
-.vp::before{content:"";border-style:solid;border-width:.65rem 0 .65rem 1.05rem;border-color:transparent transparent transparent #111;margin-left:.2rem}
+.sh{margin-bottom:2.2rem}
+.sh .ab-k b{font:600 .72rem/1 var(--mono);color:rgba(255,255,255,.45);letter-spacing:.14em}
+.sh h2,.ps h2,.svx h2{font:900 clamp(1.75rem,6.4vw,3rem)/1.25 Cairo,sans-serif;white-space:nowrap;margin-top:.45rem}
+.sh p.d,.ps p.d{margin-top:.7rem;max-width:40rem;color:var(--mute);line-height:1.95;font-size:clamp(.95rem,2.4vw,1.05rem)}
+.svx{padding:5.5rem 1.25rem 2rem;background:linear-gradient(180deg,#000,var(--ink) 40%,#000)}
+.svx h2{font-size:clamp(1.75rem,6.4vw,3rem)}
+
+/* ── video ── */
+.feat{position:relative;display:grid;grid-template-columns:minmax(0,19rem) 1fr;gap:2.5rem;align-items:center;padding:1.2rem;border-radius:1.2rem;border:1px solid var(--line);background:radial-gradient(120% 120% at 100% 0%,rgba(242,180,90,.12),transparent 55%),linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));overflow:hidden}
+.feat .tx{padding:1rem .5rem 1rem 1.5rem}
+.feat .new{display:inline-flex;align-items:center;gap:.45rem;font:600 .7rem/1 var(--mono);letter-spacing:.16em;color:#fff;background:rgba(229,56,59,.18);border:1px solid rgba(229,56,59,.5);padding:.4rem .7rem;border-radius:999px}
+.feat .new::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:#e5383b;box-shadow:0 0 8px #e5383b;animation:blink 1.2s steps(2) infinite}
+.feat h3{font:900 clamp(1.5rem,4vw,2.4rem)/1.3 Cairo,sans-serif;margin-top:1rem;white-space:nowrap}
+.feat h3 span{display:block;font-size:.55em;color:var(--amber);font-weight:800;margin-top:.2rem}
+.feat p{margin-top:.8rem;color:var(--mute);line-height:1.95;max-width:30rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.2rem}
+.chip{font:600 .72rem/1 var(--mono);letter-spacing:.06em;padding:.45rem .75rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);color:#d5d9e3}
+@media(max-width:700px){.feat{grid-template-columns:1fr;gap:1rem;padding:.8rem}.feat .vv{max-width:21rem;margin:0 auto;width:100%}.feat .tx{padding:.6rem .5rem 1rem;text-align:center}.feat .chips{justify-content:center}.feat p{margin-inline:auto}}
+.reels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.9rem;margin-top:1rem}
+@media(max-width:1000px){.reels{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-1.25rem;padding:0 1.25rem .4rem;gap:.75rem}.reels::-webkit-scrollbar{display:none}.reels>.vc{flex:0 0 min(58%,15rem);scroll-snap-align:start}}
+.vc{position:relative}
+.vv{position:relative;aspect-ratio:9/16;background:#000;cursor:pointer;border-radius:.8rem;overflow:hidden;border:1px solid var(--line);isolation:isolate}
+.vv video{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.vv::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,transparent 22%,transparent 55%,rgba(0,0,0,.9) 100%)}
+.vv .vfb{z-index:2;inset:.7rem;opacity:.5}
+.vv:hover .vfb,.vv.on .vfb{opacity:1;inset:.55rem;color:var(--amber)}
+.vt{position:absolute;inset:auto 0 0 0;z-index:3;padding:1rem .95rem .9rem;pointer-events:none}
+.vt h3{font:800 1rem/1.35 'Noto Sans Arabic',Cairo,sans-serif;font-stretch:87.5%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vt p{font-size:.78rem;line-height:1.6;color:#c9cdd7;margin-top:.15rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vp{position:absolute;inset:0;margin:auto;z-index:4;width:3.4rem;height:3.4rem;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;cursor:pointer;transition:opacity .3s,transform .3s}
+.vp::before{content:"";border-style:solid;border-width:.6rem 0 .6rem .95rem;border-color:transparent transparent transparent #fff;margin-left:.2rem}
+.vv:hover .vp{transform:scale(1.08);background:var(--amber);border-color:var(--amber)}
+.vv:hover .vp::before{border-left-color:#111}
 .vv.on .vp{opacity:0;transform:scale(.7);pointer-events:none}
-.snd{position:absolute;bottom:.6rem;inset-inline-end:.6rem;display:flex;align-items:center;gap:.35rem;padding:.35rem .65rem;border-radius:999px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25);color:#fff;font:700 .72rem Tajawal,sans-serif;pointer-events:none}
-.snd svg{width:1rem;height:1rem;fill:currentColor}
+.snd{position:absolute;top:.7rem;left:.7rem;z-index:4;display:flex;align-items:center;gap:.35rem;padding:.32rem .6rem;border-radius:999px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.22);color:#fff;font:700 .68rem Tajawal,sans-serif;pointer-events:none}
+.snd svg{width:.95rem;height:.95rem;fill:currentColor}
 .snd .on{display:none}.vv.loud .snd .on{display:block}.vv.loud .snd .off{display:none}
 .vv.loud .snd{background:var(--amber);color:#111;border-color:var(--amber)}
 .vv.loud .snd span{display:none}
-.vd{position:absolute;top:.6rem;inset-inline-start:.6rem;font:700 .72rem Tajawal,sans-serif;background:rgba(0,0,0,.6);padding:.15rem .5rem;border-radius:999px}
-.vc h3{font:800 1rem Cairo,sans-serif;padding:.8rem .9rem 0}
-.vc p{font-size:.85rem;color:var(--mute);padding:.15rem .9rem .9rem}
-.vc.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,17rem) 1fr;align-items:center}
-.vc.wide .vv{border-left:1px solid var(--line)}
-.vc.wide .tx{padding:1.4rem}
-.vc.wide h3{font-size:clamp(1.3rem,4vw,1.8rem);padding:0}
-.vc.wide p{padding:.5rem 0 0;font-size:.95rem}
-.vc.wide .new{display:inline-block;font:800 .75rem Tajawal,sans-serif;color:#111;background:var(--amber);padding:.15rem .6rem;border-radius:999px;margin-bottom:.6rem}
-@media(max-width:640px){.vc.wide{grid-template-columns:1fr}.vc.wide .vv{border:0;max-width:20rem;margin:0 auto;width:100%}}
-/* photos */
-.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(44%,15rem),1fr));grid-auto-rows:16rem;gap:.8rem}
-.pg.tall{grid-auto-rows:20rem}
-.ph{position:relative;margin:0;border-radius:1.1rem;overflow:hidden;background:var(--panel);border:1px solid var(--line);cursor:zoom-in}
+.vd{position:absolute;top:.75rem;right:.75rem;z-index:4;font:600 .66rem/1 var(--mono);letter-spacing:.1em;color:#fff;background:rgba(0,0,0,.5);padding:.3rem .45rem;border-radius:.3rem}
+.feat .vd{display:none}
+.reels .snd span{display:none}.reels .snd{padding:.38rem}
+
+/* ── marketing ── */
+.mk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media(max-width:900px){.mk{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mc{position:relative;padding:1.5rem 1.3rem 1.3rem;border-radius:1.1rem;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012));overflow:hidden;transition:border-color .3s,transform .3s}
+.mc:hover{border-color:rgba(242,180,90,.45);transform:translateY(-3px)}
+.mc .lb2{font:600 .66rem/1 var(--mono);letter-spacing:.16em;color:rgba(255,255,255,.4)}
+.mc b.n{display:block;margin-top:.9rem;font:900 clamp(2.2rem,6vw,3.2rem)/1 Cairo,sans-serif;color:var(--text)}
+.mc b.n i{font-style:normal;color:var(--amber)}
+.mc h3{font:800 1rem/1.4 Cairo,sans-serif;margin-top:.55rem;white-space:nowrap}
+.mc p{font-size:.86rem;color:var(--mute);margin-top:.3rem;line-height:1.8}
+.mc .pl{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.8rem}
+.mc .pl span{font:700 .74rem Tajawal,sans-serif;padding:.25rem .6rem;border-radius:.4rem;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.mc.wd{grid-column:1/-1;display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.mc.wd h3{margin:0}
+.mc.wd ol{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;counter-reset:s}
+.mc.wd li{counter-increment:s;font:700 .86rem Tajawal,sans-serif;padding:.45rem .8rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);white-space:nowrap}
+.mc.wd li::before{content:"0" counter(s) " ";font:600 .7rem var(--mono);color:var(--amber);margin-inline-end:.25rem}
+@media(max-width:520px){.mc{padding:1.2rem 1rem 1rem}.mc h3{font-size:.92rem}.mc p{font-size:.8rem}}
+
+/* ── photos ── */
+.pg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:22rem;gap:.9rem}
+.pg.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pg.c2{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}
+.pg.c2 .ph{aspect-ratio:6/5}
+.ph{position:relative;margin:0;border-radius:.8rem;overflow:hidden;background:#111;border:1px solid var(--line);cursor:zoom-in;isolation:isolate}
 .ph.w2{grid-column:span 2}
-@media(min-width:760px){.pg.c3{grid-template-columns:repeat(3,1fr)}.pg.c2{grid-template-columns:repeat(2,1fr)}}
-.pg.c2{grid-auto-rows:auto}.pg.c2 .ph{aspect-ratio:6/5}
-@media(max-width:759px){.pg.c2{grid-template-columns:1fr}}
-@media(max-width:520px){.pg,.pg.tall{grid-auto-rows:14rem}.vc h3{font-size:.9rem;padding:.6rem .7rem 0}.vc p{font-size:.76rem;padding:.1rem .7rem .7rem}.vp{width:3rem;height:3rem}.ph figcaption{font-size:.8rem;padding:1.8rem .6rem .55rem}}
-.ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.ph:hover img{transform:scale(1.05)}
-.ph figcaption{position:absolute;inset:auto 0 0 0;padding:2.2rem .9rem .75rem;background:linear-gradient(transparent,rgba(0,0,0,.85));font:800 .9rem Cairo,sans-serif}
-.ph figcaption span{display:block;font:500 .75rem Tajawal,sans-serif;color:#cfd3dc}
-/* marketing / design */
-.mk{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem}
-.mc{background:var(--panel);border:1px solid var(--line);border-radius:1.1rem;padding:1.3rem}
-.mc b.n{display:block;font:900 2.3rem/1.1 Cairo,sans-serif;color:var(--amber)}
-.mc h3{font:800 1.05rem Cairo,sans-serif;margin:.4rem 0 .2rem}
-.mc p{font-size:.88rem;color:var(--mute)}
-.mc ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.35rem .8rem;margin-top:.6rem}
-.mc li{font-size:.88rem;color:#d5d9e3;padding-inline-start:.9rem;position:relative}
-.mc li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:.35rem;height:.35rem;border-radius:50%;background:var(--amber)}
-.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(46%,9.5rem),1fr));gap:.8rem}
-.lg{aspect-ratio:1.5;background:#f4f2ee;border-radius:1rem;display:grid;place-items:center;padding:1rem}
-.lg.dk{background:#15171f}
-.lg img{max-height:100%;width:auto;object-fit:contain}
-.ask{display:inline-flex;align-items:center;gap:.45rem;margin-top:1rem;font:800 .92rem Cairo,sans-serif;color:#25d366;text-decoration:none;border:1px solid rgba(37,211,102,.55);padding:.6rem 1rem;border-radius:999px}
-.ask:hover{background:rgba(37,211,102,.12)}
-.ask svg,.cta svg{width:1.1rem;height:1.1rem;fill:currentColor}
-/* final CTA */
-.end{margin:4rem auto 0;max-width:46rem;text-align:center;background:linear-gradient(160deg,rgba(242,180,90,.14),rgba(242,180,90,.03));border:1px solid rgba(242,180,90,.3);border-radius:1.6rem;padding:2.2rem 1.3rem}
-.end h2{font:900 clamp(1.5rem,5vw,2.2rem)/1.3 Cairo,sans-serif}
-.end p{color:var(--mute);margin:.5rem auto 1.3rem;max-width:30rem}
-.ctas{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
-.cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-width:12rem;padding:.9rem 1.4rem;border-radius:999px;font:800 1rem Cairo,sans-serif;text-decoration:none}
-.cta.a{background:#25d366;color:#04140a}
-.cta.b{border:1px solid rgba(242,180,90,.6);color:var(--amber)}
-.foot{max-width:76rem;margin:0 auto;padding:2rem 1.25rem 2.5rem;display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;justify-content:center;font-size:.85rem;color:var(--mute)}
+.ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.86);transform:scale(1.02);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s}
+.ph::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.82))}
+.ph .vfb{opacity:0;inset:1.2rem}
+.ph:hover img,.ph:focus-visible img{transform:scale(1.08);filter:saturate(1.05) brightness(1)}
+.ph:hover .vfb,.ph:focus-visible .vfb{opacity:1;inset:.8rem;color:var(--amber)}
+.ph .fr{position:absolute;top:.9rem;inset-inline-start:1rem;z-index:3;font:600 .64rem/1 var(--mono);letter-spacing:.16em;color:rgba(255,255,255,.7);opacity:0;transition:opacity .3s}
+.ph:hover .fr{opacity:1}
+.ph figcaption{position:absolute;inset:auto 0 0 0;z-index:3;padding:1rem 1.1rem .95rem;font:800 1rem/1.35 'Noto Sans Arabic',Cairo,sans-serif;font-stretch:87.5%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph figcaption span{display:block;font:600 .74rem Tajawal,sans-serif;color:var(--amber);margin-top:.1rem}
+@media(max-width:900px){.pg,.pg.c3{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:17rem}.pg.c3 .ph.w2{grid-column:1/-1}}
+@media(max-width:520px){.pg,.pg.c3{grid-auto-rows:14rem;gap:.6rem}.pg.c2{gap:.6rem}.ph figcaption{font-size:.86rem;padding:.8rem .8rem .7rem}.ph figcaption span{font-size:.68rem}.ph .vfb{opacity:.5;inset:.6rem}}
+.ask{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1rem;padding:1.2rem 1.4rem;border-radius:1rem;border:1px solid rgba(37,211,102,.3);background:linear-gradient(90deg,rgba(37,211,102,.1),rgba(37,211,102,.02))}
+.ask h3{font:800 1.1rem Cairo,sans-serif;white-space:nowrap}
+.ask p{font-size:.88rem;color:var(--mute)}
+.ask a{display:inline-flex;align-items:center;gap:.45rem;font:800 .92rem Cairo,sans-serif;color:#04140a;background:#25d366;text-decoration:none;padding:.7rem 1.15rem;border-radius:999px;white-space:nowrap}
+.ask a svg{width:1.1rem;height:1.1rem;fill:currentColor}
+
+/* ── final CTA ── */
+.end{position:relative;overflow:hidden;isolation:isolate;margin:5rem auto 0;max-width:72rem;border-radius:1.4rem;border:1px solid rgba(242,180,90,.28);padding:4.5rem 1.5rem;text-align:center}
+.end>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.8) brightness(.45);object-position:50% 40%}
+.end::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(80% 90% at 50% 50%,rgba(0,0,0,.35),rgba(0,0,0,.88))}
+.end .vfb{opacity:.6;inset:1rem}
+.end h2{font:900 clamp(1.5rem,5.6vw,2.8rem)/1.3 Cairo,sans-serif;white-space:nowrap}
+.end p{color:#cfd3dd;margin:.8rem auto 1.7rem;max-width:32rem;line-height:1.9}
+.end .ctas{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
+.end .btn.w{background:#25d366;color:#04140a}
+.end-w{padding:0 1.25rem 4rem;background:#000}
+@media(max-width:520px){.end{padding:3.4rem 1rem;margin-top:3.5rem}}
+.sa-hq strong{white-space:nowrap;font-size:clamp(1.1rem,5.4vw,1.45rem)}
+.foot{border-top:1px solid var(--line);background:#000;padding:2rem 1.25rem calc(2.4rem + env(safe-area-inset-bottom,0px))}
+.foot-in{max-width:72rem;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
+.foot nav{display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;font-size:.86rem;color:var(--mute)}
 .foot a{text-decoration:none}.foot a:hover{color:var(--amber)}
-/* services */
-.sv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:1rem}
-@media(max-width:860px){.sv{grid-template-columns:1fr}}
-.cov{background:linear-gradient(160deg,rgba(242,180,90,.13),rgba(242,180,90,.02));border:1px solid rgba(242,180,90,.3);border-radius:1.2rem;padding:1.4rem}
-.cov small{font:700 .75rem Tajawal,sans-serif;color:var(--amber);letter-spacing:.12em}
-.cov h3{font:900 1.5rem Cairo,sans-serif;margin:.2rem 0 1rem}
-.hq{display:flex;align-items:center;gap:.7rem;background:rgba(7,8,12,.55);border:1px solid rgba(242,180,90,.45);border-radius:1rem;padding:.8rem 1rem}
-.hq i{width:.7rem;height:.7rem;border-radius:50%;background:var(--amber);box-shadow:0 0 0 0 rgba(242,180,90,.6);animation:pu 2s infinite;flex:none}
-@keyframes pu{70%{box-shadow:0 0 0 .7rem rgba(242,180,90,0)}100%{box-shadow:0 0 0 0 rgba(242,180,90,0)}}
-.hq b{font:900 1.15rem Cairo,sans-serif;flex:1}
-.hq em{font:800 .72rem Tajawal,sans-serif;font-style:normal;color:#111;background:var(--amber);padding:.15rem .55rem;border-radius:999px}
-.cities{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.7rem}
-.cities span{font:700 .85rem Tajawal,sans-serif;padding:.35rem .8rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
-.cov p{margin-top:.9rem;font-size:.85rem;color:var(--mute)}
-.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:1rem}
-.sc{background:var(--panel);border:1px solid var(--line);border-radius:1.2rem;padding:1.3rem}
-.sc .no{font:900 .85rem Cairo,sans-serif;color:var(--amber)}
-.sc h3{font:900 1.15rem Cairo,sans-serif;margin:.2rem 0 .6rem}
-.sc ul{list-style:none;display:grid;gap:.3rem}
-.sc li{font-size:.88rem;color:#d5d9e3;padding-inline-start:.9rem;position:relative}
-.sc li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:.35rem;height:.35rem;border-radius:50%;background:var(--amber)}
-.sc.dz ul{grid-template-columns:1fr 1fr;column-gap:.8rem}
-@media(max-width:420px){.sc.dz ul{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){.hq i{animation:none}}
-/* lightbox */
-.lb{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:1rem}
+.foot small{font:600 .7rem var(--mono);letter-spacing:.12em;color:rgba(255,255,255,.35)}
+
+/* ── lightbox ── */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:1rem}
 .lb.on{display:flex}
-.lb img{max-width:100%;max-height:86vh;border-radius:.8rem}
-.lb-c{position:absolute;top:calc(.8rem + env(safe-area-inset-top,0px));inset-inline-end:.8rem;width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:1.3rem;cursor:pointer}
-.lb-n{position:absolute;top:50%;transform:translateY(-50%);width:2.8rem;height:2.8rem;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:1.3rem;cursor:pointer}
+.lb img{max-width:100%;max-height:84vh;border-radius:.6rem}
+.lb-c,.lb-n{position:absolute;width:2.7rem;height:2.7rem;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:1.25rem;cursor:pointer}
+.lb-c{top:calc(.8rem + env(safe-area-inset-top,0px));inset-inline-end:.8rem}
+.lb-n{top:50%;transform:translateY(-50%)}
 .lb-n.p{right:.8rem}.lb-n.x{left:.8rem}
 .lb-t{position:absolute;bottom:calc(1rem + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font:700 .9rem Cairo,sans-serif;color:#ddd}
-.fade{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}
-.fade.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none}.ph img{transition:none}}
+.lb-t small{display:block;font:600 .66rem var(--mono);letter-spacing:.16em;color:rgba(255,255,255,.45);margin-top:.2rem}
+
+/* ── reveal ── */
+.fade{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.fade.is-in{opacity:1;transform:none}
+.wh .fade{transition-delay:calc(var(--d,0)*120ms)}
+@media(prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none}.ph img,.vv video{transition:none}.wh-h em::after{animation:none;transform:none}}
+
 </style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500)})})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
 <body>
-<header class="top">
+<header class="nav" id="nav">
   <a class="brand" href="/" aria-label="إسماعيل عثمان، الصفحة الرئيسية">
     <svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#f2b45a" stroke-width="6"/><circle r="38" fill="#f2b45a"/><circle r="15" fill="#07080c"/></svg>
     <span>إسماعيل <b>عثمان</b></span>
   </a>
-  <a class="back" href="/">الرئيسية</a>
+  <nav class="nav-l" aria-label="روابط">
+    <a class="hm" href="/">الرئيسية</a>
+    <a class="hm" href="/consultation/">استشارة مجانية</a>
+    <a class="wa" href="https://wa.me/966574395924?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%D9%83%20%D9%88%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>واتساب</a>
+  </nav>
 </header>
 
-<section class="hd">
-  <span class="kick">معرض الأعمال</span>
-  <h1>أعمال <span>تبيع</span>، مو بس تنعرض</h1>
-  <p class="lead">إعلانات فيديو، وتصوير، وتصميم، وحملات تسويق صنعتها لمطاعم وعلامات تجارية في المملكة. اختر القسم اللي يهمك.</p>
+<section class="wh" aria-labelledby="whH">
+  <div class="mos" aria-hidden="true"><div class="mos-c"><img src="/assets/img/reel-1.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/wedding-1.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/executives-3.webp" alt="" decoding="async"><img src="/assets/img/reel-4.webp" alt="" decoding="async"><img src="/assets/img/reel-1.webp" alt="" decoding="async"><img src="/assets/img/wedding-1.webp" alt="" decoding="async"><img src="/assets/img/executives-3.webp" alt="" decoding="async"><img src="/assets/img/reel-4.webp" alt="" decoding="async"></div><div class="mos-c"><img src="/assets/img/poster-nakhat-tihamiya.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/nasheed-1.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/reel-2.webp" alt="" decoding="async"><img src="/assets/img/wedding-3.webp" alt="" decoding="async"><img src="/assets/img/poster-nakhat-tihamiya.webp" alt="" decoding="async"><img src="/assets/img/nasheed-1.webp" alt="" decoding="async"><img src="/assets/img/reel-2.webp" alt="" decoding="async"><img src="/assets/img/wedding-3.webp" alt="" decoding="async"></div><div class="mos-c"><img src="/assets/img/reel-5.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/executives-1.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/nasheed-3.webp" alt="" decoding="async"><img src="/assets/img/reel-3.webp" alt="" decoding="async"><img src="/assets/img/reel-5.webp" alt="" decoding="async"><img src="/assets/img/executives-1.webp" alt="" decoding="async"><img src="/assets/img/nasheed-3.webp" alt="" decoding="async"><img src="/assets/img/reel-3.webp" alt="" decoding="async"></div><div class="mos-c"><img src="/assets/img/brand-social.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/wedding-4.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/nasheed-2.webp" alt="" decoding="async"><img src="/assets/img/executives-5.webp" alt="" decoding="async"><img src="/assets/img/brand-social.webp" alt="" decoding="async"><img src="/assets/img/wedding-4.webp" alt="" decoding="async"><img src="/assets/img/nasheed-2.webp" alt="" decoding="async"><img src="/assets/img/executives-5.webp" alt="" decoding="async"></div><div class="mos-c"><img src="/assets/img/reel-2.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/executives-4.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/wedding-2.webp" alt="" decoding="async"><img src="/assets/img/reel-1.webp" alt="" decoding="async"><img src="/assets/img/reel-2.webp" alt="" decoding="async"><img src="/assets/img/executives-4.webp" alt="" decoding="async"><img src="/assets/img/wedding-2.webp" alt="" decoding="async"><img src="/assets/img/reel-1.webp" alt="" decoding="async"></div><div class="mos-c"><img src="/assets/img/nasheed-4.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/reel-4.webp" alt="" decoding="async" fetchpriority="high"><img src="/assets/img/brand-card.webp" alt="" decoding="async"><img src="/assets/img/wedding-1.webp" alt="" decoding="async"><img src="/assets/img/nasheed-4.webp" alt="" decoding="async"><img src="/assets/img/reel-4.webp" alt="" decoding="async"><img src="/assets/img/brand-card.webp" alt="" decoding="async"><img src="/assets/img/wedding-1.webp" alt="" decoding="async"></div></div>
+  <div class="wh-shade"></div>
+  <div class="wh-grain" aria-hidden="true"></div>
+  <i class="vfb" aria-hidden="true"></i>
+  <div class="hud" dir="ltr" aria-hidden="true"><span class="rec">REC</span><span class="mid">PORTFOLIO · MAKKAH</span><span id="tc">00:00:00:00</span></div>
+  <div class="wh-in">
+    <p class="ab-k wh-k fade" style="--d:0">معرض الأعمال</p>
+    <h1 id="whH" class="wh-h fit fade" style="--d:1">أعمال <em>تبيع</em>، مو بس تنعرض</h1>
+    <p class="wh-p fade" style="--d:2">إعلانات فيديو، وتصوير، وتصميم، وحملات تسويق صنعتها لمطاعم وعلامات تجارية في المملكة.</p>
+    <ul class="wh-st fade" style="--d:3">
+      <li><b dir="ltr"><i>+</i>7</b><span>علامات تجارية</span></li>
+      <li><b dir="ltr">35<i>%</i></b><span>أعلى نمو مبيعات</span></li>
+      <li><b>4</b><span>منصات إعلانية</span></li>
+    </ul>
+    <div class="wh-cta fade" style="--d:4">
+      <a class="btn p" href="#video">شاهد الأعمال<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16.5 5.5 10l1.4-1.4 5.1 5.1 5.1-5.1 1.4 1.4z"/></svg></a>
+      <a class="btn g" href="https://wa.me/966574395924?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%D9%83%20%D9%88%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>تواصل واتساب</a>
+    </div>
+  </div>
+</section>
+
+<section class="ps" aria-labelledby="psH">
+  <div class="wrap">
+    <div>
+      <p class="ab-k">بالتعاون مع</p>
+      <h2 id="psH" class="fit">علامات عملت معها</h2>
+      <p class="d">مطاعم وشركات في مكة وجدة والرياض وخميس مشيط.</p>
+    </div>
+  </div>
+  <div class="pmask"><div class="pt" id="pt" dir="ltr">
+      <figure class="pc" data-brand="نكهة تهامية"><img src="/assets/img/logo-nakhat-tihamiya.webp" alt="شعار نكهة تهامية" loading="lazy" decoding="async"></figure>
+      <figure class="pc" data-brand="مشوية"><img src="/assets/img/logo-mashwiya.webp" alt="شعار مشوية" loading="lazy" decoding="async"></figure>
+      <figure class="pc" data-brand="إطلالة البيت"><img src="/assets/img/logo-etlalet-albait.webp" alt="شعار إطلالة البيت" loading="lazy" decoding="async"></figure>
+      <figure class="pc" data-brand="مسقف رواد البناء"><img src="/assets/img/logo-musaqqaf-rowad.webp" alt="شعار مسقف رواد البناء" loading="lazy" decoding="async"></figure>
+      <figure class="pc" data-brand="دوار السعادة"><img src="/assets/img/logo-dawar-alsaada.webp" alt="شعار دوار السعادة" loading="lazy" decoding="async"></figure>
+      <figure class="pc" data-brand="شؤون الغذاء"><img src="/assets/img/logo-shuun-alghitha.webp" alt="شعار شركة شؤون الغذاء لتطوير وإدارة المطاعم" loading="lazy" decoding="async"></figure>
+      <figure class="pc dk" data-brand="حاشي باشا"><img src="/assets/img/logo-hashi-basha.webp" alt="شعار حاشي باشا" decoding="async"></figure>
+      <figure class="pc" data-brand="سنام"><img src="/assets/img/logo-sanam.webp" alt="شعار سنام" loading="lazy" decoding="async"></figure>
+  </div></div>
+  <div class="pmask" style="margin-top:.75rem"><div class="pt rev" id="pt2" dir="ltr"></div></div>
 </section>
 
 <nav class="tabs" aria-label="أقسام الأعمال">
   <div class="tabs-in">
     <button class="tab" type="button" data-f="all" aria-pressed="true">الكل</button>
-    <button class="tab" type="button" data-f="services" aria-pressed="false">خدماتي</button>
     <button class="tab" type="button" data-f="video" aria-pressed="false">فيديو وإعلانات</button>
     <button class="tab" type="button" data-f="marketing" aria-pressed="false">تسويق وحملات</button>
     <button class="tab" type="button" data-f="corporate" aria-pressed="false">تصوير الشركات</button>
-    <button class="tab" type="button" data-f="portrait" aria-pressed="false">بورتريه وجلسات</button>
+    <button class="tab" type="button" data-f="portrait" aria-pressed="false">بورتريه</button>
     <button class="tab" type="button" data-f="weddings" aria-pressed="false">أعراس ومناسبات</button>
-    <button class="tab" type="button" data-f="design" aria-pressed="false">تصميم وهوية بصرية</button>
+    <button class="tab" type="button" data-f="design" aria-pressed="false">تصميم وهوية</button>
     <button class="tab" type="button" data-f="bts" aria-pressed="false">خلف الكواليس</button>
-    <button class="tab" type="button" data-f="clients" aria-pressed="false">العلامات</button>
+    <button class="tab" type="button" data-f="services" aria-pressed="false">خدماتي</button>
   </div>
 </nav>
 
 <main>
-  <!-- الخدمات -->
-  <section class="cat" id="services" data-cat="services">
-    <div class="cat-h"><h2><small>SERVICES</small>خدماتي ووين أخدم</h2><p>كل اللي يحتاجه نشاطك من الفكرة حتى المبيعات، تحت سقف واحد.</p></div>
-    <div class="sv">
-      <div class="cov fade"><small>COVERAGE</small><h3>أخدم في</h3>
-        <div class="hq"><i aria-hidden="true"></i><b>مكة المكرمة</b><em>المقر</em></div>
-        <div class="cities"><span>جدة</span><span>الرياض</span><span>خميس مشيط</span></div>
-        <p>جميع مناطق المملكة: إدارة الحملات الإعلانية والتصميم عن بُعد.</p>
-      </div>
-      <div class="svc">
-        <div class="sc fade"><span class="no" dir="ltr">01</span><h3>التسويق والإعلانات</h3><ul><li>تسويق رقمي</li><li>إدارة الحملات الإعلانية</li><li>إعلانات سناب شات وتيك توك</li><li>إعلانات Google وإنستقرام</li><li>إدارة حسابات التواصل الاجتماعي</li></ul></div>
-        <div class="sc fade"><span class="no" dir="ltr">02</span><h3>التصوير والإنتاج</h3><ul><li>تصوير إعلانات المطاعم</li><li>تصوير المنتجات</li><li>تصوير الأطباق والمنيو</li><li>مونتاج الفيديو</li><li>تغطية الفعاليات والافتتاحات</li></ul></div>
-        <div class="sc dz fade" style="grid-column:1/-1"><span class="no" dir="ltr">03</span><h3>التصميم</h3><ul><li>الهوية البصرية والشعارات</li><li>تصميم السوشيال ميديا</li><li>الإعلانات الرقمية والبنرات</li><li>المنيو وقوائم الطعام</li><li>البوسترات واللوحات الإعلانية</li><li>المطبوعات: بروشور، فلاير، كروت</li><li>التغليف والملصقات</li><li>البروفايل والعروض التقديمية</li><li>الإنفوجرافيك</li><li>أغلفة الفيديو والثمبنيل</li></ul></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- فيديو -->
   <section class="cat" id="video" data-cat="video">
-    <div class="cat-h"><h2><small>VIDEO ADS</small>فيديو وإعلانات للمطاعم</h2><p>فيديوهات عمودية أصوّرها وأمنتجها لسناب شات وتيك توك وإنستقرام. تشتغل لحالها وأنت تمرر، واضغط على أي فيديو للصوت.</p></div>
-    <div class="vg">
-      <article class="vc wide fade">
-        <div class="vv"><video data-src="/assets/media/ad-nakhat-tihamiya.mp4" poster="/assets/img/poster-nakhat-tihamiya.webp" preload="none" loop playsinline aria-label="إعلان نكهة تهامية: الفطور"></video><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button></div>
-        <div class="tx"><span class="new">أحدث عمل</span><h3>إعلان نكهة تهامية: الفطور</h3><p>إعلان عمودي قصير يقدّم عرض الفطور بلقطات قريبة تُبرز تفاصيل الطعام، من التصوير حتى المونتاج.</p><div class="chips"><span class="chip">إعلان فيديو</span><span class="chip">تصوير</span><span class="chip">مونتاج</span><span class="chip">9:16</span></div></div>
+    <div class="wrap">
+      <header class="sh fade"><p class="ab-k">فيديو وإعلانات <b dir="ltr">· SHOWREEL</b></p><h2 class="fit">إعلانات تشدّ وتبيع</h2><p class="d">فيديوهات عمودية أصوّرها وأمنتجها لسناب شات وتيك توك وإنستقرام. تشتغل لحالها وأنت تمرر، واضغط على أي فيديو للصوت.</p></header>
+      <article class="feat fade">
+        <div class="vv"><i class="vfb" aria-hidden="true"></i><video data-src="/assets/media/ad-nakhat-tihamiya.mp4" poster="/assets/img/poster-nakhat-tihamiya.webp" preload="none" loop playsinline aria-label="إعلان نكهة تهامية: الفطور"></video><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button></div>
+        <div class="tx"><span class="new" dir="ltr">LATEST · أحدث عمل</span><h3>إعلان نكهة تهامية<span>عرض الفطور</span></h3><p>إعلان عمودي قصير يقدّم عرض الفطور بلقطات قريبة تُبرز تفاصيل الطعام، من التصوير حتى المونتاج.</p><div class="chips" dir="ltr"><span class="chip">AD FILM</span><span class="chip">SHOOT</span><span class="chip">EDIT · GRADE</span><span class="chip">9:16</span></div></div>
       </article>
-      <article class="vc fade"><div class="vv"><video data-src="/assets/media/reel-1.mp4" poster="/assets/img/reel-1.webp" preload="none" loop playsinline aria-label="شاورما على السيخ"></video><span class="vd" dir="ltr">0:35</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button></div><h3>شاورما على السيخ</h3><p>قص قريب وتغليف وصوص بإيقاع سريع يناسب الريلز.</p></article>
-      <article class="vc fade"><div class="vv"><video data-src="/assets/media/reel-2.mp4" poster="/assets/img/reel-2.webp" preload="none" loop playsinline aria-label="مشويات وباستا وبيتزا"></video><span class="vd" dir="ltr">0:21</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button></div><h3>مشويات وباستا وبيتزا</h3><p>لهب وبخار وجبن ذايب، بإضاءة دافئة تبرز القوام.</p></article>
-      <article class="vc fade"><div class="vv"><video data-src="/assets/media/reel-3.mp4" poster="/assets/img/reel-3.webp" preload="none" loop playsinline aria-label="قريبًا: Arina"></video><span class="vd" dir="ltr">0:13</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button></div><h3>قريبًا: Arina</h3><p>إعلان تشويقي لافتتاح مطعم، من المطبخ حتى الطبق.</p></article>
-      <article class="vc fade"><div class="vv"><video data-src="/assets/media/reel-4.mp4" poster="/assets/img/reel-4.webp" preload="none" loop playsinline aria-label="ميني كيك التمر للعيد"></video><span class="vd" dir="ltr">0:23</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button></div><h3>ميني كيك التمر للعيد</h3><p>تصوير منتج لحملة العيد بألوان الهوية والتغليف.</p></article>
-      <article class="vc fade"><div class="vv"><video data-src="/assets/media/reel-5.mp4" poster="/assets/img/reel-5.webp" preload="none" loop playsinline aria-label="مشروب BEANSAI البارد"></video><span class="vd" dir="ltr">0:10</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button></div><h3>مشروب BEANSAI البارد</h3><p>إعلان مشروب سريع الإيقاع يبرز السكب والقوام واللقطة الختامية.</p></article>
+      <div class="reels">
+        <article class="vc fade"><div class="vv"><i class="vfb" aria-hidden="true"></i><video data-src="/assets/media/reel-1.mp4" poster="/assets/img/reel-1.webp" preload="none" loop playsinline aria-label="شاورما على السيخ"></video><span class="vd" dir="ltr">0:35</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button><div class="vt"><h3>شاورما على السيخ</h3><p>قص قريب وتغليف وصوص بإيقاع سريع يناسب الريلز.</p></div></div></article>
+        <article class="vc fade"><div class="vv"><i class="vfb" aria-hidden="true"></i><video data-src="/assets/media/reel-2.mp4" poster="/assets/img/reel-2.webp" preload="none" loop playsinline aria-label="مشويات وباستا وبيتزا"></video><span class="vd" dir="ltr">0:21</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button><div class="vt"><h3>مشويات وباستا وبيتزا</h3><p>لهب وبخار وجبن ذايب، بإضاءة دافئة تبرز القوام.</p></div></div></article>
+        <article class="vc fade"><div class="vv"><i class="vfb" aria-hidden="true"></i><video data-src="/assets/media/reel-3.mp4" poster="/assets/img/reel-3.webp" preload="none" loop playsinline aria-label="قريبًا: Arina"></video><span class="vd" dir="ltr">0:13</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button><div class="vt"><h3>قريبًا: Arina</h3><p>إعلان تشويقي لافتتاح مطعم، من المطبخ حتى الطبق.</p></div></div></article>
+        <article class="vc fade"><div class="vv"><i class="vfb" aria-hidden="true"></i><video data-src="/assets/media/reel-4.mp4" poster="/assets/img/reel-4.webp" preload="none" loop playsinline aria-label="ميني كيك التمر للعيد"></video><span class="vd" dir="ltr">0:23</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button><div class="vt"><h3>ميني كيك التمر للعيد</h3><p>تصوير منتج لحملة العيد بألوان الهوية والتغليف.</p></div></div></article>
+        <article class="vc fade"><div class="vv"><i class="vfb" aria-hidden="true"></i><video data-src="/assets/media/reel-5.mp4" poster="/assets/img/reel-5.webp" preload="none" loop playsinline aria-label="مشروب BEANSAI البارد"></video><span class="vd" dir="ltr">0:10</span><span class="snd" aria-hidden="true"><svg class="off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="currentColor"/></svg><svg class="on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>اضغط للصوت</span></span><button class="vp" type="button" aria-label="تشغيل"></button><div class="vt"><h3>مشروب BEANSAI البارد</h3><p>إعلان مشروب سريع الإيقاع يبرز السكب والقوام واللقطة الختامية.</p></div></div></article></div>
     </div>
   </section>
 
-  <!-- تسويق -->
   <section class="cat" id="marketing" data-cat="marketing">
-    <div class="cat-h"><h2><small>GROWTH MARKETING</small>تسويق وحملات إعلانية</h2><p>أدير الحملات من الفكرة حتى قياس النتيجة، على منصات الإعلان الرئيسية.</p></div>
-    <div class="mk">
-      <div class="mc fade"><b class="n" dir="ltr">+7</b><h3>علامات تجارية</h3><p>عملت معها في التسويق والمحتوى والتصوير، أغلبها في قطاع المطاعم.</p></div>
-      <div class="mc fade"><b class="n" dir="ltr">35%</b><h3>نمو في المبيعات</h3><p>أعلى نمو حققته الحملات لإحدى العلامات، ووصل لـ15% لعلامات أخرى.</p></div>
-      <div class="mc fade"><b class="n">4</b><h3>منصات إعلانية</h3><ul><li>Google</li><li>Snapchat</li><li>TikTok</li><li>Meta</li></ul></div>
-      <div class="mc fade"><h3>وش يشمل الشغل</h3><ul><li>خطة الحملة</li><li>الاستهداف</li><li>المحتوى الإعلاني</li><li>إدارة الميزانية</li><li>القياس والتقارير</li><li>تحسين مستمر</li></ul></div>
+    <div class="wrap">
+      <header class="sh fade"><p class="ab-k">تسويق وحملات <b dir="ltr">· GROWTH</b></p><h2 class="fit">أرقام، مو بس منشورات</h2><p class="d">أدير الحملات من الفكرة حتى قياس النتيجة، على منصات الإعلان الرئيسية.</p></header>
+      <div class="mk">
+        <div class="mc fade"><span class="lb2" dir="ltr">BRANDS</span><b class="n" dir="ltr"><i>+</i>7</b><h3>علامات تجارية</h3><p>عملت معها في التسويق والمحتوى والتصوير، أغلبها مطاعم.</p></div>
+        <div class="mc fade"><span class="lb2" dir="ltr">PEAK GROWTH</span><b class="n" dir="ltr">35<i>%</i></b><h3>نمو في المبيعات</h3><p>أعلى نمو حققته الحملات لإحدى العلامات، و15% لعلامات أخرى.</p></div>
+        <div class="mc fade"><span class="lb2" dir="ltr">PLATFORMS</span><b class="n">4</b><h3>منصات إعلانية</h3><div class="pl" dir="ltr"><span>Google</span><span>Snapchat</span><span>TikTok</span><span>Meta</span></div></div>
+        <div class="mc fade"><span class="lb2" dir="ltr">COVERAGE</span><b class="n" style="font-size:clamp(1.7rem,4.6vw,2.4rem)">مكة</b><h3>وكل المملكة</h3><p>تصوير ميداني في مكة وجدة والرياض وخميس مشيط، وحملات عن بُعد.</p></div>
+        <div class="mc wd fade"><h3>وش يشمل الشغل</h3><ol><li>خطة الحملة</li><li>الاستهداف</li><li>المحتوى الإعلاني</li><li>إدارة الميزانية</li><li>القياس والتقارير</li><li>تحسين مستمر</li></ol></div>
+      </div>
     </div>
   </section>
 
-  <!-- الشركات -->
   <section class="cat" id="corporate" data-cat="corporate">
-    <div class="cat-h"><h2><small>CORPORATE</small>تصوير قيادات شركة شؤون الغذاء</h2><p>إضاءة طبيعية ناعمة، ولقطات عفوية أثناء الاجتماعات، إلى جانب بورتريه رسمي.</p></div>
-    <div class="pg tall c3">
-      <figure class="ph w2 fade"><img src="/assets/img/executives-2.webp" alt="بورتريه داخلي لقيادي في شركة شؤون الغذاء" loading="lazy" style="object-position:50% 30%"><figcaption>بورتريه داخلي<span>تصوير شركات</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/executives-1.webp" alt="لقطة عفوية لقيادي في شركة شؤون الغذاء" loading="lazy" style="object-position:55% 32%"><figcaption>لقطة عفوية<span>تصوير شركات</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/executives-3.webp" alt="بورتريه رسمي" loading="lazy" style="object-position:50% 28%"><figcaption>بورتريه رسمي<span>تصوير شركات</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/executives-4.webp" alt="أثناء الاجتماع" loading="lazy" style="object-position:55% 40%"><figcaption>أثناء الاجتماع<span>تصوير شركات</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/executives-5.webp" alt="في مكتب الشركة" loading="lazy" style="object-position:50% 55%"><figcaption>في مكتب الشركة<span>تصوير شركات</span></figcaption></figure>
+    <div class="wrap">
+      <header class="sh fade"><p class="ab-k">تصوير الشركات <b dir="ltr">· CORPORATE</b></p><h2 class="fit">قيادات شؤون الغذاء</h2><p class="d">جلسة لقيادات شركة شؤون الغذاء: إضاءة طبيعية ناعمة، ولقطات عفوية أثناء الاجتماعات، إلى جانب بورتريه رسمي.</p></header>
+      <div class="pg c3">
+        <figure class="ph w2 fade"><img src="/assets/img/executives-2.webp" alt="بورتريه داخلي ضمن جلسة تصوير شؤون الغذاء" loading="lazy" decoding="async" style="object-position:50% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 01</span><figcaption>بورتريه داخلي<span>تصوير شركات</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/executives-1.webp" alt="لقطة عفوية لقيادي في شركة شؤون الغذاء" loading="lazy" decoding="async" style="object-position:55% 32%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 02</span><figcaption>لقطة عفوية<span>تصوير شركات</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/executives-3.webp" alt="بورتريه رسمي" loading="lazy" decoding="async" style="object-position:50% 28%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 03</span><figcaption>بورتريه رسمي<span>تصوير شركات</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/executives-4.webp" alt="أثناء الاجتماع" loading="lazy" decoding="async" style="object-position:55% 40%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 04</span><figcaption>أثناء الاجتماع<span>تصوير شركات</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/executives-5.webp" alt="في مكتب الشركة" loading="lazy" decoding="async" style="object-position:50% 55%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 05</span><figcaption>في مكتب الشركة<span>تصوير شركات</span></figcaption></figure>
+      </div>
     </div>
   </section>
 
-  <!-- بورتريه -->
   <section class="cat" id="portrait" data-cat="portrait">
-    <div class="cat-h"><h2><small>PORTRAIT</small>جلسة تصوير المنشد عبد الرحمن العسيري</h2><p>إضاءة دافئة وخلفية مكتبة خشبية، تلتقط حركة اليدين وتعابير الحديث.</p></div>
-    <div class="pg tall">
-      <figure class="ph fade"><img src="/assets/img/nasheed-1.webp" alt="لقطة تعبيرية للمنشد عبد الرحمن العسيري" loading="lazy" style="object-position:40% 35%"><figcaption>لقطة تعبيرية<span>بورتريه</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/nasheed-2.webp" alt="أثناء الحديث" loading="lazy" style="object-position:60% 30%"><figcaption>أثناء الحديث<span>بورتريه</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/nasheed-3.webp" alt="بورتريه جانبي" loading="lazy" style="object-position:40% 40%"><figcaption>بورتريه جانبي<span>بورتريه</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/nasheed-4.webp" alt="لقطة عفوية" loading="lazy" style="object-position:65% 35%"><figcaption>لقطة عفوية<span>بورتريه</span></figcaption></figure>
+    <div class="wrap">
+      <header class="sh fade"><p class="ab-k">بورتريه وجلسات <b dir="ltr">· PORTRAIT</b></p><h2 class="fit">جلسة المنشد العسيري</h2><p class="d">جلسة تصوير المنشد عبد الرحمن العسيري: إضاءة دافئة وخلفية مكتبة خشبية، تلتقط حركة اليدين وتعابير الحديث.</p></header>
+      <div class="pg">
+        <figure class="ph fade"><img src="/assets/img/nasheed-1.webp" alt="لقطة تعبيرية للمنشد عبد الرحمن العسيري" loading="lazy" decoding="async" style="object-position:40% 35%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 06</span><figcaption>لقطة تعبيرية<span>بورتريه</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/nasheed-2.webp" alt="المنشد عبد الرحمن العسيري أثناء الحديث" loading="lazy" decoding="async" style="object-position:60% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 07</span><figcaption>أثناء الحديث<span>بورتريه</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/nasheed-3.webp" alt="بورتريه جانبي للمنشد عبد الرحمن العسيري" loading="lazy" decoding="async" style="object-position:40% 40%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 08</span><figcaption>بورتريه جانبي<span>بورتريه</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/nasheed-4.webp" alt="لقطة عفوية للمنشد عبد الرحمن العسيري" loading="lazy" decoding="async" style="object-position:65% 35%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 09</span><figcaption>لقطة عفوية<span>بورتريه</span></figcaption></figure>
+      </div>
     </div>
   </section>
 
-  <!-- أعراس -->
   <section class="cat" id="weddings" data-cat="weddings">
-    <div class="cat-h"><h2><small>WEDDINGS</small>تصوير الأعراس والمناسبات</h2><p>لقطات ليلية بإضاءة دافئة وخلفيات ضبابية، تحفظ التفاصيل الصغيرة وملامح اللحظة.</p></div>
-    <div class="pg tall">
-      <figure class="ph fade"><img src="/assets/img/wedding-1.webp" alt="بورتريه ليلي في عرس" loading="lazy" style="object-position:50% 32%"><figcaption>بورتريه ليلي<span>أعراس</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/wedding-2.webp" alt="تفاصيل الخاتم" loading="lazy" style="object-position:55% 62%"><figcaption>تفاصيل الخاتم<span>أعراس</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/wedding-3.webp" alt="لقطة جانبية" loading="lazy" style="object-position:45% 34%"><figcaption>لقطة جانبية<span>أعراس</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/wedding-4.webp" alt="بورتريه أنيق" loading="lazy" style="object-position:50% 30%"><figcaption>بورتريه أنيق<span>أعراس</span></figcaption></figure>
+    <div class="wrap">
+      <header class="sh fade"><p class="ab-k">أعراس ومناسبات <b dir="ltr">· WEDDINGS</b></p><h2 class="fit">لحظات ما تتكرر</h2><p class="d">لقطات ليلية بإضاءة دافئة وخلفيات ضبابية، تحفظ التفاصيل الصغيرة وملامح اللحظة.</p></header>
+      <div class="pg">
+        <figure class="ph fade"><img src="/assets/img/wedding-1.webp" alt="بورتريه ليلي في عرس" loading="lazy" decoding="async" style="object-position:50% 32%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 10</span><figcaption>بورتريه ليلي<span>أعراس</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/wedding-2.webp" alt="تفاصيل الخاتم في عرس" loading="lazy" decoding="async" style="object-position:55% 62%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 11</span><figcaption>تفاصيل الخاتم<span>أعراس</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/wedding-3.webp" alt="لقطة جانبية في عرس" loading="lazy" decoding="async" style="object-position:45% 34%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 12</span><figcaption>لقطة جانبية<span>أعراس</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/wedding-4.webp" alt="بورتريه أنيق في عرس" loading="lazy" decoding="async" style="object-position:50% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 13</span><figcaption>بورتريه أنيق<span>أعراس</span></figcaption></figure>
+      </div>
     </div>
   </section>
 
-  <!-- تصميم -->
   <section class="cat" id="design" data-cat="design">
-    <div class="cat-h"><h2><small>DESIGN &amp; IDENTITY</small>تصميم وهوية بصرية</h2><p>هويتي الشخصية من تصميمي: من الشعار والألوان حتى بطاقة العمل وقوالب السوشيال. نفس المنهج أطبّقه مع علامات عملائي.</p></div>
-    <div class="pg tall c2">
-      <figure class="ph fade"><img src="/assets/img/brand-logo.webp" alt="شعار إسماعيل عثمان: فتحة عدسة بست شفرات" loading="lazy"><figcaption>الشعار<span>هوية بصرية</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/brand-colors.webp" alt="ألوان وخطوط هوية إسماعيل عثمان" loading="lazy"><figcaption>الألوان والخطوط<span>هوية بصرية</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/brand-card.webp" alt="تصميم بطاقة عمل إسماعيل عثمان" loading="lazy"><figcaption>بطاقة العمل<span>مطبوعات</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/brand-social.webp" alt="قوالب سوشيال ميديا لهوية إسماعيل عثمان" loading="lazy"><figcaption>قوالب السوشيال ميديا<span>تصميم محتوى</span></figcaption></figure>
-    </div>
-    <div class="mk" style="margin-top:1rem">
-      <div class="mc fade"><h3>تبغى هوية لنشاطك؟</h3><p>أرسل لك نماذج من التصاميم والهويات اللي تناسب نشاطك مباشرة.</p><a class="ask" href="https://wa.me/966574395924?text=%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B4%D9%88%D9%81%20%D9%86%D9%85%D8%A7%D8%B0%D8%AC%20%D9%85%D9%86%20%D8%AA%D8%B5%D8%A7%D9%85%D9%8A%D9%85%D9%83" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>اطلب النماذج على واتساب</a></div>
+    <div class="wrap">
+      <header class="sh fade"><p class="ab-k">تصميم وهوية بصرية <b dir="ltr">· IDENTITY</b></p><h2 class="fit">هوية تُعرف من أول نظرة</h2><p class="d">هويتي الشخصية من تصميمي: من الشعار والألوان حتى بطاقة العمل وقوالب السوشيال. نفس المنهج أطبّقه مع علامات عملائي.</p></header>
+      <div class="pg c2">
+        <figure class="ph fade"><img src="/assets/img/brand-logo.webp" alt="شعار إسماعيل عثمان: فتحة عدسة بست شفرات" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 14</span><figcaption>الشعار<span>هوية بصرية</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/brand-colors.webp" alt="ألوان وخطوط هوية إسماعيل عثمان" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 15</span><figcaption>الألوان والخطوط<span>هوية بصرية</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/brand-card.webp" alt="تصميم بطاقة عمل إسماعيل عثمان" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 16</span><figcaption>بطاقة العمل<span>مطبوعات</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/brand-social.webp" alt="قوالب سوشيال ميديا لهوية إسماعيل عثمان" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 17</span><figcaption>قوالب السوشيال ميديا<span>تصميم محتوى</span></figcaption></figure>
+      </div>
+      <div class="ask fade"><div><h3>تبغى هوية لنشاطك؟</h3><p>أرسل لك نماذج تناسب نشاطك مباشرة.</p></div><a href="https://wa.me/966574395924?text=%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B4%D9%88%D9%81%20%D9%86%D9%85%D8%A7%D8%B0%D8%AC%20%D9%85%D9%86%20%D8%AA%D8%B5%D8%A7%D9%85%D9%8A%D9%85%D9%83" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>اطلب النماذج</a></div>
     </div>
   </section>
 
-  <!-- كواليس -->
   <section class="cat" id="bts" data-cat="bts">
-    <div class="cat-h"><h2><small>BEHIND THE SCENES</small>خلف الكواليس</h2><p>معدات احترافية خاصة واستوديو متنقل: Sony α7 V، وجيمبال DJI، وإضاءة Godox.</p></div>
-    <div class="pg tall">
-      <figure class="ph w2 fade"><img src="/assets/img/nakhat-branch.webp" alt="نكهة تهامية: واجهة الفرع من الداخل" loading="lazy" style="object-position:50% 38%"><figcaption>إعلان علامة تجارية<span>تصوير فرع مطعم</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/behind-the-camera.webp" alt="إسماعيل عثمان يصوّر بكاميرا سوني على مثبّت DJI" loading="lazy" style="object-position:50% 30%"><figcaption>خلف الكاميرا<span>أثناء التصوير</span></figcaption></figure>
-      <figure class="ph fade"><img src="/assets/img/studio-lighting.webp" alt="استوديو بإضاءة احترافية" loading="lazy"><figcaption>إضاءة وتصوير<span>استوديو متنقل</span></figcaption></figure>
+    <div class="wrap">
+      <header class="sh fade"><p class="ab-k">خلف الكواليس <b dir="ltr">· BTS</b></p><h2 class="fit">استوديو يجيك لين عندك</h2><p class="d">معدات احترافية خاصة واستوديو متنقل: Sony α7 V، وجيمبال DJI، وإضاءة Godox.</p></header>
+      <div class="pg c3">
+        <figure class="ph w2 fade"><img src="/assets/img/nakhat-branch.webp" alt="نكهة تهامية: واجهة الفرع من الداخل" loading="lazy" decoding="async" style="object-position:50% 38%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 18</span><figcaption>تصوير فرع مطعم<span>إعلان علامة تجارية</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/behind-the-camera.webp" alt="إسماعيل عثمان يصوّر بكاميرا سوني على مثبّت DJI" loading="lazy" decoding="async" style="object-position:50% 30%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 19</span><figcaption>خلف الكاميرا<span>أثناء التصوير</span></figcaption></figure>
+        <figure class="ph fade"><img src="/assets/img/studio-lighting.webp" alt="استوديو بإضاءة احترافية" loading="lazy" decoding="async" style="object-position:50% 50%"><i class="vfb" aria-hidden="true"></i><span class="fr" dir="ltr">FR 20</span><figcaption>إضاءة وتصوير<span>استوديو متنقل</span></figcaption></figure>
+      </div>
     </div>
   </section>
 
-  <!-- العلامات -->
-  <section class="cat" id="clients" data-cat="clients">
-    <div class="cat-h"><h2><small>BRANDS</small>علامات اشتغلت معها</h2><p>مطاعم وشركات في مكة وجدة والرياض وخميس مشيط.</p></div>
-    <div class="logos">
-      <div class="lg fade"><img src="/assets/img/logo-nakhat-tihamiya.webp" alt="نكهة تهامية" loading="lazy"></div>
-      <div class="lg fade"><img src="/assets/img/logo-mashwiya.webp" alt="مشوية" loading="lazy"></div>
-      <div class="lg fade"><img src="/assets/img/logo-etlalet-albait.webp" alt="إطلالة البيت" loading="lazy"></div>
-      <div class="lg fade"><img src="/assets/img/logo-musaqqaf-rowad.webp" alt="مسقف رواد البناء" loading="lazy"></div>
-      <div class="lg fade"><img src="/assets/img/logo-dawar-alsaada.webp" alt="دوار السعادة" loading="lazy"></div>
-      <div class="lg fade"><img src="/assets/img/logo-shuun-alghitha.webp" alt="شؤون الغذاء" loading="lazy"></div>
-      <div class="lg dk fade"><img src="/assets/img/logo-hashi-basha.webp" alt="حاشي باشا" loading="lazy"></div>
-      <div class="lg fade"><img src="/assets/img/logo-sanam.webp" alt="سنام" loading="lazy"></div>
+  <section id="services" class="svx cat" data-cat="services" aria-labelledby="svH">
+  <div class="svx-in">
+    <p class="ab-k">خدماتي <b dir="ltr" style="font:600 .72rem/1 ui-monospace,Menlo,monospace;color:rgba(255,255,255,.45);letter-spacing:.14em">· SERVICES</b></p>
+    <h2 id="svH" class="fit">ما أقدّمه لك</h2>
+    <p class="sv-sub">تصوير وتسويق وتصميم في السعودية: خمس خدمات، وشخص واحد مسؤول عن النتيجة.</p>
+    <ol class="svx-grid">
+      <li class="svx-c fade" style="--i:0">
+        <img src="/assets/img/nakhat-branch.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 40%">
+        <i class="vfb" aria-hidden="true"></i>
+        <span class="svx-n" dir="ltr" aria-hidden="true">SC 01</span>
+        <div class="svx-t"><h3><span class="h3-m">نمو العلامات التجارية</span><span class="h3-s">والتسويق الرقمي</span></h3><p>أدير حملاتك الإعلانية على Google وسناب شات وتيك توك وإنستقرام، وأبني حضورًا رقميًا متكاملًا لنشاطك. أقرأ أرقامك وأحسّن إعلاناتك باستمرار لأرفع مبيعاتك وأحقق لك عائدًا حقيقيًا على الاستثمار.</p></div>
+      </li>
+      <li class="svx-c fade" style="--i:1">
+        <img src="/assets/img/behind-the-camera.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 30%">
+        <i class="vfb" aria-hidden="true"></i>
+        <span class="svx-n" dir="ltr" aria-hidden="true">SC 02</span>
+        <div class="svx-t"><h3><span class="h3-m">إنتاج سينمائي</span><span class="h3-s">وتصوير</span></h3><p>أضع بين يديك استوديو متكامل. أصور بدقة ووضوح عالٍ، وأنفذ المونتاج وتصحيح الألوان بأعلى معايير الجودة لأحول أفكارك إلى مشاهد بصرية تعلق في الذاكرة.</p></div>
+      </li>
+      <li class="svx-c fade" style="--i:2">
+        <img src="/assets/img/hero-800.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 25%">
+        <i class="vfb" aria-hidden="true"></i>
+        <span class="svx-n" dir="ltr" aria-hidden="true">SC 03</span>
+        <div class="svx-t"><h3><span class="h3-m">تغطية المؤتمرات</span><span class="h3-s">والفعاليات</span></h3><p>أقدم توثيقًا ميدانيًا احترافيًا لفعالياتك ومعارضك ومؤتمراتك الكبرى، وألتقط أهم اللحظات بمعدات تليق بحجم حدثك ومكانة ضيوفك.</p></div>
+      </li>
+      <li class="svx-c fade" style="--i:3">
+        <img src="/assets/img/poster-nakhat-tihamiya.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 35%">
+        <i class="vfb" aria-hidden="true"></i>
+        <span class="svx-n" dir="ltr" aria-hidden="true">SC 04</span>
+        <div class="svx-t"><h3><span class="h3-m">التصميم</span><span class="h3-s">والهوية البصرية</span></h3><p>أصنع لك هوية بصرية مميزة: المطبوعات وقوائم الطعام واللوحات الإعلانية وتصاميم السوشيال ميديا التي تترجم قوة علامتك التجارية.</p></div>
+      </li>
+      <li class="svx-c fade" style="--i:4">
+        <img src="/assets/img/reel-2.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 45%">
+        <i class="vfb" aria-hidden="true"></i>
+        <span class="svx-n" dir="ltr" aria-hidden="true">SC 05</span>
+        <div class="svx-t"><h3><span class="h3-m">التصوير التجاري</span><span class="h3-s">والمطاعم</span></h3><p>أبرز تفاصيل منتجاتك وأطباقك بأفضل الزوايا والإضاءة السينمائية، ليجذب منتجك عملاءك ويحفّزهم على الشراء.</p></div>
+      </li>
+    </ol>
+    <div class="sa fade">
+      <div class="sa-map">
+        <i class="vfb" aria-hidden="true"></i>
+        <span class="sa-k" dir="ltr" aria-hidden="true">● COVERAGE</span>
+        <h4>أخدم في</h4>
+        <div class="sa-hq"><span class="sa-pulse" aria-hidden="true"></span><strong>مكة المكرمة</strong><em>المقر</em></div>
+        <ul class="sa-cities"><li>جدة</li><li>الرياض</li><li>خميس مشيط</li></ul>
+        <p class="sa-all"><b>جميع مناطق المملكة:</b><span>إدارة الحملات الإعلانية والتصميم عن بُعد.</span></p>
+      </div>
+      <div class="sa-gs">
+        <article class="sa-g">
+          <header><span class="sa-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4a1 1 0 0 0 1 1h2l4 4V5L6 9H4a1 1 0 0 0-1 1zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg></span><b class="sa-no" dir="ltr">01</b></header>
+          <h4>التسويق والإعلانات</h4>
+          <ul><li>تسويق رقمي</li><li>إدارة الحملات الإعلانية</li><li>إعلانات سناب شات وتيك توك</li><li>إعلانات Google وإنستقرام</li><li>إدارة حسابات التواصل الاجتماعي</li></ul>
+        </article>
+        <article class="sa-g">
+          <header><span class="sa-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zm0-2a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg></span><b class="sa-no" dir="ltr">02</b></header>
+          <h4>التصوير والإنتاج</h4>
+          <ul><li>تصوير إعلانات المطاعم</li><li>تصوير المنتجات</li><li>تصوير الأطباق والمنيو</li><li>مونتاج الفيديو</li><li>تغطية الفعاليات والافتتاحات</li></ul>
+        </article>
+        <article class="sa-g sa-dz">
+          <header><span class="sa-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zm17.7-10.2a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><b class="sa-no" dir="ltr">03</b></header>
+          <h4>التصميم</h4>
+          <ul><li>الهوية البصرية والشعارات</li><li>تصميم السوشيال ميديا</li><li>الإعلانات الرقمية والبنرات</li><li>المنيو وقوائم الطعام</li><li>البوسترات واللوحات الإعلانية</li><li>المطبوعات: بروشور، فلاير، كروت</li><li>التغليف والملصقات</li><li>البروفايل والعروض التقديمية</li><li>الإنفوجرافيك</li><li>أغلفة الفيديو والثمبنيل</li></ul>
+        </article>
+      </div>
     </div>
-  </section>
-
-  <section class="end fade">
-    <h2>تبغى نفس النتيجة لنشاطك؟</h2>
-    <p>كلمني على واتساب، أو احجز استشارة مجانية وأقترح لك الخدمة الأنسب.</p>
-    <div class="ctas">
-      <a class="cta a" href="https://wa.me/966574395924?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%D9%83%20%D9%88%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>تواصل واتساب</a>
-      <a class="cta b" href="/consultation/">احجز استشارة مجانية</a>
-    </div>
-  </section>
+  </div>
+</section>
 </main>
 
+<div class="end-w">
+  <section class="end fade">
+    <img src="/assets/img/nakhat-branch.webp" alt="" loading="lazy">
+    <i class="vfb" aria-hidden="true"></i>
+    <p class="ab-k" style="justify-content:center">الخطوة الجاية</p>
+    <h2 class="fit">تبغى نفس النتيجة لنشاطك؟</h2>
+    <p>كلمني على واتساب، أو احجز استشارة مجانية وأقترح لك الخدمة الأنسب.</p>
+    <div class="ctas">
+      <a class="btn w" href="https://wa.me/966574395924?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%D9%83%20%D9%88%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>تواصل واتساب</a>
+      <a class="btn g" href="/consultation/">احجز استشارة مجانية</a>
+    </div>
+  </section>
+</div>
+
 <footer class="foot">
-  <a href="/">الرئيسية</a>
-  <a href="/consultation/">استشارة مجانية</a>
-  <a href="/assets/ismueil-osman-profile.pdf" target="_blank" rel="noopener">مشاهدة البروفايل</a>
-  <a href="https://www.alwatan.com.sa/author/15812" target="_blank" rel="noopener">كتاباتي في صحيفة الوطن</a>
+  <div class="foot-in">
+    <nav aria-label="روابط الموقع">
+      <a href="/">الرئيسية</a>
+      <a href="/consultation/">استشارة مجانية</a>
+      <a href="/assets/ismueil-osman-profile.pdf" target="_blank" rel="noopener">مشاهدة البروفايل</a>
+      <a href="https://www.alwatan.com.sa/author/15812" target="_blank" rel="noopener">كتاباتي في صحيفة الوطن</a>
+    </nav>
+    <small dir="ltr">© 2026 ISMUEIL OSMAN</small>
+  </div>
 </footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="عرض الصورة">
@@ -330,50 +583,66 @@ main{max-width:76rem;margin:0 auto;padding:0 1.25rem 3rem}
 <script>
 (function(){
   var $=function(s,r){return (r||document).querySelectorAll(s)};
+  /* سطر واحد دائمًا: يصغّر الخط إذا ما وسعه العرض */
+  function fit(){$('.fit').forEach(function(el){el.style.fontSize='';var cs=parseFloat(getComputedStyle(el).fontSize),w=el.clientWidth,i=0;if(!w)return;while(el.scrollWidth>w+1&&i<30){cs*=.96;el.style.fontSize=cs+'px';i++}})}
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);fit();
+  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(fit,120)});
+  /* شريط العلامات المتحرك (نفس الرئيسية) */
+  var t=document.getElementById('pt'),t2=document.getElementById('pt2');
+  if(t&&t2){var base=[].slice.call(t.children);base.slice().reverse().forEach(function(c){t2.appendChild(c.cloneNode(true))});
+    var need=Math.max(window.innerWidth,screen.width||0,1400);
+    [t,t2].forEach(function(row){var one=row.innerHTML,w=row.getBoundingClientRect().width||1100,reps=Math.max(2,Math.ceil(need/w)),half='';for(var i=0;i<reps;i++)half+=one;row.innerHTML=half+half;var n=row.children.length/2;[].slice.call(row.children).forEach(function(c,i){if(i>=n)c.setAttribute('aria-hidden','true')})})}
+  /* عدّاد الكاميرا */
+  var tc=document.getElementById('tc'),t0=performance.now();
+  function pad(n){return n<10?'0'+n:''+n}
+  setInterval(function(){if(document.hidden||scrollY>innerHeight)return;var ms=performance.now()-t0,s=Math.floor(ms/1000);tc.textContent=pad(Math.floor(s/3600))+':'+pad(Math.floor(s/60)%60)+':'+pad(s%60)+':'+pad(Math.floor(ms/40)%25)},40);
+  /* الهيدر يختفي وأنت تنزل ويرجع وأنت تطلع */
+  var nav=document.getElementById('nav'),ly=scrollY;
+  addEventListener('scroll',function(){var y=scrollY;nav.classList.toggle('hide',y>ly&&y>innerHeight*.6);ly=y},{passive:true});
   /* الأقسام */
   var tabs=$('.tab'),cats=$('.cat');
   function show(f,scroll){
     tabs.forEach(function(t){t.setAttribute('aria-pressed',t.dataset.f===f?'true':'false')});
     cats.forEach(function(c){c.hidden=!(f==='all'||c.dataset.cat===f)});
-    pauseAll();reveal();
-    if(scroll){var n=document.querySelector('.tabs');window.scrollTo({top:n.offsetTop-1,behavior:'smooth'})}
+    pauseAll();reveal();fit();
+    if(scroll){var n=document.querySelector('.tabs'),top=n.getBoundingClientRect().top+scrollY;window.scrollTo({top:top,behavior:'smooth'})}
     try{history.replaceState(null,'',f==='all'?location.pathname:'#'+f)}catch(e){}
   }
   tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.f,true);t.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})})});
-  var h=location.hash.slice(1);if(h&&document.querySelector('.cat[data-cat="'+h+'"]'))show(h,false);
   /* الفيديو: يشتغل لحاله بدون صوت وأنت تمرر، والضغط يشغّل الصوت. إعلان نكهة تهامية يحاول يشتغل بالصوت */
-  var boxes=[].slice.call($('.vv')),hero=document.querySelector('.vc.wide .vv'),wantLoud=hero;
+  var boxes=[].slice.call($('.vv')),hero=document.querySelector('.feat .vv'),wantLoud=hero;
   function vid(b){return b.querySelector('video')}
   function load(v){if(!v.src)v.src=v.dataset.src}
   function quiet(ex){boxes.forEach(function(b){if(b!==ex){vid(b).muted=true;b.classList.remove('loud')}})}
   function play(b,loud){var v=vid(b);load(v);v.muted=!loud;var p=v.play();b.classList.add('on');
     if(loud){quiet(b);b.classList.add('loud')}
     if(p&&p.catch)p.catch(function(){v.muted=true;b.classList.remove('loud');v.play().catch(function(){b.classList.remove('on')})})}
-  function pauseAll(){(boxes||[]).forEach(function(b){var v=vid(b);if(!v.paused)v.pause();b.classList.remove('on','loud');v.muted=true})}
+  function pauseAll(){boxes.forEach(function(b){var v=vid(b);if(!v.paused)v.pause();b.classList.remove('on','loud');v.muted=true})}
   boxes.forEach(function(b){b.addEventListener('click',function(){var v=vid(b);
     if(v.paused||v.muted){wantLoud=b;play(b,true)}else{v.muted=true;b.classList.remove('loud');wantLoud=null}})});
-  /* أول لمسة في الصفحة تفتح الصوت لإعلان نكهة تهامية إذا كان ظاهر (المتصفح يمنع الصوت قبل أي تفاعل) */
   var armed=true;function firstTouch(e){if(!armed)return;armed=false;if(e&&e.target&&e.target.closest&&e.target.closest('.vv'))return;
-    if(wantLoud===hero&&!vid(hero).paused&&hero.getBoundingClientRect().bottom>0&&hero.getBoundingClientRect().top<innerHeight){vid(hero).muted=false;quiet(hero);hero.classList.add('loud')}}
+    if(hero&&wantLoud===hero&&!vid(hero).paused){var r=hero.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){vid(hero).muted=false;quiet(hero);hero.classList.add('loud')}}}
   ['pointerdown','keydown','touchend'].forEach(function(ev){addEventListener(ev,firstTouch,{passive:true})});
   if('IntersectionObserver' in window){var vo=new IntersectionObserver(function(es){es.forEach(function(e){var b=e.target,v=vid(b);
       if(e.isIntersecting){if(v.paused)play(b,b===wantLoud)}else if(!v.paused){v.pause();b.classList.remove('on','loud');v.muted=true}})},{threshold:.55});
     boxes.forEach(function(b){vo.observe(b)})}
   /* تكبير الصور */
   var lb=document.getElementById('lb'),li=lb.querySelector('img'),lt=lb.querySelector('.lb-t'),list=[],idx=0;
-  function open(i){list=[].filter.call($('.ph'),function(f){return !f.closest('.cat').hidden});idx=i;draw();lb.classList.add('on');document.body.style.overflow='hidden'}
-  function draw(){var f=list[idx],im=f.querySelector('img');li.src=im.currentSrc||im.src;li.alt=im.alt;lt.textContent=f.querySelector('figcaption').firstChild.textContent}
+  function vis(){return [].filter.call($('.ph'),function(f){return !f.closest('.cat').hidden})}
+  function open(i){list=vis();idx=i;draw();lb.classList.add('on');document.body.style.overflow='hidden'}
+  function draw(){var f=list[idx],im=f.querySelector('img'),c=f.querySelector('figcaption');li.src=im.currentSrc||im.src;li.alt=im.alt;lt.innerHTML='';lt.appendChild(document.createTextNode(c.firstChild.textContent));var sm=document.createElement('small');sm.dir='ltr';sm.textContent='FR '+(idx<9?'0':'')+(idx+1)+' / '+list.length;lt.appendChild(sm)}
   function close(){lb.classList.remove('on');document.body.style.overflow=''}
   function step(d){idx=(idx+d+list.length)%list.length;draw()}
-  $('.ph').forEach(function(f){f.tabIndex=0;f.setAttribute('role','button');f.addEventListener('click',function(){var vis=[].filter.call($('.ph'),function(x){return !x.closest('.cat').hidden});open(vis.indexOf(f))});f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();f.click()}})});
+  $('.ph').forEach(function(f){f.tabIndex=0;f.setAttribute('role','button');f.addEventListener('click',function(){open(vis().indexOf(f))});f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();f.click()}})});
   lb.querySelector('.lb-c').onclick=close;lb.querySelector('.lb-n.p').onclick=function(){step(-1)};lb.querySelector('.lb-n.x').onclick=function(){step(1)};
   lb.addEventListener('click',function(e){if(e.target===lb)close()});
   document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')step(1);if(e.key==='ArrowRight')step(-1)});
   var sx=0;lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)step(dx<0?1:-1)});
   /* ظهور ناعم */
-  var fo='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');fo.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'}):null;
-  function reveal(){$('.fade').forEach(function(el){if(fo)fo.observe(el);else el.classList.add('in')})}
+  var fo='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');fo.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px'}):null;
+  function reveal(){$('.fade:not(.is-in)').forEach(function(el){if(fo)fo.observe(el);else el.classList.add('is-in')})}
   reveal();
+  var h=location.hash.slice(1);if(h&&document.querySelector('.cat[data-cat="'+h+'"]'))show(h,false);
 })();
 </script>
 </body>
