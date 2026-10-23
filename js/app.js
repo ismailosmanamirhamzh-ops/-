@@ -832,3 +832,5 @@ try{
   window.APX={snap:function(){svgs.forEach(function(s){anim(s,[OPEN,0,OPEN],520)})}};
 })();
 }catch(e){console.error(e)}
+
+try{(function(){var q='img,video,canvas,picture,figure,.vv,.ph';document.addEventListener('contextmenu',function(e){if(e.target.closest&&e.target.closest(q))e.preventDefault()});document.addEventListener('dragstart',function(e){if(e.target.closest&&e.target.closest('img,video'))e.preventDefault()});function nd(){[].forEach.call(document.querySelectorAll('video'),function(v){v.setAttribute('controlslist','nodownload noremoteplayback');v.setAttribute('disablepictureinpicture','')})}nd();addEventListener('load',nd)})();}catch(e){}

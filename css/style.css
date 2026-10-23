@@ -667,3 +667,5 @@ header nav{gap:.6rem}
 .hx-p2{display:block;margin-top:.15rem;color:var(--amber);font-weight:800}
 #cf-ok h3:focus{outline:none}
 @media(min-width:768px){.md\:col-span-3,.exec.md\:col-span-3{grid-column:span 3/span 3}}
+
+img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
