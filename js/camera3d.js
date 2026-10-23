@@ -18,7 +18,8 @@ function init() {
   try {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
   } catch (e) { if (window.__c3fail) window.__c3fail(); else document.documentElement.classList.remove('c3p'); return; }
-  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+  const coarse = matchMedia('(pointer:coarse)').matches;
+  const DPR = Math.min(window.devicePixelRatio || 1, coarse ? 1.5 : 2);
   renderer.setPixelRatio(DPR);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;

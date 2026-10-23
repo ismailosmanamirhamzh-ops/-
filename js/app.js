@@ -10,10 +10,10 @@ try{
   var W=0,H=0,DY=0,LX=.31,LY2=.73,LW=.47;
   function size(){W=Math.min(innerWidth*.86,innerHeight*.6*1000/936,700);H=W*936/1000;DY=Math.min(34,innerHeight*.05)}
   size();
-  var sway=0;
+  var sway=0,sy=window.scrollY-sec.offsetTop;
   function ease(c){return c<.5?4*c*c*c:1-Math.pow(-2*c+2,3)/2}
   function update(){
-    var y=window.scrollY-sec.offsetTop,c=P1?clamp(y/P1):1,e=ease(c),z=Math.max(0,y-P1);
+    var y=sy,c=P1?clamp(y/P1):1,e=ease(c),z=Math.max(0,y-P1);
     if(!reduce){
       var k=1-e,sEnd=Math.max(1.1,340/(LW*W)),s=1+(sEnd-1)*e;
       var ry=-24*k+sway*k,rx=8*k-Math.abs(sway)*.12*k;
@@ -66,33 +66,22 @@ try{
       afTimer=setTimeout(function(){txt.classList.add('af-lock');vf.classList.add('vf-lock');flash()},820);
     }else if(c<.4&&shot){shot=false;clearTimeout(afTimer);txt.classList.remove('af-go','af-lock');vf.classList.remove('vf-af','vf-lock')}
   }
-  /* ===== دوران تلقائي: أول سحب يدير الكاميرا ويفتح العدسة تلقائيًا ===== */
-  var auto=false,lastY=window.scrollY,tk=false;
-  function req(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;update()})}}
-  function go(to){
-    if(auto||reduce)return;auto=true;
-    var from=window.scrollY,t0=performance.now(),d=Math.max(900,Math.abs(to-from)/P1*2000);
-    (function f(t){
-      var p=clamp((t-t0)/d);window.scrollTo({top:from+(to-from)*ease(p),behavior:'instant'});update();
-      if(p<1)requestAnimationFrame(f);else{auto=false;lastY=window.scrollY}
-    })(t0);
+  /* ===== الدوران مربوط بالتمرير مباشرة مع تنعيم (بدون سحب الصفحة أو حجز اللمس) ===== */
+  var run=false,secVis=true;
+  function loop(t){
+    var ty=window.scrollY-sec.offsetTop;
+    var d=ty-sy;sy=Math.abs(d)<.4?ty:sy+d*.16;
+    if(!reduce&&sy<P1&&sy>-innerHeight)sway+=((Math.sin(t/1200)*13)-sway)*.08;
+    update();
+    var idle=sy===ty&&(reduce||sy>=P1||sy<=-innerHeight);
+    if(secVis&&!document.hidden&&!idle)requestAnimationFrame(loop);else run=false;
   }
-  var block=function(e){if(auto&&e.cancelable)e.preventDefault()};
-  window.addEventListener('wheel',block,{passive:false});window.addEventListener('touchmove',block,{passive:false});
-  window.addEventListener('keydown',function(e){if(auto&&[32,33,34,35,36,38,40].indexOf(e.keyCode)>-1)e.preventDefault()});
-  var ua=-1e9,nav=0;
-  ['wheel','touchstart','touchmove','keydown','mousedown'].forEach(function(ev){window.addEventListener(ev,function(){ua=performance.now()},{passive:true})});
-  document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a[href^="#"]')){nav=performance.now()+2500}});
-  window.addEventListener('scroll',function(){
-    var y=window.scrollY,dy=y-lastY,now=performance.now(),ry=y-sec.offsetTop;
-    if(!auto){lastY=y;if(!reduce&&P1&&ry>3&&ry<P1-3&&dy!==0&&now-ua<700&&now>nav){go(sec.offsetTop+(dy>0?P1:0));return}}
-    req();
-  },{passive:true});
-  window.addEventListener('resize',function(){size();req()});
-  /* حركة هادئة تلقائية قبل السحب */
-  if(!reduce){(function idle(t){
-    var ry=window.scrollY-sec.offsetTop;if(ry<P1&&ry>-innerHeight){sway=Math.sin(t/1200)*13;update()}
-    requestAnimationFrame(idle)})(0)}
+  function kick(){if(!run){run=true;requestAnimationFrame(loop)}}
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){secVis=es[0].isIntersecting;if(secVis)kick()},{rootMargin:'200px 0px'}).observe(sec);
+  window.addEventListener('scroll',kick,{passive:true});
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)kick()});
+  window.addEventListener('resize',function(){size();kick()});
+  kick();
   update();
 })();
 }catch(e){console.error(e)}
