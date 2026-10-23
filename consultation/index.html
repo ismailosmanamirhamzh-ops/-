@@ -190,7 +190,9 @@ textarea{resize:vertical;min-height:5.5rem}
 <script>
 (function(){
   var f=document.getElementById('cform'),$=function(i){return document.getElementById(i)};
+  var GS='https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec';
   var EP='https://formsubmit.co/ajax/ismailosmanamirhamzh@gmail.com';
+  function post(url,opt,ms){var ctl=new AbortController(),to=setTimeout(function(){ctl.abort()},ms);opt.signal=ctl.signal;return fetch(url,opt).then(function(r){clearTimeout(to);return r.json().catch(function(){return {}}).then(function(j){if(!r.ok||j.ok===false||j.success===false||j.success==='false')throw 0;return j})},function(e){clearTimeout(to);throw e})}
   function digits(v){v=(v||'').replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)}).replace(/[^\d+]/g,'');if(/^\+?966/.test(v))v='0'+v.replace(/^\+?966/,'');return v}
   function setErr(id,el,msg){$(id).textContent=msg||'';el.classList.toggle('bad',!!msg);return !msg}
   function check(){
@@ -208,12 +210,13 @@ textarea{resize:vertical;min-height:5.5rem}
     if($('c-hp').value){prime();done();return}
     var name=$('c-name').value.trim(),d={'الاسم':name,'رقم الجوال':digits($('c-phone').value),'نوع النشاط':$('c-act').value,'الخدمة المطلوبة':$('c-svc').value,'المدينة':$('c-city').value||'—','التفاصيل':$('c-notes').value.trim()||'—','_subject':'طلب استشارة مجانية من الموقع: '+name,'_template':'table','_captcha':'false'};
     prime();var b=$('c-send');b.disabled=true;b.textContent='جارٍ الإرسال…';
-    var ctl=new AbortController(),to=setTimeout(function(){ctl.abort()},20000);
-    fetch(EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d),signal:ctl.signal})
-      .then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok||j.success===false||j.success==='false')throw 0})})
-      .then(done)
-      .catch(function(){st.className='status e';st.innerHTML='تعذّر الإرسال الآن. <a href="https://wa.me/966574395924?text='+encodeURIComponent('طلب استشارة مجانية\nالاسم: '+d['الاسم']+'\nالنشاط: '+d['نوع النشاط']+'\nالخدمة: '+d['الخدمة المطلوبة'])+'" target="_blank" rel="noopener">أرسل الطلب عبر واتساب</a>'})
-      .then(function(){clearTimeout(to);b.disabled=false;b.textContent='اطلب استشارتك المجانية'});
+    var slow=setTimeout(function(){b.textContent='لحظات، طلبك في الطريق…'},6000);
+    var wa='https://wa.me/966574395924?text='+encodeURIComponent('طلب استشارة مجانية\nالاسم: '+d['الاسم']+'\nالجوال: '+d['رقم الجوال']+'\nالنشاط: '+d['نوع النشاط']+'\nالخدمة: '+d['الخدمة المطلوبة']+'\nالمدينة: '+d['المدينة']);
+    var g={name:name,phone:d['رقم الجوال'],activity:d['نوع النشاط'],service:d['الخدمة المطلوبة'],city:d['المدينة'],notes:d['التفاصيل'],page:location.href};
+    post(GS,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(g)},15000)
+      .catch(function(){return post(EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)},40000)})
+      .then(function(){done()},function(){done(wa)})
+      .then(function(){clearTimeout(slow);b.disabled=false;b.textContent='اطلب استشارتك المجانية'});
   });
   var AC=null;
   function prime(){try{if(!AC){var C=window.AudioContext||window.webkitAudioContext;if(C)AC=new C()}if(AC&&AC.state==='suspended')AC.resume()}catch(x){}}
@@ -224,7 +227,8 @@ textarea{resize:vertical;min-height:5.5rem}
     var o=AC.createOscillator(),g=AC.createGain();o.type='sawtooth';o.frequency.setValueAtTime(90,t+.2);o.frequency.linearRampToValueAtTime(70,t+1.2);g.gain.setValueAtTime(0,t+.2);g.gain.linearRampToValueAtTime(.05,t+.3);g.gain.linearRampToValueAtTime(0,t+1.2);var lp=AC.createBiquadFilter();lp.type='lowpass';lp.frequency.value=500;o.connect(lp).connect(g).connect(AC.destination);o.start(t+.2);o.stop(t+1.25);
     /* success chime */
     tone(t+1.3,784,.5,.18);tone(t+1.45,1047,.6,.16);tone(t+1.6,1319,.9,.14)}catch(x){}}
-  function done(){
+  function done(wa){
+    var cf=$('okConfirm');if(wa){if(!cf){cf=document.createElement('a');cf.id='okConfirm';cf.target='_blank';cf.rel='noopener';cf.style.cssText='display:block;margin:.9rem auto 0;max-width:22rem;text-align:center;font:800 .95rem Tajawal,sans-serif;color:#25d366';$('okBox').appendChild(cf)}cf.href=wa;cf.textContent='للتأكيد أسرع، أرسل طلبك واتساب ←'}
     var nm=$('c-name').value.trim().split(/\s+/)[0]||'';$('okName').textContent=nm?'شكرًا '+nm:'';
     $('formBox').style.display='none';var ok=$('okBox');ok.classList.add('on');
     var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
