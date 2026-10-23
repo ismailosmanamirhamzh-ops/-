@@ -429,7 +429,7 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
 <body>
 <header class="nav" id="nav">
   <a class="brand" href="/" aria-label="إسماعيل عثمان، الصفحة الرئيسية">
-    <svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#f2b45a" stroke-width="6"/><circle r="38" fill="#f2b45a"/><circle r="15" fill="#07080c"/></svg>
+    <svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#f2b45a" stroke-width="5"/><circle r="41" fill="#f2b45a"/><polygon fill="#07080c" points="4.74,-19.02 18.84,-5.40 14.10,13.62 -4.74,19.02 -18.84,5.40 -14.10,-13.62"/><g stroke="#07080c" stroke-width="3" stroke-linecap="round"><line x1="4.74" y1="-19.02" x2="-15.06" y2="-38.14"/><line x1="18.84" y1="-5.40" x2="25.50" y2="-32.11"/><line x1="14.10" y1="13.62" x2="40.55" y2="6.03"/><line x1="-4.74" y1="19.02" x2="15.06" y2="38.14"/><line x1="-18.84" y1="5.40" x2="-25.50" y2="32.11"/><line x1="-14.10" y1="-13.62" x2="-40.55" y2="-6.03"/></g></svg>
     <span>إسماعيل <b>عثمان</b></span>
   </a>
   <nav class="nav-l" aria-label="روابط">
@@ -730,7 +730,7 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
     <nav aria-label="روابط الموقع">
       <a href="/">الرئيسية</a>
       <a href="/consultation/">استشارة مجانية</a>
-      <a href="/assets/ismueil-osman-profile.pdf" target="_blank" rel="noopener">مشاهدة البروفايل</a>
+      <a href="/assets/ismueil-osman-profile.pdf?v=3" target="_blank" rel="noopener">مشاهدة البروفايل</a>
       <a href="https://www.alwatan.com.sa/author/15812" target="_blank" rel="noopener">كتاباتي في صحيفة الوطن</a>
     </nav>
     <small dir="ltr">© 2026 ISMUEIL OSMAN</small>
@@ -888,7 +888,7 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
   function setLang(l){if(l===lang)return;lang=l;var h=document.documentElement;
     if(l==='en'){toEn();h.lang='en';h.dir='ltr';lb_.textContent='ع';lb_.setAttribute('lang','ar');lb_.setAttribute('aria-label','التبديل إلى العربية')}
     else{toAr();h.lang='ar';h.dir='rtl';lb_.textContent='EN';lb_.setAttribute('lang','en');lb_.setAttribute('aria-label','Switch to English')}
-    document.title=TT[l];try{localStorage.setItem('lang',l)}catch(e){}fit();
+    document.title=TT[l];try{localStorage.setItem('lang',l)}catch(e){}fit();document.querySelectorAll('a[href*="ismueil-osman-profile"]').forEach(function(a){a.href=l==='en'?'/assets/ismueil-osman-profile-en.pdf?v=3':'/assets/ismueil-osman-profile.pdf?v=3'});
   }
   lb_.addEventListener('click',function(){setLang(lang==='ar'?'en':'ar')});
   var qp=(location.search.match(/[?&]lang=(en|ar)/)||[])[1];

@@ -267,6 +267,7 @@ try{
     if(l==='en'){toEn();h.lang='en';h.dir='ltr';btn.textContent='العربية';btn.setAttribute('aria-label','التبديل إلى العربية')}
     else{toAr();h.lang='ar';h.dir='rtl';btn.textContent='English';btn.setAttribute('aria-label','Switch to English')}
     try{localStorage.setItem('lang',l)}catch(e){}
+    document.querySelectorAll('a[href*="ismueil-osman-profile"]').forEach(function(a){a.href=l==='en'?'/assets/ismueil-osman-profile-en.pdf?v=3':'/assets/ismueil-osman-profile.pdf?v=3'});
     window.dispatchEvent(new Event('resize'));window.dispatchEvent(new Event('langchange'));
   }
   btn.addEventListener('click',function(){set(lang==='ar'?'en':'ar')});
