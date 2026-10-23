@@ -13,7 +13,7 @@ try{
   var sway=0;
   function ease(c){return c<.5?4*c*c*c:1-Math.pow(-2*c+2,3)/2}
   function update(){
-    var y=window.scrollY,c=P1?clamp(y/P1):1,e=ease(c),z=Math.max(0,y-P1);
+    var y=window.scrollY-sec.offsetTop,c=P1?clamp(y/P1):1,e=ease(c),z=Math.max(0,y-P1);
     if(!reduce){
       var k=1-e,sEnd=Math.max(1.1,340/(LW*W)),s=1+(sEnd-1)*e;
       var ry=-24*k+sway*k,rx=8*k-Math.abs(sway)*.12*k;
@@ -33,7 +33,7 @@ try{
   }
   /* ===== شاشة الكاميرا (Viewfinder) + قفل التركيز على الاسم + الفلاش ===== */
   var host=stage.parentElement,vf=null,tc=null,vfOn=false,vfT0=0,shot=false,afTimer=0,fb=null;
-  var h1=txt.querySelector('h1'),af=null;
+  var h1=txt.querySelector('.hero-name'),af=null;
   if(!reduce){
     vf=document.createElement('div');vf.className='vf';vf.setAttribute('aria-hidden','true');vf.dir='ltr';
     vf.innerHTML='<i class="vf-c tl"></i><i class="vf-c tr"></i><i class="vf-c bl"></i><i class="vf-c br"></i>'+
@@ -84,23 +84,23 @@ try{
   ['wheel','touchstart','touchmove','keydown','mousedown'].forEach(function(ev){window.addEventListener(ev,function(){ua=performance.now()},{passive:true})});
   document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a[href^="#"]')){nav=performance.now()+2500}});
   window.addEventListener('scroll',function(){
-    var y=window.scrollY,dy=y-lastY,now=performance.now();
-    if(!auto){lastY=y;if(!reduce&&P1&&y>3&&y<P1-3&&dy!==0&&now-ua<700&&now>nav){go(dy>0?P1:0);return}}
+    var y=window.scrollY,dy=y-lastY,now=performance.now(),ry=y-sec.offsetTop;
+    if(!auto){lastY=y;if(!reduce&&P1&&ry>3&&ry<P1-3&&dy!==0&&now-ua<700&&now>nav){go(sec.offsetTop+(dy>0?P1:0));return}}
     req();
   },{passive:true});
   window.addEventListener('resize',function(){size();req()});
   /* حركة هادئة تلقائية قبل السحب */
   if(!reduce){(function idle(t){
-    if(window.scrollY<P1){sway=Math.sin(t/1200)*13;update()}
+    var ry=window.scrollY-sec.offsetTop;if(ry<P1&&ry>-innerHeight){sway=Math.sin(t/1200)*13;update()}
     requestAnimationFrame(idle)})(0)}
   update();
 })();
 }catch(e){console.error(e)}
 try{
 /* خلفية الواجهة: مونتاج قصير من الأعمال والكواليس */
-(function(){
-  var v=document.getElementById('heroVid'),ph=document.getElementById('heroPhoto'),top=document.getElementById('top');
-  if(!v)return;
+[['hxVid','hxBg','hero'],['heroVid','heroPhoto','top']].forEach(function(ids){(function(){
+  var v=document.getElementById(ids[0]),ph=document.getElementById(ids[1]),top=document.getElementById(ids[2]);
+  if(!v||!top)return;
   var c=navigator.connection;
   /* يشتغل على كل الأجهزة، حتى مع «تقليل الحركة» أو «توفير البيانات» (الملف أقل من 1 ميقا) */
   var cur='';
@@ -122,7 +122,7 @@ try{
     if(es[0].isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause();
   }).observe(top);
   document.addEventListener('visibilitychange',function(){if(document.hidden)v.pause();else if(top.getBoundingClientRect().bottom>0)v.play().catch(function(){})});
-})();
+})()});
 }catch(e){console.error(e)}
 try{
 (function(){
