@@ -35,6 +35,8 @@ a{color:inherit}
 .brand svg{width:1.6rem;height:1.6rem}
 .back{font:700 .9rem Tajawal,sans-serif;text-decoration:none;color:var(--mute);padding:.5rem .95rem;border:1px solid var(--line);border-radius:999px}
 .back:hover{color:var(--text);border-color:rgba(242,180,90,.5)}
+.tr{display:flex;align-items:center;gap:.5rem}.lng{font:800 .78rem/1 ui-monospace,Menlo,Consolas,monospace;color:var(--text);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.6rem .75rem;cursor:pointer}.lng:hover{border-color:var(--amber);color:var(--amber)}
+.brand,.back{white-space:nowrap}
 .wrap{max-width:72rem;margin:0 auto;padding:1.5rem 1.25rem 4rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:2.5rem;align-items:start}
 .badge{display:inline-flex;align-items:center;gap:.5rem;font:800 .85rem Tajawal,sans-serif;color:#0b0c10;background:var(--amber);padding:.4rem .9rem;border-radius:999px}
 .badge i{width:.5rem;height:.5rem;border-radius:50%;background:#0b0c10;animation:p 1.6s ease-in-out infinite}
@@ -122,7 +124,7 @@ textarea{resize:vertical;min-height:5.5rem}
     <svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#f2b45a" stroke-width="6"/><circle r="38" fill="#f2b45a"/><circle r="15" fill="#07080c"/></svg>
     <span>إسماعيل <b>عثمان</b></span>
   </a>
-  <a class="back" href="/">العودة للرئيسية</a>
+  <div class="tr"><button class="lng" id="langBtn" type="button" lang="en" aria-label="Switch to English">EN</button><a class="back" href="/">العودة للرئيسية</a></div>
 </header>
 
 <main class="wrap">
@@ -189,6 +191,40 @@ textarea{resize:vertical;min-height:5.5rem}
 
 <script>
 (function(){
+  var EN={"إسماعيل":"Ismueil","عثمان":"Osman","العودة للرئيسية":"Home","مجانية تمامًا":"Completely free","احجز استشارتك":"Book your","المجانية الآن":"free consultation",
+  "أخبرني عن نشاطك، وأرد عليك خلال":"Tell me about your business and I'll reply within","24 ساعة":"24 hours","بخطة مبدئية مخصّصة: وش تحتاج، ومن وين نبدأ، وكم تكلّف تقريبًا.":"with a tailored first plan: what you need, where to start, and roughly what it costs.",
+  "تحليل وضع نشاطك الحالي":"A review of where you stand","حساباتك وإعلاناتك وصورك، ووين الفرص الضائعة.":"Your accounts, ads and visuals, and the opportunities you're missing.",
+  "اقتراح الخدمة الأنسب لك":"The right service for you","تصوير، أو حملات إعلانية، أو تصميم، أو باقة متكاملة.":"Filming, ad campaigns, design, or a full package.",
+  "تقدير مبدئي للتكلفة والمدة":"An early cost and timeline estimate","صورة واضحة قبل ما تقرر، بدون مفاجآت.":"A clear picture before you decide, with no surprises.",
+  "بدون أي التزام":"No commitment","الاستشارة مجانية، والقرار بعدها لك.":"The consultation is free, and the decision is yours.",
+  "كاتب في صحيفة الوطن":"Writer at Al-Watan newspaper","+7 علامات تجارية":"7+ brands","نمو مبيعات حتى 35%":"Sales growth up to 35%","واتساب أعمال موثّق":"Verified WhatsApp Business",
+  "بيانات طلب الاستشارة":"Consultation request","دقيقة واحدة، وأتواصل معك على جوالك.":"One minute, and I'll get back to you on your phone.",
+  "الاسم":"Name","رقم الجوال":"Mobile number","نوع النشاط":"Business type","اختر نوع النشاط":"Choose a business type","مطعم أو كافيه":"Restaurant or café","متجر أو منتجات":"Store or products","عقارات وتطوير":"Real estate & development","خدمات وشركات":"Services & companies","فعاليات ومناسبات":"Events & occasions","شخصية عامة / صانع محتوى":"Public figure / content creator","أخرى":"Other",
+  "الخدمة المطلوبة":"Service needed","اختر الخدمة":"Choose a service","تصوير إعلانات ومنتجات":"Ad & product filming","إدارة الحملات الإعلانية":"Ad campaign management","إدارة حسابات التواصل الاجتماعي":"Social media management","تصميم وهوية بصرية":"Design & visual identity","تغطية فعالية أو افتتاح":"Event or opening coverage","باقة متكاملة":"Full package","غير متأكد، أحتاج رأيك":"Not sure, I need your advice",
+  "المدينة":"City","اختر المدينة (اختياري)":"Choose a city (optional)","مكة المكرمة":"Makkah","جدة":"Jeddah","الرياض":"Riyadh","خميس مشيط":"Khamis Mushait","مدينة أخرى":"Other city",
+  "تفاصيل مشروعك (اختياري)":"Project details (optional)","اطلب استشارتك المجانية":"Request my free consultation","أو":"or","تحدّث معي مباشرة على واتساب":"Chat with me on WhatsApp","بياناتك تُستخدم للتواصل معك بخصوص طلبك فقط.":"Your details are only used to contact you about your request.",
+  "جاهز ترفع مبيعاتك؟ 🚀":"Ready to grow your sales? 🚀","وصلني طلبك، والخطوة الجاية علي":"Got your request, the next step is mine","أتواصل معك خلال 24 ساعة على جوالك إن شاء الله، ونبدأ نخطط لنمو علامتك.":"I'll call you within 24 hours, and we'll start planning your brand's growth.","تبغى أسرع؟ راسلني على واتساب":"Want it faster? Message me on WhatsApp",
+  "الرئيسية":"Home","مشاهدة البروفايل":"View profile","كتاباتي في صحيفة الوطن":"My writing in Al-Watan"};
+  var PH={"الاسم الكريم":"Your full name","مثلًا: مطعم جديد ونبغى إعلانات سناب للافتتاح…":"e.g. a new restaurant that needs Snapchat ads for the opening…"};
+  var AL={"إسماعيل عثمان، الصفحة الرئيسية":"Ismueil Osman, home"};
+  var lang='ar',store=[],astore=[],b=document.getElementById('langBtn'),TT={ar:document.title,en:'Free marketing & filming consultation | Ismueil Osman'};
+  window.T=function(a,e){return lang==='en'?e:a};
+  /* القيم المرسلة تبقى بالعربي حتى لو الواجهة إنجليزي */
+  [].forEach.call(document.querySelectorAll('option'),function(o){if(!o.hasAttribute('value'))o.value=o.textContent});
+  function toEn(){var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;while((n=w.nextNode())){var p=n.parentNode;if(!p||p.nodeName==='SCRIPT'||p.nodeName==='STYLE')continue;var raw=n.nodeValue,k=raw.replace(/\s+/g,' ').trim();if(k&&EN[k]){store.push([n,raw]);n.nodeValue=raw.match(/^\s*/)[0]+EN[k]+raw.match(/\s*$/)[0]}}
+    [].forEach.call(document.querySelectorAll('[placeholder],[aria-label]'),function(el){['placeholder','aria-label'].forEach(function(a){var v=el.getAttribute(a);var t=v&&(PH[v]||AL[v]);if(t){astore.push([el,a,v]);el.setAttribute(a,t)}})});}
+  function toAr(){store.forEach(function(s){s[0].nodeValue=s[1]});store=[];astore.forEach(function(s){s[0].setAttribute(s[1],s[2])});astore=[]}
+  function set(l){if(l===lang)return;lang=l;var h=document.documentElement;
+    if(l==='en'){toEn();h.lang='en';h.dir='ltr';b.textContent='ع';b.setAttribute('lang','ar');b.setAttribute('aria-label','التبديل إلى العربية')}
+    else{toAr();h.lang='ar';h.dir='rtl';b.textContent='EN';b.setAttribute('lang','en');b.setAttribute('aria-label','Switch to English')}
+    document.title=TT[l];try{localStorage.setItem('lang',l)}catch(e){}
+    [].forEach.call(document.querySelectorAll('.err'),function(e){e.textContent=''});var st=document.getElementById('c-status');if(st&&st.className.indexOf(' e')>-1){st.textContent=''}}
+  b.addEventListener('click',function(){set(lang==='ar'?'en':'ar')});
+  var qp=(location.search.match(/[?&]lang=(en|ar)/)||[])[1];if(qp)set(qp);else{try{if(localStorage.getItem('lang')==='en')set('en')}catch(e){}}
+})();
+</script>
+<script>
+(function(){
   var f=document.getElementById('cform'),$=function(i){return document.getElementById(i)};
   var GS='https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec';
   var EP='https://formsubmit.co/ajax/ismailosmanamirhamzh@gmail.com';
@@ -197,26 +233,26 @@ textarea{resize:vertical;min-height:5.5rem}
   function setErr(id,el,msg){$(id).textContent=msg||'';el.classList.toggle('bad',!!msg);return !msg}
   function check(){
     var ok=true;
-    ok=setErr('e-name',$('c-name'),$('c-name').value.trim().length<2?'اكتب اسمك':'')&&ok;
-    ok=setErr('e-phone',$('c-phone'),/^05\d{8}$/.test(digits($('c-phone').value))?'':'رقم جوال سعودي من 10 أرقام يبدأ بـ 05')&&ok;
-    ok=setErr('e-act',$('c-act'),$('c-act').value?'':'اختر نوع النشاط')&&ok;
-    ok=setErr('e-svc',$('c-svc'),$('c-svc').value?'':'اختر الخدمة')&&ok;
+    ok=setErr('e-name',$('c-name'),$('c-name').value.trim().length<2?T('اكتب اسمك','Enter your name'):'')&&ok;
+    ok=setErr('e-phone',$('c-phone'),/^05\d{8}$/.test(digits($('c-phone').value))?'':T('رقم جوال سعودي من 10 أرقام يبدأ بـ 05','Saudi mobile number: 10 digits starting with 05'))&&ok;
+    ok=setErr('e-act',$('c-act'),$('c-act').value?'':T('اختر نوع النشاط','Choose a business type'))&&ok;
+    ok=setErr('e-svc',$('c-svc'),$('c-svc').value?'':T('اختر الخدمة','Choose a service'))&&ok;
     return ok;
   }
   ['c-name','c-phone','c-act','c-svc'].forEach(function(i){$(i).addEventListener('change',function(){if($(i).classList.contains('bad'))check()})});
   f.addEventListener('submit',function(e){
     e.preventDefault();var st=$('c-status');st.className='status';st.textContent='';
-    if(!check()){st.className='status e';st.textContent='تحقق من الحقول المظللة.';return}
+    if(!check()){st.className='status e';st.textContent=T('تحقق من الحقول المظللة.','Please check the highlighted fields.');return}
     if($('c-hp').value){prime();done();return}
     var name=$('c-name').value.trim(),d={'الاسم':name,'رقم الجوال':digits($('c-phone').value),'نوع النشاط':$('c-act').value,'الخدمة المطلوبة':$('c-svc').value,'المدينة':$('c-city').value||'—','التفاصيل':$('c-notes').value.trim()||'—','_subject':'طلب استشارة مجانية من الموقع: '+name,'_template':'table','_captcha':'false'};
-    prime();var b=$('c-send');b.disabled=true;b.textContent='جارٍ الإرسال…';
-    var slow=setTimeout(function(){b.textContent='لحظات، طلبك في الطريق…'},6000);
+    prime();var b=$('c-send');b.disabled=true;b.textContent=T('جارٍ الإرسال…','Sending…');
+    var slow=setTimeout(function(){b.textContent=T('لحظات، طلبك في الطريق…','One moment, sending…')},6000);
     var wa='https://wa.me/966574395924?text='+encodeURIComponent('طلب استشارة مجانية\nالاسم: '+d['الاسم']+'\nالجوال: '+d['رقم الجوال']+'\nالنشاط: '+d['نوع النشاط']+'\nالخدمة: '+d['الخدمة المطلوبة']+'\nالمدينة: '+d['المدينة']);
     var g={name:name,phone:d['رقم الجوال'],activity:d['نوع النشاط'],service:d['الخدمة المطلوبة'],city:d['المدينة'],notes:d['التفاصيل'],page:location.href};
     post(GS,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(g)},15000)
       .catch(function(){return post(EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)},40000)})
       .then(function(){done()},function(){done(wa)})
-      .then(function(){clearTimeout(slow);b.disabled=false;b.textContent='اطلب استشارتك المجانية'});
+      .then(function(){clearTimeout(slow);b.disabled=false;b.textContent=T('اطلب استشارتك المجانية','Request my free consultation')});
   });
   var AC=null;
   function prime(){try{if(!AC){var C=window.AudioContext||window.webkitAudioContext;if(C)AC=new C()}if(AC&&AC.state==='suspended')AC.resume()}catch(x){}}
@@ -228,8 +264,8 @@ textarea{resize:vertical;min-height:5.5rem}
     /* success chime */
     tone(t+1.3,784,.5,.18);tone(t+1.45,1047,.6,.16);tone(t+1.6,1319,.9,.14)}catch(x){}}
   function done(wa){
-    var cf=$('okConfirm');if(wa){if(!cf){cf=document.createElement('a');cf.id='okConfirm';cf.target='_blank';cf.rel='noopener';cf.style.cssText='display:block;margin:.9rem auto 0;max-width:22rem;text-align:center;font:800 .95rem Tajawal,sans-serif;color:#25d366';$('okBox').appendChild(cf)}cf.href=wa;cf.textContent='للتأكيد أسرع، أرسل طلبك واتساب ←'}
-    var nm=$('c-name').value.trim().split(/\s+/)[0]||'';$('okName').textContent=nm?'شكرًا '+nm:'';
+    var cf=$('okConfirm');if(wa){if(!cf){cf=document.createElement('a');cf.id='okConfirm';cf.target='_blank';cf.rel='noopener';cf.style.cssText='display:block;margin:.9rem auto 0;max-width:22rem;text-align:center;font:800 .95rem Tajawal,sans-serif;color:#25d366';$('okBox').appendChild(cf)}cf.href=wa;cf.textContent=T('للتأكيد أسرع، أرسل طلبك واتساب ←','To confirm faster, send it on WhatsApp →')}
+    var nm=$('c-name').value.trim().split(/\s+/)[0]||'';$('okName').textContent=nm?T('شكرًا ','Thanks ')+nm:'';
     $('formBox').style.display='none';var ok=$('okBox');ok.classList.add('on');
     var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
     if(!rm){var fl=document.createElement('div');fl.className='flash go';document.body.appendChild(fl);setTimeout(function(){fl.remove()},600)}
