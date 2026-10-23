@@ -312,7 +312,15 @@ function init() {
   }
 
   let dead = false;
-  function loop() { if (dead) return; try { flashLight(); frame(); } catch (e) { dead = true; fail(); return; } requestAnimationFrame(loop); }
+  /* حارس الأداء: إذا الجهاز ضعيف والرسم بطيء فعلًا، نتحول للصورة الثابتة بدل التقطيع */
+  let pfLast = 0, pfN = 0, pfSlow = 0;
+  function perfGuard(t) {
+    if (pfN > 120 || mode !== 'hero' || !dirty) { pfLast = 0; return; }
+    if (pfLast) { const d = t - pfLast; if (d < 400) { pfN++; if (d > 45) pfSlow++; } }
+    pfLast = t;
+    if (pfN === 120 && pfSlow > 70) { dead = true; fail(); }
+  }
+  function loop(t) { if (dead) return; try { perfGuard(t); flashLight(); frame(); } catch (e) { dead = true; fail(); return; } if (!dead) requestAnimationFrame(loop); }
   cv.addEventListener('webglcontextlost', ev => { ev.preventDefault(); dead = true; fail(); });
 
   stage.appendChild(cv);
