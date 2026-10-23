@@ -306,6 +306,7 @@ try{
 (function(){
   /* ربط النموذج بالبريد: خدمة FormSubmit المجانية. أول رسالة ترسلها تصلك معها رسالة تفعيل على بريدك، اضغط الرابط فيها مرة واحدة.
      لاستخدام Formspree بدلًا منها: ضع رابط نموذجك هنا مثل https://formspree.io/f/xxxxxxxx */
+  var GS_ENDPOINT='https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec';
   var FORM_ENDPOINT='https://formsubmit.co/ajax/ismailosmanamirhamzh@gmail.com';
   var OWNER_EMAIL='hello@ismueilosman.com';
   var f=document.getElementById('cf'); if(!f)return;
@@ -349,12 +350,15 @@ try{
     var d={'الاسم':F.name.value.trim(),'اسم الجهة / الشركة':F.company.value.trim(),'نوع النشاط':act,'رقم الجوال':cleanPhone(F.phone.value),'email':F.email.value.trim(),'ملاحظات':F.notes.value.trim(),
       '_subject':'رسالة جديدة من موقعك الشخصي: '+F.name.value.trim(),'_template':'table','_captcha':'false'};
     btn.disabled=true;btn.classList.add('busy');btn.querySelector('.cf-lbl').textContent=T('جارٍ الإرسال…','Sending…');setStatus('');
-    var ctl=new AbortController(),to=setTimeout(function(){ctl.abort()},20000);
-    fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d),signal:ctl.signal})
-      .then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok||j.success==='false'||j.success===false)throw new Error(j.message||'fail');return j})})
-      .then(function(){try{localStorage.setItem('cf-last',Date.now())}catch(x){}showOk()})
+    function post(url,opt,ms){var ctl=new AbortController(),to=setTimeout(function(){ctl.abort()},ms);opt.signal=ctl.signal;return fetch(url,opt).then(function(r){clearTimeout(to);return r.json().catch(function(){return {}}).then(function(j){if(!r.ok||j.ok===false||j.success==='false'||j.success===false)throw new Error(j.message||j.error||'fail');return j})},function(er){clearTimeout(to);throw er})}
+    var ph=d['رقم الجوال'].replace(/^(\+|00)966/,'0');
+    var g={name:d['الاسم'],phone:ph,activity:act,service:'رسالة من الصفحة الرئيسية',city:'—',notes:'الجهة: '+d['اسم الجهة / الشركة']+' | البريد: '+d.email+(d['ملاحظات']?' | '+d['ملاحظات']:''),page:location.href};
+    var slow=setTimeout(function(){btn.querySelector('.cf-lbl').textContent=T('لحظات، رسالتك في الطريق…','One moment, sending…')},6000);
+    (/^05\d{8}$/.test(ph)?post(GS_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(g)},15000):Promise.reject(0))
+      .catch(function(){return post(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)},40000)})
+      .then(function(){clearTimeout(slow);try{localStorage.setItem('cf-last',Date.now())}catch(x){}showOk()})
       .catch(function(){setStatus(T('تعذّر الإرسال الآن. ','Could not send right now. ')+'<a href="'+mailtoFallback(d)+'">'+T('أرسلها عبر بريدك مباشرة','Send it via your email app')+'</a>',true)})
-      .then(function(){clearTimeout(to);btn.disabled=false;btn.classList.remove('busy');btn.querySelector('.cf-lbl').textContent=T('إرسال الرسالة','Send Message')});
+      .then(function(){clearTimeout(slow);btn.disabled=false;btn.classList.remove('busy');btn.querySelector('.cf-lbl').textContent=T('إرسال الرسالة','Send Message')});
   });
   function showOk(){
     var nm=F.name.value.trim().split(/\s+/)[0]||'',pn=$('pola-name');if(pn)pn.textContent=nm?T('شكرًا '+nm,'Thanks '+nm):'';
