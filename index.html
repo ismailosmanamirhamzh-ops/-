@@ -64,6 +64,8 @@
 (function(){
   var o=document.getElementById('intro0'),d=document.documentElement;if(!o)return;
   if(matchMedia('(prefers-reduced-motion:reduce)').matches||/bot|crawl|spider|slurp|facebookexternalhit|preview/i.test(navigator.userAgent)){o.remove();return}
+  /* الرجوع للرئيسية من صفحة داخل الموقع: يكفي انتقال العدسة، بدون شاشة الافتتاح */
+  try{var nt=(performance.getEntriesByType('navigation')[0]||{}).type,inSite=document.referrer&&new URL(document.referrer).origin===location.origin;if(nt==='back_forward'||(inSite&&nt!=='reload')){o.remove();return}}catch(e){}
   if(/[?&]lang=en/.test(location.search)||(function(){try{return localStorage.getItem('lang')==='en'}catch(e){}})()){o.querySelector('small').textContent='Tap for the full experience with sound';}
   d.classList.add('i0-lock');
   var svg=o.querySelector('svg'),t0=performance.now();
