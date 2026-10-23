@@ -406,6 +406,23 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
 [dir=ltr] .pq{left:auto;right:1.6rem}
 [dir=ltr] .wh-h em::after{transform-origin:left}
 
+/* ── success story ── */
+.sty{margin-top:1.4rem;padding:2rem 1.8rem 1.6rem;border-radius:1.3rem;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01))}
+.sty-h .lb2{font:700 .8rem Tajawal,sans-serif;color:var(--amber)}
+.sty-h h3{margin-top:.5rem;font:900 clamp(1.35rem,4.4vw,2.2rem)/1.3 Cairo,sans-serif;white-space:nowrap}
+.sty-s{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.5rem;counter-reset:s}
+.sty-s li{position:relative;padding:1.3rem 1.2rem 1.2rem;border-radius:1rem;background:rgba(0,0,0,.35);border:1px solid var(--line)}
+.sty-s li>b{font:600 .7rem/1 var(--mono);letter-spacing:.16em;color:rgba(255,255,255,.4)}
+.sty-s h4{margin-top:.6rem;font:800 1.05rem Cairo,sans-serif}
+.sty-s p{margin-top:.35rem;font-size:.92rem;line-height:1.85;color:var(--mute)}
+.sty-s li:not(:last-child)::after{content:"";position:absolute;top:50%;inset-inline-end:-.85rem;width:.7rem;height:.7rem;border-top:2px solid var(--amber);border-inline-start:2px solid var(--amber);transform:translateY(-50%) rotate(-45deg);opacity:.7;z-index:2}
+[dir=ltr] .sty-s li:not(:last-child)::after{transform:translateY(-50%) rotate(135deg)}
+.sty-s .win{border-color:rgba(242,180,90,.45);background:radial-gradient(90% 90% at 50% 0%,rgba(242,180,90,.16),transparent 70%),rgba(0,0,0,.35)}
+.sty-s .big{margin-top:.2rem;font:900 clamp(2.6rem,7vw,3.6rem)/1 Cairo,sans-serif;color:var(--amber)}
+.sty-n{margin-top:1rem;font:600 .8rem Tajawal,sans-serif;color:rgba(255,255,255,.45)}
+@media(max-width:760px){.sty{padding:1.5rem 1rem 1.2rem}.sty-s{grid-template-columns:1fr;gap:.9rem}.sty-s li:not(:last-child)::after{top:auto;bottom:-.75rem;inset-inline-end:auto;left:50%;transform:translateX(-50%) rotate(-135deg)}[dir=ltr] .sty-s li:not(:last-child)::after{transform:translateX(-50%) rotate(-135deg)}}
+@media(max-width:760px){.sty-s li:not(:last-child)::after,[dir=ltr] .sty-s li:not(:last-child)::after{border:0;border-right:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:translateX(-50%) rotate(45deg);bottom:-.95rem}}
+
 </style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500)})})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
@@ -507,6 +524,15 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
         <div class="mc fade"><b class="n">4</b><h3>منصات إعلانية</h3><div class="pl" dir="ltr"><span>Google Ads</span><span>Snapchat Ads</span><span>TikTok Ads</span><span>Meta Ads</span></div></div>
         <div class="mc fade"><b class="n" style="font-size:clamp(1.7rem,4.6vw,2.4rem)">مكة</b><h3>وكل المملكة</h3><p>تصوير ميداني في مكة وجدة والرياض وخميس مشيط، وحملات عن بُعد.</p></div>
         <div class="mc wd fade"><h3>وش يشمل الشغل</h3><ol><li>خطة الحملة</li><li>الاستهداف</li><li>المحتوى الإعلاني</li><li>إدارة الميزانية</li><li>القياس والتقارير</li><li>تحسين مستمر</li></ol></div>
+      </div>
+      <div class="sty fade">
+        <div class="sty-h"><span class="lb2">قصة نجاح · فرع مطعم</span><h3 class="fit">فرع مبيعاته تنزل، رجع يكبر 35%</h3></div>
+        <ol class="sty-s">
+          <li><b dir="ltr">01</b><h4>التحدي</h4><p>فرع مطعم مبيعاته في نزول، وما كان عنده أي تسويق ولا إعلانات.</p></li>
+          <li><b dir="ltr">02</b><h4>اللي سويته</h4><p>بدأت تسويق الفرع من الصفر: محتوى مصوّر يبرز أطباقه، وحملات إعلانية ممولة، ومتابعة النتائج وتحسينها باستمرار.</p></li>
+          <li class="win"><b dir="ltr">03</b><h4>النتيجة</h4><p class="big" dir="ltr">+35%</p><p>نمو في مبيعات الفرع.</p></li>
+        </ol>
+        <p class="sty-n">الأسماء والتفاصيل محجوبة حفاظًا على خصوصية العميل.</p>
       </div>
       <div class="cs fade">
         <i class="vfb" aria-hidden="true"></i><div class="cs-hud" dir="ltr" aria-hidden="true"><span class="rec">CASE 01</span><span>ADS · RESULTS</span></div><div class="cs-h"><span class="lb2">دراسة حالة · علامة مطاعم</span><h3 class="fit">78 مليون ظهور لعلامة مطاعم واحدة</h3><p>أدرت حملات علامة مطاعم سعودية على Google وSnapchat وTikTok: الاستهداف، والمحتوى الإعلاني، وتعزيز محتوى المؤثرين بإعلانات مدفوعة، وقياس النتيجة.</p></div>
@@ -813,7 +839,7 @@ h1,h2,h3,h4{font-family:Cairo,sans-serif}
   "نمو في المبيعات":"Sales growth","أعلى نمو حققته الحملات لإحدى العلامات، و15% لعلامات أخرى.":"The highest growth my campaigns delivered for one brand, and 15% for others.",
   "مكة":"Makkah","وكل المملكة":"and all of Saudi","تصوير ميداني في مكة وجدة والرياض وخميس مشيط، وحملات عن بُعد.":"On-site shoots in Makkah, Jeddah, Riyadh and Khamis Mushait, and campaigns run remotely.",
   "وش يشمل الشغل":"What the work covers","خطة الحملة":"Campaign plan","الاستهداف":"Targeting","المحتوى الإعلاني":"Ad creative","إدارة الميزانية":"Budget management","القياس والتقارير":"Tracking & reports","تحسين مستمر":"Continuous optimisation",
-  "دراسة حالة · علامة مطاعم":"Case study · Restaurant brand","78 مليون ظهور لعلامة مطاعم واحدة":"78 million impressions for one restaurant brand",
+  "قصة نجاح · فرع مطعم":"Success story · Restaurant branch","فرع مبيعاته تنزل، رجع يكبر 35%":"A branch in decline, back to 35% growth","التحدي":"The challenge","فرع مطعم مبيعاته في نزول، وما كان عنده أي تسويق ولا إعلانات.":"A restaurant branch with falling sales and no marketing or advertising at all.","اللي سويته":"What I did","بدأت تسويق الفرع من الصفر: محتوى مصوّر يبرز أطباقه، وحملات إعلانية ممولة، ومتابعة النتائج وتحسينها باستمرار.":"I built the branch's marketing from scratch: content that showcases its dishes, paid ad campaigns, and constant tracking and optimisation.","النتيجة":"The result","نمو في مبيعات الفرع.":"growth in the branch's sales.","الأسماء والتفاصيل محجوبة حفاظًا على خصوصية العميل.":"Names and details are withheld to protect the client's privacy.","دراسة حالة · علامة مطاعم":"Case study · Restaurant brand","78 مليون ظهور لعلامة مطاعم واحدة":"78 million impressions for one restaurant brand",
   "أدرت حملات علامة مطاعم سعودية على Google وSnapchat وTikTok: الاستهداف، والمحتوى الإعلاني، وتعزيز محتوى المؤثرين بإعلانات مدفوعة، وقياس النتيجة.":"I ran a Saudi restaurant brand's campaigns on Google, Snapchat and TikTok: targeting, ad creative, paid boosting of influencer content, and measuring the result.",
   "ظهور إعلاني":"Ad impressions","ريال ميزانيات أدرتها":"SAR in budgets managed","نقرة على الإعلانات":"Ad clicks","مشاهدة فيديو":"Video views",
   "لقطة من لوحة الإعلانات":"From the ads dashboard","الظهور":"Impressions","النقرات":"Clicks","إجراءات العملاء":"Customer actions","الإنفاق":"Spend",
