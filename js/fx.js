@@ -1,3 +1,4 @@
+/*! © 2026 Ismueil Osman (إسماعيل عثمان) — ismueilosman.com. All rights reserved. Unauthorized copying or reuse is prohibited. */
 /* تفاعلات صغيرة: أزرار مغناطيسية، ميلان البطاقات، ظهور العناوين، خط تحت الروابط.
    تشتغل فقط مع الماوس (الكمبيوتر)، وتتوقف كليًا مع «تقليل الحركة». */
 (function () {

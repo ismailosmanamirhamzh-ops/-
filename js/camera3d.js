@@ -1,3 +1,4 @@
+/*! © 2026 Ismueil Osman (إسماعيل عثمان) — ismueilosman.com. All rights reserved. Unauthorized copying or reuse is prohibited. */
 /* كاميرا ميرورلس ثلاثية الأبعاد (Three.js) — تدور 360° مع السحب وتنتهي والعدسة مواجهة للزائر.
    إذا تعذّر WebGL أو تحميل المكتبة تبقى صورة الكاميرا القديمة كما هي. */
 import * as THREE from 'three';

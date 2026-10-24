@@ -1,3 +1,4 @@
+/*! © 2026 Ismueil Osman (إسماعيل عثمان) — ismueilosman.com. All rights reserved. Unauthorized copying or reuse is prohibited. */
 try{
 (function(){
   var lens=document.getElementById('lens'),txt=document.getElementById('heroText'),tag=document.getElementById('heroTag'),
