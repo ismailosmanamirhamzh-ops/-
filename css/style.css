@@ -399,7 +399,7 @@ h3.one-line{white-space:nowrap;font-size:clamp(1.05rem,5.4vw,2.25rem)!important;
 .ft-brand{display:inline-flex;align-items:center;gap:.9rem;flex-direction:row-reverse}
 .ft-brand .apx-lg{width:3.2rem;height:3.2rem}
 .ft-n{font:900 1.6rem/1.2 'Noto Sans Arabic',Cairo,sans-serif!important;font-stretch:87.5%}
-.ft-tag{margin-top:.3rem;font:600 .68rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.32em;color:rgba(255,255,255,.45)}
+.ft-tag{margin-top:.3rem;font:600 .68rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.32em;color:rgba(255,255,255,.64)}
 @media(max-width:420px){.brand{gap:.35rem}.brand-t{font-size:.98rem}.apx{width:1.35rem;height:1.35rem}}@media(max-width:380px){.brand .apx{display:none}}
 @media(max-width:440px){
 div:has(> .brand){padding-inline:.7rem!important}
@@ -601,7 +601,7 @@ html.c3x:not(.cam3d-on) .ins-stage{background:url(../assets/media/cam-still.webp
 .sa-g header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
 .sa-ic{display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:.8rem;background:rgba(242,180,90,.12);border:1px solid rgba(242,180,90,.3)}
 .sa-ic svg{width:1.3rem;height:1.3rem;fill:var(--amber)}
-.sa-no{font:600 .75rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;color:rgba(255,255,255,.35)}
+.sa-no{font:600 .75rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;color:rgba(255,255,255,.64)}
 .sa-g h4{font-size:1.15rem;margin-bottom:.8rem}
 .sa-g ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
 .sa-g li{position:relative;padding-inline-start:1.1rem;font:600 .93rem/1.55 Tajawal,sans-serif;color:rgba(236,238,244,.82)}
@@ -671,3 +671,5 @@ header nav{gap:.6rem}
 img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
 
 @view-transition{navigation:auto}::view-transition{background:#000}::view-transition-group(root){animation-duration:.85s}@keyframes irisClose{from{clip-path:circle(71% at 50% 50%);transform:scale(1)}to{clip-path:circle(0% at 50% 50%);transform:scale(1.04)}}@keyframes irisOpen{from{clip-path:circle(0% at 50% 50%);transform:scale(1.05)}to{clip-path:circle(71% at 50% 50%);transform:scale(1)}}::view-transition-old(root){animation:irisClose .3s cubic-bezier(.55,0,.45,1) both;mix-blend-mode:normal}::view-transition-new(root){animation:irisOpen .42s cubic-bezier(.25,.8,.3,1) .26s both;mix-blend-mode:normal}@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+
+:where(a,button,summary,[role=button],[tabindex]):focus-visible{outline:2px solid #f2b45a;outline-offset:3px;border-radius:6px}

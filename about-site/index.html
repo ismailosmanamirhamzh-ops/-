@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About This Site | Ismueil Osman</title>
+<meta name="description" content="The concept, design system and technology behind ismueilosman.com: a camera-and-aperture idea built with Three.js, View Transitions and hand-written code.">
+<link rel="canonical" href="https://ismueilosman.com/about-site/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About This Site | Ismueil Osman">
+<meta property="og:description" content="Concept, design system and technology behind ismueilosman.com.">
+<meta property="og:url" content="https://ismueilosman.com/about-site/">
+<meta property="og:image" content="https://ismueilosman.com/assets/img/og-image.jpg">
+<meta name="theme-color" content="#07080c">
+<link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap">
+<style>
+:root{--ink:#07080c;--panel:#10121a;--amber:#f2b45a;--text:#eceef4;--mute:#a9afbf;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Tajawal,system-ui,sans-serif;background:var(--ink);color:var(--text);line-height:1.7;overflow-x:hidden;
+  background-image:radial-gradient(60% 50% at 15% -5%,rgba(242,180,90,.14),transparent 60%)}
+a{color:inherit}
+.top{max-width:72rem;margin:0 auto;padding:1.2rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font:900 1.15rem Cairo,sans-serif;white-space:nowrap}
+.brand b{color:var(--amber)}.brand svg{width:1.6rem;height:1.6rem}
+.back{font:700 .9rem Tajawal,sans-serif;text-decoration:none;color:var(--mute);padding:.5rem .95rem;border:1px solid var(--line);border-radius:999px;white-space:nowrap}
+.back:hover{color:var(--text);border-color:rgba(242,180,90,.5)}
+main{max-width:72rem;margin:0 auto;padding:2rem 1.25rem 5rem}
+.k{font:700 .78rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+h1{font:900 clamp(2.4rem,7vw,5.2rem)/1.02 Cairo,sans-serif;letter-spacing:-.02em;margin:.8rem 0 1.2rem;max-width:16ch}
+h1 em{font-style:normal;color:var(--amber)}
+.lead{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--mute);max-width:44rem}
+section{margin-top:4.5rem}
+h2{font:800 clamp(1.5rem,3.4vw,2.2rem)/1.15 Cairo,sans-serif;margin:.5rem 0 1.4rem}
+p{color:#c9cdd8;max-width:46rem}p+p{margin-top:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem}
+.c{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:1.4rem}
+.c h3{font:800 1.1rem Cairo,sans-serif;margin-bottom:.4rem}.c p{font-size:.95rem;color:var(--mute)}
+.sw{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.8rem}
+.sw div{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+.sw i{display:block;height:5.5rem}.sw span{display:block;padding:.7rem .9rem;font:600 .82rem ui-monospace,Menlo,Consolas,monospace;color:var(--mute)}
+.sw b{display:block;color:var(--text);font:700 .95rem Tajawal,sans-serif}
+.ty{display:grid;gap:1rem}
+.ty .c{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.ty .s{font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.2}
+.ty small{font:600 .8rem ui-monospace,Menlo,Consolas,monospace;color:var(--mute)}
+.ap{display:flex;gap:2rem;align-items:center;flex-wrap:wrap}
+.ap svg{width:9rem;height:9rem;flex:none}
+ul.t{list-style:none;display:grid;gap:.6rem;max-width:46rem}
+ul.t li{display:flex;gap:.8rem;color:#c9cdd8}ul.t li:before{content:"";flex:none;width:.45rem;height:.45rem;margin-top:.7rem;border-radius:50%;background:var(--amber)}
+.cr{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
+.cta{display:inline-flex;margin-top:2rem;background:var(--amber);color:#111;text-decoration:none;font:800 1rem Tajawal,sans-serif;padding:.85rem 1.4rem;border-radius:999px}
+footer{border-top:1px solid var(--line);padding:2rem 1.25rem;text-align:center;color:var(--mute);font-size:.9rem}
+:where(a,button):focus-visible{outline:2px solid #f2b45a;outline-offset:3px;border-radius:6px}
+@view-transition{navigation:auto}::view-transition{background:#000}
+@keyframes irisClose{from{clip-path:circle(71% at 50% 50%);transform:scale(1)}to{clip-path:circle(0% at 50% 50%);transform:scale(1.04)}}
+@keyframes irisOpen{from{clip-path:circle(0% at 50% 50%);transform:scale(1.05)}to{clip-path:circle(71% at 50% 50%);transform:scale(1)}}
+::view-transition-old(root){animation:irisClose .3s cubic-bezier(.55,0,.45,1) both}::view-transition-new(root){animation:irisOpen .42s cubic-bezier(.25,.8,.3,1) .26s both}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+@media(max-width:370px){.back{padding:.45rem .7rem;font-size:.8rem}.brand{font-size:1rem}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/?lang=en" aria-label="Ismueil Osman, home">
+    <svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#f2b45a" stroke-width="5"/><circle r="41" fill="#f2b45a"/><polygon fill="#07080c" points="4.74,-19.02 18.84,-5.40 14.10,13.62 -4.74,19.02 -18.84,5.40 -14.10,-13.62"/><g stroke="#07080c" stroke-width="3" stroke-linecap="round"><line x1="4.74" y1="-19.02" x2="-15.06" y2="-38.14"/><line x1="18.84" y1="-5.40" x2="25.50" y2="-32.11"/><line x1="14.10" y1="13.62" x2="40.55" y2="6.03"/><line x1="-4.74" y1="19.02" x2="15.06" y2="38.14"/><line x1="-18.84" y1="5.40" x2="-25.50" y2="32.11"/><line x1="-14.10" y1="-13.62" x2="-40.55" y2="-6.03"/></g></svg>
+    <span>Ismueil <b>Osman</b></span>
+  </a>
+  <a class="back" href="/work/?lang=en">See the work</a>
+</header>
+<main>
+  <p class="k">About this site</p>
+  <h1>A website that behaves like <em>a camera</em>.</h1>
+  <p class="lead">Ismueil Osman is a photographer, digital marketer and designer in Saudi Arabia. His site had one job: feel like looking through his lens, then turn that feeling into a booking. Everything here starts from that idea.</p>
+
+  <section>
+    <p class="k">01 — Concept</p>
+    <h2>The lens is the interface</h2>
+    <p>The homepage opens on a 3D camera that turns as you scroll and settles into position, the way a photographer raises a camera before a shot. Moving between pages closes and reopens an iris, like a shutter. The aperture mark in the header is the same six-blade diaphragm, drawn as a logo.</p>
+    <p>The Arabic copy is written in a Saudi voice, directly, as a client would speak. An English version sits beside it for international visitors.</p>
+  </section>
+
+  <section>
+    <p class="k">02 — The mark</p>
+    <h2>Six blades, one opening</h2>
+    <div class="ap">
+      <svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#f2b45a" stroke-width="5"/><circle r="41" fill="#f2b45a"/><polygon fill="#07080c" points="4.74,-19.02 18.84,-5.40 14.10,13.62 -4.74,19.02 -18.84,5.40 -14.10,-13.62"/><g stroke="#07080c" stroke-width="3" stroke-linecap="round"><line x1="4.74" y1="-19.02" x2="-15.06" y2="-38.14"/><line x1="18.84" y1="-5.40" x2="25.50" y2="-32.11"/><line x1="14.10" y1="13.62" x2="40.55" y2="6.03"/><line x1="-4.74" y1="19.02" x2="15.06" y2="38.14"/><line x1="-18.84" y1="5.40" x2="-25.50" y2="32.11"/><line x1="-14.10" y1="-13.62" x2="-40.55" y2="-6.03"/></g></svg>
+      <p>The logo is generated from code: six straight blades rotated around a centre, captured at the moment the aperture is about 60% closed. The same geometry drives the page transition, so the brand and the motion share one idea.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="k">03 — Colour</p>
+    <h2>Darkroom and tungsten</h2>
+    <div class="sw">
+      <div><i style="background:#07080c;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)"></i><span><b>Ink</b>#07080C</span></div>
+      <div><i style="background:#10121a"></i><span><b>Panel</b>#10121A</span></div>
+      <div><i style="background:#f2b45a"></i><span><b>Amber</b>#F2B45A</span></div>
+      <div><i style="background:#eceef4"></i><span><b>Paper</b>#ECEEF4</span></div>
+      <div><i style="background:#a9afbf"></i><span><b>Mist</b>#A9AFBF</span></div>
+    </div>
+    <p style="margin-top:1.2rem">Near-black, like a darkroom, with a single warm amber taken from tungsten light. The amber is used only for actions and key numbers, so the eye always knows where to go.</p>
+  </section>
+
+  <section>
+    <p class="k">04 — Type</p>
+    <h2>Built for Arabic first</h2>
+    <div class="ty">
+      <div class="c"><span class="s" style="font-family:Cairo;font-weight:900" lang="ar" dir="rtl">صورة تبيع</span><small>Cairo · headings</small></div>
+      <div class="c"><span class="s" style="font-family:Tajawal;font-weight:500" lang="ar" dir="rtl">نص واضح ومريح للقراءة</span><small>Tajawal · body</small></div>
+      <div class="c"><span class="s" style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.3rem;letter-spacing:.18em">01 — LABELS</span><small>System mono · labels</small></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="k">05 — Technology</p>
+    <h2>Hand-written, no framework</h2>
+    <div class="grid">
+      <div class="c"><h3>Three.js camera</h3><p>A real-time 3D model linked to scroll, with time-based easing. It loads only when the browser is idle, and steps down to a still image on weaker devices.</p></div>
+      <div class="c"><h3>View Transitions</h3><p>The iris between pages uses the native browser API. No library, and browsers without support simply load the page normally.</p></div>
+      <div class="c"><h3>Small interactions</h3><p>Headings reveal as they enter, buttons lean toward the cursor, and cards tilt slightly. All of it switches off for visitors who prefer reduced motion.</p></div>
+      <div class="c"><h3>Bilingual</h3><p>Arabic (right-to-left) and English on the same pages, with the language choice remembered between visits.</p></div>
+      <div class="c"><h3>Lead flow</h3><p>Booking forms post straight to a Google Sheet with an email alert, with a fallback route so that no request is lost.</p></div>
+      <div class="c"><h3>Static hosting</h3><p>Plain HTML, CSS and JavaScript on GitHub Pages: fast, secure and nearly free to run.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="k">06 — Care</p>
+    <h2>Details nobody sees</h2>
+    <ul class="t">
+      <li>Tested across ten screen sizes, from a 320px phone to a wide desktop.</li>
+      <li>Visible keyboard focus everywhere, and text contrast raised for readability.</li>
+      <li>Heavy media is lazy-loaded, and the 3D scene watches its own frame rate.</li>
+      <li>Structured data and an llms.txt file so search engines and AI assistants understand the site.</li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="k">07 — Credits</p>
+    <h2>Who made it</h2>
+    <div class="cr">
+      <div class="c"><h3>Ismueil Osman</h3><p>Concept, art direction, photography, video and copy.</p></div>
+      <div class="c"><h3>Development</h3><p>Built with AI assistance (Claude by Anthropic), directed and reviewed by Ismueil.</p></div>
+    </div>
+    <a class="cta" href="/consultation/?lang=en">Book a free consultation</a>
+  </section>
+</main>
+<footer>© <span id="y">2026</span> Ismueil Osman · <a href="/?lang=en">Home</a> · <a href="/work/?lang=en">Work</a></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script src="/js/fx.js?v=20261024h" defer></script>
+</body>
+</html>
