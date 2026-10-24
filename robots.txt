@@ -1,3 +1,20 @@
+# © Ismueil Osman — ismueilosman.com. Copying the site, its design or media is not permitted.
+User-agent: HTTrack
+User-agent: WebCopier
+User-agent: WebZIP
+User-agent: Teleport
+User-agent: TeleportPro
+User-agent: Offline Explorer
+User-agent: SiteSnagger
+User-agent: WebStripper
+User-agent: WebReaper
+User-agent: Website Quester
+User-agent: Wget
+User-agent: grab-site
+User-agent: SiteSucker
+Disallow: /
+
 User-agent: *
 Allow: /
+
 Sitemap: https://ismueilosman.com/sitemap.xml
