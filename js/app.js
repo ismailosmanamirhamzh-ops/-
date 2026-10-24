@@ -108,10 +108,12 @@ try{
   function later(){(window.requestIdleCallback||function(f){setTimeout(f,300)})(pick,{timeout:500})}
   /* نبدأ بعد ما تظهر الواجهة بلحظة، بدون انتظار تحميل كل شيء (الجوال على نت بطيء كان ينتظر طويل) */
   var fired=false;function once(){if(fired)return;fired=true;later()}
-  if(document.readyState==='complete')once();else{addEventListener('load',once,{once:true});setTimeout(once,1200)}
-  var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(pick,400)});
+  /* الفيديو الثاني (قسم الكاميرا تحت) ما ينزل إلا لما يقرب الزائر منه، فما ينزل نفس الملف مرتين أول ما تفتح الصفحة */
+  if(ids[0]==='heroVid'&&'IntersectionObserver' in window){var near=new IntersectionObserver(function(es){if(es[0].isIntersecting){near.disconnect();once()}},{rootMargin:'0px 0px -60px 0px'});near.observe(top)}
+  else if(document.readyState==='complete')once();else{addEventListener('load',once,{once:true});setTimeout(once,1200)}
+  var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(function(){if(cur)pick()},400)});
   /* وضع توفير الطاقة في الآيفون يمنع التشغيل التلقائي: نعيد المحاولة مع أول لمسة أو سحب */
-  function kick(){if(!cur)pick();if(v.paused&&top.getBoundingClientRect().bottom>0){var p=v.play();if(p&&p.catch)p.catch(function(){})}}
+  function kick(){if(!cur&&(ids[0]!=='heroVid'||top.getBoundingClientRect().top<innerHeight*1.5))pick();if(v.paused&&top.getBoundingClientRect().bottom>0){var p=v.play();if(p&&p.catch)p.catch(function(){})}}
   ['touchstart','pointerdown','scroll','keydown'].forEach(function(ev){addEventListener(ev,kick,{passive:true,once:true})});
   if(top&&'IntersectionObserver' in window)new IntersectionObserver(function(es){
     if(es[0].isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause();

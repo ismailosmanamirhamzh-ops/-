@@ -674,3 +674,6 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 @view-transition{navigation:auto}::view-transition{background:#000}::view-transition-group(root){animation-duration:.85s}@keyframes irisClose{from{clip-path:circle(71% at 50% 50%);transform:scale(1)}to{clip-path:circle(0% at 50% 50%);transform:scale(1.04)}}@keyframes irisOpen{from{clip-path:circle(0% at 50% 50%);transform:scale(1.05)}to{clip-path:circle(71% at 50% 50%);transform:scale(1)}}::view-transition-old(root){animation:irisClose .3s cubic-bezier(.55,0,.45,1) both;mix-blend-mode:normal}::view-transition-new(root){animation:irisOpen .42s cubic-bezier(.25,.8,.3,1) .26s both;mix-blend-mode:normal}@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
 
 :where(a,button,summary,[role=button],[tabindex]):focus-visible{outline:2px solid #f2b45a;outline-offset:3px;border-radius:6px}
+
+/* مساحة ضغط أكبر للأزرار والروابط الصغيرة بدون تغيير شكلها */
+.sndt::before{content:"";position:absolute;inset:-7px;border-radius:50%}

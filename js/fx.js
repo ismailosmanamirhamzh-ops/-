@@ -4,6 +4,12 @@
 /* حماية: منع عرض الموقع داخل موقع ثاني (iframe)، وتنبيه حقوق في أدوات المطوّر */
 (function () {
   try { if (window.top !== window.self && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.top.location = window.location.href; } catch (e) { document.documentElement.style.display = 'none'; }
+  /* مساحة ضغط أكبر لروابط أسفل الصفحة في الجوال، بدون أي تغيير في شكلها */
+  try {
+    var hs = document.createElement('style');
+    hs.textContent = '.foot a,.ft a,.pall{position:relative}.foot a::after,.ft a::after,.pall::after{content:"";position:absolute;inset:-10px -3px}';
+    document.head.appendChild(hs);
+  } catch (e) {}
   try {
     console.log('%c© Ismueil Osman', 'font:900 28px sans-serif;color:#f2b45a');
     console.log('%cجميع الحقوق محفوظة. تصميم الموقع وكوده وصوره ونصوصه ملك لإسماعيل عثمان، ويُمنع نسخها أو إعادة استخدامها دون إذن كتابي.\nAll rights reserved. The design, code, images and text of this site belong to Ismueil Osman and may not be copied or reused without written permission.', 'font:14px sans-serif');
