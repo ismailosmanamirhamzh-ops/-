@@ -677,3 +677,24 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 
 /* مساحة ضغط أكبر للأزرار والروابط الصغيرة بدون تغيير شكلها */
 .sndt::before{content:"";position:absolute;inset:-7px;border-radius:50%}
+
+/* بطاقات المقالات في الرئيسية (نفس تصميم صفحة الأعمال) */
+.apress{margin-top:1.75rem;display:grid;gap:1rem;max-width:52rem}
+.acard{position:relative;display:block;overflow:hidden;isolation:isolate;text-decoration:none;padding:2.4rem 2rem 2rem;border-radius:1.2rem;border:1px solid rgba(242,180,90,.25);background:radial-gradient(90% 120% at 0% 0%,rgba(242,180,90,.13),transparent 55%),linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));transition:border-color .3s,transform .3s;color:var(--text)}
+.acard:hover{border-color:rgba(242,180,90,.6);transform:translateY(-3px)}
+.acard .vfb{opacity:.35}
+.acard:hover .vfb{opacity:1;color:var(--amber);inset:.6rem}
+.aq{position:absolute;top:-1.4rem;left:1.6rem;z-index:-1;font:900 10rem/1 Georgia,serif;color:rgba(242,180,90,.12)}
+[dir=ltr] .aq{left:auto;right:1.6rem}
+.ak{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.ak b{font:800 .9rem Tajawal,sans-serif;color:var(--amber)}
+.ak i{font:600 .8rem Tajawal,sans-serif;font-style:normal;color:rgba(255,255,255,.64)}
+.acard h3{margin-top:.8rem;font:900 clamp(1.2rem,4.2vw,1.9rem)/1.4 Cairo,sans-serif;color:var(--text)}
+.acard p{margin-top:.6rem;max-width:40rem;color:var(--mute);line-height:1.95}
+.ago{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.3rem;font:800 .95rem Cairo,sans-serif;color:#111;background:var(--amber);padding:.7rem 1.25rem;border-radius:999px}
+.ago svg{width:1.05rem;height:1.05rem;fill:currentColor}
+[dir=ltr] .ago svg{transform:scaleX(-1)}
+@media(max-width:520px){.acard{padding:2.1rem 1.2rem 1.4rem}.aq{font-size:7.5rem}}
+/* الهيدر بالإنجليزي في الجوال: زر الاستشارة سطرين مثل العربي حتى ما يطلع زر القائمة برا الشاشة */
+@media(max-width:520px){html[lang=en] .hcta{flex-direction:column;gap:0;padding:.28rem .8rem}html[lang=en] .hcta-2{opacity:.85;font-weight:700}html[lang=en] header nav{padding-inline:.9rem}}
+@media(max-width:370px){html[lang=en] .brand-t{font-size:.8rem}html[lang=en] header nav{padding-inline:.6rem}html[lang=en] header nav>.flex{gap:.3rem}}
