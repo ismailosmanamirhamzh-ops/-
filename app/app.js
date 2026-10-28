@@ -63,7 +63,7 @@
     document.body.appendChild(b); setTimeout(function () { b.classList.add('on'); }, 50);
   }
   addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; setTimeout(show, 5000); });
-  addEventListener('appinstalled', close);
+  addEventListener('appinstalled', function () { close(); try { window.clarity && clarity('event', 'app_installed'); } catch (e) {} });
   if (ios) setTimeout(show, 5000);
 })();
 

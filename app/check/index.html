@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap">
 <style>
-:root{--ink:#07080c;--panel:#10121a;--amber:#f2b45a;--text:#eceef4;--mute:#a9afbf;--line:rgba(255,255,255,.09)}
+html{background:#07080c}:root{--ink:#07080c;--panel:#10121a;--amber:#f2b45a;--text:#eceef4;--mute:#a9afbf;--line:rgba(255,255,255,.09)}
 *{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}[hidden]{display:none!important}
 body{font-family:Tajawal,system-ui,sans-serif;background:var(--ink);color:var(--text);min-height:100vh;line-height:1.7;overflow-x:hidden;background-image:radial-gradient(60% 45% at 85% -5%,rgba(242,180,90,.16),transparent 60%)}
 a{color:inherit}button{font:inherit;color:inherit}
@@ -106,6 +106,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 .ca{display:grid;gap:.6rem}.btn{display:flex;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:999px;padding:.95rem 1.2rem;font:800 1rem Tajawal,sans-serif;text-decoration:none;cursor:pointer}
 .go{background:var(--amber);color:#111}.wa{background:#25d366;color:#04140a}.bk{background:transparent;border:1px solid var(--line);color:var(--mute)}.wa svg{width:1.2rem;height:1.2rem;fill:currentColor}
 @property --p{syntax:"<number>";inherits:false;initial-value:0}
+.hi{text-wrap:balance}.lng{min-width:44px;min-height:44px}
 </style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500);});})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
@@ -126,7 +127,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
     <div class="ring" id="ring"><b><span id="sc">0</span><small>/ 100</small></b></div>
     <p class="rl" id="rl"></p><p class="rd" id="rd"></p>
     <div class="tips" id="tips"></div>
-    <div class="ca"><a class="btn go" id="cta"></a><a class="btn wa" id="cwa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.6-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg><span id="cwaL"></span></a><button type="button" class="btn bk" id="share"></button><button type="button" class="btn bk" id="again"></button></div>
+    <div class="ca"><a class="btn go" id="cta"></a><a class="btn wa" id="cwa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.6-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg><span id="cwaL"></span></a><a class="btn bk" href="/app/guide/" data-en="📘 Free guide: 10 mistakes that lose orders">📘 دليل مجاني: 10 أخطاء تضيّع الطلبات</a><button type="button" class="btn bk" id="share"></button><button type="button" class="btn bk" id="again"></button></div>
   </section>
 </main>
 <script>
@@ -143,7 +144,7 @@ var Q=[
  {k:'web',q:['عندك موقع أو منيو رقمي أو رابط طلب مباشر؟','Do you have a website, digital menu or direct order link?'],o:[['موقع رسمي باسم المطعم','An official website'],['بس روابط منصات التوصيل','Only delivery-app links'],['ما عندنا','None']],t:['امتلك رابطك الخاص','Own your link','موقع أو منيو رقمي باسمك يظهر في Google ويوفّر عليك جزء من عمولات التطبيقات، ويعطي العميل ثقة أكبر.','A website or digital menu in your name shows up on Google, saves you some delivery-app commission and builds trust.']}
 ];
 var NAMES={photo:['تصوير المطاعم والمنتجات','Restaurant photography'],marketing:['الحملات الإعلانية والتسويق','Ad campaigns & marketing'],social:['إدارة الحسابات','Social media management'],film:['فيديو ومونتاج','Video & editing'],design:['التصميم والهوية','Design & identity'],web:['موقع إلكتروني','Website']};
-var $=function(i){return document.getElementById(i)};
+var $=function(i){return document.getElementById(i)};function ev(n){try{window.clarity&&clarity('event',n)}catch(e){}}
 var ls=function(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){}};
 var en=ls('lang')==='en',L=function(a){return a[en?1:0]};
 var ans=[],cur=0;
@@ -170,13 +171,13 @@ function result(){$('qz').hidden=true;P.hidden=true;$('rs').hidden=false;
   $('cta').href='/app/order/?svc='+k+'&code=ISM10';$('cta').textContent=k==='package'?(en?'Order a service':'اطلب خدمة'):(en?'Fix it: ':'ابدأ بـ: ')+L(NAMES[k]);
   $('cwa').href=WA+'?text='+encodeURIComponent('السلام عليكم، سويت اختبار تسويق المطعم في تطبيقك وطلعت درجتي '+s+'/100، أبغى استشارة مجانية.');$('cwaL').textContent=en?'Free consultation on WhatsApp':'استشارة مجانية على واتساب';
   $('share').textContent=en?'📲 Send the test to a restaurant owner':'📲 أرسل الاختبار لصاحب مطعم';$('again').textContent=en?'Retake the test':'أعد الاختبار';
-  ls('checkScore',String(s));scrollTo({top:0,behavior:'smooth'})}
+  ls('checkScore',String(s));ev('check_done');scrollTo({top:0,behavior:'smooth'})}
 $('again').addEventListener('click',function(){ans=[];cur=0;$('rs').hidden=true;$('qz').hidden=false;P.hidden=false;show()});
 $('share').addEventListener('click',function(){var u='https://ismueilosman.com/app/check/?source=share',t=en?'How strong is your restaurant marketing? Free 1-minute test:':'كم درجة تسويق مطعمك؟ اختبار مجاني في دقيقة:';if(navigator.share)navigator.share({title:t,url:u}).catch(function(){});else open('https://wa.me/?text='+encodeURIComponent(t+' '+u),'_blank')});
 lang();
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=2" defer></script>
+<script src="/app/app.js?v=3" defer></script>
 </body>
 </html>

@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap">
 <style>
-:root{--ink:#07080c;--panel:#10121a;--amber:#f2b45a;--text:#eceef4;--mute:#a9afbf;--line:rgba(255,255,255,.09)}
+html{background:#07080c}:root{--ink:#07080c;--panel:#10121a;--amber:#f2b45a;--text:#eceef4;--mute:#a9afbf;--line:rgba(255,255,255,.09)}
 *{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}[hidden]{display:none!important}
 body{font-family:Tajawal,system-ui,sans-serif;background:var(--ink);color:var(--text);min-height:100vh;line-height:1.7;overflow-x:hidden;background-image:radial-gradient(60% 45% at 85% -5%,rgba(242,180,90,.16),transparent 60%)}
 a{color:inherit}button{font:inherit;color:inherit}
@@ -107,6 +107,8 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 .rfb{max-width:22rem;margin:0 auto 1rem;background:linear-gradient(120deg,rgba(242,180,90,.18),rgba(242,180,90,.05));border:1px solid rgba(242,180,90,.35);border-radius:18px;padding:1rem;display:grid;gap:.5rem}.rfb p{font-weight:700}.rfb b{font:800 1.15rem ui-monospace,Menlo,monospace;color:var(--amber);letter-spacing:.08em}.rfb small{color:var(--mute);font-size:.82rem}
 .al{max-width:22rem;margin:0 auto 1rem;width:100%}
 .myref{font-size:.85rem;color:var(--mute);margin-bottom:.8rem}.myref b{color:var(--amber);font-family:ui-monospace,Menlo,monospace;letter-spacing:.06em}.myref button{background:none;border:0;color:var(--amber);font:800 .85rem Tajawal,sans-serif;cursor:pointer;text-decoration:underline}
+.hi{text-wrap:balance}.lng{min-width:44px;min-height:44px}.alt a{display:inline-block;padding:.6rem .2rem}
+.nr{width:100%;justify-content:center;margin-bottom:.7rem;border-color:rgba(242,180,90,.45)}.nr b{color:var(--amber)}
 </style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500);});})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
@@ -129,6 +131,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
     <section class="step" data-s="2"><div class="wk" id="wk" hidden><p class="wk-t" id="wkT"></p><div class="wk-r" id="wkR"></div></div><h2 data-en="What kind of business?">وش نوع نشاطك؟</h2><div class="chs" id="chs"><button type="button" class="ch" data-v="مطعم أو كافيه"><i aria-hidden="true">🍽️</i><span data-en="Restaurant or café">مطعم أو كافيه</span></button><button type="button" class="ch" data-v="متجر أو منتجات"><i aria-hidden="true">🛍️</i><span data-en="Store or products">متجر أو منتجات</span></button><button type="button" class="ch" data-v="عقارات وتطوير"><i aria-hidden="true">🏢</i><span data-en="Real estate">عقارات وتطوير</span></button><button type="button" class="ch" data-v="خدمات وشركات"><i aria-hidden="true">💼</i><span data-en="Services & companies">خدمات وشركات</span></button><button type="button" class="ch" data-v="فعاليات ومناسبات"><i aria-hidden="true">🎉</i><span data-en="Events">فعاليات ومناسبات</span></button><button type="button" class="ch" data-v="شخصية عامة / صانع محتوى"><i aria-hidden="true">⭐</i><span data-en="Public figure / creator">شخصية عامة / صانع محتوى</span></button><button type="button" class="ch" data-v="أخرى"><i aria-hidden="true">➕</i><span data-en="Other">أخرى</span></button></div>
       <div class="fld" style="margin-top:1.2rem"><label for="o-city"><span data-en="City">المدينة</span> <small data-en="(optional)">(اختياري)</small></label><select class="fi" id="o-city"><option value="" data-en="Choose a city">اختر المدينة</option><option>مكة المكرمة</option><option>جدة</option><option>الرياض</option><option>المدينة المنورة</option><option>الدمام والخبر</option><option>الطائف</option><option>أبها وخميس مشيط</option><option>مدينة أخرى</option></select></div>
       <div class="bkg" id="bkg" hidden><p class="bl"><span data-en="Pick your shoot day">اختر يوم التصوير</span> <small data-en="(one client per day)">(عميل واحد في اليوم)</small></p>
+        <button type="button" class="ch nr" id="near" hidden></button>
         <div class="cal-h"><button type="button" class="cn" id="calP" aria-label="السابق">›</button><b id="calM"></b><button type="button" class="cn" id="calN" aria-label="التالي">‹</button></div>
         <div class="cal" id="cal"></div>
         <p class="cal-l"><span><i class="la"></i><span data-en="Available">متاح</span></span><span><i class="lb"></i><span data-en="Booked">محجوز</span></span><span><i class="ls"></i><span data-en="Your pick">اختيارك</span></span></p>
@@ -184,7 +187,7 @@ function greet(){if(me.name){var f=me.name.split(/\s+/)[0];$('hi').firstChild.te
 var sel={svc:null,svcName:null,act:null,date:'',noDate:false},cur=1,cm=0;
 var T={s1:['الخطوة 1 من 3: الخدمة','Step 1 of 3: Service'],s2:['الخطوة 2 من 3: نشاطك','Step 2 of 3: Your business'],s3:['الخطوة 3 من 3: بياناتك','Step 3 of 3: Your details'],next:['التالي','Next'],send:['أرسل الطلب','Send request'],sending:['جارٍ الإرسال…','Sending…']};
 var t=function(k){return T[k][en?1:0]};
-function step(n,silent){cur=n;[].forEach.call(document.querySelectorAll('.step'),function(s){s.classList.toggle('on',+s.dataset.s===n)});
+function step(n,silent){if(!silent&&n>cur){try{history.pushState({s:n},'')}catch(e){}ev('order_step'+n)}cur=n;[].forEach.call(document.querySelectorAll('.step'),function(s){s.classList.toggle('on',+s.dataset.s===n)});
   [].forEach.call(document.querySelectorAll('.prog i'),function(i,ix){i.classList.toggle('on',ix<n)});
   $('stl').textContent=t('s'+n);$('bk').hidden=n===1;$('goL').textContent=n===3?t('send'):t('next');valid();
   if(n===3){var sv=document.querySelector('.sv.sel');$('sum').innerHTML='';var s1=document.createElement('div');s1.innerHTML=(en?'Service: ':'الخدمة: ')+'<b></b>';s1.querySelector('b').textContent=sv?(en?sv.dataset.enName:sv.dataset.ar):'';var s2=document.createElement('div');s2.innerHTML=(en?'Business: ':'النشاط: ')+'<b></b>';s2.querySelector('b').textContent=sel.act||'';$('sum').appendChild(s1);$('sum').appendChild(s2);if(PKG&&sel.svc==='package'){var s5=document.createElement('div');s5.innerHTML=(en?'Package: ':'الباقة: ')+'<b class="pz"></b>';s5.querySelector('b').textContent=PKG[en?1:0];$('sum').appendChild(s5)}if(EST){var s6=document.createElement('div');s6.innerHTML=(en?'Estimate: ':'التقدير: ')+'<b class="pz"></b>';s6.querySelector('b').textContent=EST;$('sum').appendChild(s6)}else if(PR[sel.svc]&&!PKG){var s3=document.createElement('div');s3.innerHTML=(en?'Starts from: ':'يبدأ من: ')+'<b class="pz"></b>';s3.querySelector('b').textContent=PR[sel.svc]+(en?' SAR':' ر.س');$('sum').appendChild(s3)}if(sel.date){var s4=document.createElement('div');s4.innerHTML=(en?'Shoot day: ':'موعد التصوير: ')+'<b class="pz"></b>';s4.querySelector('b').textContent=fmt(sel.date)+(en?' (pending confirmation)':' (حجز مبدئي)');$('sum').appendChild(s4)}
@@ -208,9 +211,11 @@ function cal(){var box=$('bkg');box.hidden=!needDate();if(box.hidden){sel.date='
     else if(BK.indexOf(k)>-1){b.classList.add('b');b.disabled=true;b.setAttribute('aria-label',(en?'Booked ':'محجوز ')+dd)}
     else{if(sel.date===k)b.classList.add('s');b.addEventListener('click',function(){sel.date=k;sel.noDate=false;$('noDate').classList.remove('sel');bmsg((en?'Your day: ':'يومك: ')+fmt(k)+(en?' — held for you until I confirm on WhatsApp':' — محجوز لك مبدئيًا لين أأكد معك على الواتساب'));cal();valid()})}
     C.appendChild(b)})(dd)}
-  if(sel.date&&BK.indexOf(sel.date)>-1)sel.date=''}
+  if(sel.date&&BK.indexOf(sel.date)>-1)sel.date='';
+  var nd=new Date(first);while(BK.indexOf(ymd(nd))>-1&&nd<=last)nd.setDate(nd.getDate()+1);var nk=ymd(nd),N=$('near');
+  N.hidden=!!sel.date||sel.noDate;N.textContent='';N.appendChild(document.createTextNode(en?'⚡ Earliest available: ':'⚡ أقرب موعد متاح: '));var nb=document.createElement('b');nb.textContent=fmt(nk);N.appendChild(nb);N.dataset.k=nk}
 function bmsg(t,e){$('bmsg').textContent=t||'';$('bmsg').classList.toggle('e',!!e)}
-function works(){var w=WK[sel.svc];$('wk').hidden=!w;if(!w)return;var sv=document.querySelector('.sv.sel');$('wkT').textContent=(en?'From my work in ':'من شغلي في ')+(sv?(en?sv.dataset.enName:sv.dataset.ar):'');var R=$('wkR');while(R.firstChild)R.removeChild(R.firstChild);w.forEach(function(f){if(f.indexOf('v:')===0){var n=f.slice(2),v=document.createElement('video');v.muted=true;v.loop=true;v.autoplay=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='metadata';v.poster='/assets/img/'+n+'.webp';v.src='/assets/media/'+n+'.mp4';R.appendChild(v);var p=v.play();if(p&&p.catch)p.catch(function(){})}else{var i=document.createElement('img');i.loading='lazy';i.decoding='async';i.alt='';i.src='/assets/img/'+f+'.webp';R.appendChild(i)}})}
+function works(){var w=WK[sel.svc];$('wk').hidden=!w;if(!w)return;var sv=document.querySelector('.sv.sel');$('wkT').textContent=(en?'From my work in ':'من شغلي في ')+(sv?(en?sv.dataset.enName:sv.dataset.ar):'');var R=$('wkR');while(R.firstChild)R.removeChild(R.firstChild);w.forEach(function(f){if(f.indexOf('v:')===0){var n=f.slice(2),v=document.createElement('video');v.muted=true;v.loop=true;v.autoplay=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='metadata';v.poster='/assets/img/'+n+'.webp';v.src='/assets/media/app/'+n+'.mp4';R.appendChild(v);var p=v.play();if(p&&p.catch)p.catch(function(){})}else{var i=document.createElement('img');i.loading='lazy';i.decoding='async';i.alt='';i.src='/assets/img/'+f+'.webp';R.appendChild(i)}})}
 function waLink(){var s=sel.svcName?(en?'Hello, I would like to ask about: ':'السلام عليكم، أبغى أستفسر عن خدمة: ')+sel.svcName:(en?'Hello':'السلام عليكم');$('waAlt').href=WA+'?text='+encodeURIComponent(s)}
 $('o-code')&&setTimeout(function(){$('o-code').addEventListener('input',function(){clearTimeout(window._ct);window._ct=setTimeout(chkCode,500)})});
 function chkCode(){var c=$('o-code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');$('k-code').textContent='';$('e-code').textContent='';$('o-code').classList.remove('bad');if(!c)return '';
@@ -221,9 +226,13 @@ function chkCode(){var c=$('o-code').value.trim().toUpperCase().replace(/[^A-Z0-
   err('e-code',$('o-code'),en?'Code not valid':'الكود غير صحيح');return false}
 function needDate(){return !!BOOK[sel.svc]}
 function valid(){$('go').disabled=cur===1?!sel.svc:cur===2?(!sel.act||(needDate()&&!sel.date&&!sel.noDate)):false}
-[].forEach.call(document.querySelectorAll('.sv'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('.sv'),function(x){x.classList.remove('sel')});b.classList.add('sel');sel.svc=b.dataset.k;sel.svcName=b.dataset.ar;valid();waLink();setTimeout(function(){step(2)},220)})});
-[].forEach.call(document.querySelectorAll('#chs .ch'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('#chs .ch'),function(x){x.classList.remove('sel')});b.classList.add('sel');sel.act=b.dataset.v;valid()})});
-$('bk').addEventListener('click',function(){step(cur-1)});
+[].forEach.call(document.querySelectorAll('.sv'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('.sv'),function(x){x.classList.remove('sel')});b.classList.add('sel');buzz();sel.svc=b.dataset.k;sel.svcName=b.dataset.ar;valid();waLink();setTimeout(function(){step(2)},220)})});
+[].forEach.call(document.querySelectorAll('#chs .ch'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('#chs .ch'),function(x){x.classList.remove('sel')});b.classList.add('sel');buzz();sel.act=b.dataset.v;valid()})});
+$('bk').addEventListener('click',function(){if(history.state&&history.state.s===cur)history.back();else step(cur-1)});
+addEventListener('popstate',function(e){if(!$('ok').hidden)return;var s=e.state&&e.state.s?e.state.s:1;if(s<cur)step(s,true),scrollTo({top:0,behavior:'smooth'})});
+function ev(n){try{window.clarity&&clarity('event',n)}catch(e){}}
+function buzz(){try{navigator.vibrate&&navigator.vibrate(8)}catch(e){}}
+$('near').addEventListener('click',function(){var k=this.dataset.k,p=k.split('-'),t=new Date();cm=(+p[0]-t.getFullYear())*12+(+p[1]-1-t.getMonth());sel.date=k;sel.noDate=false;$('noDate').classList.remove('sel');bmsg((en?'Your day: ':'يومك: ')+fmt(k)+(en?' — held for you until I confirm on WhatsApp':' — محجوز لك مبدئيًا لين أأكد معك على الواتساب'));cal();valid();buzz();ev('book_near')});
 $('calP').addEventListener('click',function(){if(cm>0){cm--;cal()}});$('calN').addEventListener('click',function(){cm++;cal()});
 $('noDate').addEventListener('click',function(){sel.noDate=!sel.noDate;sel.date='';$('noDate').classList.toggle('sel',sel.noDate);bmsg(sel.noDate?(en?'No problem, we will set the day together.':'ولا يهمك، نحدد اليوم مع بعض.'):'');cal();valid()});
 function loadCfg(){return fetch(GS+'?cfg=1').then(function(r){return r.json()}).then(function(j){if(!j||!j.ok)return;CFG=j;BK=j.booked||[];if(j.codes)CODES=j.codes;if(cur===2)cal();
@@ -257,7 +266,7 @@ $('go').addEventListener('click',function(){
 function bad(e){if(e.error==='taken'){if(e.booked)BK=e.booked;sel.date='';step(2);bmsg(en?'Sorry, that day was just booked. Please pick another day.':'للأسف هذا اليوم انحجز قبل شوي، اختر يوم ثاني.',true);setTimeout(function(){$('bkg').scrollIntoView({block:'center',behavior:'smooth'})},400)}
   else if(e.error==='date'){sel.date='';step(2);bmsg(en?'Pick a day from tomorrow onwards.':'اختر يوم من بكرة وطالع.',true)}
   else if(e.error==='code'){err('e-code',$('o-code'),en?'Code not valid':'الكود غير صحيح');$('k-code').textContent=''}}
-function done(wa,sent,id,ref){
+function done(wa,sent,id,ref){ev(sent===false?'order_whatsapp_fallback':'order_sent');if(sel.date)ev('order_booked_day');
   var list=[];try{list=JSON.parse(ls('myOrders')||'[]')}catch(e){}
   list.unshift({s:sel.svcName,k:sel.svc,a:sel.act,d:Date.now(),ok:sent!==false,id:id||'',dt:sel.date||'',r:ref||''});if(ref){me.ref=ref;ls('me',JSON.stringify(me))};ls('myOrders',JSON.stringify(list.slice(0,20)));
   $('flow').hidden=true;$('ok').hidden=false;$('okH').textContent=(en?'Thank you, ':'شكرًا ')+me.name.split(/\s+/)[0];$('okWa').href=wa;
@@ -276,7 +285,7 @@ function renderMy(){var list=[];try{list=JSON.parse(ls('myOrders')||'[]')}catch(
     if(S==='تم التسليم'){var rv=document.createElement('a');rv.className='rv';rv.href=REV;rv.target='_blank';rv.rel='noopener';rv.textContent=en?'⭐ Rate the service':'⭐ قيّم الخدمة';oa.appendChild(rv)}r.appendChild(oa)}
   L.appendChild(r)})}
 var pre=q.get('svc');if(pre){var pb=document.querySelector('.sv[data-k="'+pre+'"]');if(pb){pb.classList.add('sel');sel.svc=pre;sel.svcName=pb.dataset.ar;cur=2}}
-lang();if(cur===2)step(2,true);
+lang();if(cur===2)step(2,true);try{history.replaceState({s:cur},'')}catch(e){}
 addEventListener('io-orders',renderMy);
 function shareRef(rc){var u='https://ismueilosman.com/app/order/?code='+rc+'&source=ref',t=en?'Order from Ismueil Osman (photography, marketing, design) with my code '+rc+' and get 10% off:':'اطلب من إسماعيل عثمان (تصوير وتسويق وتصميم) بكودي '+rc+' وتاخذ خصم 10%:';if(navigator.share)navigator.share({title:en?'Ismueil Osman':'إسماعيل عثمان',text:t,url:u}).catch(function(){});else open('https://wa.me/?text='+encodeURIComponent(t+' '+u),'_blank')}
 $('rfS').addEventListener('click',function(){shareRef($('rfC').textContent)});
@@ -288,6 +297,6 @@ $('share').addEventListener('click',function(){var u='https://ismueilosman.com/a
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=2" defer></script>
+<script src="/app/app.js?v=3" defer></script>
 </body>
 </html>
