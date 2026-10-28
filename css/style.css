@@ -703,3 +703,11 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 .sa-wb{grid-column:1/-1}.sa-wb ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:1.5rem}
 @media(max-width:1000px){.sa-wb ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.sa-wb ul{grid-template-columns:1fr}}
+
+/* أزرار الطلب في بطاقات الخدمات */
+.svx-a{display:flex;align-items:center;gap:.5rem;margin-top:.9rem}
+.svx-o{display:inline-flex;align-items:center;justify-content:center;background:var(--amber);color:#111;font:800 .88rem Cairo,sans-serif;padding:.55rem 1.05rem;border-radius:999px;text-decoration:none;box-shadow:0 6px 18px rgba(242,180,90,.25);transition:filter .2s,transform .2s}
+.svx-o:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.svx-w{display:inline-grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:50%;background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.45);color:#25d366}
+.svx-w svg{width:1.15rem;height:1.15rem;fill:currentColor}
+@media(min-width:901px){.svx-c:nth-child(6){grid-column:span 3}}

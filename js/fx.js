@@ -7,7 +7,39 @@
     addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
   }
   var standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-  if (standalone) { document.documentElement.classList.add('is-app'); return; }
+  var demo = false; try { if (/[?&]app=1/.test(location.search)) sessionStorage.setItem('appdemo', '1'); demo = sessionStorage.getItem('appdemo') === '1'; } catch (e) {}
+  if (standalone || demo) { document.documentElement.classList.add('is-app'); if (document.body) tabbar(); else addEventListener('DOMContentLoaded', tabbar); if (standalone) return; }
+  function tabbar() {
+    if (document.querySelector('.tbar')) return;
+    var en = document.documentElement.lang === 'en', P = location.pathname;
+    var I = {
+      home: 'M12 3 2 11h3v9h6v-6h2v6h6v-9h3z',
+      svc: 'M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 0h7v7h-7z',
+      work: 'M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z',
+      add: 'M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z',
+      wa: 'M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.6-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z'
+    };
+    var items = [
+      ['/', 'home', en ? 'Home' : 'الرئيسية', P === '/' && location.hash !== '#services'],
+      ['/#services', 'svc', en ? 'Services' : 'الخدمات', false],
+      ['/order/', 'add', en ? 'Order' : 'اطلب خدمة', /^\/order/.test(P), 1],
+      ['/work/', 'work', en ? 'My work' : 'أعمالي', /^\/work/.test(P)],
+      ['https://wa.me/966574395924', 'wa', en ? 'WhatsApp' : 'واتساب', false]
+    ];
+    var st = document.createElement('style');
+    st.textContent = '.tbar{position:fixed;left:0;right:0;bottom:0;z-index:8000;display:grid;grid-template-columns:repeat(5,1fr);align-items:end;padding:.35rem .4rem calc(.35rem + env(safe-area-inset-bottom,0px));background:rgba(9,10,15,.94);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.08)}.tbar a{display:flex;flex-direction:column;align-items:center;gap:.15rem;text-decoration:none;color:#9aa1b2;font:700 .68rem Tajawal,system-ui,sans-serif;padding:.3rem 0;-webkit-tap-highlight-color:transparent}.tbar a svg{width:1.45rem;height:1.45rem;fill:currentColor}.tbar a.on{color:#f2b45a}.tbar a.tbw{color:#25d366}.tbar a.mid span.c{width:3.1rem;height:3.1rem;margin-top:-1.4rem;border-radius:50%;display:grid;place-items:center;background:#f2b45a;color:#111;box-shadow:0 8px 22px rgba(242,180,90,.35),0 0 0 5px #090a0f}.tbar a.mid{color:#f2b45a}html.is-app body{padding-bottom:calc(4.4rem + env(safe-area-inset-bottom,0px))}html.is-app .appx{display:none}html.is-app .tb-lift{margin-bottom:calc(4.2rem + env(safe-area-inset-bottom,0px))!important}';
+    document.head.appendChild(st);
+    var nav = document.createElement('nav'); nav.className = 'tbar'; nav.setAttribute('aria-label', en ? 'App navigation' : 'تنقل التطبيق');
+    items.forEach(function (it) {
+      var a = document.createElement('a'); a.href = it[0]; if (it[3]) a.classList.add('on'); if (it[1] === 'wa') { a.classList.add('tbw'); a.target = '_blank'; a.rel = 'noopener'; }
+      var svg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + I[it[1]] + '"/></svg>';
+      if (it[4]) { a.classList.add('mid'); a.innerHTML = '<span class="c">' + svg + '</span>'; } else a.innerHTML = svg;
+      var t = document.createElement('span'); t.textContent = it[2]; a.appendChild(t); nav.appendChild(a);
+    });
+    document.body.appendChild(nav);
+    /* نرفع الأزرار العائمة فوق الشريط */
+    setTimeout(function () { [].forEach.call(document.querySelectorAll('body *'), function (e) { if (e === nav || nav.contains(e)) return; var cs = getComputedStyle(e); if (cs.position === 'fixed' && parseFloat(cs.bottom) < 140 && parseFloat(cs.bottom) >= 0 && e.offsetHeight < 200) e.classList.add('tb-lift'); }); }, 1500);
+  }
   var ls = function (k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} };
   var n = (+ls('visits') || 0) + 1; ls('visits', n);
   var off = +ls('appNo') || 0; if (Date.now() - off < 14 * 864e5) return;
