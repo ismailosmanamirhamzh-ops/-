@@ -119,7 +119,7 @@ html{background:#07080c}.hi,h1{text-wrap:balance}
     <div><b data-en="Writer">كاتب</b><span data-en="Al-Watan">صحيفة الوطن</span></div>
   </div>
 
-  <a class="promo" id="promo" href="/app/order/?code=ISM10"><span class="pg" aria-hidden="true">🎁</span><span><b id="prT" data-en="10% off your first order">خصم 10% على أول طلب</b><small id="prD" data-en="Use code ISM10 when you order">استخدم الكود ISM10 وقت الطلب</small></span><i class="pcd" id="prC">ISM10</i></a>
+  <a class="promo" id="promo" href="/app/order/?code=ISM20"><span class="pg" aria-hidden="true">🎁</span><span><b id="prT" data-en="20% off your order">خصم 20% على طلبك</b><small id="prD" data-en="Use code ISM20 when you order">استخدم الكود ISM20 وقت الطلب</small></span><i class="pcd" id="prC">ISM20</i></a>
   <a class="qs" href="/app/store/"><div><b data-en="Quick services from 9 SAR">خدمات سريعة تبدأ من 9 ريال</b><small data-en="Google profile, designs, ad accounts, photography and groom packages">ملف Google، تصاميم، حسابات إعلانية، تصوير، وباقات العريس</small></div><i aria-hidden="true">←</i></a>
   <div class="qsc"><a href="/app/store/#google"><i>📍</i><span data-en="Google">Google</span></a><a href="/app/store/#design"><i>🎨</i><span data-en="Design">تصاميم</span></a><a href="/app/store/#accounts"><i>📱</i><span data-en="Accounts">حسابات</span></a><a href="/app/store/#photo"><i>📸</i><span data-en="Photos">تصوير</span></a><a href="/app/store/#wedding"><i>💍</i><span data-en="Weddings">العريس</span></a></div>
   <h2 id="services" data-en="For restaurants & brands">للمطاعم والعلامات التجارية</h2>
@@ -215,11 +215,11 @@ function tip(){var t=TIPS[tipW()%TIPS.length];document.getElementById('tipT').te
 function promo(o){if(!o){document.getElementById('promo').hidden=true;return}document.getElementById('promo').href='/app/order/?code='+o.code;['prT','prD'].forEach(function(i){document.getElementById(i).removeAttribute('data-en')});document.getElementById('prT').textContent=o.t;document.getElementById('prD').textContent=o.d||((en?'Use code ':'استخدم الكود ')+o.code);document.getElementById('prC').textContent=o.code}
 fetch('https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec?cfg=1').then(function(r){return r.json()}).then(function(j){if(j&&j.ok)promo((j.offers||[]).filter(function(x){return x.code})[0])}).catch(function(){});
 tip();document.getElementById('langBtn')&&document.getElementById('langBtn').addEventListener('click',function(){setTimeout(tip,0)});
-document.getElementById('share').addEventListener('click',function(){var rc=(function(){try{return JSON.parse(ls('me')||'{}').ref}catch(e){}})();var u='https://ismueilosman.com/app/'+(rc?'order/?code='+rc+'&source=ref':'?source=share'),t=en?'Ismueil Osman: photography, marketing and design for restaurants and brands. Free consultation:':'تطبيق إسماعيل عثمان: تصوير وتسويق وتصميم للمطاعم والعلامات التجارية، واستشارة مجانية'+(rc?' وخصم 10% بكودي '+rc:'')+':';
+document.getElementById('share').addEventListener('click',function(){var rc='';var u='https://ismueilosman.com/app/'+(rc?'order/?code='+rc+'&source=ref':'?source=share'),t=en?'Ismueil Osman: photography, marketing and design for restaurants and brands. Free consultation:':'تطبيق إسماعيل عثمان: تصوير وتسويق وتصميم للمطاعم والعلامات التجارية، واستشارة مجانية'+':';
  if(navigator.share){navigator.share({title:en?'Ismueil Osman':'إسماعيل عثمان',text:t,url:u}).catch(function(){})}else{open('https://wa.me/?text='+encodeURIComponent(t+' '+u),'_blank')}});
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=4" defer></script>
+<script src="/app/app.js?v=5" defer></script>
 </body>
 </html>

@@ -166,6 +166,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 (function(){
 var $=function(i){return document.getElementById(i)};function ev(n){try{window.clarity&&clarity('event',n)}catch(e){}}
 var ls=function(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){}};
+try{if(/^ISM10$/i.test(localStorage.getItem('promo')||''))localStorage.setItem('promo','ISM20')}catch(e){}
 var en=ls('lang')==='en',L=function(a){return a[en?1:0]};
 var n=function(x){return Math.round(x).toLocaleString('en-US')};
 /* الحاسبة: كل خدمة لها مقدار واحد وإضافات */
@@ -187,7 +188,7 @@ var C={
    x:[['en','نسخة إنجليزية','English version',799],['menu','منيو رقمي بكود QR','Digital QR menu',499]]}
 };
 var k='photo',q=C.photo.v,X={};
-var codes={ISM10:10},promo=(ls('promo')||'').toUpperCase();
+var codes={ISM20:20},promo=(ls('promo')||'').toUpperCase();
 function tabs(c){$('tP').classList.toggle('on',!c);$('tC').classList.toggle('on',c);$('pP').hidden=c;$('pC').hidden=!c}
 $('tP').addEventListener('click',function(){tabs(false)});$('tC').addEventListener('click',function(){tabs(true);calc()});
 function chips(){var B=$('cs');while(B.firstChild)B.removeChild(B.firstChild);Object.keys(C).forEach(function(key){var b=document.createElement('button');b.type='button';b.textContent=L(C[key].t);if(key===k)b.className='on';b.addEventListener('click',function(){k=key;q=C[key].v;X={};chips();form()});B.appendChild(b)})}
@@ -206,12 +207,12 @@ function lang(){document.documentElement.lang=en?'en':'ar';document.documentElem
   $('langBtn').textContent=en?'ع':'EN';chips();form()}
 $('langBtn').addEventListener('click',function(){en=!en;ls('lang',en?'en':'ar');lang()});
 fetch('https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec?cfg=1').then(function(r){return r.json()}).then(function(j){if(j&&j.codes){codes=j.codes;if(!promo){var o=(j.offers||[]).filter(function(x){return x.code})[0];if(o)promo=o.code}calc()}}).catch(function(){});
-if(!promo)promo='ISM10';
+if(!promo)promo='ISM20';
 if(location.hash==='#calc')tabs(true);
 lang();
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=4" defer></script>
+<script src="/app/app.js?v=5" defer></script>
 </body>
 </html>
