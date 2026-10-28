@@ -19,7 +19,7 @@
   };
   var items = [
     ['/app/', 'home', en ? 'Home' : 'الرئيسية', P === '/app/' && H !== '#services' && H !== '#work'],
-    ['/app/#services', 'svc', en ? 'Services' : 'الخدمات', P === '/app/' && H === '#services'],
+    ['/app/store/', 'svc', en ? 'Services' : 'الخدمات', /^\/app\/store/.test(P)],
     ['/app/order/', 'add', en ? 'Order' : 'اطلب خدمة', /^\/app\/order/.test(P), 1],
     ['/app/#work', 'work', en ? 'My work' : 'أعمالي', P === '/app/' && H === '#work'],
     ['https://wa.me/966574395924', 'wa', en ? 'WhatsApp' : 'واتساب', false]
