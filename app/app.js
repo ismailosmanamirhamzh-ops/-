@@ -66,3 +66,73 @@
   addEventListener('appinstalled', close);
   if (ios) setTimeout(show, 5000);
 })();
+
+/* تنبيهات حالة الطلب: التطبيق يشيك على طلبات العميل كل ما يفتح، ولو تغيّرت الحالة ينبهه.
+   وعلى أندرويد (التطبيق مثبّت) يشيك بالخلفية بين فترة وفترة. */
+(function () {
+  var GS = 'https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec';
+  var ls = function (k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} };
+  var en = function () { return document.documentElement.lang === 'en'; };
+  var MSG = {
+    'قيد التنفيذ': ['🔵 بدأت أشتغل على طلبك', '🔵 I have started on your order'],
+    'تم التسليم': ['🟢 طلبك جاهز! افتح «طلباتي» واستلم ملفاتك', '🟢 Your order is ready! Open My requests to get your files'],
+    'ملغي': ['طلبك انلغى، كلمني واتساب لو تبغى نرتب موعد ثاني', 'Your order was cancelled. WhatsApp me to rearrange'],
+    'جديد': ['🟡 طلبك وصلني', '🟡 I received your order']
+  };
+  function orders() { try { return JSON.parse(ls('myOrders') || '[]'); } catch (e) { return []; } }
+  function can() { return 'Notification' in window && 'serviceWorker' in navigator && Notification.permission === 'default'; }
+  function saveForSW(list) {
+    if (!('caches' in window)) return;
+    var data = list.filter(function (o) { return o.id; }).map(function (o) { return { id: o.id, s: o.s, st: o.st || '' }; });
+    caches.open('io-app-data').then(function (c) { c.put('/app/__orders.json', new Response(JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } })); }).catch(function () {});
+  }
+  function toast(t) {
+    var d = document.createElement('div');
+    d.setAttribute('role', 'status');
+    d.style.cssText = 'position:fixed;top:calc(.8rem + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:9000;max-width:92vw;background:#14161f;color:#eceef4;border:1px solid rgba(242,180,90,.5);border-radius:14px;padding:.8rem 1rem;font:700 .92rem Tajawal,sans-serif;box-shadow:0 12px 40px rgba(0,0,0,.5);cursor:pointer;text-align:center';
+    d.textContent = t; d.addEventListener('click', function () { location.href = '/app/order/#my'; });
+    document.body.appendChild(d); setTimeout(function () { d.remove(); }, 7000);
+  }
+  function notify(title, body) {
+    if ('Notification' in window && Notification.permission === 'granted' && navigator.serviceWorker) {
+      navigator.serviceWorker.ready.then(function (r) { return r.showNotification(title, { body: body, icon: '/assets/img/app-192.png', badge: '/assets/img/app-192.png', tag: 'io-order', data: { url: '/app/order/#my' } }); }).catch(function () { toast(body); });
+    }
+    toast(body);
+  }
+  function sync() {
+    var list = orders(), ids = list.map(function (o) { return o.id; }).filter(Boolean);
+    if (!ids.length) return;
+    fetch(GS + '?ids=' + ids.join(',')).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j || !j.status) return;
+      var changes = [];
+      list.forEach(function (o) {
+        if (!o.id) return;
+        var ns = j.status[o.id];
+        if (ns && o.st && ns !== o.st && MSG[ns]) changes.push(MSG[ns][en() ? 1 : 0] + ' — ' + o.s);
+        if (ns) o.st = ns;
+        if (j.links && j.links[o.id]) o.ln = j.links[o.id];
+        if (j.refs && j.refs[o.id]) o.r = j.refs[o.id];
+        if (j.dates && j.dates[o.id]) o.dt = j.dates[o.id];
+      });
+      ls('myOrders', JSON.stringify(list)); saveForSW(list);
+      dispatchEvent(new Event('io-orders'));
+      changes.slice(0, 2).forEach(function (c) { notify(en() ? 'Ismueil Osman' : 'إسماعيل عثمان', c); });
+    }).catch(function () {});
+  }
+  window.ioAlerts = {
+    can: can,
+    enable: function () {
+      if (!('Notification' in window)) return Promise.resolve(false);
+      return Notification.requestPermission().then(function (p) {
+        if (p !== 'granted') return false;
+        saveForSW(orders());
+        navigator.serviceWorker.ready.then(function (r) {
+          if (r.periodicSync) r.periodicSync.register('io-orders', { minInterval: 6 * 3600 * 1000 }).catch(function () {});
+        });
+        return true;
+      });
+    }
+  };
+  addEventListener('load', function () { setTimeout(sync, 800); });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) sync(); });
+})();
