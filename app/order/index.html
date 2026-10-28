@@ -222,7 +222,7 @@ function chkCode(){var c=$('o-code').value.trim().toUpperCase().replace(/[^A-Z0-
 function needDate(){return !!BOOK[sel.svc]}
 function valid(){$('go').disabled=cur===1?!sel.svc:cur===2?(!sel.act||(needDate()&&!sel.date&&!sel.noDate)):false}
 [].forEach.call(document.querySelectorAll('.sv'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('.sv'),function(x){x.classList.remove('sel')});b.classList.add('sel');sel.svc=b.dataset.k;sel.svcName=b.dataset.ar;valid();waLink();setTimeout(function(){step(2)},220)})});
-[].forEach.call(document.querySelectorAll('.ch'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('.ch'),function(x){x.classList.remove('sel')});b.classList.add('sel');sel.act=b.dataset.v;valid()})});
+[].forEach.call(document.querySelectorAll('#chs .ch'),function(b){b.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('#chs .ch'),function(x){x.classList.remove('sel')});b.classList.add('sel');sel.act=b.dataset.v;valid()})});
 $('bk').addEventListener('click',function(){step(cur-1)});
 $('calP').addEventListener('click',function(){if(cm>0){cm--;cal()}});$('calN').addEventListener('click',function(){cm++;cal()});
 $('noDate').addEventListener('click',function(){sel.noDate=!sel.noDate;sel.date='';$('noDate').classList.toggle('sel',sel.noDate);bmsg(sel.noDate?(en?'No problem, we will set the day together.':'ولا يهمك، نحدد اليوم مع بعض.'):'');cal();valid()});
