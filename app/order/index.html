@@ -109,6 +109,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 .myref{font-size:.85rem;color:var(--mute);margin-bottom:.8rem}.myref b{color:var(--amber);font-family:ui-monospace,Menlo,monospace;letter-spacing:.06em}.myref button{background:none;border:0;color:var(--amber);font:800 .85rem Tajawal,sans-serif;cursor:pointer;text-decoration:underline}
 .hi{text-wrap:balance}.lng{min-width:44px;min-height:44px}.alt a{display:inline-block;padding:.6rem .2rem}
 .nr{width:100%;justify-content:center;margin-bottom:.7rem;border-color:rgba(242,180,90,.45)}.nr b{color:var(--amber)}
+.exb.shr{flex-direction:row;justify-content:flex-start;text-align:start;gap:.8rem;border-radius:18px;padding:.9rem 1.1rem;background:linear-gradient(120deg,rgba(242,180,90,.18),rgba(242,180,90,.04));border-color:rgba(242,180,90,.45)}.exb.shr>span:first-child{font-size:1.6rem}.exb.shr b{display:block;font:900 .98rem/1.35 Cairo,sans-serif;color:#fff}.exb.shr small{display:block;font:600 .8rem/1.5 Tajawal,sans-serif;color:#d7dae2}
 </style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500);});})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
@@ -160,7 +161,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
   <section class="my" id="my" hidden><h3 data-en="My requests">طلباتي</h3><div id="myL"></div><p class="lg" data-en="Status updates here as I work on your request.">الحالة تتحدث هنا أول بأول وأنا أشتغل على طلبك.</p></section>
   <div class="ex">
     <a class="exb" id="call" hidden target="_blank" rel="noopener"><span aria-hidden="true">📅</span><span data-en="Book a 15-minute call">احجز مكالمة 15 دقيقة</span></a>
-    <button type="button" class="exb" id="share"><span aria-hidden="true">📲</span><span data-en="Know a restaurant owner? Share the app">تعرف صاحب مطعم؟ شارك التطبيق</span></button>
+    <button type="button" class="exb shr" id="share"><span aria-hidden="true">🎁</span><span><b data-en="Share the app with friends & family">شارك التطبيق مع أصدقائك وأهلك</b><small data-en="When someone orders through you, you get 30% off your next order">ولما أحد يطلب عن طريقك، تاخذ خصم 30% على طلبك الجاي</small></span></button>
   </div>
 </main>
 <script>
@@ -192,7 +193,7 @@ function step(n,silent){if(!silent&&n>cur){try{history.pushState({s:n},'')}catch
   [].forEach.call(document.querySelectorAll('.prog i'),function(i,ix){i.classList.toggle('on',ix<n)});
   $('stl').textContent=t('s'+n);$('bk').hidden=n===1;$('goL').textContent=n===3?t('send'):t('next');valid();
   if(n===3){var sv=document.querySelector('.sv.sel');$('sum').innerHTML='';var s1=document.createElement('div');s1.innerHTML=(en?'Service: ':'الخدمة: ')+'<b></b>';s1.querySelector('b').textContent=sv?(en?sv.dataset.enName:sv.dataset.ar):'';var s2=document.createElement('div');s2.innerHTML=(en?'Business: ':'النشاط: ')+'<b></b>';s2.querySelector('b').textContent=sel.act||'';$('sum').appendChild(s1);$('sum').appendChild(s2);if(PKG&&sel.svc==='package'){var s5=document.createElement('div');s5.innerHTML=(en?'Package: ':'الباقة: ')+'<b class="pz"></b>';s5.querySelector('b').textContent=PKG[en?1:0];$('sum').appendChild(s5)}if(EST){var s6=document.createElement('div');s6.innerHTML=(en?'Estimate: ':'التقدير: ')+'<b class="pz"></b>';s6.querySelector('b').textContent=EST;$('sum').appendChild(s6)}else if(PR[sel.svc]&&!PKG){var s3=document.createElement('div');s3.innerHTML=(en?'Starts from: ':'يبدأ من: ')+'<b class="pz"></b>';s3.querySelector('b').textContent=PR[sel.svc]+(en?' SAR':' ر.س');$('sum').appendChild(s3)}if(sel.date){var s4=document.createElement('div');s4.innerHTML=(en?'Shoot day: ':'موعد التصوير: ')+'<b class="pz"></b>';s4.querySelector('b').textContent=fmt(sel.date)+(en?' (pending confirmation)':' (حجز مبدئي)');$('sum').appendChild(s4)}
-    if(!$('o-code').value&&ls('promo'))$('o-code').value=ls('promo');chkCode();
+    if(!$('o-code').value&&(ls('reward')||ls('promo')))$('o-code').value=ls('reward')||ls('promo');chkCode();
     if(me.name&&!$('o-name').value)$('o-name').value=me.name;if(me.phone&&!$('o-phone').value)$('o-phone').value=me.phone;if(me.email&&!$('o-email').value)$('o-email').value=me.email}
   if(n===2){works();cal()}
   if(!silent)scrollTo({top:0,behavior:'smooth'});waLink()}
@@ -221,8 +222,8 @@ function waLink(){var s=sel.svcName?(en?'Hello, I would like to ask about: ':'ا
 $('o-code')&&setTimeout(function(){$('o-code').addEventListener('input',function(){clearTimeout(window._ct);window._ct=setTimeout(chkCode,500)})});
 function chkCode(){var c=$('o-code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');$('k-code').textContent='';$('e-code').textContent='';$('o-code').classList.remove('bad');if(!c)return '';
   if(CODES[c]){$('k-code').textContent=en?'✓ '+CODES[c]+'% off your first order':'✓ تم تفعيل خصم '+CODES[c]+'% على أول طلب';return c}
-  if(VREF[c]===true){$('k-code').textContent=en?'✓ Referral code: 10% off':'✓ كود إحالة: خصم 10%';return c}
-  if(VREF[c]===undefined&&/^[A-Z0-9]{4,20}$/.test(c)){VREF[c]='?';fetch(GS+'?code='+encodeURIComponent(c)).then(function(r){return r.json()}).then(function(j){VREF[c]=!!(j&&j.valid);if(j&&j.valid&&j.type==='offer')CODES[c]=j.pct;chkCode()}).catch(function(){VREF[c]=undefined});$('k-code').textContent=en?'Checking…':'جارٍ التحقق…';return c}
+  if(VREF[c]===true){$('k-code').textContent=en?'✓ Your share reward: 30% off (up to 300 SAR)':'✓ مكافأة المشاركة: خصم 30% (حتى 300 ريال)';return c}
+  if(VREF[c]===undefined&&/^[A-Z0-9]{4,20}$/.test(c)){VREF[c]='?';fetch(GS+'?code='+encodeURIComponent(c)+'&phone='+digits($('o-phone').value)).then(function(r){return r.json()}).then(function(j){VREF[c]=!!(j&&j.valid);if(j&&j.valid&&j.type==='offer')CODES[c]=j.pct;chkCode()}).catch(function(){VREF[c]=undefined});$('k-code').textContent=en?'Checking…':'جارٍ التحقق…';return c}
   if(VREF[c]==='?')return c;
   err('e-code',$('o-code'),en?'Code not valid':'الكود غير صحيح');return false}
 function needDate(){return !!BOOK[sel.svc]}
@@ -253,7 +254,7 @@ $('go').addEventListener('click',function(){
   me={name:name,phone:ph,email:em};ls('me',JSON.stringify(me));
   var notes=$('o-notes').value.trim();var city=$('o-city').value||'—';
   var allNotes=(notes||'—')+(PKG&&sel.svc==='package'?' | '+PKG[0]:'')+(EST?' | التقدير: '+EST:'')+(code?' | كود الخصم: '+code+(CODES[code]?' ('+CODES[code]+'%)':''):'')+(em?' | البريد: '+em:'')+' | من التطبيق/صفحة الطلب';
-  var g={name:name,phone:ph,activity:sel.act,service:sel.svcName,city:city,notes:allNotes,page:location.href,date:sel.date||'',code:code||''};
+  var g={name:name,phone:ph,activity:sel.act,service:sel.svcName,city:city,notes:allNotes,page:location.href,date:sel.date||'',code:code||'',refBy:(window.ioRefBy?window.ioRefBy():'')};
   var d={'الاسم':name,'رقم الجوال':ph,'نوع النشاط':sel.act,'الخدمة المطلوبة':sel.svcName,'المدينة':city,'موعد التصوير':sel.date||'—','البريد':em||'—','التفاصيل':notes||'—','كود الخصم':code||'—','_subject':'طلب خدمة جديد: '+sel.svcName+' — '+name,'_template':'table','_captcha':'false'};
   var b=$('go');b.disabled=true;$('goL').textContent=t('sending');
   var wa=WA+'?text='+encodeURIComponent('طلب خدمة: '+sel.svcName+'\nالاسم: '+name+'\nالجوال: '+ph+'\nالنشاط: '+sel.act+'\nالمدينة: '+city+(sel.date?'\nموعد التصوير: '+sel.date:'')+(code?'\nكود الخصم: '+code:''));
@@ -291,11 +292,10 @@ addEventListener('io-orders',renderMy);
 $('alB').addEventListener('click',function(){window.ioAlerts.enable().then(function(ok){$('alB').textContent=ok?(en?'✓ Alerts on':'✓ التنبيهات مفعّلة'):(en?'Alerts are blocked in your browser settings':'التنبيهات مقفلة من إعدادات المتصفح');$('alB').disabled=true})});
 $('promoB').hidden=false;$('promoB').addEventListener('click',function(e){e.preventDefault();var c=this.dataset.code||'ISM20';ls('promo',c);$('o-code').value=c;bmsg('');this.lastChild.textContent=(en?'✓ Code ':'✓ تم إضافة الكود ')+c+(en?' added':'')});
 if(CAL){$('call').href=CAL;$('call').hidden=false}
-$('share').addEventListener('click',function(){var u='https://ismueilosman.com/app/?source=share',t=en?'Ismueil Osman: photography, marketing and design for restaurants and brands. Free consultation:':'تطبيق إسماعيل عثمان: تصوير وتسويق وتصميم للمطاعم والعلامات التجارية، واستشارة مجانية:';
-  if(navigator.share){navigator.share({title:en?'Ismueil Osman':'إسماعيل عثمان',text:t,url:u}).catch(function(){})}else{open('https://wa.me/?text='+encodeURIComponent(t+' '+u),'_blank')}});
+document.getElementById('share').addEventListener('click',function(){if(window.ioShare)window.ioShare()});
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=5" defer></script>
+<script src="/app/app.js?v=6" defer></script>
 </body>
 </html>

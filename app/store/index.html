@@ -270,7 +270,9 @@ function list(){var Lb=$('list');Lb.textContent='';var its0=0;CATS.forEach(funct
 }
 function bar(){var k=count();$('bar').hidden=!k;$('barN').textContent=k;$('barT').textContent=money(total())}
 function close(){$('sh').hidden=true;document.body.style.overflow=''}
-function pct(){var c=($('o-code')&&$('o-code').value||promo||'').toUpperCase().replace(/[^A-Z0-9]/g,'');return CODES[c]?[c,CODES[c]]:null}
+var RW={};function pct(){var c=($('o-code')&&$('o-code').value||promo||'').toUpperCase().replace(/[^A-Z0-9]/g,'');if(CODES[c])return [c,CODES[c],0];if(RW[c]&&RW[c].ok)return [c,RW[c].pct,RW[c].cap];return null}
+function chkRw(){var c=($('o-code').value||'').toUpperCase().replace(/[^A-Z0-9]/g,''),ph=digits($('o-phone').value);if(!/^IS[0-9A-Z]{6}$/.test(c)||!/^05\d{8}$/.test(ph)||RW[c])return;RW[c]={};fetch(GS+'?code='+c+'&phone='+ph).then(function(r){return r.json()}).then(function(j){RW[c]={ok:!!(j&&j.valid),pct:j.pct,cap:j.cap};tot()}).catch(function(){delete RW[c]})}
+function disc(t,p){if(!p)return 0;var d=t*p[1]/100;return Math.round(p[2]?Math.min(d,p[2]):d)}
 function sheet(){var B=$('shB');B.textContent='';$('sh').hidden=false;document.body.style.overflow='hidden';ev('store_cart');
   var h=document.createElement('h2');h.appendChild(document.createTextNode(en?'Your cart':'سلتك'));var x=document.createElement('button');x.type='button';x.textContent='✕';x.setAttribute('aria-label','close');x.addEventListener('click',close);h.appendChild(x);B.appendChild(h);
   Object.keys(cart).forEach(function(k){var it=BY[k],r=document.createElement('div');r.className='ci';var l=document.createElement('div');var b=document.createElement('b');b.textContent=L(it[2]);var s=document.createElement('small');s.textContent=cart[k]+' × '+money(it[3])+' = '+money(it[3]*cart[k]);l.appendChild(b);l.appendChild(s);var box=document.createElement('div');r.appendChild(l);r.appendChild(box);
@@ -284,8 +286,8 @@ function sheet(){var B=$('shB');B.textContent='';$('sh').hidden=false;document.b
    '<div class="fld"><label for="o-code"><span>'+(en?'Discount code':'كود الخصم')+'</span> <small>'+(en?'(optional)':'(اختياري)')+'</small></label><input class="fi ltr" id="o-code" maxlength="20" placeholder="ISM20" autocapitalize="characters"><small class="okc" id="k-code"></small></div>'+
    '<input class="hp" id="o-hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="button" class="btn go" id="send" style="width:100%">'+(en?'Confirm order':'أكّد الطلب')+'</button>';
   B.appendChild(form);form.querySelector('.tot span').textContent=en?'Total':'الإجمالي';
-  if(me.name)$('o-name').value=me.name;if(me.phone)$('o-phone').value=me.phone;if(promo)$('o-code').value=promo;
-  $('o-code').addEventListener('input',tot);tot();if($('o-xp'))$('o-xp').addEventListener('change',tot);
+  if(me.name)$('o-name').value=me.name;if(me.phone)$('o-phone').value=me.phone;var rw=ls('reward');if(rw||promo)$('o-code').value=rw||promo;
+  $('o-code').addEventListener('input',function(){tot();chkRw()});$('o-phone').addEventListener('change',function(){chkRw()});tot();chkRw();if($('o-xp'))$('o-xp').addEventListener('change',tot);
   var NEED={google:['اسم النشاط والموقع ورقم الجوال وصور المكان','business name, location, phone and venue photos'],design:['نص التصميم والشعار والألوان والمقاس','text, logo, colours and size'],accounts:['السجل التجاري أو وثيقة العمل الحر والإيميل','commercial registration or freelance document and email'],wedding:['مكان الحفل ووقت الدخول','venue and entrance time'],photo:['المكان والوقت المناسب لك','place and preferred time']};
   var cs={};Object.keys(cart).forEach(function(k){cs[BY[k][1]]=1});$('need').textContent=(en?'I will need: ':'أحتاج منك: ')+Object.keys(cs).map(function(c){return NEED[c][en?1:0]}).join(en?'; ':'، ');
   if($('o-date')){var t0=new Date();t0.setDate(t0.getDate()+1);var t1=new Date();t1.setDate(t1.getDate()+180);var f=function(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)};$('o-date').min=f(t0);$('o-date').max=f(t1);$('o-date').addEventListener('change',chkDate)}$('send').addEventListener('click',send)}
@@ -293,24 +295,25 @@ function needDate(){return Object.keys(cart).some(function(k){return BY[k][7].da
 function chkDate(){var e=$('o-date');if(!e)return true;var v=e.value;if(!v)return err('e-date',e,'');if(BK.indexOf(v)>-1)return err('e-date',e,en?'This day is already booked, please pick another':'هذا اليوم محجوز، اختر يوم ثاني');if(e.min&&v<e.min)return err('e-date',e,en?'Pick a day from tomorrow':'اختر يوم من بكرة وطالع');return err('e-date',e,'')}
 function xpBase(){return Object.keys(cart).reduce(function(a,k){var c=BY[k][1];return a+((c==='design'||c==='google'||c==='accounts')&&BY[k][3]<400?BY[k][3]*cart[k]:0)},0)}
 function xpAdd(){return $('o-xp')&&$('o-xp').checked?Math.round(xpBase()*.5):0}
-function tot(){var t=total()+xpAdd(),p=pct();$('tNew').textContent=money(p?t*(1-p[1]/100):t);$('tOld').textContent=p?money(t):'';$('k-code').textContent=p?(en?'✓ '+p[1]+'% off applied':'✓ تم تطبيق خصم '+p[1]+'%'):''}
+function tot(){$('k-code').style.color='';$('o-code').classList.remove('bad');var t=total()+xpAdd(),p=pct();$('tNew').textContent=money(t-disc(t,p));$('tOld').textContent=p?money(t):'';$('k-code').textContent=p?(en?'✓ '+p[1]+'% off applied'+(p[2]?' (up to '+p[2]+' SAR)':''):'✓ تم تطبيق خصم '+p[1]+'%'+(p[2]?' (حتى '+p[2]+' ريال)':'')):''}
 function digits(v){v=(v||'').replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)}).replace(/[^\d+]/g,'');if(/^\+?966/.test(v))v='0'+v.replace(/^\+?966/,'');return v}
 function err(id,el,m){$(id).textContent=m||'';el.classList.toggle('bad',!!m);return !m}
 function send(){var name=$('o-name').value.trim(),ph=digits($('o-phone').value);
   var ok=err('e-name',$('o-name'),name.length<2?(en?'Enter your name':'اكتب اسمك'):'');ok=err('e-phone',$('o-phone'),/^05\d{8}$/.test(ph)?'':(en?'Saudi mobile: 10 digits starting with 05':'رقم جوال سعودي من 10 أرقام يبدأ بـ 05'))&&ok;if(!chkDate())ok=false;if(!ok)return;
   me.name=name;me.phone=ph;ls('me',JSON.stringify(me));var b=$('send');b.disabled=true;b.textContent=en?'Sending…':'جارٍ الإرسال…';
-  var p=pct(),xa=xpAdd(),t=total()+xa,fin=p?Math.round(t*(1-p[1]/100)):t;
+  var p=pct(),xa=xpAdd(),t=total()+xa,fin=t-disc(t,p);
   var lines=Object.keys(cart).map(function(k){return BY[k][2][0]+' × '+cart[k]+' = '+n(BY[k][3]*cart[k])+' ر.س'});
-  if(xa)lines.push('⚡ تسليم مستعجل خلال 24 ساعة = '+n(xa)+' ر.س');var summary=lines.join(' | ')+' | الإجمالي: '+n(t)+' ر.س'+(p?' | بعد خصم '+p[0]+' ('+p[1]+'%): '+n(fin)+' ر.س':'');
+  if(xa)lines.push('⚡ تسليم مستعجل خلال 24 ساعة = '+n(xa)+' ر.س');var summary=lines.join(' | ')+' | الإجمالي: '+n(t)+' ر.س'+(p?' | بعد خصم '+p[0]+' ('+p[1]+'%'+(p[2]?' حتى '+p[2]+' ريال':'')+'): '+n(fin)+' ر.س':'');
   var notes=($('o-notes').value.trim()||'—')+' | الطلب: '+summary+' | من متجر التطبيق';
   var svc='خدمات سريعة: '+Object.keys(cart).map(function(k){return BY[k][2][0]}).join('، ');
-  var dt=$('o-date')?$('o-date').value:'';var g={name:name,phone:ph,activity:'متجر التطبيق',service:svc.slice(0,300),city:'—',notes:notes,page:location.href,code:p?p[0]:'',date:dt};
+  var dt=$('o-date')?$('o-date').value:'';var g={name:name,phone:ph,activity:'متجر التطبيق',service:svc.slice(0,300),city:'—',notes:notes,page:location.href,code:p?p[0]:'',date:dt,refBy:(window.ioRefBy?window.ioRefBy():'')};
   var wa=WA+'?text='+encodeURIComponent('السلام عليكم، طلبت من التطبيق:\n'+lines.join('\n')+'\nالإجمالي: '+n(fin)+' ر.س'+(dt?'\nالموعد: '+dt:'')+'\nالاسم: '+name);
   if($('o-hp').value){done(wa,fin,'');return}
   var c=new AbortController();setTimeout(function(){c.abort()},15000);
-  fetch(GS,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(g),signal:c.signal}).then(function(r){return r.json()}).then(function(j){if(j&&j.ok===false&&(j.error==='taken'||j.error==='date')){if(j.booked)BK=j.booked;throw 'taken'}if(!j||j.ok===false)throw 0;return j})
-   .catch(function(e){if(e==='taken')return 'taken';return fetch(EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'الاسم':name,'الجوال':ph,'الطلب':summary,'التفاصيل':$('o-notes').value.trim()||'—','الموعد':dt||'—','_subject':'طلب من متجر التطبيق: '+name,'_template':'table','_captcha':'false'})}).then(function(){return {}}).catch(function(){return {}})})
-   .then(function(j){if(j==='taken'){chkDate();err('e-date',$('o-date'),en?'Sorry, that day was just booked. Pick another day.':'للأسف هذا اليوم انحجز قبل شوي، اختر يوم ثاني.');b.disabled=false;b.textContent=en?'Confirm order':'أكّد الطلب';$('o-date').scrollIntoView({block:'center',behavior:'smooth'});return}done(wa,fin,j&&j.id,j&&j.ref)})}
+  fetch(GS,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(g),signal:c.signal}).then(function(r){return r.json()})
+   .then(function(j){if(j&&j.ok===false&&j.error==='code'){throw 'code'}if(j&&j.ok===false&&(j.error==='taken'||j.error==='date')){if(j.booked)BK=j.booked;throw 'taken'}if(!j||j.ok===false)throw 0;return j})
+   .catch(function(e){if(e==='taken'||e==='code')return e;return fetch(EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'الاسم':name,'الجوال':ph,'الطلب':summary,'التفاصيل':$('o-notes').value.trim()||'—','الموعد':dt||'—','_subject':'طلب من متجر التطبيق: '+name,'_template':'table','_captcha':'false'})}).then(function(){return {}}).catch(function(){return {}})})
+   .then(function(j){if(j==='code'){$('k-code').textContent='';$('o-code').classList.add('bad');$('k-code').style.color='#ff8a8f';$('k-code').textContent=en?'This code is not valid':'الكود غير صحيح';b.disabled=false;b.textContent=en?'Confirm order':'أكّد الطلب';return}if(j==='taken'){chkDate();err('e-date',$('o-date'),en?'Sorry, that day was just booked. Pick another day.':'للأسف هذا اليوم انحجز قبل شوي، اختر يوم ثاني.');b.disabled=false;b.textContent=en?'Confirm order':'أكّد الطلب';$('o-date').scrollIntoView({block:'center',behavior:'smooth'});return}done(wa,fin,j&&j.id,j&&j.ref)})}
 function done(wa,fin,id,ref){var list0=[];try{list0=JSON.parse(ls('myOrders')||'[]')}catch(e){}
   list0.unshift({s:(en?'Quick services':'خدمات سريعة')+' ('+count()+')',k:'store',a:money(fin),d:Date.now(),ok:true,id:id||'',r:ref||''});ls('myOrders',JSON.stringify(list0.slice(0,20)));if(ref){me.ref=ref;ls('me',JSON.stringify(me))}
   ev('store_order');cart={};save();list();
@@ -335,6 +338,6 @@ var h=(location.hash||'').slice(1);if(h&&$('s-'+h))setTimeout(function(){$('s-'+
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=5" defer></script>
+<script src="/app/app.js?v=6" defer></script>
 </body>
 </html>

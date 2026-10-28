@@ -170,7 +170,7 @@ $('gGo').addEventListener('click',function(){var name=$('g-name').value.trim(),p
   var ok=err('e-name',$('g-name'),name.length<2?(en?'Enter your name':'اكتب اسمك'):'');ok=err('e-phone',$('g-phone'),/^05\d{8}$/.test(ph)?'':(en?'Saudi mobile: 10 digits starting with 05':'رقم جوال سعودي من 10 أرقام يبدأ بـ 05'))&&ok;if(!ok)return;
   me.name=name;me.phone=ph;ls('me',JSON.stringify(me));var b=$('gGo');b.disabled=true;b.textContent=en?'One moment…':'لحظة…';
   if($('g-hp').value){ls('guide','1');show();return}
-  var g={name:name,phone:ph,activity:$('g-act').value,service:'تحميل الدليل المجاني',city:'—',notes:'حمّل دليل «10 أخطاء تضيّع طلبات مطعمك» من التطبيق',page:location.href};
+  var g={name:name,phone:ph,activity:$('g-act').value,service:'تحميل الدليل المجاني',city:'—',notes:'حمّل دليل «10 أخطاء تضيّع طلبات مطعمك» من التطبيق',page:location.href,refBy:(window.ioRefBy?window.ioRefBy():'')};
   var c=new AbortController();setTimeout(function(){c.abort()},12000);
   fetch(GS,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(g),signal:c.signal}).then(function(r){return r.json()}).then(function(j){if(!j||j.ok===false)throw 0})
    .catch(function(){return fetch(EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'الاسم':name,'رقم الجوال':ph,'النشاط':g.activity,'_subject':'تحميل الدليل: '+name,'_template':'table','_captcha':'false'})}).catch(function(){})})
@@ -180,6 +180,6 @@ lang();
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=5" defer></script>
+<script src="/app/app.js?v=6" defer></script>
 </body>
 </html>
