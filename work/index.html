@@ -25,9 +25,14 @@
 <meta property="og:image" content="https://ismueilosman.com/assets/img/og-image-v2.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#000000">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="إسماعيل عثمان">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png?v=2">
-<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=2">
+<link rel="apple-touch-icon" href="/assets/img/app-apple-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Noto+Sans+Arabic:wdth,wght@87.5,700;87.5,800;87.5,900&family=Tajawal:wght@400;500;600;700;800&display=swap">
@@ -118,6 +123,11 @@ linear-gradient(currentColor,currentColor) 100% 100%/16px 1.5px,linear-gradient(
 .sa-g li:before{content:"";position:absolute;inset-inline-start:0;top:.6em;width:.42rem;height:.42rem;border-radius:2px;background:var(--amber);transform:rotate(45deg);opacity:.85}
 @media(max-width:760px){.sa-gs{grid-template-columns:1fr}.sa-dz ul{grid-template-columns:1fr}}
 @media(min-width:900px){.sa-map{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.3fr);grid-template-areas:"t hq ct" "a a a";align-items:center;column-gap:1.4rem;padding:2.4rem 2rem 1.4rem}.sa-map h4{grid-area:t;padding-inline-end:.4rem}.sa-hq{grid-area:hq;margin:0}.sa-cities{grid-area:ct;margin:0}.sa-cities li{padding:1.05rem .3rem}.sa-all{grid-area:a}}
+
+/* مجموعة المواقع والويب: عرض كامل مثل التصميم */
+.sa-wb{grid-column:1/-1}.sa-wb ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:1.5rem}
+@media(max-width:1000px){.sa-wb ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.sa-wb ul{grid-template-columns:1fr}}
 
 /*! © 2026 Ismueil Osman (إسماعيل عثمان) — ismueilosman.com. All rights reserved. Unauthorized copying or reuse is prohibited. */
 :root{--ink:#07080c;--panel:#0e1016;--amber:#f2b45a;--text:#eceef4;--mute:#a9afbf;--line:rgba(255,255,255,.08);--mono:ui-monospace,Menlo,Consolas,monospace}
@@ -652,7 +662,7 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
   <div class="svx-in">
     <p class="ab-k" data-en="Services">خدماتي</p>
     <h2 id="svH" class="fit" data-en="What I Do For You">ما أقدّمه لك</h2>
-    <p class="sv-sub" data-en="Photography, marketing and design in Saudi Arabia: five services, one person accountable for the result.">تصوير وتسويق وتصميم في السعودية: خمس خدمات، وشخص واحد مسؤول عن النتيجة.</p>
+    <p class="sv-sub" data-en="Photography, marketing and design in Saudi Arabia: six services, one person accountable for the result.">تصوير وتسويق وتصميم في السعودية: ست خدمات، وشخص واحد مسؤول عن النتيجة.</p>
     <ol class="svx-grid">
       <li class="svx-c fade" style="--i:0">
         <img src="/assets/img/nakhat-branch.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 40%">
@@ -684,6 +694,12 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
         <span class="svx-n" dir="ltr" aria-hidden="true">SC 05</span>
         <div class="svx-t"><h3><span class="h3-m" data-en="Commercial photography">التصوير التجاري</span><span class="h3-s" data-en="&amp; restaurants">والمطاعم</span></h3><p data-en="I bring out the detail of your products and dishes with the best angles and cinematic lighting, so your product draws customers in and moves them to buy.">أبرز تفاصيل منتجاتك وأطباقك بأفضل الزوايا والإضاءة السينمائية، ليجذب منتجك عملاءك ويحفّزهم على الشراء.</p></div>
       </li>
+      <li class="svx-c fade" style="--i:5">
+        <img src="/assets/img/web-design.webp" alt="" loading="lazy" decoding="async" style="object-position:50% 40%">
+        <i class="vfb" aria-hidden="true"></i>
+        <span class="svx-n" dir="ltr" aria-hidden="true">SC 06</span>
+        <div class="svx-t"><h3><span class="h3-m" data-en="Websites">المواقع الإلكترونية</span><span class="h3-s" data-en="&amp; web interfaces">وواجهات الويب</span></h3><p data-en="An official website on your own domain, with a design that reflects your brand and works on every device. Fast, secure and built to turn visitors into customers, with request forms and Google visibility.">أبني لك موقعًا رسميًا بدومين خاص باسمك، بتصميم يعكس هوية علامتك ويعمل على كل الأجهزة. سريع وآمن ومصمم ليحوّل الزائر إلى عميل، مع نماذج الطلبات والظهور في Google.</p></div>
+      </li>
     </ol>
     <div class="sa fade">
       <div class="sa-map">
@@ -709,6 +725,11 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
           <header><span class="sa-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zm17.7-10.2a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg></span><b class="sa-no" dir="ltr">03</b></header>
           <h4 data-en="Design">التصميم</h4>
           <ul><li data-en="Visual identity &amp; logos">الهوية البصرية والشعارات</li><li data-en="Social media design">تصميم السوشيال ميديا</li><li data-en="Digital ads &amp; banners">الإعلانات الرقمية والبنرات</li><li data-en="Menus">المنيو وقوائم الطعام</li><li data-en="Posters &amp; billboards">البوسترات واللوحات الإعلانية</li><li data-en="Print: brochures, flyers, cards">المطبوعات: بروشور، فلاير، كروت</li><li data-en="Packaging &amp; labels">التغليف والملصقات</li><li data-en="Company profiles &amp; presentations">البروفايل والعروض التقديمية</li><li data-en="Infographics">الإنفوجرافيك</li><li data-en="Video covers &amp; thumbnails">أغلفة الفيديو والثمبنيل</li></ul>
+        </article>
+        <article class="sa-g sa-wb">
+          <header><span class="sa-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4v10h16V8H4zm2-3a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm3 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm.6 6.6L6.2 15l3.4 3.4 1.4-1.4L9 15l2-2-1.4-1.4zm4.8 0L13 13l2 2-2 2 1.4 1.4L17.8 15l-3.4-3.4z"/></svg></span><b class="sa-no" dir="ltr">04</b></header>
+          <h4 data-en="Websites &amp; Web">المواقع والويب</h4>
+          <ul><li data-en="Official websites on your own domain">مواقع رسمية بدومين خاص</li><li data-en="Web interface design">تصميم واجهات الويب</li><li data-en="Landing pages for ad campaigns">صفحات هبوط للحملات الإعلانية</li><li data-en="Request &amp; booking forms">نماذج الطلبات والحجوزات</li><li data-en="Google visibility (SEO)">الظهور في محركات البحث</li></ul>
         </article>
       </div>
     </div>
@@ -926,6 +947,6 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
   var h=location.hash.slice(1);if(h&&document.querySelector('.cat[data-cat="'+h+'"]'))show(h,false);
 })();
 </script>
-<script src="/js/fx.js?v=20261025b" defer></script>
+<script src="/js/fx.js?v=20261028a" defer></script>
 </body>
 </html>

@@ -1,6 +1,47 @@
 /*! © 2026 Ismueil Osman (إسماعيل عثمان) — ismueilosman.com. All rights reserved. Unauthorized copying or reuse is prohibited. */
 /* تفاعلات صغيرة: أزرار مغناطيسية، ميلان البطاقات، ظهور العناوين، خط تحت الروابط.
    تشتغل فقط مع الماوس (الكمبيوتر)، وتتوقف كليًا مع «تقليل الحركة». */
+/* تطبيق الموقع: تسجيل التشغيل بدون نت + زر «ثبّت التطبيق» */
+(function () {
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function () {}); });
+  }
+  var standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (standalone) { document.documentElement.classList.add('is-app'); return; }
+  var ls = function (k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} };
+  var n = (+ls('visits') || 0) + 1; ls('visits', n);
+  var off = +ls('appNo') || 0; if (Date.now() - off < 14 * 864e5) return;
+  var en = document.documentElement.lang === 'en';
+  var ua = navigator.userAgent, ios = /iphone|ipad|ipod/i.test(ua) && !/crios|fxios/i.test(ua);
+  var deferred = null, shown = false;
+  var css = document.createElement('style');
+  css.textContent = '.appx{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:9000;display:flex;align-items:center;gap:.55rem;transform:translate(-50%,160%);transition:transform .5s cubic-bezier(.2,1.2,.3,1);background:rgba(10,11,16,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(242,180,90,.5);border-radius:999px;padding:.4rem .45rem .4rem .9rem;box-shadow:0 10px 30px rgba(0,0,0,.45);font:700 .88rem Tajawal,system-ui,sans-serif;color:#eceef4;white-space:nowrap}.appx.on{transform:translate(-50%,0)}.appx img{width:28px;height:28px;border-radius:8px}.appx b{background:#f2b45a;color:#111;border-radius:999px;padding:.45rem .9rem;font-weight:800;cursor:pointer;border:0;font:inherit;font-weight:800}.appx i{font-style:normal;cursor:pointer;opacity:.6;padding:0 .35rem;font-size:1.1rem}.appsh{position:fixed;inset:0;z-index:9001;background:rgba(0,0,0,.55);display:grid;align-items:end}.appsh>div{background:#10121a;border-top:1px solid rgba(242,180,90,.35);border-radius:22px 22px 0 0;padding:1.4rem 1.3rem calc(1.4rem + env(safe-area-inset-bottom,0px));color:#eceef4;font:500 1rem/1.9 Tajawal,system-ui,sans-serif}.appsh h3{font:900 1.2rem Cairo,system-ui,sans-serif;margin:0 0 .6rem}.appsh ol{margin:0 0 1rem;padding-inline-start:1.2rem}.appsh button{width:100%;background:#f2b45a;color:#111;border:0;border-radius:999px;padding:.8rem;font:800 1rem Tajawal,system-ui,sans-serif}';
+  document.head.appendChild(css);
+  function close() { ls('appNo', Date.now()); var e = document.querySelector('.appx'); if (e) { e.classList.remove('on'); setTimeout(function () { e.remove(); }, 600); } }
+  function sheet() {
+    var d = document.createElement('div'); d.className = 'appsh'; d.setAttribute('role', 'dialog');
+    d.innerHTML = en
+      ? '<div dir="ltr"><h3>Install the app</h3><ol><li>Tap the <b>Share</b> button in Safari.</li><li>Choose <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol><button type="button">Got it</button></div>'
+      : '<div><h3>ثبّت التطبيق على جوالك</h3><ol><li>اضغط زر <b>المشاركة</b> في سفاري (المربع والسهم).</li><li>اختر <b>إضافة إلى الشاشة الرئيسية</b>.</li><li>اضغط <b>إضافة</b>.</li></ol><button type="button">تمام</button></div>';
+    d.addEventListener('click', function (ev) { if (ev.target === d || ev.target.tagName === 'BUTTON') { d.remove(); close(); } });
+    document.body.appendChild(d);
+  }
+  function show() {
+    if (shown || n < 2) return; shown = true;
+    var b = document.createElement('div'); b.className = 'appx'; b.setAttribute('role', 'region'); b.setAttribute('aria-label', en ? 'Install app' : 'تثبيت التطبيق');
+    b.innerHTML = '<img src="/assets/img/app-192.png" alt=""><span>' + (en ? 'Get the app' : 'تطبيق إسماعيل عثمان') + '</span><b role="button" tabindex="0">' + (en ? 'Install' : 'ثبّت') + '</b><i role="button" tabindex="0" aria-label="' + (en ? 'Close' : 'إغلاق') + '">×</i>';
+    b.querySelector('b').addEventListener('click', function () {
+      if (deferred) { deferred.prompt(); deferred.userChoice.then(function () { deferred = null; close(); }); }
+      else sheet();
+    });
+    b.querySelector('i').addEventListener('click', close);
+    document.body.appendChild(b);
+    setTimeout(function () { b.classList.add('on'); }, 50);
+  }
+  addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; setTimeout(show, 8000); });
+  addEventListener('appinstalled', close);
+  if (ios && !standalone) setTimeout(show, 8000);
+})();
 /* حماية: منع عرض الموقع داخل موقع ثاني (iframe)، وتنبيه حقوق في أدوات المطوّر */
 (function () {
   try { if (window.top !== window.self && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) window.top.location = window.location.href; } catch (e) { document.documentElement.style.display = 'none'; }

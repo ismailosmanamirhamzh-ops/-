@@ -698,3 +698,8 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 /* الهيدر بالإنجليزي في الجوال: زر الاستشارة سطرين مثل العربي حتى ما يطلع زر القائمة برا الشاشة */
 @media(max-width:520px){html[lang=en] .hcta{flex-direction:column;gap:0;padding:.28rem .8rem}html[lang=en] .hcta-2{opacity:.85;font-weight:700}html[lang=en] header nav{padding-inline:.9rem}}
 @media(max-width:370px){html[lang=en] .brand-t{font-size:.8rem}html[lang=en] header nav{padding-inline:.6rem}html[lang=en] header nav>.flex{gap:.3rem}}
+
+/* مجموعة المواقع والويب: عرض كامل مثل التصميم */
+.sa-wb{grid-column:1/-1}.sa-wb ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:1.5rem}
+@media(max-width:1000px){.sa-wb ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.sa-wb ul{grid-template-columns:1fr}}

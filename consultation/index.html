@@ -25,9 +25,14 @@
 <meta property="og:image" content="https://ismueilosman.com/assets/img/og-image-v2.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#07080c">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="إسماعيل عثمان">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png?v=2">
-<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?v=2">
+<link rel="apple-touch-icon" href="/assets/img/app-apple-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap">
@@ -167,7 +172,7 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
           <div><label for="c-act">نوع النشاط <em>*</em></label>
             <select id="c-act" required><option value="" selected disabled>اختر نوع النشاط</option><option>مطعم أو كافيه</option><option>متجر أو منتجات</option><option>عقارات وتطوير</option><option>خدمات وشركات</option><option>فعاليات ومناسبات</option><option>شخصية عامة / صانع محتوى</option><option>أخرى</option></select><small class="err" id="e-act"></small></div>
           <div><label for="c-svc">الخدمة المطلوبة <em>*</em></label>
-            <select id="c-svc" required><option value="" selected disabled>اختر الخدمة</option><option>تصوير إعلانات ومنتجات</option><option>إدارة الحملات الإعلانية</option><option>إدارة حسابات التواصل الاجتماعي</option><option>تصميم وهوية بصرية</option><option>تغطية فعالية أو افتتاح</option><option>باقة متكاملة</option><option>غير متأكد، أحتاج رأيك</option></select><small class="err" id="e-svc"></small></div>
+            <select id="c-svc" required><option value="" selected disabled>اختر الخدمة</option><option>تصوير إعلانات ومنتجات</option><option>إدارة الحملات الإعلانية</option><option>إدارة حسابات التواصل الاجتماعي</option><option>تصميم وهوية بصرية</option><option>تصميم وإنشاء موقع إلكتروني</option><option>تغطية فعالية أو افتتاح</option><option>باقة متكاملة</option><option>غير متأكد، أحتاج رأيك</option></select><small class="err" id="e-svc"></small></div>
         </div>
         <div><label for="c-city">المدينة</label>
           <select id="c-city"><option value="" selected>اختر المدينة (اختياري)</option><option>مكة المكرمة</option><option>جدة</option><option>الرياض</option><option>خميس مشيط</option><option>مدينة أخرى</option></select></div>
@@ -214,7 +219,7 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
   "كاتب في صحيفة الوطن":"Writer at Al-Watan newspaper","+7 علامات تجارية":"7+ brands","نمو مبيعات حتى 35%":"Sales growth up to 35%","واتساب أعمال موثّق":"Verified WhatsApp Business",
   "بيانات طلب الاستشارة":"Consultation request","دقيقة واحدة، وأتواصل معك على جوالك.":"One minute, and I'll get back to you on your phone.",
   "الاسم":"Name","رقم الجوال":"Mobile number","نوع النشاط":"Business type","اختر نوع النشاط":"Choose a business type","مطعم أو كافيه":"Restaurant or café","متجر أو منتجات":"Store or products","عقارات وتطوير":"Real estate & development","خدمات وشركات":"Services & companies","فعاليات ومناسبات":"Events & occasions","شخصية عامة / صانع محتوى":"Public figure / content creator","أخرى":"Other",
-  "الخدمة المطلوبة":"Service needed","اختر الخدمة":"Choose a service","تصوير إعلانات ومنتجات":"Ad & product filming","إدارة الحملات الإعلانية":"Ad campaign management","إدارة حسابات التواصل الاجتماعي":"Social media management","تصميم وهوية بصرية":"Design & visual identity","تغطية فعالية أو افتتاح":"Event or opening coverage","باقة متكاملة":"Full package","غير متأكد، أحتاج رأيك":"Not sure, I need your advice",
+  "الخدمة المطلوبة":"Service needed","اختر الخدمة":"Choose a service","تصوير إعلانات ومنتجات":"Ad & product filming","إدارة الحملات الإعلانية":"Ad campaign management","إدارة حسابات التواصل الاجتماعي":"Social media management","تصميم وهوية بصرية":"Design & visual identity","تغطية فعالية أو افتتاح":"Event or opening coverage","تصميم وإنشاء موقع إلكتروني":"Website design and build","باقة متكاملة":"Full package","غير متأكد، أحتاج رأيك":"Not sure, I need your advice",
   "المدينة":"City","اختر المدينة (اختياري)":"Choose a city (optional)","مكة المكرمة":"Makkah","جدة":"Jeddah","الرياض":"Riyadh","خميس مشيط":"Khamis Mushait","مدينة أخرى":"Other city",
   "تفاصيل مشروعك (اختياري)":"Project details (optional)","اطلب استشارتك المجانية":"Request my free consultation","أو":"or","تحدّث معي مباشرة على واتساب":"Chat with me on WhatsApp","بياناتك تُستخدم للتواصل معك بخصوص طلبك فقط.":"Your details are only used to contact you about your request.",
   "جاهز ترفع مبيعاتك؟ 🚀":"Ready to grow your sales? 🚀","وصلني طلبك، والخطوة الجاية علي":"Got your request, the next step is mine","أتواصل معك خلال 24 ساعة على جوالك إن شاء الله، ونبدأ نخطط لنمو علامتك.":"I'll call you within 24 hours, and we'll start planning your brand's growth.","تبغى أسرع؟ راسلني على واتساب":"Want it faster? Message me on WhatsApp",
@@ -290,6 +295,6 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
   }
 })();
 </script>
-<script src="/js/fx.js?v=20261025b" defer></script>
+<script src="/js/fx.js?v=20261028a" defer></script>
 </body>
 </html>
