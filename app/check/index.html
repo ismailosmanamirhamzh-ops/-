@@ -168,7 +168,7 @@ function result(){$('qz').hidden=true;P.hidden=true;$('rs').hidden=false;
   var T=$('tips');while(T.firstChild)T.removeChild(T.firstChild);
   weak.forEach(function(o){var d=document.createElement('div');d.className='tp';var b=document.createElement('b');b.textContent=en?o.x.t[1]:o.x.t[0];var p=document.createElement('p');p.textContent=en?o.x.t[3]:o.x.t[2];d.appendChild(b);d.appendChild(p);T.appendChild(d)});
   var k=weak.length?weak[0].x.k:'package';
-  $('cta').href='/app/order/?svc='+k+'&code=ISM10';$('cta').textContent=k==='package'?(en?'Order a service':'اطلب خدمة'):(en?'Fix it: ':'ابدأ بـ: ')+L(NAMES[k]);
+  $('cta').href='/app/order/?svc='+k+'&code=ISM20';$('cta').textContent=k==='package'?(en?'Order a service':'اطلب خدمة'):(en?'Fix it: ':'ابدأ بـ: ')+L(NAMES[k]);
   $('cwa').href=WA+'?text='+encodeURIComponent('السلام عليكم، سويت اختبار تسويق المطعم في تطبيقك وطلعت درجتي '+s+'/100، أبغى استشارة مجانية.');$('cwaL').textContent=en?'Free consultation on WhatsApp':'استشارة مجانية على واتساب';
   $('share').textContent=en?'📲 Send the test to a restaurant owner':'📲 أرسل الاختبار لصاحب مطعم';$('again').textContent=en?'Retake the test':'أعد الاختبار';
   ls('checkScore',String(s));ev('check_done');scrollTo({top:0,behavior:'smooth'})}
@@ -178,6 +178,6 @@ lang();
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=4" defer></script>
+<script src="/app/app.js?v=5" defer></script>
 </body>
 </html>

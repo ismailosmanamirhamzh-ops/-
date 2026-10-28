@@ -127,6 +127,12 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 .ftr{display:flex;align-items:center;justify-content:space-between;gap:.6rem;border-top:1px solid var(--line);padding-top:.7rem}.dl{font-size:.8rem;color:var(--mute)}
 .add{border:0;border-radius:999px;background:var(--amber);color:#111;font:800 .9rem Tajawal,sans-serif;padding:.65rem 1.1rem;min-height:44px;cursor:pointer;white-space:nowrap}
 .qty{display:flex;align-items:center;gap:.2rem;background:#0b0c12;border:1px solid rgba(242,180,90,.5);border-radius:999px;padding:.2rem}.qty button{width:2.4rem;height:2.4rem;border:0;border-radius:50%;background:rgba(242,180,90,.15);color:var(--amber);font:900 1.1rem Tajawal,sans-serif;cursor:pointer}.qty span{min-width:2.2rem;text-align:center;font:800 .95rem Tajawal,sans-serif}
+.how{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin:.2rem 0 .7rem}.how li{display:flex;align-items:center;gap:.45rem;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.55rem .6rem;font:700 .78rem/1.3 Tajawal,sans-serif}.how b{flex:0 0 1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;background:var(--amber);color:#111;font:900 .8rem Cairo,sans-serif}
+.trust{display:flex;flex-wrap:wrap;gap:.35rem .8rem;margin:0 0 .8rem;font-size:.78rem;color:#9fd8b4}
+.srch{margin-bottom:.2rem}.srch .fi{border-radius:999px;padding:.75rem 1.1rem;background:#0b0c12}
+.faq{display:grid;gap:.5rem;margin-bottom:1rem}.faq details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.85rem 1rem}.faq summary{cursor:pointer;font:800 .95rem Cairo,sans-serif;list-style:none;display:flex;justify-content:space-between;gap:.6rem}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";color:var(--amber);font-weight:900}.faq details[open] summary:after{content:"−"}.faq p{font-size:.88rem;color:#c7cbd6;margin-top:.5rem;line-height:1.8}
+.xp{display:flex;align-items:center;gap:.6rem;background:#0b0c12;border:1px solid rgba(242,180,90,.4);border-radius:14px;padding:.75rem .9rem;margin-bottom:.8rem;cursor:pointer;font-size:.88rem}.xp input{accent-color:#f2b45a;width:1.15rem;height:1.15rem}.xp b{margin-inline-start:auto;color:var(--amber);white-space:nowrap}
+.empty{text-align:center;color:var(--mute);padding:1.5rem 0}
 .note{font-size:.8rem;color:var(--mute);background:rgba(255,255,255,.03);border:1px dashed var(--line);border-radius:12px;padding:.7rem .8rem;margin:.2rem 0 1rem}
 .bar{position:fixed;left:0;right:0;bottom:calc(4.6rem + env(safe-area-inset-bottom,0px));z-index:7000;display:flex;justify-content:center;padding:0 1rem;pointer-events:none}
 .bar button{pointer-events:auto;width:100%;max-width:42rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem;border:0;border-radius:18px;background:var(--amber);color:#111;padding:.9rem 1.1rem;font:800 1rem Tajawal,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.5);cursor:pointer;animation:up .3s ease}@keyframes up{from{transform:translateY(20px);opacity:0}}
@@ -160,8 +166,13 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
   <h1 class="hi"><span data-en="Quick services,">خدمات سريعة</span> <em data-en="clear prices">بأسعار واضحة</em></h1>
   <p class="sub" data-en="For any business or person: pick a service, add it to your cart and order in a minute.">لأي نشاط أو شخص: اختر الخدمة، أضفها للسلة، واطلب في دقيقة.</p>
   <div class="hero2"><b>9 <small data-en="SAR">ر.س</small></b><p><strong data-en="A professional design for 9 SAR">تصميم احترافي بـ 9 ريال</strong><span data-en="Post, story or ad, ready in 24 hours.">بوست أو ستوري أو إعلان، يجهز خلال 24 ساعة.</span></p></div>
+  <ol class="how"><li><b>1</b><span data-en="Pick your service">اختر خدمتك</span></li><li><b>2</b><span data-en="Confirm & transfer">أكّد وحوّل</span></li><li><b>3</b><span data-en="Receive on time">استلم بالموعد</span></li></ol>
+  <div class="trust"><span data-en="✓ Pay after your order is confirmed">✓ تدفع بعد تأكيد طلبك</span><span data-en="✓ Clear delivery time">✓ مدة تسليم واضحة</span><span data-en="✓ Track your order in the app">✓ تتابع طلبك من التطبيق</span><span data-en="✓ Talk to me directly">✓ تواصل مباشر معي</span></div>
+  <div class="srch"><input class="fi" id="q" type="search" placeholder="ابحث عن خدمة…" data-en-ph="Search a service…" autocomplete="off" aria-label="بحث"></div>
   <div class="cats" id="cats"></div>
   <div id="list"></div>
+  <h2 class="sec-t" id="s-faq">❓ <span data-en="Frequently asked questions">أسئلة شائعة</span></h2>
+  <div class="faq"><details><summary data-en="How do I pay?">كيف أدفع؟</summary><p data-en="After you confirm, you get the IBAN (Al Rajhi) and urpay number. Transfer, send the receipt on WhatsApp and I start right away.">بعد ما تأكد طلبك يطلع لك رقم الآيبان (مصرف الراجحي) ورقم urpay، تحوّل وترسل صورة الإيصال على الواتساب وأبدأ فورًا.</p></details><details><summary data-en="When do I receive it?">متى أستلم؟</summary><p data-en="Delivery time is shown under each service and starts once I receive the transfer and everything I need.">مدة التسليم مكتوبة تحت كل خدمة، وتبدأ من وقت ما يوصلني التحويل وكل المعلومات المطلوبة.</p></details><details><summary data-en="What do you need from me?">وش أرسل لك عشان أبدأ؟</summary><p data-en="Designs: text, logo, colours. Google: business name, location, phone, photos. Ad accounts: commercial registration or freelance document. Shoots: place and time.">للتصاميم: النص والشعار والألوان. لملف Google: اسم النشاط والموقع ورقم الجوال والصور. للحسابات الإعلانية: السجل التجاري أو وثيقة العمل الحر. للتصوير: المكان والوقت.</p></details><details><summary data-en="Can I request changes?">أقدر أعدّل على التصميم؟</summary><p data-en="Yes, every design includes one free revision; extra revisions are agreed separately.">نعم، كل تصميم معه تعديل واحد مجاني، والتعديلات الإضافية نتفق عليها.</p></details><details><summary data-en="Can I change the shoot day?">أقدر أغيّر موعد التصوير؟</summary><p data-en="Yes, message me on WhatsApp in good time and we move it to another free day.">نعم، كلمني على الواتساب قبلها بوقت كافي ونرتب يوم ثاني متاح.</p></details><details><summary data-en="Is ad-account verification guaranteed?">توثيق الحسابات الإعلانية مضمون؟</summary><p data-en="I prepare and submit everything correctly, but final approval is up to the platform and needs a valid commercial registration or freelance document.">أجهز كل شيء وأرفع المستندات صح، لكن الموافقة النهائية من المنصة نفسها وتحتاج سجل تجاري أو وثيقة عمل حر سارية.</p></details></div>
   <p class="note" data-en="Prices are in Saudi riyals. Ad account verification needs a valid commercial registration or freelance document, and approval is up to each platform. Larger or custom jobs get a quote after a quick chat.">الأسعار بالريال السعودي. توثيق الحسابات الإعلانية يحتاج سجل تجاري أو وثيقة عمل حر سارية، والموافقة من المنصة نفسها. الشغل الكبير أو الخاص يتسعّر بعد كلام سريع معك.</p>
 </main>
 <div class="bar" id="bar" hidden><button type="button" id="barB"><span><span class="n" id="barN">0</span><span data-en="View cart">عرض السلة</span></span><span id="barT"></span></button></div>
@@ -173,6 +184,7 @@ var GS="https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEk
 var PAY={name:'اسماعيل عثمان',bank:'مصرف الراجحي',iban:'SA33 8000 0991 6080 1627 1109',urpay:'0574395924'};
 var $=function(i){return document.getElementById(i)};function ev(n){try{window.clarity&&clarity('event',n)}catch(e){}}
 var ls=function(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){}};
+try{if(/^ISM10$/i.test(localStorage.getItem('promo')||''))localStorage.setItem('promo','ISM20')}catch(e){}
 var en=ls('lang')==='en',L=function(a){return a[en?1:0]},n=function(x){return Math.round(x).toLocaleString('en-US')};
 var CATS=[
  {k:'google',i:'📍',t:['Google ونشاطك','Google & maps'],d:['خل عملاءك يلقونك في خرائط Google وبحثها.','Get found on Google Maps and Search.']},
@@ -228,7 +240,7 @@ var ART={'a-biz':['@',['4 منصات للأعمال','4 business platforms'],['I
 var EXT={"p-grad": "photo-1627556704302-624286467c65", "p-estate": "photo-1757524503555-b62633f47670", "p-car": "photo-1494905998402-395d579af36f", "a-wa": "photo-1534945644675-24836fd2906c", "a-meta": "photo-1579869847557-1f67382cc158", "d-hl": "photo-1603145733146-ae562a55031e", "d-banner": "photo-1604066867775-43f48e3957d8", "d-cv": "photo-1778113048525-387745cbbc6c", "d-retouch": "photo-1620674156044-52b714665d46", "gbp-qr": "photo-1652345408103-7fbe3dd59324", "d-invite": "photo-1632610992723-82d7c212f6d7", "gbp": "photo-1548345680-f5475ea5df84"};
 var BY={};IT.forEach(function(x){BY[x[0]]=x});
 var cart={};try{cart=JSON.parse(ls('cart')||'{}')}catch(e){}Object.keys(cart).forEach(function(k){if(!BY[k])delete cart[k]});
-var BK=[],CODES={ISM10:10},promo=(ls('promo')||'').toUpperCase(),me={};try{me=JSON.parse(ls('me')||'{}')}catch(e){}
+var BK=[],CODES={ISM20:20},promo=(ls('promo')||'').toUpperCase(),me={};try{me=JSON.parse(ls('me')||'{}')}catch(e){}
 function minQ(x){return x[7].min||1}function stepQ(x){return x[7].step||1}
 function save(){ls('cart',JSON.stringify(cart));bar();}
 function count(){return Object.keys(cart).reduce(function(a,k){return a+(cart[k]>0?1:0)},0)}
@@ -241,8 +253,9 @@ function ctl(x,box){box.textContent='';var q=cart[x[0]]||0;
   m.addEventListener('click',function(){var v=(cart[x[0]]||0)-stepQ(x);if(v<minQ(x))delete cart[x[0]];else cart[x[0]]=v;save();ctl(x,box)});
   p.addEventListener('click',function(){cart[x[0]]=(cart[x[0]]||0)+stepQ(x);save();ctl(x,box)});
   w.appendChild(m);w.appendChild(s);w.appendChild(p);box.appendChild(w)}
-function list(){var Lb=$('list');Lb.textContent='';CATS.forEach(function(c){var h=document.createElement('h2');h.className='sec-t';h.id='s-'+c.k;h.textContent=c.i+' '+L(c.t);Lb.appendChild(h);var d=document.createElement('p');d.className='sec-d';d.textContent=L(c.d);Lb.appendChild(d);
-  IT.filter(function(x){return x[1]===c.k}).forEach(function(x){var a=document.createElement('article');a.className='it'+(x[7].hot?' hot':'');
+function list(){var Lb=$('list');Lb.textContent='';var its0=0;CATS.forEach(function(c){var h=document.createElement('h2');h.className='sec-t';h.id='s-'+c.k;h.textContent=c.i+' '+L(c.t);Lb.appendChild(h);var d=document.createElement('p');d.className='sec-d';d.textContent=L(c.d);Lb.appendChild(d);
+  var qq=(($('q')&&$('q').value)||'').trim().toLowerCase();var its=IT.filter(function(x){return x[1]===c.k&&(!qq||(x[2][0]+' '+x[2][1]+' '+x[5][0].join(' ')+' '+x[5][1].join(' ')).toLowerCase().indexOf(qq)>-1)});h.hidden=d.hidden=!its.length;its0+=its.length;
+  its.forEach(function(x){var a=document.createElement('article');a.className='it'+(x[7].hot?' hot':'');
     var cv=document.createElement('div');cv.className='cv';var art=ART[x[0]];
     if(art&&art[2]){cv.classList.add('art','plats');var pg=document.createElement('div');pg.className='pg4';art[2].forEach(function(nm){var c=document.createElement('span');c.textContent=nm;c.style.setProperty('--c',{Instagram:'#e1306c',TikTok:'#25f4ee',Snapchat:'#fffc00',X:'#ffffff'}[nm]||'#f2b45a');pg.appendChild(c)});cv.appendChild(pg)}
     else if(art){cv.classList.add('art');var at=document.createElement('b');at.textContent=art[0];var as=document.createElement('small');as.textContent=L(art[1]);cv.appendChild(at);cv.appendChild(as)}
@@ -253,6 +266,7 @@ function list(){var Lb=$('list');Lb.textContent='';CATS.forEach(function(c){var 
     var ul=document.createElement('ul');x[5][en?1:0].forEach(function(s){var li=document.createElement('li');li.textContent=s;ul.appendChild(li)});
     var f=document.createElement('div');f.className='ftr';var dl=document.createElement('span');dl.className='dl';dl.textContent='⏱ '+L(x[6]);var box=document.createElement('div');f.appendChild(dl);f.appendChild(box);ctl(x,box);
     bd.appendChild(t);bd.appendChild(un);bd.appendChild(ul);bd.appendChild(f);a.appendChild(cv);a.appendChild(bd);Lb.appendChild(a)})});
+  if(!its0){var e=document.createElement('p');e.className='empty';e.textContent=en?'No service matches your search. Message me on WhatsApp and I will help.':'ما لقيت خدمة بهذا الاسم. كلمني واتساب وأساعدك.';Lb.appendChild(e)}
 }
 function bar(){var k=count();$('bar').hidden=!k;$('barN').textContent=k;$('barT').textContent=money(total())}
 function close(){$('sh').hidden=true;document.body.style.overflow=''}
@@ -264,25 +278,30 @@ function sheet(){var B=$('shB');B.textContent='';$('sh').hidden=false;document.b
   var form=document.createElement('div');form.innerHTML='<div class="tot"><span></span><span><s id="tOld"></s><b id="tNew"></b></span></div>'+
    '<div class="fld"><label for="o-name"><span>'+(en?'Name':'الاسم')+'</span> <em>*</em></label><input class="fi" id="o-name" autocomplete="name" maxlength="80"><small class="err" id="e-name"></small></div>'+
    '<div class="fld"><label for="o-phone"><span>'+(en?'Mobile':'رقم الجوال')+'</span> <em>*</em></label><input class="fi ltr" id="o-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx" maxlength="16"><small class="err" id="e-phone"></small></div>'+
-   '<div class="fld"><label for="o-notes"><span>'+(en?'Details':'التفاصيل')+'</span> <small>'+(en?'(text for the design, size, date, location…)':'(نص التصميم، المقاس، الموعد، الموقع…)')+'</small></label><textarea class="fi" id="o-notes" rows="3" maxlength="1200"></textarea></div>'+
+   '<div class="fld"><label for="o-notes"><span>'+(en?'Details':'التفاصيل')+'</span> <small>'+(en?'(what I need is listed below)':'(اللي أحتاجه منك مكتوب تحت)')+'</small></label><textarea class="fi" id="o-notes" rows="3" maxlength="1200"></textarea><small class="okc" style="color:var(--mute)" id="need"></small></div>'+
+   (xpBase()?'<label class="xp"><input type="checkbox" id="o-xp"><span>'+(en?'⚡ Express delivery within 24 hours':'⚡ تسليم مستعجل خلال 24 ساعة')+'</span><b>+'+n(xpBase()*.5)+(en?' SAR':' ر.س')+'</b></label>':'')+
    (needDate()?'<div class="fld"><label for="o-date"><span>'+(en?'Shoot day':'موعد التصوير')+'</span> <small>'+(en?'(one client per day · optional)':'(عميل واحد في اليوم · اختياري)')+'</small></label><input class="fi ltr" id="o-date" type="date"><small class="err" id="e-date"></small></div>':'')+
-   '<div class="fld"><label for="o-code"><span>'+(en?'Discount code':'كود الخصم')+'</span> <small>'+(en?'(optional)':'(اختياري)')+'</small></label><input class="fi ltr" id="o-code" maxlength="20" placeholder="ISM10" autocapitalize="characters"><small class="okc" id="k-code"></small></div>'+
+   '<div class="fld"><label for="o-code"><span>'+(en?'Discount code':'كود الخصم')+'</span> <small>'+(en?'(optional)':'(اختياري)')+'</small></label><input class="fi ltr" id="o-code" maxlength="20" placeholder="ISM20" autocapitalize="characters"><small class="okc" id="k-code"></small></div>'+
    '<input class="hp" id="o-hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="button" class="btn go" id="send" style="width:100%">'+(en?'Confirm order':'أكّد الطلب')+'</button>';
   B.appendChild(form);form.querySelector('.tot span').textContent=en?'Total':'الإجمالي';
   if(me.name)$('o-name').value=me.name;if(me.phone)$('o-phone').value=me.phone;if(promo)$('o-code').value=promo;
-  $('o-code').addEventListener('input',tot);tot();
+  $('o-code').addEventListener('input',tot);tot();if($('o-xp'))$('o-xp').addEventListener('change',tot);
+  var NEED={google:['اسم النشاط والموقع ورقم الجوال وصور المكان','business name, location, phone and venue photos'],design:['نص التصميم والشعار والألوان والمقاس','text, logo, colours and size'],accounts:['السجل التجاري أو وثيقة العمل الحر والإيميل','commercial registration or freelance document and email'],wedding:['مكان الحفل ووقت الدخول','venue and entrance time'],photo:['المكان والوقت المناسب لك','place and preferred time']};
+  var cs={};Object.keys(cart).forEach(function(k){cs[BY[k][1]]=1});$('need').textContent=(en?'I will need: ':'أحتاج منك: ')+Object.keys(cs).map(function(c){return NEED[c][en?1:0]}).join(en?'; ':'، ');
   if($('o-date')){var t0=new Date();t0.setDate(t0.getDate()+1);var t1=new Date();t1.setDate(t1.getDate()+180);var f=function(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)};$('o-date').min=f(t0);$('o-date').max=f(t1);$('o-date').addEventListener('change',chkDate)}$('send').addEventListener('click',send)}
 function needDate(){return Object.keys(cart).some(function(k){return BY[k][7].date})}
 function chkDate(){var e=$('o-date');if(!e)return true;var v=e.value;if(!v)return err('e-date',e,'');if(BK.indexOf(v)>-1)return err('e-date',e,en?'This day is already booked, please pick another':'هذا اليوم محجوز، اختر يوم ثاني');if(e.min&&v<e.min)return err('e-date',e,en?'Pick a day from tomorrow':'اختر يوم من بكرة وطالع');return err('e-date',e,'')}
-function tot(){var t=total(),p=pct();$('tNew').textContent=money(p?t*(1-p[1]/100):t);$('tOld').textContent=p?money(t):'';$('k-code').textContent=p?(en?'✓ '+p[1]+'% off applied':'✓ تم تطبيق خصم '+p[1]+'%'):''}
+function xpBase(){return Object.keys(cart).reduce(function(a,k){var c=BY[k][1];return a+((c==='design'||c==='google'||c==='accounts')&&BY[k][3]<400?BY[k][3]*cart[k]:0)},0)}
+function xpAdd(){return $('o-xp')&&$('o-xp').checked?Math.round(xpBase()*.5):0}
+function tot(){var t=total()+xpAdd(),p=pct();$('tNew').textContent=money(p?t*(1-p[1]/100):t);$('tOld').textContent=p?money(t):'';$('k-code').textContent=p?(en?'✓ '+p[1]+'% off applied':'✓ تم تطبيق خصم '+p[1]+'%'):''}
 function digits(v){v=(v||'').replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)}).replace(/[^\d+]/g,'');if(/^\+?966/.test(v))v='0'+v.replace(/^\+?966/,'');return v}
 function err(id,el,m){$(id).textContent=m||'';el.classList.toggle('bad',!!m);return !m}
 function send(){var name=$('o-name').value.trim(),ph=digits($('o-phone').value);
   var ok=err('e-name',$('o-name'),name.length<2?(en?'Enter your name':'اكتب اسمك'):'');ok=err('e-phone',$('o-phone'),/^05\d{8}$/.test(ph)?'':(en?'Saudi mobile: 10 digits starting with 05':'رقم جوال سعودي من 10 أرقام يبدأ بـ 05'))&&ok;if(!chkDate())ok=false;if(!ok)return;
   me.name=name;me.phone=ph;ls('me',JSON.stringify(me));var b=$('send');b.disabled=true;b.textContent=en?'Sending…':'جارٍ الإرسال…';
-  var p=pct(),t=total(),fin=p?Math.round(t*(1-p[1]/100)):t;
+  var p=pct(),xa=xpAdd(),t=total()+xa,fin=p?Math.round(t*(1-p[1]/100)):t;
   var lines=Object.keys(cart).map(function(k){return BY[k][2][0]+' × '+cart[k]+' = '+n(BY[k][3]*cart[k])+' ر.س'});
-  var summary=lines.join(' | ')+' | الإجمالي: '+n(t)+' ر.س'+(p?' | بعد خصم '+p[0]+' ('+p[1]+'%): '+n(fin)+' ر.س':'');
+  if(xa)lines.push('⚡ تسليم مستعجل خلال 24 ساعة = '+n(xa)+' ر.س');var summary=lines.join(' | ')+' | الإجمالي: '+n(t)+' ر.س'+(p?' | بعد خصم '+p[0]+' ('+p[1]+'%): '+n(fin)+' ر.س':'');
   var notes=($('o-notes').value.trim()||'—')+' | الطلب: '+summary+' | من متجر التطبيق';
   var svc='خدمات سريعة: '+Object.keys(cart).map(function(k){return BY[k][2][0]}).join('، ');
   var dt=$('o-date')?$('o-date').value:'';var g={name:name,phone:ph,activity:'متجر التطبيق',service:svc.slice(0,300),city:'—',notes:notes,page:location.href,code:p?p[0]:'',date:dt};
@@ -303,10 +322,11 @@ function done(wa,fin,id,ref){var list0=[];try{list0=JSON.parse(ls('myOrders')||'
   B.appendChild(pay);
   var a=document.createElement('a');a.className='btn wa';a.href=wa;a.target='_blank';a.rel='noopener';a.style.marginBottom='.6rem';a.textContent=en?(has?'Send the receipt on WhatsApp':'Confirm on WhatsApp'):(has?'أرسل الإيصال على الواتساب':'أكّد طلبك على الواتساب');B.appendChild(a);
   var m=document.createElement('a');m.className='btn bk';m.href='/app/order/#my';m.textContent=en?'Track my orders':'تابع طلباتي';B.appendChild(m)}
+var qT;$('q').addEventListener('input',function(){clearTimeout(qT);qT=setTimeout(function(){list();ev('store_search')},200)});
 $('barB').addEventListener('click',sheet);$('sh').addEventListener('click',function(e){if(e.target===$('sh'))close()});
 addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('sh').hidden)close()});
 function lang(){document.documentElement.lang=en?'en':'ar';document.documentElement.dir=en?'ltr':'rtl';
-  [].forEach.call(document.querySelectorAll('[data-en]'),function(e){if(!e.dataset.ar)e.dataset.ar=e.textContent;e.textContent=en?e.getAttribute('data-en'):e.dataset.ar});$('langBtn').textContent=en?'ع':'EN';cats();list();bar()}
+  [].forEach.call(document.querySelectorAll('[data-en]'),function(e){if(!e.dataset.ar)e.dataset.ar=e.textContent;e.textContent=en?e.getAttribute('data-en'):e.dataset.ar});$('langBtn').textContent=en?'ع':'EN';$('q').placeholder=en?$('q').getAttribute('data-en-ph'):'ابحث عن خدمة…';cats();list();bar()}
 $('langBtn').addEventListener('click',function(){en=!en;ls('lang',en?'en':'ar');lang()});
 fetch(GS+'?cfg=1').then(function(r){return r.json()}).then(function(j){if(j&&j.booked)BK=j.booked;if(j&&j.codes){CODES=j.codes;if(!$('sh').hidden&&$('tNew'))tot()}}).catch(function(){});
 var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var k=e.target.id.slice(2);[].forEach.call(document.querySelectorAll('#cats button'),function(b){b.classList.toggle('on',b.dataset.k===k)})}})},{rootMargin:'-30% 0px -60% 0px'}):null;
@@ -315,6 +335,6 @@ var h=(location.hash||'').slice(1);if(h&&$('s-'+h))setTimeout(function(){$('s-'+
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=4" defer></script>
+<script src="/app/app.js?v=5" defer></script>
 </body>
 </html>

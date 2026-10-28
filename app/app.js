@@ -4,6 +4,7 @@
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     addEventListener('load', function () { navigator.serviceWorker.register('/app/sw.js', { scope: '/app/' }).catch(function () {}); });
   }
+  try { if (/^ISM10$/i.test(localStorage.getItem('promo') || '')) localStorage.setItem('promo', 'ISM20'); } catch (e) {}
   var standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
   if (standalone) document.documentElement.classList.add('is-app');
   var en = document.documentElement.lang === 'en', P = location.pathname, H = location.hash;
@@ -135,4 +136,19 @@
   };
   addEventListener('load', function () { setTimeout(sync, 800); });
   document.addEventListener('visibilitychange', function () { if (!document.hidden) sync(); });
+})();
+
+/* توقيع المطوّر في آخر كل صفحة من التطبيق */
+(function () {
+  function add() {
+    if (document.querySelector('.devc')) return;
+    var en = document.documentElement.lang === 'en';
+    var p = document.createElement('p');
+    p.className = 'devc';
+    p.style.cssText = 'text-align:center;font:600 .78rem Tajawal,sans-serif;color:#7d8292;margin:1.6rem auto 0;padding:0 1rem 1rem;max-width:44rem';
+    p.innerHTML = (en ? 'Designed &amp; developed by ' : 'تصميم وتطوير ') + '<b style="color:#f2b45a;font-weight:800">' + (en ? 'Ismueil Osman' : 'إسماعيل عثمان') + '</b> © ' + new Date().getFullYear();
+    var m = document.querySelector('main') || document.body;
+    m.appendChild(p);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', add); else add();
 })();

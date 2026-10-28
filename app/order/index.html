@@ -123,7 +123,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 <main>
   <h1 class="hi" id="hi"><span data-en="Order a service">اطلب خدمتك</span> <em data-en="in under a minute">في أقل من دقيقة</em></h1>
   <p class="sub" data-en="Choose the service, tell me about your business, and I will get back to you within 24 hours.">اختر الخدمة، وعرّفني بنشاطك، وأتواصل معك خلال 24 ساعة.</p>
-  <a class="promo" id="promoB" href="#" hidden><span aria-hidden="true">🎁</span><span data-en="10% off your first order with code ISM10">خصم 10% على أول طلب بالكود ISM10</span></a>
+  <a class="promo" id="promoB" href="#" hidden><span aria-hidden="true">🎁</span><span data-en="20% off with code ISM20">خصم 20% على طلبك بالكود ISM20</span></a>
   <div id="flow">
     <div class="prog" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
     <p class="stl" id="stl"></p>
@@ -143,7 +143,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
       <div class="fld"><label for="o-phone"><span data-en="Mobile number">رقم الجوال</span> <em>*</em></label><input class="fi ltr" id="o-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx" maxlength="16"><small class="err" id="e-phone"></small></div>
       <div class="fld"><label for="o-email"><span data-en="Email">البريد الإلكتروني</span> <small data-en="(optional)">(اختياري)</small></label><input class="fi ltr" id="o-email" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com" maxlength="120"><small class="err" id="e-email"></small></div>
       <div class="fld"><label for="o-notes"><span data-en="Details">التفاصيل</span> <small data-en="(optional)">(اختياري)</small></label><textarea class="fi" id="o-notes" rows="3" maxlength="1200" data-en-ph="Anything that helps me understand your project" placeholder="أي شيء يساعدني أفهم مشروعك"></textarea></div>
-      <div class="fld"><label for="o-code"><span data-en="Discount code">كود الخصم</span> <small data-en="(optional)">(اختياري)</small></label><input class="fi ltr" id="o-code" autocomplete="off" autocapitalize="characters" maxlength="20" placeholder="ISM10"><small class="err" id="e-code"></small><small class="okc" id="k-code"></small></div>
+      <div class="fld"><label for="o-code"><span data-en="Discount code">كود الخصم</span> <small data-en="(optional)">(اختياري)</small></label><input class="fi ltr" id="o-code" autocomplete="off" autocapitalize="characters" maxlength="20" placeholder="ISM20"><small class="err" id="e-code"></small><small class="okc" id="k-code"></small></div>
       <input class="hp" id="o-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     </section>
     <div class="nav"><button type="button" class="btn bk" id="bk" hidden data-en="Back">رجوع</button><button type="button" class="btn go" id="go" disabled><span id="goL" data-en="Next">التالي</span></button></div>
@@ -153,7 +153,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
     <div class="tick">✓</div>
     <h2 id="okH"></h2>
     <p data-en="Your request has arrived. I will reach you on your mobile within 24 hours, God willing.">وصلني طلبك، وأتواصل معك على جوالك خلال 24 ساعة إن شاء الله.</p>
-    <div class="rfb" id="rfb" hidden><p><span data-en="Your personal code">كودك الخاص</span> <b id="rfC"></b></p><small data-en="Share it: your friend gets 10% off, and you get 10% off your next order.">شاركه: صاحبك ياخذ خصم 10%، وأنت تاخذ خصم 10% على طلبك الجاي.</small><button type="button" class="btn go" id="rfS" data-en="Share my code">شارك كودي</button></div>
+    
     <button type="button" class="btn bk al" id="alB" hidden data-en="🔔 Notify me when my order status changes">🔔 نبّهني لما تتغير حالة طلبي</button>
     <div class="row"><a class="btn wa" id="okWa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.6-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg><span data-en="Confirm faster on WhatsApp">أكّد طلبك أسرع على واتساب</span></a><button type="button" class="btn bk" id="again" data-en="Order another service">اطلب خدمة ثانية</button></div>
   </div>
@@ -170,8 +170,9 @@ var CAL='';/* رابط حجز المواعيد من تقويم Google: يتفع�
 var WK={marketing:['proof-google','proof-snap','proof-tiktok'],photo:['v:reel-2','v:reel-4','v:reel-5'],film:['v:reel-1','v:reel-3','studio-lighting'],design:['poster-nakhat-tihamiya','brand-social','brand-logo'],web:['web-design','../app/s2','../app/s1'],social:['v:reel-5','brand-social','v:reel-4'],events:['executives-1','wedding-1','nasheed-1'],package:['reel-2','poster-nakhat-tihamiya','proof-google']};
 var $=function(i){return document.getElementById(i)};
 var PR={photo:'799',film:'499',marketing:'999',design:'9',social:'1,299',events:'999',web:'2,999',package:'2,499'};
-var CODES={ISM10:10},BOOK={photo:1,film:1,events:1},BK=[],CFG=null,VREF={},REV='https://g.page/r/CdrbAP2oxyQXECE/review';
+var CODES={ISM20:20},BOOK={photo:1,film:1,events:1},BK=[],CFG=null,VREF={},REV='https://g.page/r/CdrbAP2oxyQXECE/review';
 var ls=function(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){}};
+try{if(/^ISM10$/i.test(localStorage.getItem('promo')||''))localStorage.setItem('promo','ISM20')}catch(e){}
 var q=new URLSearchParams(location.search);if(q.get('lang')==='en')ls('lang','en');
 var en=ls('lang')==='en';
 var PKG={basic:['الباقة الأساسية','Basic package'],growth:['باقة النمو','Growth package'],pro:['الباقة الاحترافية','Pro package']}[q.get('pkg')||''],EST=(q.get('est')||'').slice(0,200);
@@ -271,14 +272,13 @@ function done(wa,sent,id,ref){ev(sent===false?'order_whatsapp_fallback':'order_s
   list.unshift({s:sel.svcName,k:sel.svc,a:sel.act,d:Date.now(),ok:sent!==false,id:id||'',dt:sel.date||'',r:ref||''});if(ref){me.ref=ref;ls('me',JSON.stringify(me))};ls('myOrders',JSON.stringify(list.slice(0,20)));
   $('flow').hidden=true;$('ok').hidden=false;$('okH').textContent=(en?'Thank you, ':'شكرًا ')+me.name.split(/\s+/)[0];$('okWa').href=wa;
   if(sent===false){$('okH').textContent=en?'Almost there — tap WhatsApp to send':'باقي خطوة: أرسل طلبك على واتساب'}
-  $('rfb').hidden=!ref;if(ref)$('rfC').textContent=ref;
   $('alB').hidden=!(window.ioAlerts&&window.ioAlerts.can());
   if(sel.date)BK.push(sel.date);
   renderMy();scrollTo({top:0,behavior:'smooth'});
 }
 $('again').addEventListener('click',function(){$('ok').hidden=true;$('flow').hidden=false;sel={svc:null,svcName:null,act:null,date:'',noDate:false};$('noDate').classList.remove('sel');bmsg('');[].forEach.call(document.querySelectorAll('.sel'),function(x){x.classList.remove('sel')});step(1)});
 function renderMy(){var list=[];try{list=JSON.parse(ls('myOrders')||'[]')}catch(e){}var L=$('myL');while(L.firstChild)L.removeChild(L.firstChild);$('my').hidden=!list.length;
-  var rc=me.ref||(list.filter(function(o){return o.r})[0]||{}).r;if(rc){var p=document.createElement('p');p.className='myref';p.appendChild(document.createTextNode(en?'Your referral code: ':'كود الإحالة حقك: '));var bb=document.createElement('b');bb.textContent=rc;p.appendChild(bb);p.appendChild(document.createTextNode(' '));var sb=document.createElement('button');sb.type='button';sb.textContent=en?'Share':'شاركه';sb.addEventListener('click',function(){shareRef(rc)});p.appendChild(sb);L.appendChild(p)}
+
   if(window.ioAlerts&&window.ioAlerts.can()&&list.some(function(o){return o.id})){var ab=document.createElement('button');ab.type='button';ab.className='btn bk al';ab.textContent=en?'🔔 Notify me when status changes':'🔔 نبّهني لما تتغير حالة طلبي';ab.addEventListener('click',function(){window.ioAlerts.enable().then(renderMy)});L.appendChild(ab)}
   list.forEach(function(o){var r=document.createElement('div');r.className='od';var x=document.createElement('div');var b=document.createElement('b');var sv=document.querySelector('.sv[data-k="'+o.k+'"]');b.textContent=en&&sv?sv.dataset.enName:o.s;var sm=document.createElement('small');sm.textContent=new Date(o.d).toLocaleDateString(en?'en-GB':'ar-SA',{day:'numeric',month:'long',year:'numeric'})+' · '+(o.a||'')+(o.dt?(en?' · Day: ':' · موعد: ')+o.dt:'');x.appendChild(b);x.appendChild(sm);var st=document.createElement('span');var S=o.st||'';var map={'جديد':['s-new','🟡 جديد','🟡 New'],'قيد التنفيذ':['s-prog','🔵 قيد التنفيذ','🔵 In progress'],'تم التسليم':['s-done','🟢 تم التسليم','🟢 Delivered']};if(map[S]){st.className=map[S][0];st.textContent=en?map[S][2]:map[S][1]}else if(S){st.textContent=S}else st.textContent=o.ok?(en?'Sent ✓':'تم الإرسال ✓'):(en?'Via WhatsApp':'عبر واتساب');r.appendChild(x);r.appendChild(st);
   if(o.ln||S==='تم التسليم'){var oa=document.createElement('div');oa.className='oa';if(o.ln&&/^https:\/\//.test(o.ln)){var f=document.createElement('a');f.className='fl';f.href=o.ln;f.target='_blank';f.rel='noopener';f.textContent=en?'📥 Get your files':'📥 استلم ملفاتك';oa.appendChild(f)}
@@ -287,16 +287,15 @@ function renderMy(){var list=[];try{list=JSON.parse(ls('myOrders')||'[]')}catch(
 var pre=q.get('svc');if(pre){var pb=document.querySelector('.sv[data-k="'+pre+'"]');if(pb){pb.classList.add('sel');sel.svc=pre;sel.svcName=pb.dataset.ar;cur=2}}
 lang();if(cur===2)step(2,true);try{history.replaceState({s:cur},'')}catch(e){}
 addEventListener('io-orders',renderMy);
-function shareRef(rc){var u='https://ismueilosman.com/app/order/?code='+rc+'&source=ref',t=en?'Order from Ismueil Osman (photography, marketing, design) with my code '+rc+' and get 10% off:':'اطلب من إسماعيل عثمان (تصوير وتسويق وتصميم) بكودي '+rc+' وتاخذ خصم 10%:';if(navigator.share)navigator.share({title:en?'Ismueil Osman':'إسماعيل عثمان',text:t,url:u}).catch(function(){});else open('https://wa.me/?text='+encodeURIComponent(t+' '+u),'_blank')}
-$('rfS').addEventListener('click',function(){shareRef($('rfC').textContent)});
+
 $('alB').addEventListener('click',function(){window.ioAlerts.enable().then(function(ok){$('alB').textContent=ok?(en?'✓ Alerts on':'✓ التنبيهات مفعّلة'):(en?'Alerts are blocked in your browser settings':'التنبيهات مقفلة من إعدادات المتصفح');$('alB').disabled=true})});
-$('promoB').hidden=false;$('promoB').addEventListener('click',function(e){e.preventDefault();var c=this.dataset.code||'ISM10';ls('promo',c);$('o-code').value=c;bmsg('');this.lastChild.textContent=(en?'✓ Code ':'✓ تم إضافة الكود ')+c+(en?' added':'')});
+$('promoB').hidden=false;$('promoB').addEventListener('click',function(e){e.preventDefault();var c=this.dataset.code||'ISM20';ls('promo',c);$('o-code').value=c;bmsg('');this.lastChild.textContent=(en?'✓ Code ':'✓ تم إضافة الكود ')+c+(en?' added':'')});
 if(CAL){$('call').href=CAL;$('call').hidden=false}
 $('share').addEventListener('click',function(){var u='https://ismueilosman.com/app/?source=share',t=en?'Ismueil Osman: photography, marketing and design for restaurants and brands. Free consultation:':'تطبيق إسماعيل عثمان: تصوير وتسويق وتصميم للمطاعم والعلامات التجارية، واستشارة مجانية:';
   if(navigator.share){navigator.share({title:en?'Ismueil Osman':'إسماعيل عثمان',text:t,url:u}).catch(function(){})}else{open('https://wa.me/?text='+encodeURIComponent(t+' '+u),'_blank')}});
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=4" defer></script>
+<script src="/app/app.js?v=5" defer></script>
 </body>
 </html>
