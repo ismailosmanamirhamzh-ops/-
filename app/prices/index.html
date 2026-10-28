@@ -1,0 +1,216 @@
+<!doctype html>
+<!--
+  © 2026 Ismueil Osman (إسماعيل عثمان) — ismueilosman.com
+  Concept, design, photography, video and copy. All rights reserved.
+  Copying or reusing the design, code, images or text without written permission is prohibited.
+  جميع الحقوق محفوظة لإسماعيل عثمان. يُمنع نسخ التصميم أو الكود أو الصور أو النصوص دون إذن كتابي.
+-->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co https://formspree.io https://script.google.com; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="author" content="إسماعيل عثمان">
+<meta name="copyright" content="© 2026 Ismueil Osman إسماعيل عثمان. All rights reserved.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الأسعار والباقات | إسماعيل عثمان</title>
+<meta name="description" content="باقات شهرية للمطاعم والعلامات التجارية وحاسبة سعر تقريبي لخدمات التصوير والفيديو والتصميم.">
+<link rel="canonical" href="https://ismueilosman.com/app/prices/">
+<meta name="robots" content="noindex,follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:title" content="الأسعار والباقات">
+<meta property="og:description" content="باقات شهرية وحاسبة سعر تقريبي.">
+<meta property="og:url" content="https://ismueilosman.com/app/prices/">
+<meta property="og:image" content="https://ismueilosman.com/assets/img/og-image-v2.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07080c">
+<link rel="manifest" href="/app/manifest.webmanifest">
+<script src="/app/splash.js?v=1"></script>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="إسماعيل عثمان">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png?v=2">
+<link rel="apple-touch-icon" href="/assets/img/app-apple-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap">
+<style>
+:root{--ink:#07080c;--panel:#10121a;--amber:#f2b45a;--text:#eceef4;--mute:#a9afbf;--line:rgba(255,255,255,.09)}
+*{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}[hidden]{display:none!important}
+body{font-family:Tajawal,system-ui,sans-serif;background:var(--ink);color:var(--text);min-height:100vh;line-height:1.7;overflow-x:hidden;background-image:radial-gradient(60% 45% at 85% -5%,rgba(242,180,90,.16),transparent 60%)}
+a{color:inherit}button{font:inherit;color:inherit}
+.top{max-width:44rem;margin:0 auto;padding:1.1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font:900 1.1rem Cairo,sans-serif;white-space:nowrap}.brand b{color:var(--amber)}.brand svg{width:1.6rem;height:1.6rem}
+.tr{display:flex;gap:.5rem;align-items:center}
+.lng,.back{font:700 .82rem Tajawal,sans-serif;color:var(--mute);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.5rem .85rem;text-decoration:none;cursor:pointer;white-space:nowrap}.lng{font:800 .78rem/1 ui-monospace,Menlo,monospace;color:var(--text)}
+main{max-width:44rem;margin:0 auto;padding:.5rem 1.25rem 7rem}
+.hi{font:900 clamp(1.7rem,6vw,2.4rem)/1.25 Cairo,sans-serif;margin:.6rem 0 .3rem}.hi em{font-style:normal;color:var(--amber)}
+.sub{color:var(--mute);margin-bottom:1.4rem}
+.prog{display:flex;gap:.4rem;margin:1rem 0 .4rem}.prog i{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden;position:relative}.prog i:after{content:"";position:absolute;inset:0;background:var(--amber);transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.2,.8,.2,1)}[dir=ltr] .prog i:after{transform-origin:left}.prog i.on:after{transform:none}
+.stl{font:700 .82rem Tajawal,sans-serif;color:var(--amber);margin-bottom:.9rem}
+.step{display:none;animation:in .45s cubic-bezier(.2,.8,.2,1)}.step.on{display:block}@keyframes in{from{opacity:0;transform:translateY(12px)}}
+h2{font:900 1.35rem Cairo,sans-serif;margin-bottom:1rem}
+.svs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.sv{display:flex;flex-direction:column;align-items:flex-start;gap:.35rem;text-align:start;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:1rem;cursor:pointer;transition:border-color .2s,transform .2s,background .2s;min-height:7.6rem}
+.sv:hover{border-color:rgba(242,180,90,.45)}.sv:active{transform:scale(.98)}
+.sv.sel{border-color:var(--amber);background:linear-gradient(180deg,rgba(242,180,90,.14),rgba(242,180,90,.04))}
+.sv .ic{width:2.4rem;height:2.4rem;border-radius:12px;display:grid;place-items:center;background:rgba(242,180,90,.12);color:var(--amber)}.sv .ic svg{width:1.25rem;height:1.25rem;fill:currentColor}
+.sv b{font:800 1rem/1.35 Cairo,sans-serif}.sv small{color:var(--mute);font-size:.8rem;line-height:1.5}
+.chs{display:flex;flex-wrap:wrap;gap:.6rem}
+.ch{display:inline-flex;align-items:center;gap:.45rem;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:.75rem 1.05rem;cursor:pointer;font-weight:700;transition:border-color .2s,background .2s}.ch i{font-style:normal}
+.ch.sel{border-color:var(--amber);background:rgba(242,180,90,.12);color:#fff}
+.fld{margin-bottom:.9rem}.fld label{display:block;font-weight:700;font-size:.92rem;margin-bottom:.35rem}.fld label em{color:var(--amber);font-style:normal}.fld label small{color:var(--mute);font-weight:500}
+.fi{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:14px;color:var(--text);font:500 1rem Tajawal,sans-serif;padding:.85rem 1rem;outline:none;transition:border-color .2s}.fi:focus{border-color:var(--amber)}.fi.bad{border-color:#e5484d}
+select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:1.1rem 55%,.8rem 55%;background-size:.35rem .35rem;background-repeat:no-repeat}
+[dir=ltr] select.fi{background-position:calc(100% - 1.1rem) 55%,calc(100% - .8rem) 55%}
+.ltr{direction:ltr;text-align:right}[dir=ltr] .ltr{text-align:left}
+.err{color:#ff8a8d;font-size:.8rem;min-height:1rem;display:block;margin-top:.2rem}
+.nav{position:sticky;bottom:0;display:flex;gap:.6rem;margin-top:1.4rem;padding:.8rem 0 calc(.8rem + env(safe-area-inset-bottom,0px));background:linear-gradient(0deg,var(--ink) 70%,transparent)}
+.btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:.45rem;border:0;border-radius:999px;padding:.95rem 1.2rem;font:800 1rem Cairo,sans-serif;cursor:pointer;text-decoration:none;transition:filter .2s,opacity .2s}
+.go{background:var(--amber);color:#111;box-shadow:0 8px 24px rgba(242,180,90,.25)}.go:disabled{opacity:.45;cursor:default;box-shadow:none}
+.bk{flex:0 0 auto;background:transparent;border:1px solid var(--line);color:var(--mute)}
+.wa{background:#25d366;color:#fff}.wa svg,.go svg{width:1.1rem;height:1.1rem;fill:currentColor}
+.sum{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:.9rem 1rem;margin-bottom:1rem;font-size:.92rem;color:var(--mute)}.sum b{color:var(--text)}
+.ok{text-align:center;padding:2rem 0}.ok .tick{width:4.5rem;height:4.5rem;border-radius:50%;margin:0 auto 1rem;display:grid;place-items:center;background:rgba(242,180,90,.15);color:var(--amber);font-size:2rem;animation:pop .6s cubic-bezier(.2,1.6,.4,1)}@keyframes pop{from{transform:scale(.3);opacity:0}}
+.ok p{color:var(--mute);margin:.4rem 0 1.4rem}.ok .row{display:flex;flex-direction:column;gap:.6rem;max-width:22rem;margin:0 auto}
+.my{margin-top:2.4rem;border-top:1px solid var(--line);padding-top:1.4rem}.my h3{font:900 1.1rem Cairo,sans-serif;margin-bottom:.8rem}
+.od{display:flex;align-items:center;justify-content:space-between;gap:.8rem;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;margin-bottom:.6rem}.od b{display:block;font-size:.95rem}.od small{color:var(--mute);font-size:.78rem}.od span{font-size:.75rem;color:#7ee2a8;background:rgba(37,211,102,.1);border-radius:999px;padding:.25rem .6rem;white-space:nowrap}
+.wk{margin:-.2rem 0 1.2rem}.wk-t{font-size:.85rem;color:var(--mute);margin-bottom:.5rem}.wk-r{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}.wk-r img,.wk-r video{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#14161f}
+.od span.s-new{color:#f2b45a;background:rgba(242,180,90,.12)}.od span.s-prog{color:#7cb8ff;background:rgba(80,150,255,.12)}.od span.s-done{color:#7ee2a8;background:rgba(37,211,102,.12)}
+.lg{font-size:.78rem;color:var(--mute);margin-top:.2rem}
+.ex{display:grid;gap:.6rem;margin-top:2rem}.exb{display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:.85rem 1rem;font:700 .92rem Tajawal,sans-serif;color:var(--text);text-decoration:none;cursor:pointer}.exb:hover{border-color:rgba(242,180,90,.45)}
+.alt{margin-top:1.2rem;text-align:center;color:var(--mute);font-size:.9rem}.alt a{color:#25d366;font-weight:800;text-decoration:none}
+.nav{bottom:calc(4.4rem + env(safe-area-inset-bottom,0px))}
+.hp{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);opacity:0;pointer-events:none;border:0;padding:0}
+:where(a,button,select,input,textarea):focus-visible{outline:2px solid #f2b45a;outline-offset:3px}
+@media(max-width:370px){.svs{gap:.5rem}.sv{padding:.8rem}.back{display:none}}
+@view-transition{navigation:auto}::view-transition{background:#000}
+@keyframes irisClose{from{clip-path:circle(71% at 50% 50%);transform:scale(1)}to{clip-path:circle(0% at 50% 50%);transform:scale(1.04)}}
+@keyframes irisOpen{from{clip-path:circle(0% at 50% 50%);transform:scale(1.05)}to{clip-path:circle(71% at 50% 50%);transform:scale(1)}}
+::view-transition-old(root){animation:irisClose .3s cubic-bezier(.55,0,.45,1) both}::view-transition-new(root){animation:irisOpen .42s cubic-bezier(.25,.8,.3,1) .26s both}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),.step{animation:none}}
+.pp{font:800 .8rem Tajawal,sans-serif;font-style:normal;color:var(--amber);margin-top:auto}.promo{display:flex;align-items:center;gap:.6rem;justify-content:center;text-decoration:none;color:var(--text);font:700 .86rem Tajawal,sans-serif;background:linear-gradient(120deg,rgba(242,180,90,.18),rgba(242,180,90,.05));border:1px solid rgba(242,180,90,.35);border-radius:14px;padding:.65rem .9rem;margin-bottom:.4rem}.okc{display:block;color:#7ee2a8;font-size:.8rem;margin-top:.3rem}.okc:empty{display:none}.od{flex-wrap:wrap}.od>div:first-child{flex:1;min-width:0}.oa{flex-basis:100%;display:flex;gap:.5rem;flex-wrap:wrap}.oa a{flex:1;min-width:8.5rem;text-align:center;text-decoration:none;font:800 .84rem Tajawal,sans-serif;border-radius:999px;padding:.6rem .8rem}.oa .fl{background:var(--amber);color:#111}.oa .rv{background:transparent;border:1px solid rgba(242,180,90,.45);color:var(--amber)}.sum .pz{color:var(--amber)}
+
+.qz{margin-top:1rem}.qn{font:700 .82rem Tajawal,sans-serif;color:var(--amber);margin-bottom:.5rem}
+.qq{font:900 clamp(1.25rem,4.8vw,1.6rem)/1.45 Cairo,sans-serif;margin-bottom:1.1rem}
+.op{display:block;width:100%;text-align:start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1rem 1.1rem;margin-bottom:.65rem;color:var(--text);font:700 1rem/1.5 Tajawal,sans-serif;cursor:pointer;transition:border-color .2s,background .2s,transform .15s}
+.op:hover{border-color:rgba(242,180,90,.45)}.op:active{transform:scale(.98)}.op.sel{border-color:var(--amber);background:rgba(242,180,90,.12)}
+.qb{margin-top:.6rem;background:transparent;border:0;color:var(--mute);font:700 .88rem Tajawal,sans-serif;cursor:pointer}
+.rs{text-align:center;padding:1rem 0}.ring{--p:0;width:10rem;height:10rem;border-radius:50%;margin:0 auto 1rem;display:grid;place-items:center;background:conic-gradient(var(--amber) calc(var(--p)*1%),rgba(255,255,255,.08) 0);transition:--p 1s}
+.ring b{width:8.4rem;height:8.4rem;border-radius:50%;background:var(--ink);display:grid;place-items:center;font:900 2.6rem/1 Cairo,sans-serif}.ring b small{display:block;font-size:.85rem;color:var(--mute);font-weight:700}
+.rl{font:900 1.35rem Cairo,sans-serif;margin-bottom:.3rem}.rd{color:var(--mute);margin-bottom:1.4rem}
+.tips{text-align:start;display:grid;gap:.6rem;margin-bottom:1.4rem}.tp{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:.9rem 1rem}.tp b{display:block;font:800 .98rem Cairo,sans-serif;color:var(--amber);margin-bottom:.2rem}.tp p{font-size:.9rem;color:var(--text)}
+.ca{display:grid;gap:.6rem}.btn{display:flex;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:999px;padding:.95rem 1.2rem;font:800 1rem Tajawal,sans-serif;text-decoration:none;cursor:pointer}
+.go{background:var(--amber);color:#111}.wa{background:#25d366;color:#04140a}.bk{background:transparent;border:1px solid var(--line);color:var(--mute)}.wa svg{width:1.2rem;height:1.2rem;fill:currentColor}
+@property --p{syntax:"<number>";inherits:false;initial-value:0}
+</style>
+<style>
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:.3rem;margin:1rem 0 1.4rem}
+.tabs button{border:0;border-radius:999px;padding:.7rem;background:transparent;color:var(--mute);font:800 .95rem Tajawal,sans-serif;cursor:pointer}.tabs button.on{background:var(--amber);color:#111}
+.pk{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:1.3rem 1.2rem;margin-bottom:1rem}
+.pk.hot{border-color:var(--amber);background:linear-gradient(180deg,rgba(242,180,90,.12),var(--panel) 45%)}
+.pk .tg{position:absolute;top:-.75rem;inset-inline-start:1.2rem;background:var(--amber);color:#111;font:800 .75rem Tajawal,sans-serif;border-radius:999px;padding:.25rem .7rem}
+.pk h3{font:900 1.25rem Cairo,sans-serif}.pk .for{color:var(--mute);font-size:.86rem;margin-bottom:.6rem}
+.pk .pr{font:900 2rem/1.1 Cairo,sans-serif;margin:.4rem 0 .9rem}.pk .pr small{font:700 .9rem Tajawal,sans-serif;color:var(--mute)}
+.pk ul{list-style:none;display:grid;gap:.45rem;margin-bottom:1.1rem}.pk li{position:relative;padding-inline-start:1.5rem;font-size:.92rem}.pk li:before{content:"✓";position:absolute;inset-inline-start:0;color:var(--amber);font-weight:900}
+.pk li.plus{color:var(--amber);font-weight:700}.pk li.plus:before{content:"+"}
+.fine{font-size:.8rem;color:var(--mute);text-align:center;margin:.4rem 0 1.4rem}
+.cs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}.cs button{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:.6rem 1rem;font:700 .9rem Tajawal,sans-serif;cursor:pointer}.cs button.on{border-color:var(--amber);background:rgba(242,180,90,.14)}
+.cc{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:1.2rem}
+.cc label{display:flex;justify-content:space-between;font-weight:700;margin-bottom:.6rem}.cc label b{color:var(--amber);font:900 1.2rem Cairo,sans-serif}
+.cc input[type=range]{width:100%;accent-color:#f2b45a;margin-bottom:1rem;height:1.6rem}
+.opt{display:flex;align-items:center;gap:.6rem;padding:.75rem .9rem;border:1px solid var(--line);border-radius:14px;margin-bottom:.5rem;cursor:pointer;font-weight:600;font-size:.92rem}.opt input{accent-color:#f2b45a;width:1.1rem;height:1.1rem}.opt em{margin-inline-start:auto;font-style:normal;color:var(--amber);font-weight:800;white-space:nowrap}
+.tot{margin-top:1rem;border-top:1px dashed var(--line);padding-top:1rem;text-align:center}.tot p{color:var(--mute);font-size:.88rem}.tot b{display:block;font:900 2.3rem/1.2 Cairo,sans-serif;color:var(--amber)}.tot .dc{color:#7ee2a8;font-weight:700;font-size:.9rem}
+.inc{font-size:.84rem;color:var(--mute);margin:.6rem 0 0}
+</style>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500);});})(window,document,"clarity","script","yzif7rcpw8");</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/app/" aria-label="إسماعيل عثمان، الصفحة الرئيسية">
+    <svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#f2b45a" stroke-width="5"/><circle r="41" fill="#f2b45a"/><polygon fill="#07080c" points="4.74,-19.02 18.84,-5.40 14.10,13.62 -4.74,19.02 -18.84,5.40 -14.10,-13.62"/><g stroke="#07080c" stroke-width="3" stroke-linecap="round"><line x1="4.74" y1="-19.02" x2="-15.06" y2="-38.14"/><line x1="18.84" y1="-5.40" x2="25.50" y2="-32.11"/><line x1="14.10" y1="13.62" x2="40.55" y2="6.03"/><line x1="-4.74" y1="19.02" x2="15.06" y2="38.14"/><line x1="-18.84" y1="5.40" x2="-25.50" y2="32.11"/><line x1="-14.10" y1="-13.62" x2="-40.55" y2="-6.03"/></g></svg>
+    <span>إسماعيل <b>عثمان</b></span>
+  </a>
+  <div class="tr"><button class="lng" id="langBtn" type="button">EN</button><a class="back" href="/app/" data-en="Home">الرئيسية</a></div>
+</header>
+<main>
+  <h1 class="hi"><span data-en="Prices &">الأسعار</span> <em data-en="packages">والباقات</em></h1>
+  <p class="sub" data-en="Clear prices, below the market average. The final quote is confirmed after a free consultation.">أسعار واضحة وأقل من متوسط السوق، والسعر النهائي يتأكد بعد استشارة مجانية.</p>
+  <div class="tabs" role="tablist"><button type="button" class="on" id="tP" data-en="Monthly packages">الباقات الشهرية</button><button type="button" id="tC" data-en="Price calculator">احسب سعرك</button></div>
+  <section id="pP">
+    <article class="pk"><h3 data-en="Basic">الأساسية</h3><p class="for" data-en="To keep your accounts active and consistent">لحسابات نشطة ومنتظمة</p><p class="pr">1,499 <small data-en="SAR / month">ر.س / شهريًا</small></p>
+      <ul><li data-en="12 social media designs">12 تصميم سوشيال ميديا</li><li data-en="Content writing and a monthly posting plan">كتابة المحتوى وخطة نشر شهرية</li><li data-en="Managing 2 accounts (posting and replies)">إدارة حسابين (نشر وردود)</li><li data-en="Monthly performance report">تقرير أداء شهري</li></ul>
+      <a class="btn bk" href="/app/order/?svc=package&pkg=basic" data-en="Choose Basic">اختر الأساسية</a></article>
+    <article class="pk hot"><span class="tg" data-en="Best fit for most restaurants">الأنسب لأغلب المطاعم</span><h3 data-en="Growth">النمو</h3><p class="for" data-en="To grow orders and reach">لزيادة الطلبات والوصول</p><p class="pr">2,499 <small data-en="SAR / month">ر.س / شهريًا</small></p>
+      <ul><li class="plus" data-en="Everything in Basic">كل اللي في الأساسية</li><li data-en="4 reels (filming and editing)">4 ريلز (تصوير ومونتاج)</li><li data-en="Managing 3 accounts">إدارة 3 حسابات</li><li data-en="Managing one ad campaign">إدارة حملة إعلانية شهرية</li><li data-en="Google Maps profile optimisation">تحسين ملفك في خرائط Google</li></ul>
+      <a class="btn go" href="/app/order/?svc=package&pkg=growth" data-en="Choose Growth">اختر النمو</a></article>
+    <article class="pk"><h3 data-en="Pro">الاحترافية</h3><p class="for" data-en="For brands that want to lead">للعلامات اللي تبغى تتصدر</p><p class="pr">3,999 <small data-en="SAR / month">ر.س / شهريًا</small></p>
+      <ul><li class="plus" data-en="Everything in Growth">كل اللي في النمو</li><li data-en="A monthly shoot day (dishes and venue)">يوم تصوير شهري (أطباق ومكان)</li><li data-en="8 reels and 20 designs">8 ريلز و20 تصميم</li><li data-en="Campaigns on several platforms">حملات على أكثر من منصة</li><li data-en="Monthly analysis meeting">اجتماع تحليل شهري</li></ul>
+      <a class="btn bk" href="/app/order/?svc=package&pkg=pro" data-en="Choose Pro">اختر الاحترافية</a></article>
+    <p class="fine" data-en="Ad budgets are paid directly to the platforms and are not included.">ميزانية الإعلانات تُدفع للمنصات مباشرة ومو داخلة في السعر.</p>
+  </section>
+  <section id="pC" hidden>
+    <div class="cs" id="cs"></div>
+    <div class="cc"><div id="cf"></div>
+      <div class="tot"><p data-en="Estimated price">السعر التقريبي</p><b id="tv"></b><p class="dc" id="dc"></p><p class="inc" id="inc"></p></div>
+    </div>
+    <a class="btn go" id="cgo" style="margin-top:1rem" data-en="Order with this estimate">اطلب بهذا التقدير</a>
+    <p class="fine" data-en="An estimate to help you plan. The final quote is confirmed after a free consultation.">تقدير يساعدك تخطط، والسعر النهائي يتأكد بعد استشارة مجانية.</p>
+  </section>
+</main>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var ls=function(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){}};
+var en=ls('lang')==='en',L=function(a){return a[en?1:0]};
+var n=function(x){return Math.round(x).toLocaleString('en-US')};
+/* الحاسبة: كل خدمة لها مقدار واحد وإضافات */
+var C={
+ photo:{t:['تصوير الأطباق','Food photography'],q:['عدد الأطباق','Dishes'],min:10,max:60,step:5,v:10,
+   p:function(q){return 799+(q-10)*59},inc:['يشمل التنسيق والإضاءة والتعديل، والتسليم خلال 5 أيام','Styling, lighting and retouching included, delivered in 5 days'],
+   x:[['venue','تصوير المكان والأجواء','Venue & ambience shots',299],['reel','ريل قصير من يوم التصوير','A short reel from the shoot',399]]},
+ film:{t:['فيديو وريلز','Video & reels'],q:['عدد الريلز','Reels'],min:1,max:12,step:1,v:3,
+   p:function(q){return q*(q>=6?399:q>=3?449:499)},inc:['يشمل التصوير والمونتاج وتصحيح الألوان','Filming, editing and colour grading included'],
+   x:[['music','موسيقى مرخّصة','Licensed music',99],['sub','ترجمة إنجليزية على الفيديو','English subtitles',149]]},
+ design:{t:['تصميم سوشيال','Social designs'],q:['عدد التصاميم','Designs'],min:10,max:60,step:5,v:10,
+   p:function(q){return q>=30?q*35:q*39.9},inc:['مقاسات إنستقرام وسناب وتيك توك','Sized for Instagram, Snapchat and TikTok'],
+   x:[['logo','شعار وهوية بصرية','Logo & visual identity',1499],['menu','تصميم منيو','Menu design',599]]},
+ events:{t:['تغطية فعالية','Event coverage'],q:['عدد الساعات','Hours'],min:2,max:10,step:1,v:3,
+   p:function(q){return 999+Math.max(0,q-3)*249},inc:['تصوير فوتوغرافي مع التعديل، والتسليم خلال 3 أيام','Photo coverage with retouching, delivered in 3 days'],
+   x:[['vid','فيديو ملخص للفعالية','Event highlight video',699],['same','تسليم صور مختارة بنفس اليوم','Selected photos the same day',299]]},
+ web:{t:['موقع إلكتروني','Website'],q:['عدد الصفحات','Pages'],min:3,max:12,step:1,v:5,
+   p:function(q){return 2999+Math.max(0,q-5)*299},inc:['تصميم وبرمجة، سريع ومتوافق مع الجوال وGoogle','Design and build, fast, mobile and Google friendly'],
+   x:[['en','نسخة إنجليزية','English version',799],['menu','منيو رقمي بكود QR','Digital QR menu',499]]}
+};
+var k='photo',q=C.photo.v,X={};
+var codes={ISM10:10},promo=(ls('promo')||'').toUpperCase();
+function tabs(c){$('tP').classList.toggle('on',!c);$('tC').classList.toggle('on',c);$('pP').hidden=c;$('pC').hidden=!c}
+$('tP').addEventListener('click',function(){tabs(false)});$('tC').addEventListener('click',function(){tabs(true);calc()});
+function chips(){var B=$('cs');while(B.firstChild)B.removeChild(B.firstChild);Object.keys(C).forEach(function(key){var b=document.createElement('button');b.type='button';b.textContent=L(C[key].t);if(key===k)b.className='on';b.addEventListener('click',function(){k=key;q=C[key].v;X={};chips();form()});B.appendChild(b)})}
+function form(){var c=C[k],F=$('cf');while(F.firstChild)F.removeChild(F.firstChild);
+  var lb=document.createElement('label');var sp=document.createElement('span');sp.textContent=L(c.q);var bv=document.createElement('b');bv.id='qv';lb.appendChild(sp);lb.appendChild(bv);F.appendChild(lb);
+  var r=document.createElement('input');r.type='range';r.min=c.min;r.max=c.max;r.step=c.step;r.value=q;r.setAttribute('aria-label',L(c.q));r.addEventListener('input',function(){q=+r.value;calc()});F.appendChild(r);
+  c.x.forEach(function(x){var l=document.createElement('label');l.className='opt';var i=document.createElement('input');i.type='checkbox';i.checked=!!X[x[0]];i.addEventListener('change',function(){X[x[0]]=i.checked;calc()});var s=document.createElement('span');s.textContent=en?x[2]:x[1];var e=document.createElement('em');e.textContent='+'+n(x[3]);l.appendChild(i);l.appendChild(s);l.appendChild(e);F.appendChild(l)});
+  calc()}
+function calc(){var c=C[k],t=c.p(q),ex=[];c.x.forEach(function(x){if(X[x[0]]){t+=x[3];ex.push(en?x[2]:x[1])}});t=Math.round(t/10)*10-1;
+  if($('qv'))$('qv').textContent=q;$('tv').textContent=n(t)+(en?' SAR':' ر.س');$('inc').textContent=L(c.inc);
+  var pc=codes[promo];$('dc').textContent=pc?((en?'With code ':'بعد كود ')+promo+': '+n(t*(1-pc/100))+(en?' SAR':' ر.س')):'';
+  var est=L(c.t)+': '+q+' '+L(c.q).replace(/^عدد /,'')+(ex.length?' + '+ex.join(' + '):'')+' ≈ '+n(t)+' ر.س';
+  $('cgo').href='/app/order/?svc='+(k==='photo'?'photo':k)+'&est='+encodeURIComponent(est)}
+function lang(){document.documentElement.lang=en?'en':'ar';document.documentElement.dir=en?'ltr':'rtl';
+  [].forEach.call(document.querySelectorAll('[data-en]'),function(e){if(!e.dataset.ar)e.dataset.ar=e.textContent;e.textContent=en?e.getAttribute('data-en'):e.dataset.ar});
+  $('langBtn').textContent=en?'ع':'EN';chips();form()}
+$('langBtn').addEventListener('click',function(){en=!en;ls('lang',en?'en':'ar');lang()});
+fetch('https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec?cfg=1').then(function(r){return r.json()}).then(function(j){if(j&&j.codes){codes=j.codes;if(!promo){var o=(j.offers||[]).filter(function(x){return x.code})[0];if(o)promo=o.code}calc()}}).catch(function(){});
+if(!promo)promo='ISM10';
+if(location.hash==='#calc')tabs(true);
+lang();
+})();
+</script>
+<script src="/js/fx.js?v=20261025b" defer></script>
+<script src="/app/app.js?v=2" defer></script>
+</body>
+</html>
