@@ -26,6 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#07080c">
 <link rel="manifest" href="/app/manifest.webmanifest">
+<script src="/app/splash.js?v=1"></script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="إسماعيل عثمان">
@@ -77,6 +78,31 @@ h2{font:900 1.35rem Cairo,sans-serif;margin:2.2rem 0 .3rem}.sub{color:var(--mute
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500);});})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
 <body>
+<div id="spl" aria-hidden="true"><style>
+#spl{position:fixed;inset:0;z-index:99999;background:radial-gradient(60% 45% at 50% 42%,rgba(242,180,90,.16),transparent 70%),#07080c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;cursor:pointer;-webkit-mask:radial-gradient(circle at 50% 42%,transparent var(--r),#000 calc(var(--r) + 1px));mask:radial-gradient(circle at 50% 42%,transparent var(--r),#000 calc(var(--r) + 1px));--r:0px}
+@property --r{syntax:"<length>";inherits:false;initial-value:0px}
+#spl svg{width:9.5rem;height:9.5rem;overflow:visible;filter:drop-shadow(0 0 28px rgba(242,180,90,.35))}
+#spl .ring{stroke-dasharray:290;stroke-dashoffset:290;animation:splRing .7s cubic-bezier(.6,0,.2,1) forwards}
+#spl .disc{transform:scale(0);animation:splPop .5s cubic-bezier(.2,1.5,.4,1) .35s forwards}
+#spl .ap{transform:rotate(-75deg);animation:splRot .9s cubic-bezier(.65,0,.25,1) .5s forwards}#spl .hole{transform:rotate(-75deg) scale(.08);animation:splIris .9s cubic-bezier(.65,0,.25,1) .5s forwards}
+#spl .nm{font:900 1.9rem/1.2 Cairo,Tajawal,sans-serif;color:#eceef4;opacity:0;transform:translateY(12px);animation:splUp .5s ease-out 1.05s forwards;letter-spacing:.01em}
+#spl .nm b{color:#f2b45a}
+#spl .tl{font:700 .9rem Tajawal,sans-serif;color:#a9afbf;letter-spacing:.12em;opacity:0;animation:splUp .5s ease-out 1.25s forwards}
+#spl .ln{width:0;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#f2b45a,transparent);animation:splLn .6s ease-out 1.2s forwards;margin-top:-.8rem}
+#spl.out{animation:splOut .65s cubic-bezier(.7,0,.3,1) forwards}
+@keyframes splRing{to{stroke-dashoffset:0}}@keyframes splPop{to{transform:scale(1)}}
+@keyframes splIris{to{transform:rotate(0) scale(1)}}@keyframes splRot{to{transform:rotate(0)}}@keyframes splUp{to{opacity:1;transform:none}}@keyframes splLn{to{width:7rem}}
+@keyframes splOut{to{--r:150vmax}}
+@supports not (mask:radial-gradient(circle,#000,#000)){#spl.out{animation:splFade .45s ease forwards}@keyframes splFade{to{opacity:0;transform:scale(1.06)}}}
+@media(prefers-reduced-motion:reduce){#spl *{animation-duration:.01s!important;animation-delay:0s!important}}
+</style>
+<svg viewBox="-50 -50 100 100"><circle class="ring" r="46" fill="none" stroke="#f2b45a" stroke-width="4" transform="rotate(-90)"/><g class="disc"><circle r="41" fill="#f2b45a"/><polygon class="hole" fill="#07080c" points="4.74,-19.02 18.84,-5.40 14.10,13.62 -4.74,19.02 -18.84,5.40 -14.10,-13.62"/><g class="ap" stroke="#07080c" stroke-width="3" stroke-linecap="round"><line x1="4.74" y1="-19.02" x2="-15.06" y2="-38.14"/><line x1="18.84" y1="-5.40" x2="25.50" y2="-32.11"/><line x1="14.10" y1="13.62" x2="40.55" y2="6.03"/><line x1="-4.74" y1="19.02" x2="15.06" y2="38.14"/><line x1="-18.84" y1="5.40" x2="-25.50" y2="32.11"/><line x1="-14.10" y1="-13.62" x2="-40.55" y2="-6.03"/></g></g></svg>
+<p class="nm">إسماعيل <b>عثمان</b></p><i class="ln"></i><p class="tl">تصوير · تسويق · تصميم</p>
+<script>(function(){var s=document.getElementById('spl'),k='splSeen',seen;try{seen=sessionStorage.getItem(k);sessionStorage.setItem(k,1)}catch(e){}
+if(seen){s.remove();return}document.documentElement.style.overflow='hidden';
+try{if(localStorage.getItem('lang')==='en'){s.querySelector('.nm').innerHTML='Ismueil <b>Osman</b>';s.querySelector('.tl').textContent='PHOTOGRAPHY · MARKETING · DESIGN'}}catch(e){}
+var done=false;function go(){if(done)return;done=true;s.classList.add('out');setTimeout(function(){s.remove();document.documentElement.style.overflow=''},700)}
+s.addEventListener('click',go);setTimeout(go,matchMedia('(prefers-reduced-motion: reduce)').matches?300:2100)})();</script></div>
 <header class="top">
   <a class="brand" href="/app/" aria-label="إسماعيل عثمان، الصفحة الرئيسية">
     <svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#f2b45a" stroke-width="5"/><circle r="41" fill="#f2b45a"/><polygon fill="#07080c" points="4.74,-19.02 18.84,-5.40 14.10,13.62 -4.74,19.02 -18.84,5.40 -14.10,-13.62"/><g stroke="#07080c" stroke-width="3" stroke-linecap="round"><line x1="4.74" y1="-19.02" x2="-15.06" y2="-38.14"/><line x1="18.84" y1="-5.40" x2="25.50" y2="-32.11"/><line x1="14.10" y1="13.62" x2="40.55" y2="6.03"/><line x1="-4.74" y1="19.02" x2="15.06" y2="38.14"/><line x1="-18.84" y1="5.40" x2="-25.50" y2="32.11"/><line x1="-14.10" y1="-13.62" x2="-40.55" y2="-6.03"/></g></svg>

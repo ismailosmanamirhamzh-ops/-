@@ -1,7 +1,7 @@
 /*! © 2026 Ismueil Osman (إسماعيل عثمان) — ismueilosman.com. All rights reserved. */
 /* خاص بالتطبيق فقط (/app/): يحفظ الصفحات والصور بعد أول فتح، ويعرض صفحة بديلة لو انقطع النت. ما يأثر على الموقع الرسمي. */
-const V = 'io-app-3';
-const CORE = ['/app/', '/app/order/', '/app/check/', '/app/prices/', '/app/offline.html', '/assets/img/app-192.png'];
+const V = 'io-app-4';
+const CORE = ['/app/', '/app/order/', '/app/check/', '/app/prices/', '/app/offline.html', '/app/splash.js?v=1', '/assets/img/app-192.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(V).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V && k !== 'io-app-data').map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
