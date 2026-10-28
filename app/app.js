@@ -152,3 +152,59 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', add); else add();
 })();
+
+/* مشاركة التطبيق ومكافأة 30%: كل رقم جوال له كود مشاركة ثابت.
+   اللي يطلب عن طريق رابطك يتسجل باسمك، وأنت تاخذ كود خصم 30% (حتى 300 ريال) على طلبك الجاي. */
+(function () {
+  var GS = 'https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec';
+  var ls = function (k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} };
+  var en = function () { return document.documentElement.lang === 'en'; };
+  function me() { try { return JSON.parse(ls('me') || '{}'); } catch (e) { return {}; } }
+  function refOf(phone) { var h = 2166136261, t = 'io:' + phone; for (var i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } var c = h.toString(36).toUpperCase(); while (c.length < 6) c = '0' + c; return 'IS' + c.slice(-6); }
+  window.ioRefOf = refOf;
+  /* اللي دخل من رابط مشاركة */
+  try { var q = new URLSearchParams(location.search).get('ref'); if (q && /^IS[0-9A-Z]{6}$/i.test(q)) { q = q.toUpperCase(); var m0 = me(); if (!(m0.phone && refOf(m0.phone) === q)) ls('refBy', q); } } catch (e) {}
+  window.ioRefBy = function () { var r = ls('refBy') || '', m = me(); return m.phone && refOf(m.phone) === r ? '' : r; };
+  function doShare(phone) {
+    var code = refOf(phone), u = 'https://ismueilosman.com/app/?ref=' + code;
+    var t = en() ? 'Ismueil Osman: photography, design, marketing and quick services from 9 SAR. Order from here:' : 'تطبيق إسماعيل عثمان: تصوير وتصميم وتسويق وخدمات تبدأ من 9 ريال. اطلب من هنا:';
+    try { window.clarity && clarity('event', 'share_app'); } catch (e) {}
+    if (navigator.share) navigator.share({ title: en() ? 'Ismueil Osman' : 'إسماعيل عثمان', text: t, url: u }).catch(function () {});
+    else open('https://wa.me/?text=' + encodeURIComponent(t + ' ' + u), '_blank');
+  }
+  window.ioShare = function () {
+    var m = me(); if (m.phone && /^05\d{8}$/.test(m.phone)) return doShare(m.phone);
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;inset:0;z-index:9600;background:rgba(0,0,0,.65);display:flex;align-items:flex-end;justify-content:center';
+    d.innerHTML = '<div style="width:100%;max-width:30rem;background:#0e1017;border:1px solid rgba(255,255,255,.1);border-radius:24px 24px 0 0;padding:1.3rem 1.2rem calc(1.4rem + env(safe-area-inset-bottom,0px));color:#eceef4;font-family:Tajawal,sans-serif" dir="' + (en() ? 'ltr' : 'rtl') + '">' +
+      '<h3 style="font:900 1.15rem Cairo,sans-serif;margin-bottom:.4rem">' + (en() ? '🎁 Your share link' : '🎁 رابط المشاركة حقك') + '</h3>' +
+      '<p style="color:#a9afbf;font-size:.9rem;margin-bottom:1rem">' + (en() ? 'Enter your mobile once so your friends\' orders are counted for you.' : 'اكتب جوالك مرة وحدة، عشان طلبات أصدقائك تنحسب لك وتاخذ خصم 30%.') + '</p>' +
+      '<input id="shPh" type="tel" inputmode="tel" placeholder="05xxxxxxxx" maxlength="16" style="width:100%;background:#0b0c12;border:1px solid rgba(255,255,255,.12);border-radius:14px;color:#eceef4;font:500 1rem Tajawal,sans-serif;padding:.85rem 1rem;direction:ltr;text-align:right;margin-bottom:.4rem">' +
+      '<small id="shEr" style="display:block;color:#ff8a8f;font-size:.8rem;min-height:1.1em;margin-bottom:.6rem"></small>' +
+      '<button type="button" id="shGo" style="width:100%;border:0;border-radius:999px;background:#f2b45a;color:#111;font:800 1rem Tajawal,sans-serif;padding:.95rem;cursor:pointer">' + (en() ? 'Share now' : 'شارك الحين') + '</button></div>';
+    document.body.appendChild(d);
+    d.addEventListener('click', function (e) { if (e.target === d) d.remove(); });
+    d.querySelector('#shGo').addEventListener('click', function () {
+      var v = (d.querySelector('#shPh').value || '').replace(/[٠-٩]/g, function (x) { return '٠١٢٣٤٥٦٧٨٩'.indexOf(x); }).replace(/[^\d+]/g, '');
+      if (/^\+?966/.test(v)) v = '0' + v.replace(/^\+?966/, '');
+      if (!/^05\d{8}$/.test(v)) { d.querySelector('#shEr').textContent = en() ? 'Saudi mobile: 10 digits starting with 05' : 'رقم جوال سعودي من 10 أرقام يبدأ بـ 05'; return; }
+      var mm = me(); mm.phone = v; ls('me', JSON.stringify(mm)); d.remove(); doShare(v);
+    });
+  };
+  /* إذا عندك مكافأة جاهزة نعرضها */
+  function showReward(code) {
+    if (document.querySelector('.rwd')) return;
+    var mn = document.querySelector('main');
+    if (!mn || !/^\/app\/(store\/|order\/)?$/.test(location.pathname)) return;
+    var b = document.createElement('div'); b.className = 'rwd';
+    b.style.cssText = 'display:flex;align-items:center;gap:.7rem;background:linear-gradient(120deg,rgba(126,226,168,.16),rgba(126,226,168,.04));border:1px solid rgba(126,226,168,.45);border-radius:16px;padding:.8rem 1rem;margin:.6rem 0 1rem;font:700 .9rem Tajawal,sans-serif;color:#eceef4';
+    b.innerHTML = '<span style="font-size:1.5rem">🎉</span><span style="flex:1">' + (en() ? 'A friend ordered through you! Your reward: 30% off (up to 300 SAR) with code ' : 'أحد طلب عن طريقك! مكافأتك خصم 30% (حتى 300 ريال) بالكود ') + '<b style="color:#7ee2a8;font-family:ui-monospace,monospace;letter-spacing:.05em">' + code + '</b></span>';
+    mn.insertBefore(b, mn.firstChild);
+  }
+  addEventListener('load', function () {
+    var m = me(); if (!m.phone || !/^05\d{8}$/.test(m.phone)) return;
+    fetch(GS + '?reward=1&phone=' + m.phone).then(function (r) { return r.json(); }).then(function (j) {
+      if (j && j.available > 0) { ls('reward', j.code); showReward(j.code); } else { try { localStorage.removeItem('reward'); } catch (e) {} }
+    }).catch(function () {});
+  });
+})();

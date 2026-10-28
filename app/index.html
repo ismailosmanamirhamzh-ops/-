@@ -91,6 +91,7 @@ html{background:#07080c}.hi,h1{text-wrap:balance}
 .rv img.rvI{width:100%;height:100%;object-fit:contain;background:#000}
 .qs{display:flex;align-items:center;justify-content:space-between;gap:.8rem;text-decoration:none;color:var(--text);background:linear-gradient(150deg,rgba(242,180,90,.2),rgba(242,180,90,.04) 65%);border:1px solid rgba(242,180,90,.45);border-radius:20px;padding:1rem 1.1rem;margin:0 0 .6rem}.qs b{display:block;font:900 1.08rem/1.35 Cairo,sans-serif}.qs small{color:#cfd3dd;font-size:.82rem}.qs i{font-style:normal;color:var(--amber);font-weight:900;font-size:1.2rem}[dir=ltr] .qs i{transform:scaleX(-1)}
 .qsc{display:grid;grid-template-columns:repeat(5,1fr);gap:.45rem;margin-bottom:1.8rem}.qsc a{display:flex;flex-direction:column;align-items:center;gap:.2rem;text-decoration:none;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:.7rem .2rem;font:700 .8rem Tajawal,sans-serif;min-height:44px}.qsc i{font-style:normal;font-size:1.3rem}
+.exb.shr{flex-direction:row;justify-content:flex-start;text-align:start;gap:.8rem;border-radius:18px;padding:.9rem 1.1rem;background:linear-gradient(120deg,rgba(242,180,90,.18),rgba(242,180,90,.04));border-color:rgba(242,180,90,.45)}.exb.shr>span:first-child{font-size:1.6rem}.exb.shr b{display:block;font:900 .98rem/1.35 Cairo,sans-serif;color:#fff}.exb.shr small{display:block;font:600 .8rem/1.5 Tajawal,sans-serif;color:#d7dae2}
 </style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500);});})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
@@ -148,7 +149,7 @@ html{background:#07080c}.hi,h1{text-wrap:balance}
 
   <div class="ex">
     <a class="exb" href="/app/order/#my" id="myLink" hidden><span aria-hidden="true">📋</span><span data-en="My requests">طلباتي</span></a>
-    <button type="button" class="exb" id="share"><span aria-hidden="true">📲</span><span data-en="Know a restaurant owner? Share the app">تعرف صاحب مطعم؟ شارك التطبيق</span></button>
+    <button type="button" class="exb shr" id="share"><span aria-hidden="true">🎁</span><span><b data-en="Share the app with friends & family">شارك التطبيق مع أصدقائك وأهلك</b><small data-en="When someone orders through you, you get 30% off your next order">ولما أحد يطلب عن طريقك، تاخذ خصم 30% على طلبك الجاي</small></span></button>
   </div>
   <p class="ft">© 2026 <span data-en="Ismueil Osman">إسماعيل عثمان</span> · <a href="/" data-en="Website">الموقع</a></p>
 </main>
@@ -215,11 +216,10 @@ function tip(){var t=TIPS[tipW()%TIPS.length];document.getElementById('tipT').te
 function promo(o){if(!o){document.getElementById('promo').hidden=true;return}document.getElementById('promo').href='/app/order/?code='+o.code;['prT','prD'].forEach(function(i){document.getElementById(i).removeAttribute('data-en')});document.getElementById('prT').textContent=o.t;document.getElementById('prD').textContent=o.d||((en?'Use code ':'استخدم الكود ')+o.code);document.getElementById('prC').textContent=o.code}
 fetch('https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec?cfg=1').then(function(r){return r.json()}).then(function(j){if(j&&j.ok)promo((j.offers||[]).filter(function(x){return x.code})[0])}).catch(function(){});
 tip();document.getElementById('langBtn')&&document.getElementById('langBtn').addEventListener('click',function(){setTimeout(tip,0)});
-document.getElementById('share').addEventListener('click',function(){var rc='';var u='https://ismueilosman.com/app/'+(rc?'order/?code='+rc+'&source=ref':'?source=share'),t=en?'Ismueil Osman: photography, marketing and design for restaurants and brands. Free consultation:':'تطبيق إسماعيل عثمان: تصوير وتسويق وتصميم للمطاعم والعلامات التجارية، واستشارة مجانية'+':';
- if(navigator.share){navigator.share({title:en?'Ismueil Osman':'إسماعيل عثمان',text:t,url:u}).catch(function(){})}else{open('https://wa.me/?text='+encodeURIComponent(t+' '+u),'_blank')}});
+document.getElementById('share').addEventListener('click',function(){if(window.ioShare)window.ioShare()});
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=5" defer></script>
+<script src="/app/app.js?v=6" defer></script>
 </body>
 </html>
