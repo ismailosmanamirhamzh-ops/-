@@ -125,7 +125,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 <main>
   <h1 class="hi" id="hi"><span data-en="Custom request">طلب خاص</span> <em data-en="or a big project">أو مشروع كبير</em></h1>
   <p class="sub" data-en="Choose the service, tell me about your business, and I will get back to you within 24 hours.">اختر الخدمة، وعرّفني بنشاطك، وأتواصل معك خلال 24 ساعة.</p>
-  <a class="promo" href="/app/store/" style="margin-bottom:.6rem"><span aria-hidden="true">🛍️</span><span data-en="Want a ready service with a fixed price? Browse the store ←">تبي خدمة جاهزة بسعر ثابت؟ تصفّح المتجر ←</span></a>
+  <a class="promo" href="/app/store/" style="margin-bottom:.6rem"><span aria-hidden="true">🛍️</span><span data-en="Want a ready service with a fixed price? Browse the store →">تبي خدمة جاهزة بسعر ثابت؟ تصفّح المتجر ←</span></a>
   <a class="promo" id="promoB" href="#" hidden><span aria-hidden="true">🎁</span><span data-en="20% off with code ISM20">خصم 20% على طلبك بالكود ISM20</span></a>
   <div id="flow">
     <div class="prog" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
@@ -160,7 +160,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
     <button type="button" class="btn bk al" id="alB" hidden data-en="🔔 Notify me when my order status changes">🔔 نبّهني لما تتغير حالة طلبي</button>
     <div class="row"><a class="btn wa" id="okWa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.6-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg><span data-en="Confirm faster on WhatsApp">أكّد طلبك أسرع على واتساب</span></a><button type="button" class="btn bk" id="again" data-en="Order another service">اطلب خدمة ثانية</button></div>
   </div>
-  <a class="myL" href="#my" data-en="📦 My orders ←">📦 طلباتي ←</a>
+  <a class="myL" href="#my" data-en="📦 My orders →">📦 طلباتي ←</a>
   <section class="my" id="my" hidden><h3 data-en="My requests">طلباتي</h3><p class="myS" data-en="Track every order you sent, get your files, and rate the service.">تابع كل طلب أرسلته، واستلم ملفاتك، وقيّم الخدمة.</p><div class="myA"><a class="btn go" href="/app/store/" data-en="+ Order a new service">+ اطلب خدمة جديدة</a><a class="btn bk" href="/app/order/" data-en="Custom request">طلب خاص</a></div><div id="myL"></div><p class="lg" data-en="Status updates here as I work on your request.">الحالة تتحدث هنا أول بأول وأنا أشتغل على طلبك.</p>
   <details class="rec" id="rec"><summary data-en="New phone or cleared your browser? Restore your orders">غيّرت جوالك أو مسحت المتصفح؟ استرجع طلباتك</summary>
   <p class="lg" data-en="Enter the mobile number and first name you ordered with.">اكتب رقم الجوال والاسم الأول اللي طلبت فيهم.</p>
@@ -219,7 +219,7 @@ function cal(){var box=$('bkg');box.hidden=!needDate();if(box.hidden){sel.date='
   for(var dd=1;dd<=dim;dd++){(function(dd){var d=new Date(m.getFullYear(),m.getMonth(),dd),k=ymd(d),b=document.createElement('button');b.type='button';b.className='d';b.textContent=dd;
     if(d<first||d>last){b.classList.add('x');b.disabled=true;if(+d===+t)b.classList.add('t')}
     else if(BK.indexOf(k)>-1){b.classList.add('b');b.disabled=true;b.setAttribute('aria-label',(en?'Booked ':'محجوز ')+dd)}
-    else{if(sel.date===k)b.classList.add('s');b.addEventListener('click',function(){sel.date=k;sel.noDate=false;$('noDate').classList.remove('sel');bmsg((en?'Your day: ':'يومك: ')+fmt(k)+(en?' — held for you until I confirm on WhatsApp':' — محجوز لك مبدئيًا لين أأكد معك على الواتساب'));cal();valid()})}
+    else{if(sel.date===k)b.classList.add('s');b.addEventListener('click',function(){sel.date=k;sel.noDate=false;$('noDate').classList.remove('sel');bmsg((en?'Your day: ':'يومك: ')+fmt(k)+(en?' — held for you until I confirm on WhatsApp':' — محجوز لك مبدئيًا لين أؤكد معك على الواتساب'));cal();valid()})}
     C.appendChild(b)})(dd)}
   if(sel.date&&BK.indexOf(sel.date)>-1)sel.date='';
   var nd=new Date(first);while(BK.indexOf(ymd(nd))>-1&&nd<=last)nd.setDate(nd.getDate()+1);var nk=ymd(nd),N=$('near');
@@ -242,7 +242,7 @@ $('bk').addEventListener('click',function(){if(history.state&&history.state.s===
 addEventListener('popstate',function(e){if(!$('ok').hidden)return;var s=e.state&&e.state.s?e.state.s:1;if(s<cur)step(s,true),scrollTo({top:0,behavior:'smooth'})});
 function ev(n){try{window.clarity&&clarity('event',n)}catch(e){}}
 function buzz(){try{navigator.vibrate&&navigator.vibrate(8)}catch(e){}}
-$('near').addEventListener('click',function(){var k=this.dataset.k,p=k.split('-'),t=new Date();cm=(+p[0]-t.getFullYear())*12+(+p[1]-1-t.getMonth());sel.date=k;sel.noDate=false;$('noDate').classList.remove('sel');bmsg((en?'Your day: ':'يومك: ')+fmt(k)+(en?' — held for you until I confirm on WhatsApp':' — محجوز لك مبدئيًا لين أأكد معك على الواتساب'));cal();valid();buzz();ev('book_near')});
+$('near').addEventListener('click',function(){var k=this.dataset.k,p=k.split('-'),t=new Date();cm=(+p[0]-t.getFullYear())*12+(+p[1]-1-t.getMonth());sel.date=k;sel.noDate=false;$('noDate').classList.remove('sel');bmsg((en?'Your day: ':'يومك: ')+fmt(k)+(en?' — held for you until I confirm on WhatsApp':' — محجوز لك مبدئيًا لين أؤكد معك على الواتساب'));cal();valid();buzz();ev('book_near')});
 $('calP').addEventListener('click',function(){if(cm>0){cm--;cal()}});$('calN').addEventListener('click',function(){cm++;cal()});
 $('noDate').addEventListener('click',function(){sel.noDate=!sel.noDate;sel.date='';$('noDate').classList.toggle('sel',sel.noDate);bmsg(sel.noDate?(en?'No problem, we will set the day together.':'ولا يهمك، نحدد اليوم مع بعض.'):'');cal();valid()});
 function loadCfg(){return fetch(GS+'?cfg=1').then(function(r){return r.json()}).then(function(j){if(!j||!j.ok)return;CFG=j;BK=j.booked||[];if(j.codes)CODES=j.codes;if(cur===2)cal();
