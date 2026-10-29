@@ -76,7 +76,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 .sum{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:.9rem 1rem;margin-bottom:1rem;font-size:.92rem;color:var(--mute)}.sum b{color:var(--text)}
 .ok{text-align:center;padding:2rem 0}.ok .tick{width:4.5rem;height:4.5rem;border-radius:50%;margin:0 auto 1rem;display:grid;place-items:center;background:rgba(242,180,90,.15);color:var(--amber);font-size:2rem;animation:pop .6s cubic-bezier(.2,1.6,.4,1)}@keyframes pop{from{transform:scale(.3);opacity:0}}
 .ok p{color:var(--mute);margin:.4rem 0 1.4rem}.ok .row{display:flex;flex-direction:column;gap:.6rem;max-width:22rem;margin:0 auto}
-.my{margin-top:2.4rem;border-top:1px solid var(--line);padding-top:1.4rem}.my h3{font:900 1.1rem Cairo,sans-serif;margin-bottom:.8rem}
+.my{margin-top:2.4rem;border-top:1px solid var(--line);padding-top:1.4rem}.myS,.myA{display:none}body.mym #flow,body.mym .hi,body.mym .sub,body.mym .promo,body.mym .ex,body.mym #ok{display:none!important}body.mym .my{margin-top:.4rem;border:0;padding-top:0}body.mym .my h3{font:900 1.7rem Cairo,system-ui,sans-serif;margin:0 0 .3rem}body.mym .myS{display:block;color:var(--mut,#9aa1b2);margin:0 0 1rem}body.mym .myA{display:grid;grid-template-columns:1.4fr 1fr;gap:.5rem;margin:0 0 1.2rem}body.mym .myA .btn{text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center}body:not(.mym):not(.sent) .my{display:none}.myL{display:block;text-align:center;margin:1.6rem 0 0;color:var(--amber);font-weight:800;text-decoration:none}body.mym .myL,body.sent .myL{display:none}.my h3{font:900 1.1rem Cairo,sans-serif;margin-bottom:.8rem}
 .od{display:flex;align-items:center;justify-content:space-between;gap:.8rem;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem;margin-bottom:.6rem}.od b{display:block;font-size:.95rem}.od small{color:var(--mute);font-size:.78rem}.od span{font-size:.75rem;color:#7ee2a8;background:rgba(37,211,102,.1);border-radius:999px;padding:.25rem .6rem;white-space:nowrap}
 .wk{margin:-.2rem 0 1.2rem}.wk-t{font-size:.85rem;color:var(--mute);margin-bottom:.5rem}.wk-r{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}.wk-r img,.wk-r video{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#14161f}
 .od span.s-new{color:#f2b45a;background:rgba(242,180,90,.12)}.od span.s-prog{color:#7cb8ff;background:rgba(80,150,255,.12)}.od span.s-done{color:#7ee2a8;background:rgba(37,211,102,.12)}
@@ -160,7 +160,8 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
     <button type="button" class="btn bk al" id="alB" hidden data-en="🔔 Notify me when my order status changes">🔔 نبّهني لما تتغير حالة طلبي</button>
     <div class="row"><a class="btn wa" id="okWa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.6-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg><span data-en="Confirm faster on WhatsApp">أكّد طلبك أسرع على واتساب</span></a><button type="button" class="btn bk" id="again" data-en="Order another service">اطلب خدمة ثانية</button></div>
   </div>
-  <section class="my" id="my" hidden><h3 data-en="My requests">طلباتي</h3><div id="myL"></div><p class="lg" data-en="Status updates here as I work on your request.">الحالة تتحدث هنا أول بأول وأنا أشتغل على طلبك.</p>
+  <a class="myL" href="#my" data-en="📦 My orders ←">📦 طلباتي ←</a>
+  <section class="my" id="my" hidden><h3 data-en="My requests">طلباتي</h3><p class="myS" data-en="Track every order you sent, get your files, and rate the service.">تابع كل طلب أرسلته، واستلم ملفاتك، وقيّم الخدمة.</p><div class="myA"><a class="btn go" href="/app/store/" data-en="+ Order a new service">+ اطلب خدمة جديدة</a><a class="btn bk" href="/app/order/" data-en="Custom request">طلب خاص</a></div><div id="myL"></div><p class="lg" data-en="Status updates here as I work on your request.">الحالة تتحدث هنا أول بأول وأنا أشتغل على طلبك.</p>
   <details class="rec" id="rec"><summary data-en="New phone or cleared your browser? Restore your orders">غيّرت جوالك أو مسحت المتصفح؟ استرجع طلباتك</summary>
   <p class="lg" data-en="Enter the mobile number and first name you ordered with.">اكتب رقم الجوال والاسم الأول اللي طلبت فيهم.</p>
   <div class="fld"><input class="fi ltr" id="rP" type="tel" inputmode="tel" placeholder="05xxxxxxxx" maxlength="16" aria-label="رقم الجوال"></div>
@@ -278,7 +279,7 @@ function bad(e){if(e.error==='taken'){if(e.booked)BK=e.booked;sel.date='';step(2
 function done(wa,sent,id,ref){ev(sent===false?'order_whatsapp_fallback':'order_sent');if(sel.date)ev('order_booked_day');
   var list=[];try{list=JSON.parse(ls('myOrders')||'[]')}catch(e){}
   list.unshift({s:sel.svcName,k:sel.svc,a:sel.act,d:Date.now(),ok:sent!==false,id:id||'',dt:sel.date||'',r:ref||''});if(ref){me.ref=ref;ls('me',JSON.stringify(me))};ls('myOrders',JSON.stringify(list.slice(0,20)));
-  $('flow').hidden=true;$('ok').hidden=false;$('okH').textContent=(en?'Thank you, ':'شكرًا ')+me.name.split(/\s+/)[0];$('okWa').href=wa;
+  $('flow').hidden=true;$('ok').hidden=false;document.body.classList.add('sent');$('okH').textContent=(en?'Thank you, ':'شكرًا ')+me.name.split(/\s+/)[0];$('okWa').href=wa;
   if(sent===false){$('okH').textContent=en?'Almost there — tap WhatsApp to send':'باقي خطوة: أرسل طلبك على واتساب'}
   $('alB').hidden=!(window.ioAlerts&&window.ioAlerts.can());
   if(sel.date)BK.push(sel.date);
@@ -295,6 +296,7 @@ function renderMy(){var list=[];try{list=JSON.parse(ls('myOrders')||'[]')}catch(
 var pre=q.get('svc');if(pre){var pb=document.querySelector('.sv[data-k="'+pre+'"]');if(pb){pb.classList.add('sel');sel.svc=pre;sel.svcName=pb.dataset.ar;cur=2}}
 lang();if(cur===2)step(2,true);try{history.replaceState({s:cur},'')}catch(e){}
 addEventListener('io-orders',renderMy);
+function myMode(){var m=location.hash==='#my';document.body.classList.toggle('mym',m);if(m){renderMy();scrollTo(0,0)}}myMode();addEventListener('hashchange',myMode);
 if(me.phone&&$('rP'))$('rP').value=me.phone;if(me.name&&$('rN'))$('rN').value=String(me.name).split(/\s+/)[0];
 $('rB').addEventListener('click',function(){var ph=digits($('rP').value),nm=$('rN').value.trim(),b=$('rB');$('rE').textContent='';if(!/^05\d{8}$/.test(ph)){$('rE').textContent=en?'Saudi mobile: 10 digits starting with 05':'رقم جوال سعودي من 10 أرقام يبدأ بـ 05';return}if(nm.length<2){$('rE').textContent=en?'Enter your first name':'اكتب اسمك الأول';return}b.disabled=true;
   fetch(GS+'?find=1&phone='+ph+'&name='+encodeURIComponent(nm)).then(function(r){return r.json()}).then(function(j){b.disabled=false;var O=(j&&j.orders)||[];if(!O.length){$('rE').textContent=en?'No orders found with this number and name. Message me on WhatsApp and I will help.':'ما لقيت طلبات بهذا الرقم والاسم. كلمني واتساب وأساعدك.';return}
@@ -308,6 +310,6 @@ document.getElementById('share').addEventListener('click',function(){if(window.i
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=7" defer></script>
+<script src="/app/app.js?v=8" defer></script>
 </body>
 </html>
