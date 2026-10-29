@@ -142,15 +142,15 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
   <p class="sub" data-en="Clear prices, below the market average. The final quote is confirmed after a free consultation.">أسعار واضحة وأقل من متوسط السوق، والسعر النهائي يتأكد بعد استشارة مجانية.</p>
   <div class="tabs" role="tablist"><button type="button" class="on" id="tP" data-en="Monthly packages">الباقات الشهرية</button><button type="button" id="tC" data-en="Price calculator">احسب سعرك</button></div>
   <section id="pP">
-    <article class="pk"><h3 data-en="Basic">الأساسية</h3><p class="for" data-en="To keep your accounts active and consistent">لحسابات نشطة ومنتظمة</p><p class="pr">1,499 <small data-en="SAR / month">ر.س / شهريًا</small></p>
+    <article class="pk"><h3 data-en="Basic">الأساسية</h3><p class="for" data-en="To keep your accounts active and consistent">لحسابات نشطة ومنتظمة</p><p class="pr">999 <small data-en="SAR / month">ر.س / شهريًا</small></p>
       <ul><li data-en="12 social media designs">12 تصميم سوشيال ميديا</li><li data-en="Content writing and a monthly posting plan">كتابة المحتوى وخطة نشر شهرية</li><li data-en="Managing 2 accounts (posting and replies)">إدارة حسابين (نشر وردود)</li><li data-en="Monthly performance report">تقرير أداء شهري</li></ul>
-      <a class="btn bk" href="/app/order/?svc=package&pkg=basic" data-en="Choose Basic">اختر الأساسية</a></article>
-    <article class="pk hot"><span class="tg" data-en="Best fit for most restaurants">الأنسب لأغلب المطاعم</span><h3 data-en="Growth">النمو</h3><p class="for" data-en="To grow orders and reach">لزيادة الطلبات والوصول</p><p class="pr">2,499 <small data-en="SAR / month">ر.س / شهريًا</small></p>
+      <a class="btn bk" href="/app/store/#svc=m-monthly" data-en="Choose Basic">اختر الأساسية</a></article>
+    <article class="pk hot"><span class="tg" data-en="Recommended">موصى بها</span><h3 data-en="Growth">النمو</h3><p class="for" data-en="To grow orders and reach">لزيادة الطلبات والوصول</p><p class="pr">1,999 <small data-en="SAR / month">ر.س / شهريًا</small></p>
       <ul><li class="plus" data-en="Everything in Basic">كل اللي في الأساسية</li><li data-en="4 reels (filming and editing)">4 ريلز (تصوير ومونتاج)</li><li data-en="Managing 3 accounts">إدارة 3 حسابات</li><li data-en="Managing one ad campaign">إدارة حملة إعلانية شهرية</li><li data-en="Google Maps profile optimisation">تحسين ملفك في خرائط Google</li></ul>
-      <a class="btn go" href="/app/order/?svc=package&pkg=growth" data-en="Choose Growth">اختر النمو</a></article>
-    <article class="pk"><h3 data-en="Pro">الاحترافية</h3><p class="for" data-en="For brands that want to lead">للعلامات اللي تبغى تتصدر</p><p class="pr">3,999 <small data-en="SAR / month">ر.س / شهريًا</small></p>
+      <a class="btn go" href="/app/store/#svc=m-monthly" data-en="Choose Growth">اختر النمو</a></article>
+    <article class="pk"><h3 data-en="Pro">الاحترافية</h3><p class="for" data-en="For brands that want to lead">للعلامات اللي تبغى تتصدر</p><p class="pr">3,499 <small data-en="SAR / month">ر.س / شهريًا</small></p>
       <ul><li class="plus" data-en="Everything in Growth">كل اللي في النمو</li><li data-en="A monthly shoot day (dishes and venue)">يوم تصوير شهري (أطباق ومكان)</li><li data-en="8 reels and 20 designs">8 ريلز و20 تصميم</li><li data-en="Campaigns on several platforms">حملات على أكثر من منصة</li><li data-en="Monthly analysis meeting">اجتماع تحليل شهري</li></ul>
-      <a class="btn bk" href="/app/order/?svc=package&pkg=pro" data-en="Choose Pro">اختر الاحترافية</a></article>
+      <a class="btn bk" href="/app/store/#svc=m-monthly" data-en="Choose Pro">اختر الاحترافية</a></article>
     <p class="fine" data-en="Ad budgets are paid directly to the platforms and are not included.">ميزانية الإعلانات تُدفع للمنصات مباشرة ومو داخلة في السعر.</p>
   </section>
   <section id="pC" hidden>
@@ -171,21 +171,21 @@ var en=ls('lang')==='en',L=function(a){return a[en?1:0]};
 var n=function(x){return Math.round(x).toLocaleString('en-US')};
 /* الحاسبة: كل خدمة لها مقدار واحد وإضافات */
 var C={
- photo:{t:['تصوير الأطباق','Food photography'],q:['عدد الأطباق','Dishes'],min:10,max:60,step:5,v:10,
-   p:function(q){return 799+(q-10)*59},inc:['يشمل التنسيق والإضاءة والتعديل، والتسليم خلال 5 أيام','Styling, lighting and retouching included, delivered in 5 days'],
-   x:[['venue','تصوير المكان والأجواء','Venue & ambience shots',299],['reel','ريل قصير من يوم التصوير','A short reel from the shoot',399]]},
+ photo:{t:['تصوير الأطباق','Food photography'],q:['عدد الأطباق','Dishes'],min:5,max:60,step:5,v:10,
+   p:function(q){return q<=5?349:q<=10?349+(q-5)*50:599+(q-10)*40},inc:['يشمل التنسيق والإضاءة والتعديل، والتسليم خلال 5 أيام','Styling, lighting and retouching included, delivered in 5 days'],
+   x:[['venue','تصوير المكان والأجواء','Venue & ambience shots',299],['reel','ريل قصير من يوم التصوير','A short reel from the shoot',149]]},
  film:{t:['فيديو وريلز','Video & reels'],q:['عدد الريلز','Reels'],min:1,max:12,step:1,v:3,
-   p:function(q){return q*(q>=6?399:q>=3?449:499)},inc:['يشمل التصوير والمونتاج وتصحيح الألوان','Filming, editing and colour grading included'],
-   x:[['music','موسيقى مرخّصة','Licensed music',99],['sub','ترجمة إنجليزية على الفيديو','English subtitles',149]]},
+   p:function(q){return q*(q>=6?279:q>=3?309:349)},inc:['يشمل التصوير والمونتاج وتصحيح الألوان','Filming, editing and colour grading included'],
+   x:[['raw','ملفات المشروع والمقاطع الخام','Project and raw files',49],['sub','ترجمة ونص على الفيديو','Subtitles on video',29]]},
  design:{t:['تصميم سوشيال','Social designs'],q:['عدد التصاميم','Designs'],min:1,max:60,step:1,v:10,
-   p:function(q){return q<10?q*9:79+(q-10)*7.5},inc:['مقاسات إنستقرام وسناب وتيك توك','Sized for Instagram, Snapchat and TikTok'],
-   x:[['logo','شعار وهوية بصرية كاملة','Logo & full visual identity',499],['menu','تصميم منيو','Menu design',199]]},
+   p:function(q){return q<5?q*9:q<10?39+(q-5)*6:q<20?69+(q-10)*3:99+(q-20)*4},inc:['مقاسات إنستقرام وسناب وتيك توك','Sized for Instagram, Snapchat and TikTok'],
+   x:[['logo','هوية بصرية كاملة','Full visual identity',399],['menu','تصميم منيو حتى 4 صفحات','Menu design up to 4 pages',149]]},
  events:{t:['تغطية فعالية','Event coverage'],q:['عدد الساعات','Hours'],min:2,max:10,step:1,v:3,
-   p:function(q){return 999+Math.max(0,q-3)*249},inc:['تصوير فوتوغرافي مع التعديل، والتسليم خلال 3 أيام','Photo coverage with retouching, delivered in 3 days'],
-   x:[['vid','فيديو ملخص للفعالية','Event highlight video',699],['same','تسليم صور مختارة بنفس اليوم','Selected photos the same day',299]]},
+   p:function(q){return 799+Math.max(0,q-3)*199},inc:['تصوير فوتوغرافي مع التعديل، والتسليم خلال 3 أيام','Photo coverage with retouching, delivered in 3 days'],
+   x:[['vid','فيديو ملخص للفعالية','Event highlight video',599],['same','تسليم صور مختارة بنفس اليوم','Selected photos the same day',199]]},
  web:{t:['موقع إلكتروني','Website'],q:['عدد الصفحات','Pages'],min:3,max:12,step:1,v:5,
-   p:function(q){return 2999+Math.max(0,q-5)*299},inc:['تصميم وبرمجة، سريع ومتوافق مع الجوال وGoogle','Design and build, fast, mobile and Google friendly'],
-   x:[['en','نسخة إنجليزية','English version',799],['menu','منيو رقمي بكود QR','Digital QR menu',499]]}
+   p:function(q){return q<=3?1299:q<=5?1299+(q-3)*350:1999+(q-5)*333},inc:['تصميم وبرمجة، سريع ومتوافق مع الجوال وGoogle','Design and build, fast, mobile and Google friendly'],
+   x:[['en','نسخة إنجليزية','English version',499],['menu','منيو رقمي بكود QR','Digital QR menu',99]]}
 };
 var k='photo',q=C.photo.v,X={};
 var codes={ISM20:20},promo=(ls('promo')||'').toUpperCase();
@@ -213,6 +213,6 @@ lang();
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=6" defer></script>
+<script src="/app/app.js?v=7" defer></script>
 </body>
 </html>
