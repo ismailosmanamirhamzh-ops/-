@@ -20,8 +20,8 @@
   };
   var items = [
     ['/app/', 'home', en ? 'Home' : 'الرئيسية', P === '/app/' && H !== '#services' && H !== '#work'],
-    ['/app/order/#my', 'svc', en ? 'My orders' : 'طلباتي', /^\/app\/order/.test(P)],
-    ['/app/store/', 'add', en ? 'Order' : 'اطلب خدمة', /^\/app\/store/.test(P), 1],
+    ['/app/order/#my', 'svc', en ? 'My orders' : 'طلباتي', /^\/app\/order/.test(P) && H === '#my'],
+    ['/app/store/', 'add', en ? 'Order' : 'اطلب خدمة', /^\/app\/store/.test(P) || (/^\/app\/order/.test(P) && H !== '#my'), 1],
     ['/app/#work', 'work', en ? 'My work' : 'أعمالي', P === '/app/' && H === '#work'],
     ['https://wa.me/966574395924', 'wa', en ? 'WhatsApp' : 'واتساب', false]
   ];
@@ -38,7 +38,7 @@
     if (it[0].indexOf('#') > -1) a.addEventListener('click', function () { setTimeout(mark, 30); });
   });
   document.body.appendChild(nav);
-  function mark() { var h = location.hash; [].forEach.call(nav.children, function (a, i) { a.classList.toggle('on', i === 0 ? (P === '/app/' && h !== '#services' && h !== '#work') : i === 1 ? h === '#services' : i === 3 ? h === '#work' : i === 2 ? /^\/app\/order/.test(P) : false); }); }
+  function mark() { var h = location.hash; [].forEach.call(nav.children, function (a, i) { a.classList.toggle('on', i === 0 ? (P === '/app/' && h !== '#services' && h !== '#work') : i === 1 ? (/^\/app\/order/.test(P) && h === '#my') : i === 3 ? h === '#work' : i === 2 ? (/^\/app\/store/.test(P) || (/^\/app\/order/.test(P) && h !== '#my')) : false); }); }
   addEventListener('hashchange', mark);
 
   /* زر «ثبّت التطبيق» */

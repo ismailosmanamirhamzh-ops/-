@@ -141,6 +141,6 @@ var M={order:en?'Order not found':'ما لقيت الطلب',status:en?'You can 
 $('rs').addEventListener('click',function(){var b=$('rs');b.disabled=true;$('re').textContent='';fetch(GS,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({type:'review',id:id,stars:S,text:$('rt').value.trim()})}).then(function(r){return r.json()}).then(function(j){if(j&&j.ok){$('rf').hidden=true;$('ok').hidden=false;try{window.clarity&&clarity('event','review_sent')}catch(e){}}else{$('re').textContent=M[j&&j.error]||(en?'Something went wrong, try again':'صار خطأ، جرّب مرة ثانية');b.disabled=false}}).catch(function(){$('re').textContent=en?'Check your connection and try again':'تأكد من الاتصال وجرّب مرة ثانية';b.disabled=false})});
 })();
 </script>
-<script src="/app/app.js?v=7" defer></script>
+<script src="/app/app.js?v=8" defer></script>
 </body>
 </html>
