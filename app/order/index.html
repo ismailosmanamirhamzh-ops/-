@@ -122,8 +122,9 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
   <div class="tr"><button class="lng" id="langBtn" type="button">EN</button><a class="back" href="/app/" data-en="Home">الرئيسية</a></div>
 </header>
 <main>
-  <h1 class="hi" id="hi"><span data-en="Order a service">اطلب خدمتك</span> <em data-en="in under a minute">في أقل من دقيقة</em></h1>
+  <h1 class="hi" id="hi"><span data-en="Custom request">طلب خاص</span> <em data-en="or a big project">أو مشروع كبير</em></h1>
   <p class="sub" data-en="Choose the service, tell me about your business, and I will get back to you within 24 hours.">اختر الخدمة، وعرّفني بنشاطك، وأتواصل معك خلال 24 ساعة.</p>
+  <a class="promo" href="/app/store/" style="margin-bottom:.6rem"><span aria-hidden="true">🛍️</span><span data-en="Want a ready service with a fixed price? Browse the store ←">تبي خدمة جاهزة بسعر ثابت؟ تصفّح المتجر ←</span></a>
   <a class="promo" id="promoB" href="#" hidden><span aria-hidden="true">🎁</span><span data-en="20% off with code ISM20">خصم 20% على طلبك بالكود ISM20</span></a>
   <div id="flow">
     <div class="prog" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
@@ -170,7 +171,7 @@ var GS="https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEk
 var CAL='';/* رابط حجز المواعيد من تقويم Google: يتفعّل زر «احجز مكالمة» أول ما ينحط */
 var WK={marketing:['proof-google','proof-snap','proof-tiktok'],photo:['v:reel-2','v:reel-4','v:reel-5'],film:['v:reel-1','v:reel-3','studio-lighting'],design:['poster-nakhat-tihamiya','brand-social','brand-logo'],web:['web-design','../app/s2','../app/s1'],social:['v:reel-5','brand-social','v:reel-4'],events:['executives-1','wedding-1','nasheed-1'],package:['reel-2','poster-nakhat-tihamiya','proof-google']};
 var $=function(i){return document.getElementById(i)};
-var PR={photo:'799',film:'499',marketing:'999',design:'9',social:'1,299',events:'999',web:'2,999',package:'2,499'};
+var PR={photo:'19',film:'29',marketing:'59',design:'9',social:'349',events:'799',web:'1,299',package:'1,999'};
 var CODES={ISM20:20},BOOK={photo:1,film:1,events:1},BK=[],CFG=null,VREF={},REV='https://g.page/r/CdrbAP2oxyQXECE/review';
 var ls=function(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){}};
 try{if(/^ISM10$/i.test(localStorage.getItem('promo')||''))localStorage.setItem('promo','ISM20')}catch(e){}
@@ -283,7 +284,7 @@ function renderMy(){var list=[];try{list=JSON.parse(ls('myOrders')||'[]')}catch(
   if(window.ioAlerts&&window.ioAlerts.can()&&list.some(function(o){return o.id})){var ab=document.createElement('button');ab.type='button';ab.className='btn bk al';ab.textContent=en?'🔔 Notify me when status changes':'🔔 نبّهني لما تتغير حالة طلبي';ab.addEventListener('click',function(){window.ioAlerts.enable().then(renderMy)});L.appendChild(ab)}
   list.forEach(function(o){var r=document.createElement('div');r.className='od';var x=document.createElement('div');var b=document.createElement('b');var sv=document.querySelector('.sv[data-k="'+o.k+'"]');b.textContent=en&&sv?sv.dataset.enName:o.s;var sm=document.createElement('small');sm.textContent=new Date(o.d).toLocaleDateString(en?'en-GB':'ar-SA',{day:'numeric',month:'long',year:'numeric'})+' · '+(o.a||'')+(o.dt?(en?' · Day: ':' · موعد: ')+o.dt:'');x.appendChild(b);x.appendChild(sm);var st=document.createElement('span');var S=o.st||'';var map={'جديد':['s-new','🟡 جديد','🟡 New'],'قيد التنفيذ':['s-prog','🔵 قيد التنفيذ','🔵 In progress'],'تم التسليم':['s-done','🟢 تم التسليم','🟢 Delivered']};if(map[S]){st.className=map[S][0];st.textContent=en?map[S][2]:map[S][1]}else if(S){st.textContent=S}else st.textContent=o.ok?(en?'Sent ✓':'تم الإرسال ✓'):(en?'Via WhatsApp':'عبر واتساب');r.appendChild(x);r.appendChild(st);
   if(o.ln||S==='تم التسليم'){var oa=document.createElement('div');oa.className='oa';if(o.ln&&/^https:\/\//.test(o.ln)){var f=document.createElement('a');f.className='fl';f.href=o.ln;f.target='_blank';f.rel='noopener';f.textContent=en?'📥 Get your files':'📥 استلم ملفاتك';oa.appendChild(f)}
-    if(S==='تم التسليم'){var rv=document.createElement('a');rv.className='rv';rv.href=REV;rv.target='_blank';rv.rel='noopener';rv.textContent=en?'⭐ Rate the service':'⭐ قيّم الخدمة';oa.appendChild(rv)}r.appendChild(oa)}
+    if(S==='تم التسليم'){var rv=document.createElement('a');rv.className='rv';rv.href=o.id?'/app/review/?id='+o.id:REV;if(!o.id){rv.target='_blank';rv.rel='noopener'}rv.textContent=en?'⭐ Rate the service':'⭐ قيّم الخدمة';oa.appendChild(rv)}r.appendChild(oa)}
   L.appendChild(r)})}
 var pre=q.get('svc');if(pre){var pb=document.querySelector('.sv[data-k="'+pre+'"]');if(pb){pb.classList.add('sel');sel.svc=pre;sel.svcName=pb.dataset.ar;cur=2}}
 lang();if(cur===2)step(2,true);try{history.replaceState({s:cur},'')}catch(e){}
@@ -296,6 +297,6 @@ document.getElementById('share').addEventListener('click',function(){if(window.i
 })();
 </script>
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/app.js?v=6" defer></script>
+<script src="/app/app.js?v=7" defer></script>
 </body>
 </html>
