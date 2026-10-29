@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://ismueilosman.com/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://ismueilosman.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ismueilosman.com/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ismueilosman.com/"/>
@@ -31,5 +31,9 @@
     <priority>0.8</priority>
   </url>
   <url><loc>https://ismueilosman.com/work/</loc><lastmod>2026-10-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ismueilosman.com/app/store/</loc><lastmod>2026-10-29</lastmod><changefreq>weekly</changefreq><priority>0.9</priority><image:image><image:loc>https://ismueilosman.com/assets/app/store/ba-after.webp</image:loc></image:image></url>
+  <url><loc>https://ismueilosman.com/app/prices/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ismueilosman.com/app/check/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ismueilosman.com/app/guide/</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ismueilosman.com/about-site/</loc><lastmod>2026-10-24</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
 </urlset>
