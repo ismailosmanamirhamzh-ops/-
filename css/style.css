@@ -408,10 +408,10 @@ div:has(> #langBtn){gap:.3rem!important}
 #langBtn{padding:.4rem .6rem;font-size:.74rem}
 div:has(> #langBtn) > a.btn{padding-inline:.8rem!important;font-size:.8rem}
 }
-/* سبع حسابات: صف واحد على الكمبيوتر، وعلى الجوال 3 + 3 + الأخير في المنتصف */
+/* ثمانية حسابات: صف واحد على الكمبيوتر، وعلى الجوال صفّان 4 + 4 */
 .sc-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem 0}
-.sc-row>.sc{flex:0 0 33.333%}
-@media(min-width:760px){.sc-row>.sc{flex-basis:14.285%}}
+.sc-row>.sc{flex:0 0 25%}
+@media(min-width:760px){.sc-row>.sc{flex-basis:12.5%}}
 /* ===== الأسئلة: عمود جانبي + نافذة محادثة مثل تطبيق ===== */
 .fq-grid{display:block}
 .fq-win{margin-top:2rem;border-radius:1.6rem;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#0d0e12;box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 1px rgba(242,180,90,.06)}
