@@ -110,7 +110,7 @@ try{
   var fired=false;function once(){if(fired)return;fired=true;later()}
   /* الفيديو الثاني (قسم الكاميرا تحت) ما ينزل إلا لما يقرب الزائر منه، فما ينزل نفس الملف مرتين أول ما تفتح الصفحة */
   if(ids[0]==='heroVid'&&'IntersectionObserver' in window){var near=new IntersectionObserver(function(es){if(es[0].isIntersecting){near.disconnect();once()}},{rootMargin:'0px 0px -60px 0px'});near.observe(top)}
-  else if(document.readyState==='complete')once();else{addEventListener('load',once,{once:true});setTimeout(once,1200)}
+  else{/* فيديو الواجهة يبدأ مع أول تفاعل (لمس، تمرير، حركة الماوس) — الصورة الثابتة تظهر قبله فوراً */['scroll','touchstart','pointerdown','mousemove','wheel','keydown'].forEach(function(e){addEventListener(e,once,{once:true,passive:true})});setTimeout(once,12000)}
   var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(function(){if(cur)pick()},400)});
   /* وضع توفير الطاقة في الآيفون يمنع التشغيل التلقائي: نعيد المحاولة مع أول لمسة أو سحب */
   function kick(){if(!cur&&(ids[0]!=='heroVid'||top.getBoundingClientRect().top<innerHeight*1.5))pick();if(v.paused&&top.getBoundingClientRect().bottom>0){var p=v.play();if(p&&p.catch)p.catch(function(){})}}
