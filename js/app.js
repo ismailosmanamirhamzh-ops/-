@@ -156,7 +156,7 @@ try{
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var userOff=false,ratio=0,tk=false,paused=false;
   function canSound(){var ua=navigator.userActivation;return !userOff&&!(window.SND&&!SND.on())&&(!ua||ua.hasBeenActive)}
-  function ui(){var on=!v.muted;if(sb){sb.setAttribute('aria-pressed',on?'true':'false');sb.setAttribute('aria-label',on?(en()?'Mute':'كتم الصوت'):(en()?'Turn sound on':'تشغيل الصوت'));sb.classList.toggle('on',on)}}
+  function ui(){var on=!v.muted;if(sb){sb.setAttribute('aria-pressed',on?'true':'false');if(!sb.querySelector('.vid-snd-l'))sb.setAttribute('aria-label',on?(en()?'Mute':'كتم الصوت'):(en()?'Turn sound on':'تشغيل الصوت'));sb.classList.toggle('on',on)}}
   function solo(){document.dispatchEvent(new CustomEvent('snd-solo',{detail:v}))}
   function go(){load();var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;ui();v.play().catch(function(){})});if(b)b.style.display='none'}
   function apply(){
@@ -226,7 +226,7 @@ try{
     for(var i=0;i<reps;i++)half+=one;
     row.innerHTML=half+half;
     var n=row.children.length/2;
-    [].slice.call(row.children).forEach(function(c,i){if(i>=n)c.setAttribute('aria-hidden','true')});
+    [].slice.call(row.children).forEach(function(c,i){if(i>=n){c.setAttribute('aria-hidden','true');c.setAttribute('tabindex','-1')}});
   });
 })();
 }catch(e){console.error(e)}
@@ -496,7 +496,7 @@ try{
     sb.addEventListener('click',function(){
       var on=v.muted;
       items.forEach(function(o){var ov=o.querySelector('video');ov.muted=true;var b=o.querySelector('.reel-snd');b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',en()?'Turn sound on':'تشغيل الصوت')});
-      if(on){v.muted=false;sb.setAttribute('aria-pressed','true');sb.setAttribute('aria-label',en()?'Mute':'كتم الصوت');play(r);document.dispatchEvent(new CustomEvent('snd-solo',{detail:v}))}
+      if(on){v.muted=false;sb.setAttribute('aria-pressed','true');if(!sb.querySelector('.vid-snd-l'))sb.setAttribute('aria-label',en()?'Mute':'كتم الصوت');play(r);document.dispatchEvent(new CustomEvent('snd-solo',{detail:v}))}
     });
   });
   function muteR(r){var v=r.querySelector('video'),b=r.querySelector('.reel-snd');v.muted=true;b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',en()?'Turn sound on':'تشغيل الصوت')}
