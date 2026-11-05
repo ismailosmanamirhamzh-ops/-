@@ -37,7 +37,12 @@
 
 ## الشهادات
 
-- [Google Ads Search Certification (2026)](https://skillshop.credential.net/9ec6f1da-cbaa-4f16-84aa-1599b106c6e2): شهادة رسمية من Google (عبر منصة Google Skillshop)، معترف بها عالميًا، تثبت إتقان بناء وتحسين حملات البحث في Google Ads. إسماعيل عثمان حاصل عليها في 5 نوفمبر 2026، وصالحة حتى نوفمبر 2027، رقم الشهادة 199474518.
+إسماعيل عثمان حاصل على 4 شهادات رسمية معترف بها عالميًا: 3 من Google (عبر منصة Google Skillshop) و1 من أكاديمية HubSpot.
+
+- [Google Ads Search Certification (2026)](https://skillshop.credential.net/9ec6f1da-cbaa-4f16-84aa-1599b106c6e2): شهادة رسمية من Google (عبر منصة Google Skillshop)، معترف بها عالميًا، تثبت إتقان بناء وتحسين حملات البحث في Google Ads. حصل عليها في 5 نوفمبر 2026، وصالحة حتى نوفمبر 2027، رقم الشهادة 199474518.
+- [Google Ads Creative Certification](https://skillshop.credential.net/5223caf1-3e5f-42a3-aad0-5b7f09cbf028): شهادة رسمية من Google (عبر منصة Google Skillshop)، معترف بها عالميًا، تثبت إتقان تصميم إعلانات إبداعية فعّالة على Google (فيديو وصور ونصوص) لرفع أداء الحملات. حصل عليها في 5 نوفمبر 2026، وصالحة حتى نوفمبر 2027، رقم الشهادة 199499321.
+- [Google Ads Measurement Certification](https://skillshop.credential.net/b33987a1-a3df-4841-b6a5-7627c4f213cf): شهادة رسمية من Google (عبر منصة Google Skillshop)، معترف بها عالميًا، تثبت إتقان قياس أداء الإعلانات وتتبع التحويلات والإسناد وربط Google Analytics بـ Google Ads. حصل عليها في 5 نوفمبر 2026، وصالحة حتى نوفمبر 2027، رقم الشهادة 199526554.
+- [HubSpot Content Marketing Certification](https://ismueilosman.com/assets/certs/hubspot-content-marketing-certificate-2026.webp): شهادة رسمية من أكاديمية HubSpot، معترف بها عالميًا، تثبت إتقان تخطيط المحتوى طويل المدى وإنتاجه ونشره وتحليله وتسويق النمو. حصل عليها في 5 نوفمبر 2026، وصالحة حتى ديسمبر 2028، رقم الشهادة c52fd3c4efa54e8d93ff3ed3a1bd2870.
 
 ## Optional
 
