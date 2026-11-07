@@ -1,6 +1,0 @@
-<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><title>send</title><body>sending…<script>
-const ok=['https://x.com','https://www.linkedin.com','https://www.facebook.com','https://www.instagram.com','https://business.facebook.com'];
-addEventListener('message',async e=>{if(!ok.includes(e.origin))return;const f=e.data&&e.data.want;if(!/^maps-(reel\.mp4|cover\.jpg)$/.test(f))return;
-const b=await (await fetch('/up/'+f)).blob();e.source.postMessage({file:f,blob:b},e.origin);document.body.textContent='sent '+b.size;});
-if(opener)opener.postMessage({ready:1},'*');
-</script>
