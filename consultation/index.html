@@ -197,7 +197,7 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 
 <footer class="foot">
   <a href="/">الرئيسية</a>
-  <a href="/assets/ismueil-osman-profile.pdf?v=3" target="_blank" rel="noopener">مشاهدة البروفايل</a>
+  <a href="/assets/ismueil-osman-profile.pdf?v=4" target="_blank" rel="noopener">مشاهدة البروفايل</a>
   <a href="https://www.alwatan.com.sa/author/15812" target="_blank" rel="noopener">كتاباتي في صحيفة الوطن</a>
   <a href="mailto:hello@ismueilosman.com" dir="ltr">hello@ismueilosman.com</a>
 </footer>
@@ -231,7 +231,7 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
   function set(l){if(l===lang)return;lang=l;var h=document.documentElement;
     if(l==='en'){toEn();h.lang='en';h.dir='ltr';b.textContent='ع';b.setAttribute('lang','ar');b.setAttribute('aria-label','التبديل إلى العربية')}
     else{toAr();h.lang='ar';h.dir='rtl';b.textContent='EN';b.setAttribute('lang','en');b.setAttribute('aria-label','Switch to English')}
-    document.title=TT[l];try{localStorage.setItem('lang',l)}catch(e){}document.querySelectorAll('a[href*="ismueil-osman-profile"]').forEach(function(a){a.href=l==='en'?'/assets/ismueil-osman-profile-en.pdf?v=3':'/assets/ismueil-osman-profile.pdf?v=3'});
+    document.title=TT[l];try{localStorage.setItem('lang',l)}catch(e){}document.querySelectorAll('a[href*="ismueil-osman-profile"]').forEach(function(a){a.href=l==='en'?'/assets/ismueil-osman-profile-en.pdf?v=4':'/assets/ismueil-osman-profile.pdf?v=4'});
     [].forEach.call(document.querySelectorAll('.err'),function(e){e.textContent=''});var st=document.getElementById('c-status');if(st&&st.className.indexOf(' e')>-1){st.textContent=''}}
   b.addEventListener('click',function(){set(lang==='ar'?'en':'ar')});
   var qp=(location.search.match(/[?&]lang=(en|ar)/)||[])[1];if(qp)set(qp);else{try{if(localStorage.getItem('lang')==='en')set('en')}catch(e){}}
