@@ -108,7 +108,7 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 .go{background:var(--amber);color:#111}.wa{background:#25d366;color:#04140a}.bk{background:transparent;border:1px solid var(--line);color:var(--mute)}.wa svg{width:1.2rem;height:1.2rem;fill:currentColor}
 @property --p{syntax:"<number>";inherits:false;initial-value:0}
 .hi{text-wrap:balance}.lng{min-width:44px;min-height:44px}
-</style>
+.grid .cd{content-visibility:auto;contain-intrinsic-size:auto 430px}</style>
 <style>
 .hero{display:flex;align-items:flex-end;justify-content:space-between;gap:.8rem;margin:.4rem 0 .5rem}.hero .hi{margin:0}.hero .sub{margin:.15rem 0 0;font-size:.86rem;line-height:1.6}.hero .hi{font-size:clamp(1.55rem,6.2vw,2.2rem)}
 .offer{display:flex;align-items:center;gap:.7rem;width:100%;text-align:start;background:linear-gradient(120deg,rgba(242,180,90,.22),rgba(242,180,90,.05));border:1px solid rgba(242,180,90,.45);border-radius:16px;padding:.7rem .9rem;margin:.5rem 0 .2rem;cursor:pointer;color:var(--text)}
@@ -421,7 +421,7 @@ function srcOf(x){var id=x[7].img||x[0];return EXT[id]?'https://images.unsplash.
 function cover(x,cls){var cv=el('div',cls),art=ART[x[0]];
   if(art&&art[2]){cv.classList.add('art');var pg=el('div','pg4');art[2].forEach(function(nm){var c=el('span',null,nm);c.style.setProperty('--c',{Instagram:'#e1306c',TikTok:'#25f4ee',Snapchat:'#fffc00',X:'#ffffff'}[nm]||'#f2b45a');pg.appendChild(c)});cv.appendChild(el('b',null,art[0]));cv.appendChild(pg)}
   else if(art){cv.classList.add('art');cv.appendChild(el('b',null,art[0]));cv.appendChild(el('small',null,L(art[1])))}
-  else{var im=el('img');im.src=srcOf(x);im.alt='';im.loading='lazy';im.decoding='async';im.width=720;im.height=540;im.onerror=function(){im.remove();cv.classList.add('art');cv.appendChild(el('b',null,CT[x[1]].i))};cv.appendChild(im)}
+  else{var im=el('img');im.loading='lazy';im.decoding='async';im.alt='';im.src=srcOf(x);im.width=720;im.height=540;im.onerror=function(){im.remove();cv.classList.add('art');cv.appendChild(el('b',null,CT[x[1]].i))};cv.appendChild(im)}
   return cv}
 function isFav(id){return fav.indexOf(id)>-1}
 function togFav(id,b){var i=fav.indexOf(id);if(i>-1)fav.splice(i,1);else{fav.unshift(id);ev('store_fav')}ls('fav',JSON.stringify(fav));buzz();
