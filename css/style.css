@@ -721,3 +721,6 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 .c-go{display:flex;align-items:center;justify-content:space-between;gap:1rem;font:800 .9rem Cairo,sans-serif;color:#f2b45a}.c-go i{font-style:normal;font:700 .68rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.2em;color:rgba(242,180,90,.55)}
 @media(max-width:420px){.ccard{padding:1.35rem 1.1rem 1.15rem}.cseal{width:72px;height:72px}.c-meta{grid-template-columns:1fr 1fr}.c-meta span:last-child{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){.ccard,.ccard:after{transition:none}}
+
+/* v48 speed: skip rendering of off-screen sections until the visitor gets near them */
+#experience,#lenses,#work,#partners,#contact{content-visibility:auto;contain-intrinsic-size:auto 900px}
