@@ -523,6 +523,7 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
     <button class="tab" type="button" data-f="all" aria-pressed="true">الكل</button>
     <button class="tab" type="button" data-f="video" aria-pressed="false">فيديو وإعلانات</button>
     <button class="tab" type="button" data-f="marketing" aria-pressed="false">تسويق وحملات</button>
+    <button class="tab" type="button" data-f="platforms" aria-pressed="false">منصات وواجهات</button>
     <button class="tab" type="button" data-f="corporate" aria-pressed="false">تصوير الشركات</button>
     <button class="tab" type="button" data-f="portrait" aria-pressed="false">بورتريه</button>
     <button class="tab" type="button" data-f="weddings" aria-pressed="false">أعراس ومناسبات</button>
@@ -598,6 +599,100 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
         </div>
         <p class="cs-n">لقطات حقيقية من لوحات الإعلانات، وأُخفيت بيانات العميل حفاظًا على خصوصيته.</p>
         <a class="btn p cs-b" href="/consultation/">أبغى نتائج مثلها لنشاطي<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5l-7 7 7 7 1.4-1.4L9.8 13H20v-2H9.8l5.6-5.6z"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cat plf" id="platforms" data-cat="platforms" aria-labelledby="plfH">
+<style>
+.plf .plg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem;margin-top:2.4rem}
+.plf .plc{position:relative;border-radius:1.4rem;padding:1px;background:linear-gradient(135deg,rgba(255,226,168,.55),rgba(242,180,90,.12) 35%,rgba(255,255,255,.04) 60%,rgba(138,90,28,.5));isolation:isolate}
+.plf .plc>.in{position:relative;height:100%;border-radius:calc(1.4rem - 1px);background:radial-gradient(120% 80% at 100% 0,rgba(242,180,90,.10),transparent 55%),linear-gradient(180deg,#0f1118,#07080c);padding:1.6rem;overflow:hidden}
+.plf .plc.ft{grid-column:1/-1}
+.plf .plc.ft>.in{display:grid;grid-template-columns:1.05fr 1fr;gap:2rem;align-items:center;padding:2.2rem}
+.plf .k{display:inline-flex;align-items:center;gap:.5rem;font:600 .72rem/1 var(--mono);letter-spacing:.18em;color:var(--amber);text-transform:uppercase}
+.plf .k::before{content:"";width:1.6rem;height:1px;background:linear-gradient(90deg,transparent,var(--amber))}
+.plf h3{margin:.8rem 0 .2rem;font-family:Cairo,sans-serif;font-weight:900;font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.3;background:linear-gradient(180deg,#fff6dc,#f2b45a 70%,#c98a35);-webkit-background-clip:text;background-clip:text;color:transparent}
+.plf .plc:not(.ft) h3{font-size:clamp(1.25rem,2.4vw,1.55rem)}
+.plf .s{color:var(--text);font-weight:700;margin:0 0 .8rem}
+.plf p.d2{color:var(--mute);line-height:1.95;margin:0}
+.plf ul.fl{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;grid-template-columns:1fr 1fr;gap:.55rem .9rem}
+.plf ul.fl li{position:relative;padding-inline-start:1.3rem;color:var(--text);font-size:.95rem}
+.plf ul.fl li::before{content:"";position:absolute;inset-inline-start:0;top:.55em;width:.5rem;height:.5rem;transform:rotate(45deg);background:linear-gradient(135deg,#ffe2a8,#8a5a1c)}
+.plf .ch{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.2rem}
+.plf .ch span{font-size:.78rem;padding:.32rem .8rem;border-radius:99px;border:1px solid rgba(242,180,90,.28);color:#ffe3a3;background:rgba(242,180,90,.06)}
+.plf .go{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.5rem;padding:.8rem 1.4rem;border-radius:99px;font-weight:800;color:#120c02;background:linear-gradient(135deg,#ffe2a8,#f2b45a 55%,#c98a35);box-shadow:0 10px 30px -10px rgba(242,180,90,.6);transition:transform .3s,box-shadow .3s}
+.plf .go:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px rgba(242,180,90,.8)}
+.plf .go.gh{color:#ffe3a3;background:transparent;border:1px solid rgba(242,180,90,.4);box-shadow:none}
+.plf .nt{display:block;margin-top:.7rem;font-size:.78rem;color:var(--mute)}
+.plf .mk2{position:relative;border-radius:1rem;border:1px solid rgba(255,255,255,.09);background:#0a0c12;box-shadow:0 30px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(242,180,90,.08);overflow:hidden;transform:perspective(1200px) rotateY(-6deg) rotateX(3deg);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.plf .plc:hover .mk2{transform:perspective(1200px) rotateY(0) rotateX(0)}
+.plf .mk2 .bar{display:flex;align-items:center;gap:.35rem;padding:.6rem .8rem;border-bottom:1px solid rgba(255,255,255,.06);background:#0e1016}
+.plf .mk2 .bar i{width:.55rem;height:.55rem;border-radius:50%;background:#2a2d38}
+.plf .mk2 .bar i:first-child{background:#f2b45a}
+.plf .mk2 .bar em{margin-inline-start:auto;font:500 .68rem var(--mono);color:#6d7384;font-style:normal}
+.plf .mk2 .bd{display:grid;grid-template-columns:4.2rem 1fr;min-height:15rem}
+.plf .mk2 .sd{background:#003528;padding:.8rem .6rem;display:flex;flex-direction:column;gap:.55rem;align-items:center}
+.plf .mk2 .sd img{width:2.4rem;height:2.4rem;object-fit:contain;border-radius:.5rem;background:#fff;padding:.2rem}
+.plf .mk2 .sd b{width:100%;height:.45rem;border-radius:9px;background:rgba(255,255,255,.14)}
+.plf .mk2 .sd b.on{background:linear-gradient(90deg,#ffe2a8,#f2b45a)}
+.plf .mk2 .mn{padding:.9rem;display:flex;flex-direction:column;gap:.7rem}
+.plf .mk2 .hi{font:800 .85rem Cairo,sans-serif;color:#fff}
+.plf .mk2 .kp{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem}
+.plf .mk2 .kp div{border-radius:.55rem;background:#11141c;border:1px solid rgba(255,255,255,.06);padding:.5rem}
+.plf .mk2 .kp small{display:block;font-size:.6rem;color:#7d8394}
+.plf .mk2 .kp u{display:block;margin-top:.35rem;height:.5rem;width:70%;border-radius:9px;background:linear-gradient(90deg,rgba(242,180,90,.55),rgba(242,180,90,.12));text-decoration:none}
+.plf .mk2 .al{border-radius:.55rem;border:1px solid rgba(242,180,90,.25);background:rgba(242,180,90,.06);padding:.55rem .65rem;font-size:.66rem;color:#ffe3a3}
+.plf .mk2 .rw{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem}
+.plf .mk2 .rw div{border-radius:.55rem;background:#11141c;border:1px solid rgba(255,255,255,.06);padding:.5rem;font-size:.62rem;color:#c9cdd8}
+.plf .mk2 .rw div s{display:block;margin-top:.3rem;height:.35rem;border-radius:9px;background:#1c2030;text-decoration:none}
+.plf .ic{width:3rem;height:3rem;border-radius:.9rem;display:grid;place-items:center;background:linear-gradient(135deg,rgba(255,226,168,.18),rgba(138,90,28,.18));border:1px solid rgba(242,180,90,.3);color:var(--amber)}
+.plf .ic svg{width:1.4rem;height:1.4rem;fill:currentColor}
+@media (max-width:860px){.plf .plg{grid-template-columns:1fr}.plf .plc.ft>.in{grid-template-columns:1fr;padding:1.6rem}.plf .mk2{transform:none}.plf ul.fl{grid-template-columns:1fr}}
+</style>
+    <div class="wrap">
+      <header class="sh fade"><p class="ab-k">منصات وواجهات</p><h2 class="fit" id="plfH">أبني المنصة، مو بس الموقع</h2><p class="d">واجهات ومنصات احترافية بتصميم عربي، تشتغل بسلاسة على الجوال والحاسب، ومبنية لتخدم شغل حقيقي كل يوم.</p></header>
+      <div class="plg">
+        <article class="plc ft fade"><div class="in">
+          <div>
+            <span class="k">إنجاز جديد · منصة داخلية</span>
+            <h3>منصة إدارة التسويق لشؤون الغذاء</h3>
+            <p class="s">صمّمتها وطوّرتها بالكامل، وتشتغل اليوم في إدارة تسويق علامات الشركة.</p>
+            <p class="d2">تجمع أداء العلامات وحملاتها وطلباتها ومهامها في مكان واحد، وتنبّه أول بأول لما يحتاج متابعة: طلب متأخر، أو حملة متوقفة، أو مهمة فات موعدها. وكل علامة لها صفحتها بفروعها وطلباتها.</p>
+            <ul class="fl"><li>لوحة يومية لما يحتاج انتباهك</li><li>متابعة أداء كل علامة وفروعها</li><li>إدارة الطلبات والمهام</li><li>متابعة الحملات الإعلانية</li><li>فلترة حسب الفترة</li><li>تثبيت على الجوال كتطبيق</li></ul>
+            <div class="ch"><span>واجهة عربية</span><span>تطبيق ويب</span><span>لوحات أداء</span><span>صلاحيات دخول</span></div>
+            <a class="go" href="https://shuoonmarketing.web.app/" target="_blank" rel="noopener">شاهد المنصة ↗</a>
+            <span class="nt">المنصة داخلية، والدخول فيها للمصرّح لهم فقط.</span>
+          </div>
+          <div class="mk2" aria-hidden="true">
+            <div class="bar"><i></i><i></i><i></i><em>shuoonmarketing.web.app</em></div>
+            <div class="bd">
+              <div class="sd"><img src="/assets/img/logo-shuun-alghitha.webp" alt="" loading="lazy" decoding="async"><b class="on"></b><b></b><b></b><b></b><b></b></div>
+              <div class="mn">
+                <div class="hi">مرحباً اسماعيل عثمان</div>
+                <div class="kp"><div><small>طلبات جديدة</small><u></u></div><div><small>جارٍ العمل</small><u></u></div><div><small>مهام مفتوحة</small><u></u></div><div><small>مهام متأخرة</small><u></u></div></div>
+                <div class="al">ما يحتاج انتباهك الآن</div>
+                <div class="rw"><div>الظهور<s></s></div><div>المكالمات<s></s></div><div>الاتجاهات<s></s></div></div>
+              </div>
+            </div>
+          </div>
+        </div></article>
+        <article class="plc fade"><div class="in">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-3a15.7 15.7 0 0 0-1.4-3.6A8 8 0 0 1 18.9 8zM12 4c.8 1.2 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.8 1.9-4zM4.3 14a8.2 8.2 0 0 1 0-4h3.4a16.5 16.5 0 0 0 0 4H4.3zm.8 2h3a15.7 15.7 0 0 0 1.4 3.6A8 8 0 0 1 5.1 16zm3-8h-3a8 8 0 0 1 4.4-3.6C8.9 5.5 8.4 6.7 8.1 8zM12 20c-.8-1.2-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.8-1.9 4zm2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4zm.3 5.6c.6-1.1 1.1-2.3 1.4-3.6h3a8 8 0 0 1-4.4 3.6zm1.7-5.6a16.5 16.5 0 0 0 0-4h3.4a8.2 8.2 0 0 1 0 4h-3.4z"/></svg></span>
+          <span class="k" style="margin-top:1.1rem">موقع رسمي</span>
+          <h3>ismueilosman.com</h3>
+          <p class="d2">موقعي الرسمي: صممته وبنيته بنفسي، بكاميرا ثلاثية الأبعاد، ونسختين عربي وإنجليزي، وصفحات خدمات مهيأة لمحركات البحث.</p>
+          <div class="ch"><span>3D</span><span>عربي وإنجليزي</span><span>SEO</span></div>
+          <a class="go gh" href="/">تصفّح الموقع ←</a>
+        </div></article>
+        <article class="plc fade"><div class="in">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M17 1H7a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 18H7V5h10v14zm-5 3a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg></span>
+          <span class="k" style="margin-top:1.1rem">تطبيق ومتجر</span>
+          <h3>تطبيق خدماتي ومتجره</h3>
+          <p class="d2">تطبيق ويب ينزل على الجوال، فيه متجر خدمات بأسعار واضحة، وطلب مباشر، وأدلة مجانية، ويشتغل حتى بدون إنترنت.</p>
+          <div class="ch"><span>تطبيق ويب</span><span>متجر خدمات</span><span>يعمل بدون إنترنت</span></div>
+          <a class="go gh" href="/app/">افتح التطبيق ←</a>
+        </div></article>
       </div>
     </div>
   </section>
