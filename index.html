@@ -1105,16 +1105,70 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 </div>
 </div></div>
 
-    <div class="reveal glass rounded-3xl p-8 mt-6">
-      <p class="ab-k" data-en="New milestone">إنجاز جديد</p>
-      <h3 class="text-2xl sm:text-3xl font-black" data-en="I built a complete marketing management platform">بنيت منصة متكاملة لإدارة التسويق</h3>
-      <p class="mt-3 max-w-3xl leading-8" style="color:var(--mute)" data-en="I designed and developed an internal platform that brings performance, campaigns, requests and tasks for several brands into one place, with an Arabic interface that works on mobile and desktop and flags what needs attention first. It now runs the marketing management of the Shu'un Al-Ghitha brands.">صمّمت وطوّرت منصة داخلية تجمع الأداء والحملات والطلبات والمهام لعدة علامات تجارية في مكان واحد، بواجهة عربية تعمل على الجوال والحاسب وتنبّه لما يحتاج متابعة أولًا. تعمل اليوم في إدارة تسويق علامات شؤون الغذاء.</p>
-      <div class="mt-5 flex flex-wrap gap-2 text-sm" style="color:var(--mute)">
-        <span class="glass rounded-full px-4 py-1" data-en="Professional interfaces">واجهات احترافية</span>
-        <span class="glass rounded-full px-4 py-1" data-en="Performance dashboards">لوحات متابعة الأداء</span>
-        <span class="glass rounded-full px-4 py-1" data-en="Campaign and request management">إدارة الحملات والطلبات</span>
+    <style>
+.hx{position:relative;margin-top:1.5rem;border-radius:1.6rem;padding:1px;background:linear-gradient(135deg,rgba(255,226,168,.6),rgba(242,180,90,.14) 35%,rgba(255,255,255,.04) 60%,rgba(138,90,28,.55))}
+.hx>.in{position:relative;border-radius:calc(1.6rem - 1px);background:radial-gradient(110% 80% at 100% 0,rgba(242,180,90,.12),transparent 55%),radial-gradient(80% 60% at 0 100%,rgba(242,180,90,.06),transparent 60%),linear-gradient(180deg,#0f1118,#07080c);padding:2.4rem;display:grid;grid-template-columns:1.05fr 1fr;gap:2.2rem;align-items:center;overflow:hidden}
+.hx .k{display:inline-flex;align-items:center;gap:.5rem;font:600 .72rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.18em;color:#f2b45a}
+.hx .k::before{content:"";width:1.6rem;height:1px;background:linear-gradient(90deg,transparent,#f2b45a)}
+.hx h3{margin:.9rem 0 .3rem;font-family:Cairo,sans-serif;font-weight:900;font-size:clamp(1.6rem,3.6vw,2.5rem);line-height:1.3;background:linear-gradient(180deg,#fff6dc,#f2b45a 70%,#c98a35);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hx .s{color:#eceef4;font-weight:700;margin:0 0 .8rem}
+.hx .d2{color:var(--mute,#a9afbf);line-height:1.95;margin:0}
+.hx ul{list-style:none;padding:0;margin:1.2rem 0 0;display:grid;grid-template-columns:1fr 1fr;gap:.55rem .9rem}
+.hx li{position:relative;padding-inline-start:1.3rem;color:#eceef4;font-size:.95rem}
+.hx li::before{content:"";position:absolute;inset-inline-start:0;top:.55em;width:.5rem;height:.5rem;transform:rotate(45deg);background:linear-gradient(135deg,#ffe2a8,#8a5a1c)}
+.hx .bt{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
+.hx .go{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.4rem;border-radius:99px;font-weight:800;color:#120c02;background:linear-gradient(135deg,#ffe2a8,#f2b45a 55%,#c98a35);box-shadow:0 10px 30px -10px rgba(242,180,90,.6);transition:transform .3s,box-shadow .3s}
+.hx .go:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px rgba(242,180,90,.8)}
+.hx .go.gh{color:#ffe3a3;background:transparent;border:1px solid rgba(242,180,90,.4);box-shadow:none}
+.hx .nt{display:block;margin-top:.7rem;font-size:.78rem;color:var(--mute,#a9afbf)}
+.hx .mk{position:relative;border-radius:1rem;border:1px solid rgba(255,255,255,.09);background:#0a0c12;box-shadow:0 30px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(242,180,90,.08);overflow:hidden;transform:perspective(1200px) rotateY(-6deg) rotateX(3deg);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.hx:hover .mk{transform:perspective(1200px) rotateY(0) rotateX(0)}
+.hx .mk .bar{display:flex;align-items:center;gap:.35rem;padding:.6rem .8rem;border-bottom:1px solid rgba(255,255,255,.06);background:#0e1016}
+.hx .mk .bar i{width:.55rem;height:.55rem;border-radius:50%;background:#2a2d38}
+.hx .mk .bar i:first-child{background:#f2b45a}
+.hx .mk .bar em{margin-inline-start:auto;font:500 .68rem ui-monospace,Menlo,monospace;color:#6d7384;font-style:normal}
+.hx .mk .bd{display:grid;grid-template-columns:4.2rem 1fr;min-height:15rem}
+.hx .mk .sd{background:#003528;padding:.8rem .6rem;display:flex;flex-direction:column;gap:.55rem;align-items:center}
+.hx .mk .sd img{width:2.4rem;height:2.4rem;object-fit:contain;border-radius:.5rem;background:#fff;padding:.2rem}
+.hx .mk .sd b{width:100%;height:.45rem;border-radius:9px;background:rgba(255,255,255,.14)}
+.hx .mk .sd b.on{background:linear-gradient(90deg,#ffe2a8,#f2b45a)}
+.hx .mk .mn{padding:.9rem;display:flex;flex-direction:column;gap:.7rem}
+.hx .mk .hi{font:800 .85rem Cairo,sans-serif;color:#fff}
+.hx .mk .kp{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem}
+.hx .mk .kp div,.hx .mk .rw div{border-radius:.55rem;background:#11141c;border:1px solid rgba(255,255,255,.06);padding:.5rem}
+.hx .mk small{display:block;font-size:.6rem;color:#7d8394}
+.hx .mk .kp u{display:block;margin-top:.35rem;height:.5rem;width:70%;border-radius:9px;background:linear-gradient(90deg,rgba(242,180,90,.55),rgba(242,180,90,.12))}
+.hx .mk .al{border-radius:.55rem;border:1px solid rgba(242,180,90,.25);background:rgba(242,180,90,.06);padding:.55rem .65rem;font-size:.66rem;color:#ffe3a3}
+.hx .mk .rw{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem}
+.hx .mk .rw s{display:block;margin-top:.3rem;height:.35rem;border-radius:9px;background:#1c2030}
+@media (max-width:860px){.hx>.in{grid-template-columns:1fr;padding:1.6rem}.hx .mk{transform:none}.hx ul{grid-template-columns:1fr}}
+    </style>
+    <div class="hx reveal"><div class="in">
+      <div>
+        <span class="k" data-en="NEW MILESTONE · INTERNAL PLATFORM">إنجاز جديد · منصة داخلية</span>
+        <h3 data-en="I built a complete marketing management platform">بنيت منصة متكاملة لإدارة التسويق</h3>
+        <p class="s" data-en="Designed and developed end to end. It now runs the marketing of the Shu'un Al-Ghitha brands.">صمّمتها وطوّرتها بالكامل، وتشتغل اليوم في إدارة تسويق علامات شؤون الغذاء.</p>
+        <p class="d2" data-en="Performance, campaigns, requests and tasks for every brand in one place, with alerts for whatever needs attention first: a late request, a paused campaign or an overdue task.">تجمع أداء العلامات وحملاتها وطلباتها ومهامها في مكان واحد، وتنبّه أول بأول لما يحتاج متابعة: طلب متأخر، أو حملة متوقفة، أو مهمة فات موعدها.</p>
+        <ul><li data-en="Daily attention board">لوحة يومية لما يحتاج انتباهك</li><li data-en="Performance per brand and branch">أداء كل علامة وفروعها</li><li data-en="Requests and tasks">إدارة الطلبات والمهام</li><li data-en="Installs on mobile as an app">تثبيت على الجوال كتطبيق</li></ul>
+        <div class="bt">
+          <a class="go" href="https://shuoonmarketing.web.app/" target="_blank" rel="noopener" data-en="View the platform ↗">شاهد المنصة ↗</a>
+          <a class="go gh" href="/work/#platforms" data-en="Interfaces &amp; platforms →">منصاتي وواجهاتي ←</a>
+        </div>
+        <span class="nt" data-en="Internal platform: access is for authorized users only.">المنصة داخلية، والدخول فيها للمصرّح لهم فقط.</span>
       </div>
-    </div>
+      <div class="mk" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i><em>shuoonmarketing.web.app</em></div>
+        <div class="bd">
+          <div class="sd"><img src="/assets/img/logo-shuun-alghitha.webp" alt="" loading="lazy" decoding="async"><b class="on"></b><b></b><b></b><b></b><b></b></div>
+          <div class="mn">
+            <div class="hi">مرحباً اسماعيل عثمان</div>
+            <div class="kp"><div><small>طلبات جديدة</small><u></u></div><div><small>جارٍ العمل</small><u></u></div><div><small>مهام مفتوحة</small><u></u></div><div><small>مهام متأخرة</small><u></u></div></div>
+            <div class="al">ما يحتاج انتباهك الآن</div>
+            <div class="rw"><div><small>الظهور</small><s></s></div><div><small>المكالمات</small><s></s></div><div><small>الاتجاهات</small><s></s></div></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
 
     <div class="mt-6 grid lg:grid-cols-2 gap-6">
       <!-- Marketing -->
