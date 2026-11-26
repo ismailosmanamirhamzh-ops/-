@@ -317,5 +317,6 @@ main section{scroll-margin-top:5rem}
 <script>(function(){var m=/[?&#]svc=(dev|app|platform|store)/.exec(location.search+location.hash);if(!m)return;var v={dev:"تطوير موقع إلكتروني",app:"تطوير تطبيق للجوال",platform:"تطوير منصة أو لوحة تحكم",store:"متجر إلكتروني أو منيو إلكتروني"}[m[1]];var s=document.getElementById("c-svc");if(!s)return;[].forEach.call(s.options,function(o){if(o.textContent===v||o.value===v)o.selected=true})})();</script>
 <!--LUXE:js--><script>(function(){if(!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{rootMargin:'0px 0px -6% 0px'});
 var sel=document.documentElement.getAttribute('data-lx-rv');if(!sel)return;[].forEach.call(document.querySelectorAll(sel),function(e,i){var r=e.getBoundingClientRect();if(r.top<innerHeight)return;e.classList.add('lx-rv');e.style.transitionDelay=(i%3)*90+'ms';io.observe(e)})})();</script><!--/LUXE:js-->
+<script src="/js/advisor.js?v=1" defer></script>
 </body>
 </html>

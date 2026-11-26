@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """يبني صفحات الخدمات الخمس بالتصميم الفاخر الموحّد.
+مهم: يقرأ الصفحة الأصلية (القالب القديم). لإعادة البناء استرجعها أولًا:
+  git show 769ec8e^:<slug>/index.html > <slug>/index.html
 التشغيل من جذر الموقع:  python3 tools/build_svc.py
 يحافظ على <head> الأصلي (العنوان والوصف والبيانات المنظمة وClarity) ويبدّل الـCSS والـbody."""
 import re, os, html, sys
@@ -9,7 +11,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 from svc_content import COMMON as C, SERVICES, PAGES
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CSS = open(os.path.join(ROOT, 'tools/svc.css'), encoding='utf-8').read()
+CSS = open(os.path.join(ROOT, 'tools/svc.css'), encoding='utf-8').read() + open(os.path.join(ROOT, 'tools/svc_fx.css'), encoding='utf-8').read()
+FXJS = open(os.path.join(ROOT, 'tools/svc_fx.js'), encoding='utf-8').read()
+ADV = '<script src="/js/advisor.js?v=1" defer></script>'
 E = lambda s: html.escape(s, quote=True)
 
 def T(tag, pair, cls='', attrs='', htmlmode=False):
@@ -42,6 +46,17 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
 })();</script>'''
 
 
+BLADES = ''.join(f'<path class="bl" style="--r:{i*60}deg" d="M50 50 L4 -30 L96 -30 Z"/>' for i in range(6))
+PIN = '<svg viewBox="0 0 24 24"><defs><linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe2a8"/><stop offset=".55" stop-color="#f2b45a"/><stop offset="1" stop-color="#c98a35"/></linearGradient></defs><path fill="url(#pg)" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.6" fill="#120c02"/></svg>'
+SIG = {
+ 'logo-design': f'<div class="sig sig-ap" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">{BLADES}</svg></div>',
+ 'google-maps': f'<div class="sig sig-pin" aria-hidden="true"><i></i><i></i><i></i><b>{PIN}</b></div>',
+ 'restaurant-photography': '<div class="sig sig-vf" aria-hidden="true"><span class="rec">REC</span><span class="fl"></span></div>',
+ 'ad-campaigns': '<div class="sig sig-gr" aria-hidden="true"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><defs><linearGradient id="grf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2b45a" stop-opacity=".35"/><stop offset="1" stop-color="#f2b45a" stop-opacity="0"/></linearGradient></defs><path class="ar" d="M0 112 C40 104 60 96 90 90 S140 70 170 62 S230 30 300 8 L300 120 L0 120Z"/><path class="ln" d="M0 112 C40 104 60 96 90 90 S140 70 170 62 S230 30 300 8"/><circle cx="296" cy="10" r="5"/></svg></div>',
+ 'social-media-management': '<div class="sig sig-so" aria-hidden="true">' + ''.join(f'<span style="left:{l}%;animation-delay:{dl}s;--dx:{dx}rem">{e}</span>' for l, dl, dx, e in [(12,0,1,'♥'),(30,1.4,-1,'💬'),(52,2.6,1.5,'♥'),(70,.7,-1.2,'🔖'),(84,3.6,.8,'↗'),(40,4.4,-.6,'♥')]) + '</div>',
+}
+
+
 def build(slug):
     path = os.path.join(ROOT, slug, 'index.html')
     src = open(path, encoding='utf-8').read()
@@ -49,6 +64,8 @@ def build(slug):
     P = PAGES[slug]
     hero = soup.find('div', class_='hero')
     img = hero.find('img')
+    if P.get('hero'):
+        img = {'src': P['hero'][0], 'alt': P['hero'][1]}
     store = hero.select('.cta a')[0]['href']
     wa = hero.select('.cta a')[1]['href']
     frm = hero.select_one('.from b').get_text(strip=True)
@@ -76,7 +93,7 @@ def build(slug):
              f'<a class="btn b3" href="{wa}" target="_blank" rel="noopener">{WA}' + T('span', C['ask_wa']) + '</a></div>'
              '<ul class="trust">' + T('li', ('3 شهادات Google Ads', '3 Google Ads certifications')) + T('li', ('شهادة HubSpot', 'HubSpot certified')) + T('li', ('كاتب في صحيفة الوطن', 'Al-Watan columnist')) + T('li', C['cities']) + '</ul>'
              '</div><div class="hx-p"><span class="glow" aria-hidden="true"></span><div class="frame"><div class="in">'
-             f'<img src="{img["src"]}" alt="{E(img.get("alt",""))}" width="{w}" height="{hh}" fetchpriority="high" decoding="async"></div></div>'
+             f'<img src="{img["src"]}" alt="{E(img.get("alt","") or "")}" width="{w}" height="{hh}" fetchpriority="high" decoding="async">{SIG.get(slug,"")}</div></div>'
              f'<span class="badge"><i>✓</i>' + T('span', P['badge']) + f'</span><span class="seal">SC {P["n"]}</span></div></div></section>')
     # logos strip
     lg = ''.join(f'<img src="/assets/img/logo-{k}.webp" alt="شعار {n}" width="{size("/assets/img/logo-"+k+".webp")[0]}" height="{size("/assets/img/logo-"+k+".webp")[1]}" loading="lazy" decoding="async">' for k, n in LOGOS)
@@ -141,6 +158,8 @@ def build(slug):
              '<div>' + T('h4', C['foot_svc']) + f'<ul>{svc}</ul></div><div>' + T('h4', C['foot_more']) + f'<ul>{mr}</ul></div>'
              '<div class="cp"><span data-en-h="© 2026 Ismueil Osman. All rights reserved.">© 2026 إسماعيل عثمان. جميع الحقوق محفوظة.</span><b>ISMUEILOSMAN.COM</b></div></div></footer>')
     h.append(JS)
+    h.append(FXJS)
+    h.append(ADV)
     body = '<body>\n' + '\n'.join(h) + '\n</body>'
 
     # head: replace style, keep the rest

@@ -137,6 +137,7 @@ PAGES = {
           ('أقدر أحجز يوم معيّن؟', 'Can I book a specific day?', 'نعم، تختار يومك وقت الطلب، وأحجز عميل واحد في اليوم عشان أعطي كل مشروع حقه.', 'Yes. You choose your day when ordering, and I book one client per day so every project gets full attention.')],
  },
  'ad-campaigns': {
+  'hero': ('/assets/img/poster-nakhat-tihamiya.webp', 'إعلان مطعم نكهة تهامية من حملات إسماعيل عثمان'),
   'n': '04', 'kk': ('SERVICE · AD CAMPAIGNS', 'SERVICE · AD CAMPAIGNS'),
   'h1': ('حملات إعلانية تجيب عملاء', 'Ad campaigns that bring customers'),
   'h1b': ('على Google وسناب وتيك توك', 'on Google, Snapchat and TikTok'),

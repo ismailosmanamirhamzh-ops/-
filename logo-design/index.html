@@ -71,7 +71,7 @@ h1 .gold{display:block;font-size:.62em;line-height:1.35;margin-top:.35rem;backgr
 .hx-p{position:relative}
 .hx-p .frame{transform:perspective(1400px) rotateY(-7deg) rotateX(2deg)}.hx-p:hover .frame{transform:none}
 [dir=ltr] .hx-p .frame{transform:perspective(1400px) rotateY(7deg) rotateX(2deg)}
-.hx-p .in img{width:100%;height:auto;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}.hx-p:hover .in img{transform:scale(1.05)}
+.hx-p .in img{width:100%;height:auto;max-height:min(34rem,72vh);object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}.hx-p:hover .in img{transform:scale(1.05)}
 .hx-p .in::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 55%,rgba(7,8,12,.75))}
 .glow{position:absolute;inset:8% 8% -6%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(242,180,90,.33),transparent);filter:blur(40px)}
 .badge{position:absolute;z-index:2;bottom:1.4rem;inset-inline-start:-1.4rem;display:flex;align-items:center;gap:.6rem;padding:.75rem 1.1rem;border-radius:1rem;font-weight:800;font-size:.92rem;background:rgba(15,17,24,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(242,180,90,.35);box-shadow:0 20px 40px -20px #000;animation:flt 6s ease-in-out infinite}
@@ -175,13 +175,71 @@ details p{margin-top:.8rem;color:rgba(236,238,244,.82)}
 
 @media (max-width:620px){.gal.land{grid-template-columns:1fr}}
 html,body{max-width:100%;overflow-x:clip}
+/* ===== مؤثرات صفحات الخدمات ===== */
+.prog{position:fixed;top:0;inset-inline:0;height:2px;z-index:70;background:linear-gradient(90deg,#8a5a1c,#f2b45a,#ffe2a8);transform-origin:var(--po,right);transform:scaleX(0)}
+[dir=ltr] .prog{--po:left}
+/* ضوء يتبع الماوس داخل البطاقات */
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(242,180,90,.16),transparent 65%)}
+.spot:hover::before{opacity:1}
+.frame.spot::before{z-index:1}
+/* العنوان كلمة كلمة */
+h1 .w{display:inline-block;opacity:0;transform:translateY(.55em) rotate(2deg);filter:blur(6px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1),filter .9s}
+h1.split-on .w{opacity:1;transform:none;filter:none}
+/* الخط الزمني يمتلئ */
+.steps::after{content:"";position:absolute;top:1.6rem;inset-inline-start:1.6rem;height:2px;width:calc((100% - 3.2rem)*var(--fill,0));background:linear-gradient(90deg,#ffe2a8,#f2b45a);box-shadow:0 0 14px rgba(242,180,90,.7);border-radius:2px}
+[dir=rtl] .steps::after{background:linear-gradient(270deg,#ffe2a8,#f2b45a)}
+.steps li.lit::before{animation:pop .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{40%{transform:scale(1.18)}}
+/* إمالة الصورة مع الماوس */
+.hx-p .frame{will-change:transform;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .6s}
+.hx-p.tilt .frame{transition:transform .12s linear}
+/* توقيع كل خدمة فوق صورة الواجهة */
+.sig{position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:calc(1.6rem - 1px);overflow:hidden}
+/* 01 شعار: شفرات العدسة تنفتح */
+.sig-ap svg{position:absolute;inset:-10%;width:120%;height:120%;opacity:.0;transition:opacity 1s}
+.sig-ap.on svg{opacity:1}
+.sig-ap .bl{transform-box:view-box;transform:rotate(var(--r));fill:#0b0c11;stroke:rgba(242,180,90,.55);stroke-width:.6;transform-origin:50px 50px;transition:transform 1.8s cubic-bezier(.65,0,.35,1)}
+.sig-ap.open .bl{transform:rotate(var(--r)) translate(0,-95px)}
+/* 02 خرائط: دبوس ينزل مع موجات */
+.sig-pin i{position:absolute;left:50%;top:46%;width:1rem;height:1rem;margin:-.5rem;border-radius:50%;border:2px solid rgba(242,180,90,.8);opacity:0}
+.sig-pin.on i{animation:rip 2.6s cubic-bezier(.2,.8,.2,1) infinite}
+.sig-pin.on i:nth-child(2){animation-delay:.85s}.sig-pin.on i:nth-child(3){animation-delay:1.7s}
+@keyframes rip{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(9)}}
+.sig-pin b{position:absolute;left:50%;top:46%;width:2.6rem;height:2.6rem;margin:-2.6rem 0 0 -1.3rem;transform:translateY(-140%);opacity:0;filter:drop-shadow(0 10px 14px rgba(0,0,0,.6))}
+.sig-pin.on b{animation:drop .9s cubic-bezier(.3,1.5,.5,1) forwards}
+.sig-pin b svg{width:100%;height:100%}
+@keyframes drop{to{transform:none;opacity:1}}
+/* 03 تصوير: عدسة الكاميرا + فلاش */
+.sig-vf::before,.sig-vf::after{content:"";position:absolute;inset:1.1rem;border:1.5px solid transparent;border-image:linear-gradient(#f2b45a,#f2b45a) 1;-webkit-mask:linear-gradient(#000,#000) top left/22% 22% no-repeat,linear-gradient(#000,#000) top right/22% 22% no-repeat,linear-gradient(#000,#000) bottom left/22% 22% no-repeat,linear-gradient(#000,#000) bottom right/22% 22% no-repeat;mask:linear-gradient(#000,#000) top left/22% 22% no-repeat,linear-gradient(#000,#000) top right/22% 22% no-repeat,linear-gradient(#000,#000) bottom left/22% 22% no-repeat,linear-gradient(#000,#000) bottom right/22% 22% no-repeat;opacity:.85}
+.sig-vf::after{inset:auto;left:50%;top:50%;width:2.2rem;height:2.2rem;margin:-1.1rem;border:1.5px solid rgba(242,180,90,.8);border-radius:50%;-webkit-mask:none;mask:none;border-image:none;transition:transform .6s}
+.sig-vf .rec{position:absolute;top:1.6rem;inset-inline-start:1.9rem;font:700 .68rem ui-monospace,Menlo,monospace;letter-spacing:.2em;color:#fff;display:flex;align-items:center;gap:.4rem;direction:ltr}
+.sig-vf .rec::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:#ff3b30;animation:blink 1.2s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.sig-vf .fl{position:absolute;inset:0;background:#fff;opacity:0}
+.sig-vf.snap .fl{animation:flash .7s ease-out}
+@keyframes flash{0%{opacity:.85}100%{opacity:0}}
+/* 04 إعلانات: منحنى نمو ذهبي يرسم نفسه */
+.sig-gr svg{position:absolute;inset:auto 0 0;width:100%;height:60%}
+.sig-gr path.ln{fill:none;stroke:#f2b45a;stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(242,180,90,.8));stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 2.4s cubic-bezier(.65,0,.35,1)}
+.sig-gr path.ar{fill:url(#grf);opacity:0;transition:opacity 1.6s .9s}
+.sig-gr.on path.ln{stroke-dashoffset:0}.sig-gr.on path.ar{opacity:1}
+.sig-gr circle{fill:#ffe2a8;opacity:0;transition:opacity .4s 2.3s}.sig-gr.on circle{opacity:1;animation:pls 1.6s 2.4s infinite}
+@keyframes pls{50%{r:7}}
+/* 05 سوشيال: تفاعلات تطلع من الصورة */
+.sig-so span{position:absolute;bottom:-2.5rem;display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:50%;font-size:1.05rem;background:rgba(15,17,24,.78);border:1px solid rgba(242,180,90,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0}
+.sig-so.on span{animation:rise 6s linear infinite}
+@keyframes rise{0%{opacity:0;transform:translateY(0) scale(.6)}12%{opacity:1;transform:translateY(-12%) scale(1)}80%{opacity:.9}100%{opacity:0;transform:translateY(-520%) translateX(var(--dx,0)) scale(.85)}}
+/* لمعة الأرقام */
+.why b.cnt{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){h1 .w{opacity:1;transform:none;filter:none}.sig *{animation:none!important;transition:none!important}.sig-gr path.ln{stroke-dashoffset:0}.sig-gr path.ar,.sig-gr circle,.sig-ap svg,.sig-pin b{opacity:1;transform:none}}
 </style>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function go(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}if(l.readyState==="complete")setTimeout(go,1500);else c.addEventListener("load",function(){setTimeout(go,1500);});})(window,document,"clarity","script","yzif7rcpw8");</script>
 </head>
 <body>
 <header class="tp"><div class="tp-in"><a class="brand" href="/" aria-label="إسماعيل عثمان، الصفحة الرئيسية"><svg viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" fill="none" stroke="#f2b45a" stroke-width="5"/><circle r="41" fill="#f2b45a"/><polygon fill="#07080c" points="4.74,-19.02 18.84,-5.40 14.10,13.62 -4.74,19.02 -18.84,5.40 -14.10,-13.62"/><g stroke="#07080c" stroke-width="3" stroke-linecap="round"><line x1="4.74" y1="-19.02" x2="-15.06" y2="-38.14"/><line x1="18.84" y1="-5.40" x2="25.50" y2="-32.11"/><line x1="14.10" y1="13.62" x2="40.55" y2="6.03"/><line x1="-4.74" y1="19.02" x2="15.06" y2="38.14"/><line x1="-18.84" y1="5.40" x2="-25.50" y2="32.11"/><line x1="-14.10" y1="-13.62" x2="-40.55" y2="-6.03"/></g></svg><span data-en-h="Ismueil <b>Osman</b>">إسماعيل <b>عثمان</b></span></a><nav class="nav"><a class="hb" href="/" aria-label="الصفحة الرئيسية" title="الرئيسية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 11.5h3V21h5.5v-6h3v6H19v-9.5h3L12 3z"/></svg></a><a class="nv" href="/work/" data-en="My work">أعمالي</a><button class="lg" id="lgB" type="button" aria-label="English / عربي">EN</button><a class="st" href="/app/store/" data-en="Store">المتجر</a></nav></div></header>
 <main>
-<section class="hero"><div class="wrap"><div class="hx-t"><span class="num" aria-hidden="true">01</span><p class="bc"><a href="/" data-en="Home">الرئيسية</a><span>‹</span><span data-en="Logo design">تصميم شعار</span></p><span class="kk" data-en="SERVICE · LOGO DESIGN">SERVICE · LOGO DESIGN</span><h1 data-en-h="Professional logo design<span class=&quot;gold&quot;>that people recognise at first glance</span>">تصميم شعار احترافي<span class="gold">يعرّف الناس بمشروعك من أول نظرة</span></h1><p class="lead" data-en="A clear, memorable logo that works on your menu, signage, social media and packaging. I design it from the first idea to the final files, and hand you every format with full rights.">شعار واضح وسهل التذكر، يشتغل على المنيو واللوحة والسوشيال والتغليف. أصممه لمشروعك من الفكرة إلى الملفات النهائية، وأسلّمك كل الصيغ مع حقوق كاملة.</p><p class="price"><small data-en="From">يبدأ من</small><b>49</b><small data-en="SAR">ريال</small></p><div class="cta"><a class="btn b1" href="/app/store/#svc=d-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7V6a5 5 0 0 1 10 0v1h3l-1.2 14H5.2L4 7h3zm2 0h6V6a3 3 0 0 0-6 0v1z"/></svg><span data-en="Order now from the store">اطلب الحين من المتجر</span></a><a class="btn b3" href="https://wa.me/966574395924?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B5%D9%85%D9%85%20%D8%B4%D8%B9%D8%A7%D8%B1%20%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%D9%8A%20%28%D9%85%D9%86%20%D8%B5%D9%81%D8%AD%D8%A9%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%B4%D8%B9%D8%A7%D8%B1%29" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.8-.1 1.6z"/></svg><span data-en="Ask me on WhatsApp">اسألني على واتساب</span></a></div><ul class="trust"><li data-en="3 Google Ads certifications">3 شهادات Google Ads</li><li data-en="HubSpot certified">شهادة HubSpot</li><li data-en="Al-Watan columnist">كاتب في صحيفة الوطن</li><li data-en="Makkah · Jeddah · Riyadh · and all of Saudi Arabia online">مكة · جدة · الرياض · وكل المملكة أونلاين</li></ul></div><div class="hx-p"><span class="glow" aria-hidden="true"></span><div class="frame"><div class="in"><img src="/assets/img/brand-logo.webp" alt="نموذج شعار وهوية بصرية من تصميم إسماعيل عثمان" width="1200" height="1000" fetchpriority="high" decoding="async"></div></div><span class="badge"><i>✓</i><span data-en="Full rights are yours">حقوق كاملة لك</span></span><span class="seal">SC 01</span></div></div></section>
+<section class="hero"><div class="wrap"><div class="hx-t"><span class="num" aria-hidden="true">01</span><p class="bc"><a href="/" data-en="Home">الرئيسية</a><span>‹</span><span data-en="Logo design">تصميم شعار</span></p><span class="kk" data-en="SERVICE · LOGO DESIGN">SERVICE · LOGO DESIGN</span><h1 data-en-h="Professional logo design<span class=&quot;gold&quot;>that people recognise at first glance</span>">تصميم شعار احترافي<span class="gold">يعرّف الناس بمشروعك من أول نظرة</span></h1><p class="lead" data-en="A clear, memorable logo that works on your menu, signage, social media and packaging. I design it from the first idea to the final files, and hand you every format with full rights.">شعار واضح وسهل التذكر، يشتغل على المنيو واللوحة والسوشيال والتغليف. أصممه لمشروعك من الفكرة إلى الملفات النهائية، وأسلّمك كل الصيغ مع حقوق كاملة.</p><p class="price"><small data-en="From">يبدأ من</small><b>49</b><small data-en="SAR">ريال</small></p><div class="cta"><a class="btn b1" href="/app/store/#svc=d-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7V6a5 5 0 0 1 10 0v1h3l-1.2 14H5.2L4 7h3zm2 0h6V6a3 3 0 0 0-6 0v1z"/></svg><span data-en="Order now from the store">اطلب الحين من المتجر</span></a><a class="btn b3" href="https://wa.me/966574395924?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B5%D9%85%D9%85%20%D8%B4%D8%B9%D8%A7%D8%B1%20%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%D9%8A%20%28%D9%85%D9%86%20%D8%B5%D9%81%D8%AD%D8%A9%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%B4%D8%B9%D8%A7%D8%B1%29" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.8-.1 1.6z"/></svg><span data-en="Ask me on WhatsApp">اسألني على واتساب</span></a></div><ul class="trust"><li data-en="3 Google Ads certifications">3 شهادات Google Ads</li><li data-en="HubSpot certified">شهادة HubSpot</li><li data-en="Al-Watan columnist">كاتب في صحيفة الوطن</li><li data-en="Makkah · Jeddah · Riyadh · and all of Saudi Arabia online">مكة · جدة · الرياض · وكل المملكة أونلاين</li></ul></div><div class="hx-p"><span class="glow" aria-hidden="true"></span><div class="frame"><div class="in"><img src="/assets/img/brand-logo.webp" alt="نموذج شعار وهوية بصرية من تصميم إسماعيل عثمان" width="1200" height="1000" fetchpriority="high" decoding="async"><div class="sig sig-ap" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><path class="bl" style="--r:0deg" d="M50 50 L4 -30 L96 -30 Z"/><path class="bl" style="--r:60deg" d="M50 50 L4 -30 L96 -30 Z"/><path class="bl" style="--r:120deg" d="M50 50 L4 -30 L96 -30 Z"/><path class="bl" style="--r:180deg" d="M50 50 L4 -30 L96 -30 Z"/><path class="bl" style="--r:240deg" d="M50 50 L4 -30 L96 -30 Z"/><path class="bl" style="--r:300deg" d="M50 50 L4 -30 L96 -30 Z"/></svg></div></div></div><span class="badge"><i>✓</i><span data-en="Full rights are yours">حقوق كاملة لك</span></span><span class="seal">SC 01</span></div></div></section>
 <section class="lg-strip" aria-label="علامات اشتغلت معها"><div class="wrap"><p data-en="Brands I have worked with">علامات اشتغلت معها</p><div class="mq"><div class="mq-t"><img src="/assets/img/logo-dawar-alsaada.webp" alt="شعار دوّار السعادة" width="336" height="300" loading="lazy" decoding="async"><img src="/assets/img/logo-etlalet-albait.webp" alt="شعار إطلالة البيت" width="503" height="300" loading="lazy" decoding="async"><img src="/assets/img/logo-hashi-basha.webp" alt="شعار حاشي باشا" width="640" height="169" loading="lazy" decoding="async"><img src="/assets/img/logo-mashwiya.webp" alt="شعار مشوية" width="478" height="300" loading="lazy" decoding="async"><img src="/assets/img/logo-musaqqaf-rowad.webp" alt="شعار مسقف رواد البناء" width="247" height="300" loading="lazy" decoding="async"><img src="/assets/img/logo-nakhat-tihamiya.webp" alt="شعار نكهة تهامية" width="465" height="200" loading="lazy" decoding="async"><img src="/assets/img/logo-sanam.webp" alt="شعار سنام" width="520" height="234" loading="lazy" decoding="async"><img src="/assets/img/logo-shuun-alghitha.webp" alt="شعار شؤون الغذاء" width="499" height="300" loading="lazy" decoding="async"><img src="/assets/img/logo-dawar-alsaada.webp" aria-hidden="true" alt=" دوّار السعادة" width="336" height="300" loading="lazy" decoding="async"><img src="/assets/img/logo-etlalet-albait.webp" aria-hidden="true" alt=" إطلالة البيت" width="503" height="300" loading="lazy" decoding="async"><img src="/assets/img/logo-hashi-basha.webp" aria-hidden="true" alt=" حاشي باشا" width="640" height="169" loading="lazy" decoding="async"><img src="/assets/img/logo-mashwiya.webp" aria-hidden="true" alt=" مشوية" width="478" height="300" loading="lazy" decoding="async"><img src="/assets/img/logo-musaqqaf-rowad.webp" aria-hidden="true" alt=" مسقف رواد البناء" width="247" height="300" loading="lazy" decoding="async"><img src="/assets/img/logo-nakhat-tihamiya.webp" aria-hidden="true" alt=" نكهة تهامية" width="465" height="200" loading="lazy" decoding="async"><img src="/assets/img/logo-sanam.webp" aria-hidden="true" alt=" سنام" width="520" height="234" loading="lazy" decoding="async"><img src="/assets/img/logo-shuun-alghitha.webp" aria-hidden="true" alt=" شؤون الغذاء" width="499" height="300" loading="lazy" decoding="async"></div></div></div></section>
 <section class="sec"><div class="wrap"><div class="sh"><span class="kk" data-en="WHAT YOU GET">WHAT YOU GET</span><h2 data-en-h="What you &lt;span class=&quot;gold&quot;&gt;get&lt;/span&gt;">وش <span class="gold">تحصل</span></h2></div><ol class="gets"><li><b>01</b><span data-en="Every format: PNG, SVG and PDF, with versions for light and dark backgrounds">ملفات بكل الصيغ: PNG وSVG وPDF، ونسخ للخلفيات الفاتحة والغامقة</span></li><li><b>02</b><span data-en="Full rights to the logo with no extra fees">حقوق الشعار كاملة لك بدون أي رسوم إضافية</span></li><li><b>03</b><span data-en="Colours and fonts chosen for your business and audience">ألوان وخطوط مختارة تناسب نشاطك وجمهورك</span></li><li><b>04</b><span data-en="A profile-picture version sized for every social platform">نسخة مقاس صورة الحساب لكل منصات السوشيال</span></li></ol></div></section>
 <section class="sec"><div class="wrap"><div class="sh"><span class="kk" data-en="SELECTED WORK">SELECTED WORK</span><h2 data-en-h="Samples of &lt;span class=&quot;gold&quot;&gt;my work&lt;/span&gt;">نماذج من <span class="gold">شغلي</span></h2></div><div class="gal land"><figure><img src="/assets/img/brand-logo.webp" alt="شعار وهوية" data-en-alt="Logo &amp; identity" width="1200" height="1000" loading="lazy" decoding="async"><figcaption data-en="Logo &amp; identity">شعار وهوية</figcaption></figure><figure><img src="/assets/img/brand-card.webp" alt="بطاقة أعمال" data-en-alt="Business card" width="1200" height="1000" loading="lazy" decoding="async"><figcaption data-en="Business card">بطاقة أعمال</figcaption></figure><figure><img src="/assets/img/brand-colors.webp" alt="ألوان الهوية" data-en-alt="Brand colours" width="1200" height="1000" loading="lazy" decoding="async"><figcaption data-en="Brand colours">ألوان الهوية</figcaption></figure><figure><img src="/assets/img/brand-social.webp" alt="قوالب سوشيال" data-en-alt="Social templates" width="1200" height="1000" loading="lazy" decoding="async"><figcaption data-en="Social templates">قوالب سوشيال</figcaption></figure></div><div class="cta" style="margin-top:1.6rem"><a class="btn b2" href="/work/"><span data-en="See all my work →">شاهد كل أعمالي ←</span></a></div></div></section>
@@ -202,5 +260,46 @@ b.addEventListener('click',function(){set(document.documentElement.lang==='en'?'
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px'});
 [].forEach.call(document.querySelectorAll('.sec .sh,.gets li,.gal figure,.pk>.frame,.steps li,.why,.fq details,.rel a,.end,.vd>*'),function(e,i){e.classList.add('rv');e.style.transitionDelay=(i%4)*80+'ms';io.observe(e)})}
 })();</script>
+<script>(function(){
+var R=matchMedia('(prefers-reduced-motion:reduce)').matches,FINE=matchMedia('(hover:hover) and (pointer:fine)').matches,d=document;
+/* شريط التقدّم */
+var pb=d.createElement('i');pb.className='prog';pb.setAttribute('aria-hidden','true');d.body.appendChild(pb);
+var tk=0;function prog(){tk=0;var h=d.documentElement.scrollHeight-innerHeight;pb.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';fill()}
+addEventListener('scroll',function(){if(!tk){tk=1;requestAnimationFrame(prog)}},{passive:true});
+/* العنوان كلمة كلمة (يعاد تركيبه عند تغيير اللغة) */
+var h1=d.querySelector('h1');
+function split(){if(!h1||R)return;h1.classList.remove('split-on');var i=0;
+  (function walk(n){[].slice.call(n.childNodes).forEach(function(c){if(c.nodeType===3){var f=d.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(function(p){if(!p)return;if(/^\s+$/.test(p)){f.appendChild(d.createTextNode(p));return}var s=d.createElement('span');s.className='w';s.textContent=p;s.style.transitionDelay=(i++*70)+'ms';f.appendChild(s)});c.parentNode.replaceChild(f,c)}else if(c.nodeType===1&&!c.classList.contains('w'))walk(c)})})(h1);
+  requestAnimationFrame(function(){requestAnimationFrame(function(){h1.classList.add('split-on')})})}
+split();new MutationObserver(function(m){if(m.some(function(x){return x.attributeName==='lang'}))setTimeout(split,0)}).observe(d.documentElement,{attributes:true});
+/* الخط الزمني */
+var st=d.querySelector('.steps'),lis=st?st.querySelectorAll('li'):[];
+function fill(){if(!st)return;var r=st.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.8-r.top)/(r.height+innerHeight*.3)));st.style.setProperty('--fill',R?1:p.toFixed(3));
+  [].forEach.call(lis,function(l,i){var on=p>=i/Math.max(1,lis.length-1)-.02;if(on&&!l.classList.contains('lit'))l.classList.add('lit')})}
+prog();
+/* عدّاد الأرقام */
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var b=e.target,m=b.textContent.match(/^([+]?)(\d+)(.*)$/);if(!m||R)return;var n=+m[2],t0=performance.now();b.classList.add('cnt');
+  (function f(t){var k=Math.min(1,(t-t0)/1400),v=Math.round(n*(1-Math.pow(1-k,3)));b.textContent=m[1]+v+m[3];if(k<1)requestAnimationFrame(f)})(t0)})},{threshold:.6});
+  [].forEach.call(d.querySelectorAll('.why b'),function(b){io.observe(b)})}
+if(FINE&&!R){
+  /* ضوء يتبع الماوس */
+  [].forEach.call(d.querySelectorAll('.gets li,.pk>.frame,.rel a,.fq details,.why,.end'),function(el){el.classList.add('spot');
+    el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+  /* أزرار مغناطيسية */
+  [].forEach.call(d.querySelectorAll('.btn.b1,.nav .st'),function(b){b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.transform='translate('+(x*.18).toFixed(1)+'px,'+(y*.28).toFixed(1)+'px)'});
+    b.addEventListener('pointerleave',function(){b.style.transform=''})});
+  /* إمالة صورة الواجهة */
+  var hp=d.querySelector('.hx-p'),fr=hp&&hp.querySelector('.frame');
+  if(hp)d.querySelector('.hero').addEventListener('pointermove',function(e){var r=hp.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;hp.classList.add('tilt');fr.style.transform='perspective(1200px) rotateY('+(x*10).toFixed(2)+'deg) rotateX('+(-y*8).toFixed(2)+'deg)'});
+  if(hp)d.querySelector('.hero').addEventListener('pointerleave',function(){hp.classList.remove('tilt');fr.style.transform=''});
+}
+/* توقيع الخدمة */
+var sg=d.querySelector('.sig');
+if(sg){var go=function(){sg.classList.add('on');if(sg.classList.contains('sig-ap'))setTimeout(function(){sg.classList.add('open')},R?0:350);
+  if(sg.classList.contains('sig-vf')&&!R){setTimeout(function(){sg.classList.add('snap')},500);setInterval(function(){sg.classList.remove('snap');void sg.offsetWidth;sg.classList.add('snap')},7000)}};
+  if(R)go();else setTimeout(go,450)}
+})();</script>
+
+<script src="/js/advisor.js?v=1" defer></script>
 </body>
 </html>

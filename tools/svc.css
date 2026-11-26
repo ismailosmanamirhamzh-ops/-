@@ -48,7 +48,7 @@ h1 .gold{display:block;font-size:.62em;line-height:1.35;margin-top:.35rem;backgr
 .hx-p{position:relative}
 .hx-p .frame{transform:perspective(1400px) rotateY(-7deg) rotateX(2deg)}.hx-p:hover .frame{transform:none}
 [dir=ltr] .hx-p .frame{transform:perspective(1400px) rotateY(7deg) rotateX(2deg)}
-.hx-p .in img{width:100%;height:auto;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}.hx-p:hover .in img{transform:scale(1.05)}
+.hx-p .in img{width:100%;height:auto;max-height:min(34rem,72vh);object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}.hx-p:hover .in img{transform:scale(1.05)}
 .hx-p .in::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 55%,rgba(7,8,12,.75))}
 .glow{position:absolute;inset:8% 8% -6%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(242,180,90,.33),transparent);filter:blur(40px)}
 .badge{position:absolute;z-index:2;bottom:1.4rem;inset-inline-start:-1.4rem;display:flex;align-items:center;gap:.6rem;padding:.75rem 1.1rem;border-radius:1rem;font-weight:800;font-size:.92rem;background:rgba(15,17,24,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(242,180,90,.35);box-shadow:0 20px 40px -20px #000;animation:flt 6s ease-in-out infinite}
