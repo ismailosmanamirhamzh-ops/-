@@ -55,6 +55,26 @@
   '.iaW{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding:.75rem .9rem;border-radius:1rem;border:1px solid rgba(242,180,90,.3);background:rgba(242,180,90,.07);font-size:.88rem;color:#e7dcc8}' +
   '.iaW b{color:#ffe2a8;direction:ltr;unicode-bidi:isolate}' +
   '.iaW button{margin-inline-start:auto;background:none;border:0;color:#f2b45a;font:700 .82rem Tajawal,sans-serif;cursor:pointer}' +
+  '.iaH{margin-top:1rem;text-align:start;padding:.85rem 1rem;border-radius:1rem;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);font-size:.82rem;color:#a9afbf;line-height:1.75}' +
+  '.iaH b{display:block;color:#ffe2a8;font:800 .86rem Tajawal,sans-serif;margin-bottom:.2rem}.iaH ol{margin:0;padding-inline-start:1.1rem}.iaH em{font-style:normal;color:#eceef4;font-weight:700}.iaH bdi{color:#f2b45a;direction:ltr}' +
+  '.iaD{position:fixed;inset:0;z-index:99990;display:flex;justify-content:flex-end;background:rgba(3,4,6,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .3s}.iaD.on{opacity:1}' +
+  '.iaP{width:min(30rem,100%);height:100%;overflow-y:auto;overscroll-behavior:contain;background:linear-gradient(180deg,#10121a,#090a0f);border-inline-start:1px solid rgba(242,180,90,.25);padding:1.1rem 1.1rem calc(2rem + env(safe-area-inset-bottom));color:#eceef4;transform:translateX(-100%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}' +
+  'html[dir=ltr] .iaP{transform:translateX(100%)}.iaD.on .iaP{transform:none}' +
+  '.iaPh{display:flex;align-items:center;gap:.7rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.07)}.iaPh .av{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:50%;background:linear-gradient(135deg,#ffe2a8,#f2b45a);color:#160f05;font:900 1.1rem Cairo,sans-serif;flex:none}' +
+  '.iaPh div{min-width:0;flex:1}.iaPh h3{font:900 1.15rem Cairo,sans-serif}.iaPh small{display:block;color:#a9afbf;font-size:.8rem;direction:ltr;text-align:start;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}' +
+  '.iaPh .iaX{position:static;flex:none}' +
+  '.iaS{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin:1rem 0}.iaS div{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:.9rem;padding:.6rem;text-align:center}.iaS b{display:block;font:900 1.2rem Cairo,sans-serif;color:#ffe2a8}.iaS span{font-size:.72rem;color:#a9afbf}' +
+  '.iaT{font:900 1rem Cairo,sans-serif;margin:1.1rem 0 .6rem}' +
+  '.iaO2{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:1.1rem;padding:1rem;margin-bottom:.75rem}' +
+  '.iaO2 .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:.6rem}.iaO2 .hd b{font:800 .95rem/1.5 Tajawal,sans-serif}.iaO2 .hd small{display:block;color:#7d8292;font-size:.75rem;margin-top:.1rem}' +
+  '.iaBd{flex:none;font:800 .72rem Tajawal,sans-serif;padding:.28rem .6rem;border-radius:999px;background:rgba(242,180,90,.12);color:#ffe2a8;border:1px solid rgba(242,180,90,.35);white-space:nowrap}.iaBd.p{background:rgba(110,168,255,.12);color:#a9c9ff;border-color:rgba(110,168,255,.4)}.iaBd.d{background:rgba(126,226,168,.12);color:#9ff0c2;border-color:rgba(126,226,168,.45)}.iaBd.x{background:rgba(255,122,133,.1);color:#ff9aa3;border-color:rgba(255,122,133,.35)}' +
+  '.iaTl{display:flex;align-items:center;margin:1rem 0 .3rem}.iaTl i{width:1.5rem;height:1.5rem;border-radius:50%;display:grid;place-items:center;font:900 .7rem Cairo,sans-serif;font-style:normal;background:#1a1d27;border:1px solid rgba(255,255,255,.12);color:#7d8292;flex:none}.iaTl i.on{background:linear-gradient(135deg,#ffe2a8,#f2b45a);color:#160f05;border-color:transparent}.iaTl s{flex:1;height:2px;background:rgba(255,255,255,.1);text-decoration:none}.iaTl s.on{background:#f2b45a}' +
+  '.iaTx{display:flex;justify-content:space-between;font-size:.7rem;color:#7d8292;margin-bottom:.6rem}.iaTx span.on{color:#ffe2a8;font-weight:700}' +
+  '.iaIt{list-style:none;margin:.5rem 0 0;padding:0;font-size:.83rem;color:#c9cdd8;line-height:1.8}.iaIt li{display:flex;gap:.4rem}.iaIt li::before{content:"•";color:#f2b45a}' +
+  '.iaUp{margin-top:.7rem;padding:.7rem .85rem;border-radius:.8rem;background:rgba(242,180,90,.07);border:1px solid rgba(242,180,90,.25);font-size:.84rem;line-height:1.8;color:#eee4d2}.iaUp b{display:block;color:#ffe2a8;font-size:.78rem}' +
+  '.iaFt{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:.8rem}.iaFt .tot{margin-inline-end:auto;font:900 1.05rem Cairo,sans-serif;color:#ffe2a8}.iaFt a{font:800 .78rem Tajawal,sans-serif;text-decoration:none;padding:.5rem .8rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);color:#eceef4}.iaFt a.g{background:linear-gradient(135deg,#ffe8b8,#f2b45a);color:#160f05;border:0}' +
+  '.iaEm{text-align:center;padding:2rem 1rem;color:#a9afbf}.iaEm b{display:block;color:#eceef4;font:900 1.05rem Cairo,sans-serif;margin-bottom:.3rem}.iaEm a{display:inline-block;margin-top:1rem;text-decoration:none}' +
+  '.iaSk{height:7.5rem;border-radius:1.1rem;margin-bottom:.75rem;background:linear-gradient(90deg,rgba(255,255,255,.03),rgba(255,255,255,.07),rgba(255,255,255,.03));background-size:200% 100%;animation:iaSkA 1.2s infinite}@keyframes iaSkA{to{background-position:-200% 0}}' +
   '@media (prefers-reduced-motion:reduce){.iaM,.iaC,.iaOK,.iaOK svg{transition:none;animation:none;stroke-dashoffset:0}}';
   var st = D.createElement('style'); st.textContent = css; D.head.appendChild(st);
 
@@ -140,7 +160,7 @@
       '<form novalidate><div class="iaO" id="iaO">' + '<input inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="1">' + [2, 3, 4, 5, 6].map(function (n) { return '<input inputmode="numeric" maxlength="1" aria-label="' + n + '">'; }).join('') + '</div>' +
       '<div class="iaE" id="iaErr"></div><button class="iaG" id="iaV" type="submit">' + T('تحقق وكمّل', 'Verify & continue') + '</button></form>' +
       '<div class="iaL"><button type="button" id="iaCh">' + T('تغيير الإيميل', 'Change email') + '</button><button type="button" id="iaRe" disabled></button></div>' +
-      '<div class="iaN">' + T('ما وصلك؟ شيّك على مجلد الرسائل غير المرغوب فيها (Spam).', 'Not there? Check your spam folder.') + '</div>');
+      '<div class="iaH"><b>' + T('ما وصلك الرمز خلال دقيقة؟', 'No code within a minute?') + '</b><ol><li>' + T('افتح مجلد <em>الرسائل غير المرغوب فيها (Spam)</em> وتبويب <em>العروض</em> في بريدك.', 'Check your <em>Spam</em> and <em>Promotions</em> folders.') + '</li><li>' + T('الرسالة توصلك من', 'It comes from') + ' <bdi>hello@ismueilosman.com</bdi> ' + T('بعنوان «رمز الدخول». لو لقيتها في السبام اضغط «ليست رسالة غير مرغوب فيها».', 'titled “Your sign-in code”. If it is in spam, mark it “Not spam”.') + '</li><li>' + T('تأكد إن الإيميل مكتوب صح، أو اضغط «إعادة إرسال».', 'Make sure the email is right, or tap Resend.') + '</li></ol></div>');
     var box = C.querySelector('#iaO'), ins = [].slice.call(box.querySelectorAll('input')), err = C.querySelector('#iaErr');
     function val() { return ins.map(function (i) { return i.value; }).join(''); }
     function fill(s, from) { s = String(s).replace(/[^\d٠-٩]/g, '').replace(/[٠-٩]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'.indexOf(d); }); for (var k = 0; k < s.length && from + k < 6; k++) { ins[from + k].value = s[k]; ins[from + k].classList.add('f'); } var nx = Math.min(5, from + s.length); ins[nx].focus(); if (val().length === 6) verify(); }
@@ -180,11 +200,55 @@
     D.dispatchEvent(new CustomEvent('ioauth', { detail: o }));
   }
 
+  var Dw = null;
+  function esc(v) { return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function closeD() { if (!Dw) return; var d = Dw; Dw = null; d.classList.remove('on'); D.documentElement.style.overflow = ''; D.body.style.overflow = prevB; setTimeout(function () { d.remove(); }, 350); if (location.hash === '#orders') try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
+  function merge(list) {
+    try {
+      var my = JSON.parse(localStorage.getItem('myOrders') || '[]'), by = {};
+      my.forEach(function (o) { if (o.id) by[o.id] = o; });
+      list.forEach(function (o) { var m = by[o.id]; if (m) { m.st = o.st; if (o.ln) m.ln = o.ln; if (o.dt) m.dt = o.dt; } else my.push({ s: o.s, k: 'store', a: o.total ? o.total + ' ر.س' : '', d: o.t || Date.now(), ok: true, id: o.id, dt: o.dt || '', st: o.st, ln: o.ln || '', r: '' }); });
+      my.sort(function (a, b) { return b.d - a.d; }); localStorage.setItem('myOrders', JSON.stringify(my.slice(0, 30)));
+    } catch (e) {}
+  }
+  function orderCard(o) {
+    var S = { 'جديد': [1, '', T('استلمنا طلبك', 'Received')], 'قيد التنفيذ': [2, 'p', T('قيد التنفيذ', 'In progress')], 'تم التسليم': [3, 'd', T('تم التسليم', 'Delivered')], 'ملغي': [0, 'x', T('ملغي', 'Cancelled')] }[o.st] || [1, '', esc(o.st)];
+    var no = String(o.id).slice(0, 6).toUpperCase(), dt = o.t ? new Date(o.t).toLocaleDateString(en() ? 'en-GB' : 'ar-SA', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+    var steps = [T('استلمنا', 'Received'), T('قيد التنفيذ', 'In progress'), T('تم التسليم', 'Delivered')], tl = '', tx = '';
+    if (S[0]) { for (var k = 1; k <= 3; k++) { tl += (k > 1 ? '<s class="' + (S[0] >= k ? 'on' : '') + '"></s>' : '') + '<i class="' + (S[0] >= k ? 'on' : '') + '">' + (S[0] > k || (S[0] === 3 && k === 3) ? '✓' : k) + '</i>'; tx += '<span class="' + (S[0] >= k ? 'on' : '') + '">' + steps[k - 1] + '</span>'; } }
+    var wa = 'https://wa.me/966574395924?text=' + encodeURIComponent((en() ? 'Hi, about my order #' : 'السلام عليكم، بخصوص طلبي رقم ') + no);
+    return '<div class="iaO2"><div class="hd"><div><b>' + T('طلب رقم ', 'Order #') + no + '</b><small>' + dt + (o.dt ? ' · ' + T('الموعد: ', 'Date: ') + esc(o.dt) : '') + '</small></div><span class="iaBd ' + S[1] + '">' + S[2] + '</span></div>' +
+      (S[0] ? '<div class="iaTl">' + tl + '</div><div class="iaTx">' + tx + '</div>' : '') +
+      '<ul class="iaIt">' + (o.items && o.items.length ? o.items : [o.s]).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' +
+      (o.up ? '<div class="iaUp"><b>' + T('آخر تحديث من إسماعيل', 'Latest update from Ismueil') + '</b>' + esc(o.up) + '</div>' : (S[0] === 1 ? '<div class="iaUp"><b>' + T('الخطوة الجاية', 'Next step') + '</b>' + T('بتواصل معك على واتساب نأكد التفاصيل ونبدأ.', 'I will reach you on WhatsApp to confirm the details and start.') + '</div>' : '')) +
+      '<div class="iaFt">' + (o.total ? '<span class="tot">' + esc(o.total) + ' ' + T('ر.س', 'SAR') + '</span>' : '<span class="tot"></span>') +
+      (o.ln ? '<a class="g" href="' + esc(o.ln) + '" target="_blank" rel="noopener">' + T('📥 استلم ملفاتك', '📥 Get your files') + '</a>' : '') +
+      (o.st === 'تم التسليم' ? '<a href="/app/review/?id=' + esc(o.id) + '">' + T('⭐ قيّم الخدمة', '⭐ Rate') + '</a>' : '') +
+      '<a href="' + wa + '" target="_blank" rel="noopener">' + T('واتساب', 'WhatsApp') + '</a></div></div>';
+  }
   function account() {
-    var o = cur(); if (!o) return open(null);
-    shell('<div class="iaI">' + I_USER + '</div><h3>' + T('حسابي', 'My account') + '</h3><p>' + T('مسجّل الدخول باسم', 'Signed in as') + '<br><b>' + o.e.replace(/[<>&]/g, '') + '</b></p>' +
-      '<button class="iaG" type="button" id="iaOut" style="background:rgba(255,255,255,.06);color:#eceef4;box-shadow:none;border:1px solid rgba(255,255,255,.14)">' + T('تسجيل الخروج', 'Sign out') + '</button>');
-    C.querySelector('#iaOut').onclick = function () { save(null); paint(); close(); D.dispatchEvent(new CustomEvent('ioauth', { detail: null })); };
+    var o = cur(); if (!o) return open(function () { account(); });
+    if (Dw) return;
+    Dw = D.createElement('div'); Dw.className = 'iaD'; Dw.setAttribute('role', 'dialog'); Dw.setAttribute('aria-modal', 'true');
+    Dw.innerHTML = '<div class="iaP"><div class="iaPh"><span class="av">' + esc(o.e.charAt(0).toUpperCase()) + '</span><div><h3>' + T('حسابي وطلباتي', 'My account & orders') + '</h3><small>' + esc(o.e) + '</small></div><button class="iaX" type="button" aria-label="' + T('إغلاق', 'Close') + '">✕</button></div>' +
+      '<div id="iaBody"><div class="iaSk"></div><div class="iaSk"></div></div>' +
+      '<button class="iaG" type="button" id="iaOut" style="margin-top:1.2rem;background:rgba(255,255,255,.05);color:#a9afbf;box-shadow:none;border:1px solid rgba(255,255,255,.12)">' + T('تسجيل الخروج', 'Sign out') + '</button></div>';
+    D.body.appendChild(Dw); prevB = D.body.style.overflow; D.documentElement.style.overflow = 'hidden'; D.body.style.overflow = 'hidden';
+    requestAnimationFrame(function () { Dw && Dw.classList.add('on'); });
+    Dw.addEventListener('click', function (e) { if (e.target === Dw) closeD(); });
+    Dw.querySelector('.iaX').onclick = closeD;
+    Dw.querySelector('#iaOut').onclick = function () { save(null); paint(); closeD(); D.dispatchEvent(new CustomEvent('ioauth', { detail: null })); };
+    var body = Dw.querySelector('#iaBody');
+    api('mine=1&auth=' + encodeURIComponent(o.t)).then(function (j) {
+      if (!Dw) return;
+      if (j && j.error === 'auth') { save(null); paint(); closeD(); open(function () { account(); }); return; }
+      var L = (j && j.orders) || []; merge(L);
+      var act = L.filter(function (x) { return x.st === 'جديد' || x.st === 'قيد التنفيذ'; }).length, dn = L.filter(function (x) { return x.st === 'تم التسليم'; }).length;
+      body.innerHTML = '<div class="iaS"><div><b>' + L.length + '</b><span>' + T('كل الطلبات', 'All orders') + '</span></div><div><b>' + act + '</b><span>' + T('جارية', 'Active') + '</span></div><div><b>' + dn + '</b><span>' + T('مسلّمة', 'Delivered') + '</span></div></div>' +
+        (L.length ? '<div class="iaT">' + T('طلباتي', 'My orders') + '</div>' + L.map(orderCard).join('') :
+          '<div class="iaEm"><b>' + T('ما عندك طلبات للحين', 'No orders yet') + '</b>' + T('أول ما تطلب، تتابع هنا كل خطوة: استلام الطلب، التنفيذ، والتسليم مع ملفاتك.', 'Once you order, you will follow every step here: received, in progress, and delivery with your files.') + '<br><a class="iaG" style="display:inline-grid;place-items:center;width:auto;padding:0 1.6rem" href="/app/store/">' + T('تصفّح الخدمات', 'Browse services') + '</a></div>');
+      var cl = body.querySelector('.iaEm a'); if (cl && location.pathname === '/app/store/') cl.onclick = function (e) { e.preventDefault(); closeD(); };
+    }).catch(function () { if (body) body.innerHTML = '<div class="iaEm"><b>' + T('تعذّر تحميل طلباتك', 'Could not load your orders') + '</b>' + msg('net') + '</div>'; });
   }
 
   window.ioAuth = {
@@ -192,8 +256,13 @@
     email: function () { var o = cur(); return o ? o.e : ''; },
     require: function (cb, why) { if (cur()) { cb && cb(); return; } open(cb, why); },
     clear: function () { save(null); paint(); },
-    open: function () { open(null); }
+    open: function () { open(null); },
+    orders: function () { account(); }
   };
+  /* «طلباتي» في شريط التطبيق وبعد الطلب: تفتح لوحة الطلبات هنا */
+  D.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a[href="/app/order/#my"]'); if (!a) return; e.preventDefault(); if (typeof window.close === 'function' && D.getElementById('sh') && !D.getElementById('sh').hidden) { try { history.back(); } catch (x) {} } setTimeout(account, 60); }, true);
+  function hashOpen() { if (location.hash === '#orders') setTimeout(account, 300); }
+  addEventListener('hashchange', hashOpen); if (D.readyState === 'complete') hashOpen(); else addEventListener('load', hashOpen);
   if (D.readyState === 'loading') D.addEventListener('DOMContentLoaded', paint); else paint();
   /* لو تغيرت اللغة نحدّث نص الزر */
   new MutationObserver(paint).observe(D.documentElement, { attributes: true, attributeFilter: ['lang', 'dir'] });
