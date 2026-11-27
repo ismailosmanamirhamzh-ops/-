@@ -125,10 +125,10 @@ select.fi{appearance:none;background-image:linear-gradient(45deg,transparent 50%
 .chips{display:flex;gap:.4rem;overflow-x:auto;margin:.55rem -1.25rem 0;padding:0 1.25rem .15rem;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
 .chips button{flex:0 0 auto;display:flex;align-items:center;gap:.3rem;border:1px solid var(--line);background:var(--panel);color:#cfd3dd;border-radius:999px;padding:.5rem .85rem;min-height:40px;font:700 .82rem Tajawal,sans-serif;cursor:pointer;white-space:nowrap}.chips button.on{border-color:var(--amber);background:var(--amber);color:#111}
 .rw{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin:.9rem 0 .2rem;font-size:.8rem;color:var(--mute)}.rw select{background:#0b0c12;border:1px solid var(--line);color:var(--text);border-radius:999px;padding:.4rem .8rem;font:700 .8rem Tajawal,sans-serif;min-height:38px}
-.sec-t{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font:900 1.12rem Cairo,sans-serif;margin:1.4rem 0 .15rem}.sec-t button{border:0;background:transparent;color:var(--amber);font:800 .8rem Tajawal,sans-serif;cursor:pointer;padding:.4rem .2rem;min-height:40px;min-width:44px;white-space:nowrap}
+.sec-t{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font:900 1.12rem Cairo,sans-serif;margin:1.4rem 0 .15rem}.sec-n{color:var(--mute);font:700 .78rem Tajawal,sans-serif;white-space:nowrap}.sec-t button{border:0;background:transparent;color:var(--amber);font:800 .8rem Tajawal,sans-serif;cursor:pointer;padding:.4rem .2rem;min-height:40px;min-width:44px;white-space:nowrap}
 .sec-d{color:var(--mute);font-size:.84rem;margin-bottom:.7rem}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}@media(min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.rail{display:flex;gap:.65rem;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -1.25rem;padding:.1rem 1.25rem .4rem;scrollbar-width:none}.rail::-webkit-scrollbar{display:none}.rail>*{scroll-snap-align:start;flex:0 0 44%;max-width:44%}@media(min-width:600px){.rail>*{flex-basis:30%;max-width:30%}}
+.rail{display:flex;gap:.65rem;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -1.25rem;padding:.1rem 1.25rem .4rem;scrollbar-width:none}.rail::-webkit-scrollbar{display:none}.rail>*{scroll-snap-align:start;flex:0 0 44%;max-width:44%}@media(min-width:600px){.rail>*{flex-basis:30%;max-width:30%}}@media(min-width:1024px){.top,main{max-width:76rem}.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem}.rail{margin:0;padding:.1rem 0 .4rem}.rail>*{flex-basis:calc(25% - .5rem);max-width:calc(25% - .5rem)}}@media(min-width:1280px){.grid{grid-template-columns:repeat(5,minmax(0,1fr))}.rail>*{flex-basis:calc(20% - .55rem);max-width:calc(20% - .55rem)}}
 .cd{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .15s;min-width:0}.cd:active{transform:scale(.98)}.cd:hover{border-color:rgba(242,180,90,.45)}.cd.hot{border-color:rgba(242,180,90,.55)}
 .cv{position:relative;aspect-ratio:4/3;background:#14161f;overflow:hidden}.cv img{width:100%;height:100%;object-fit:cover;display:block}
 .cv:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,12,.25),transparent 40%,rgba(7,8,12,.35));pointer-events:none}
@@ -459,8 +459,8 @@ function render(){var Lb=$('list');Lb.textContent='';var W=words($('q').value);
     var r=el('div','rail');IT.filter(function(x){return x[7].hot}).forEach(function(x){r.appendChild(card(x))});Lb.appendChild(r);
     if(seen.length>1){var hs=el('h2','sec-t');hs.appendChild(el('span',null,en?'👀 Recently viewed':'👀 شاهدتها مؤخرًا'));Lb.appendChild(hs);var rs=el('div','rail');seen.slice(0,8).forEach(function(i){rs.appendChild(card(BY[i]))});Lb.appendChild(rs)}
     CATS.forEach(function(c){var ci=its.filter(function(x){return x[1]===c.k});if(!ci.length)return;var h=el('h2','sec-t');h.id='s-'+c.k;h.appendChild(el('span',null,c.i+' '+L(c.t)));
-      var mo=el('button',null,(en?'All ':'الكل ')+ci.length+(en?' →':' ←'));mo.type='button';mo.addEventListener('click',function(){setCat(c.k)});h.appendChild(mo);Lb.appendChild(h);Lb.appendChild(el('p','sec-d',L(c.d)));
-      var rr=el('div','rail');ci.slice(0,6).forEach(function(x){rr.appendChild(card(x))});Lb.appendChild(rr)});
+      var mo=el('span','sec-n',en?ci.length+(ci.length===1?' service':' services'):(ci.length===1?'خدمة واحدة':ci.length===2?'خدمتين':ci.length+(ci.length>10?' خدمة':' خدمات')));h.appendChild(mo);Lb.appendChild(h);Lb.appendChild(el('p','sec-d',L(c.d)));
+      Lb.appendChild(grid(ci))});
   }else{if(CT[CAT]&&!W.length){Lb.appendChild(el('p','sec-d',L(CT[CAT].d)))}Lb.appendChild(grid(its))}
   upCus()}
 function upCus(){var q=$('q').value.trim();$('cus').href=WA+'?text='+encodeURIComponent('السلام عليكم، أبي خدمة'+(q?': '+q:'')+' (من متجر التطبيق)')}
@@ -638,7 +638,7 @@ hashGo();addEventListener('hashchange',hashGo);
 </script>
 
 <script src="/js/fx.js?v=20261025b" defer></script>
-<script src="/app/auth.js?v=1" defer></script>
+<script src="/app/auth.js?v=2" defer></script>
 <script src="/app/app.js?v=8" defer></script>
 </body>
 </html>
