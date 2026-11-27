@@ -835,6 +835,19 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 .osx-b1{color:#170f04;background:linear-gradient(135deg,#ffe8b8,#f2b45a 50%,#d6912f);box-shadow:0 14px 40px -14px rgba(242,180,90,.85)}
 .osx-b2{color:#eef0f5;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04)}
 @media (max-width:640px){.osx-dn{display:none}}
+.osx-h{text-wrap:balance}.osx-h .nw{white-space:nowrap;display:inline-block}
+.osx-r{list-style:none;display:flex;justify-content:center;gap:.6rem;margin-top:1.6rem;padding:0;flex-wrap:wrap;opacity:0;animation:osxUp 1s cubic-bezier(.2,.8,.2,1) 1.2s forwards;transform:translateY(14px)}
+.osx-r li{position:relative;display:flex;align-items:center;gap:.55rem;padding:.6rem 1.05rem .6rem 1.15rem;border-radius:999px;border:1px solid rgba(242,180,90,.22);background:linear-gradient(180deg,rgba(242,180,90,.08),rgba(255,255,255,.02));backdrop-filter:blur(6px);font-size:1rem;color:#c9cdd8;white-space:nowrap}
+.osx-r li b{color:#ffe2a8;font:800 1rem Cairo,sans-serif}
+.osx-r svg{width:1.15rem;height:1.15rem;fill:none;stroke:#f2b45a;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.osx-r li+li::before{content:"";position:absolute;inset-inline-end:calc(100% + .05rem);top:50%;width:.5rem;height:1px;background:linear-gradient(90deg,transparent,#f2b45a)}
+.osx-l{margin-top:1.3rem!important;font:700 clamp(1.05rem,1.6vw,1.2rem) Tajawal,sans-serif!important;color:#a9afbf!important;letter-spacing:.01em}
+.osx-l b{color:#f2b45a;font-weight:800}
+@media (max-width:640px){.osx{padding:6.5rem 1rem 3.5rem}.osx-k{margin-top:1.2rem}.osx-h{font-size:clamp(1.9rem,8.6vw,2.4rem)!important;line-height:1.3!important}.osx-h .nw{display:block}
+.osx-r{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;width:100%;max-width:22rem;margin-top:1.4rem}
+.osx-r li{justify-content:center;padding:.7rem .6rem;border-radius:1rem;font-size:.95rem}.osx-r li+li::before{display:none}
+.osx-l{font-size:1.02rem!important}.osx-c{margin-top:1.6rem;width:100%;max-width:22rem}.osx-c a{flex:1 1 100%}}
+
 .tpx{position:absolute;inset:0;overflow:hidden;background:#050608}
 .tpx::before{content:"";position:absolute;inset:0;background:radial-gradient(45% 40% at 50% 48%,rgba(242,180,90,.16),transparent 70%),radial-gradient(40% 30% at 12% 85%,rgba(120,90,255,.06),transparent 70%),radial-gradient(35% 30% at 88% 12%,rgba(80,200,255,.05),transparent 70%)}
 .tpx::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(0,0,0,.7) 100%),linear-gradient(180deg,#07080c,transparent 14%,transparent 86%,#07080c)}
@@ -1000,8 +1013,9 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 <div class="osx-st" aria-hidden="true"></div><div class="osx-st b" aria-hidden="true"></div>
 <div class="osx-wm" aria-hidden="true"><div class="osx-ln" id="osxLens"><i></i></div><span>S</span><span>M</span><span>A</span><span>N</span></div>
 <p class="osx-k" data-en="Ismueil Osman">إسماعيل عثمان</p>
-<p class="osx-h" data-en-h="Visuals that &lt;em&gt;attract&lt;/em&gt;, marketing that &lt;em&gt;sells&lt;/em&gt;.">صورة <em>تجذب</em>، وتسويق <em>يبيع</em>.</p>
-<p class="osx-l" data-en="Photographer, marketer, designer and developer. I shoot your product, design its ad, build its website and put it in front of people who buy.">مصوّر ومسوّق ومصمّم ومطوّر. أصوّر منتجك، وأصمّم إعلانه، وأبني موقعه، وأوصله للناس اللي يشترون.</p>
+<p class="osx-h" data-en-h="&lt;span class=&quot;nw&quot;&gt;Visuals that &lt;em&gt;attract&lt;/em&gt;,&lt;/span&gt; &lt;span class=&quot;nw&quot;&gt;marketing that &lt;em&gt;sells&lt;/em&gt;.&lt;/span&gt;"><span class="nw">صورة <em>تجذب</em>،</span> <span class="nw">وتسويق <em>يبيع</em>.</span></p>
+<ul class="osx-r"><li style="--d:1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.6-2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg><b data-en="I shoot">أصوّر</b><span data-en="your product">منتجك</span></li><li style="--d:2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5zM2 2l7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg><b data-en="I design">أصمّم</b><span data-en="its ad">إعلانه</span></li><li style="--d:3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg><b data-en="I build">أبني</b><span data-en="its website">موقعه</span></li><li style="--d:4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg><b data-en="I deliver it">أوصله</b><span data-en="to your buyers">لعملائك</span></li></ul>
+<p class="osx-l" data-en-h="From the first shot&lt;b&gt; to the first order.&lt;/b&gt;">من أول لقطة،<b> إلى أول طلب.</b></p>
 <div class="osx-c"><a class="osx-b1" href="/work/" data-en="See my work">شاهد أعمالي</a><a class="osx-b2" href="/consultation/" data-en="Free consultation">استشارة مجانية</a></div>
 <a class="osx-dn" href="#hero"><i></i><span data-en="Scroll">انزل</span></a>
 </section>
@@ -1763,6 +1777,6 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 <script src="/js/fx.js?v=20261025b" defer></script>
 <script src="/js/advisor.js?v=2" defer></script>
 <script src="/js/hero-cine.js?v=1" defer></script>
-<script src="/js/snake.js?v=1" defer></script>
+<script src="/js/snake.js?v=2" defer></script>
 </body>
 </html>
