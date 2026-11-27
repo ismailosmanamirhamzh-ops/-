@@ -51,7 +51,7 @@
       for(var i=first;i<=last;i++){var u=len[i]/1800,tw=Math.sin(u*13+tm*.6+ph*.2)*.9+Math.sin(u*5-tm*.35)*.6;
         var w=k*spread*(1.2+Math.sin(u*7+ph)*.8)*tw,x=pts[i][0]+nrm[i][0]*w,y=pts[i][1]+nrm[i][1]*w+off;
         i>first?ctx.lineTo(x,y):ctx.moveTo(x,y)}
-      var g=ctx.createLinearGradient(0,hy-H*1.1,0,hy),al=(s%4===0?.6:.28)*(mob?1.5:1);
+      var g=ctx.createLinearGradient(0,hy-H*1.1,0,hy),al=(s%4===0?.6:.28)*(mob?1.1:1);
       g.addColorStop(0,'rgba(242,180,90,0)');g.addColorStop(.45,'rgba(242,180,90,'+al*.55+')');g.addColorStop(1,'rgba(255,226,168,'+al+')');
       ctx.strokeStyle=g;ctx.lineWidth=(s%4===0?1.2:.8)*(mob?1.3:1);ctx.stroke();
     }

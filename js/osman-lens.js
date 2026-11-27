@@ -3,7 +3,7 @@
    إذا تعذّر WebGL تبقى العدسة الذهبية المرسومة بالـ CSS. */
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-const host=document.getElementById('osxLens'),sec=document.getElementById('osx');
+const host=document.querySelector('[data-lens]'),sec=host&&host.closest('section');
 function placeStreak(){if(!host||!sec)return;const r=host.getBoundingClientRect(),o=sec.getBoundingClientRect();sec.style.setProperty('--sy',(r.top-o.top+r.height/2)+'px')}
 addEventListener('resize',placeStreak);setTimeout(placeStreak,60);setTimeout(placeStreak,1800);
 let renderer=null;
