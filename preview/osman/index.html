@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>معاينة: OSMAN | إسماعيل عثمان</title>
+<link rel="icon" href="/favicon.ico?v=2" sizes="48x48">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Cairo:wght@800;900&family=Tajawal:wght@400;500;700;800&display=swap">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<style>
+:root{--ink:#050608;--amber:#f2b45a;--gold1:#ffe2a8;--text:#eef0f5;--mute:#a3a9b8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--ink);color:var(--text);overflow-x:clip}
+body{font-family:Tajawal,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.os{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6rem 1.25rem 4rem;overflow:hidden;isolation:isolate}
+.os::before{content:"";position:absolute;inset:0;z-index:-3;background:radial-gradient(55% 45% at 50% 38%,rgba(242,180,90,.13),transparent 70%),radial-gradient(40% 30% at 18% 80%,rgba(120,90,255,.07),transparent 70%),radial-gradient(35% 30% at 85% 15%,rgba(80,200,255,.05),transparent 70%)}
+/* moving light streak */
+.streak{position:absolute;left:-10%;right:-10%;top:var(--sy,40%);height:2px;z-index:-1;background:linear-gradient(90deg,transparent,rgba(255,226,168,.0) 8%,rgba(255,226,168,.55) 38%,#fff 50%,rgba(255,226,168,.55) 62%,transparent 92%);filter:blur(.6px);box-shadow:0 0 18px 4px rgba(242,180,90,.35),0 0 60px 14px rgba(242,180,90,.15);opacity:.9;animation:str 6s ease-in-out infinite}
+.streak.b{height:44px;margin-top:-21px;background:radial-gradient(50% 50% at 50% 50%,rgba(255,214,140,.35),transparent 70%);box-shadow:none;filter:blur(12px);animation-delay:-3s}
+@keyframes str{0%,100%{opacity:.55;transform:scaleX(.85)}50%{opacity:1;transform:scaleX(1.05)}}
+/* flowing lines */
+.flow{position:absolute;inset:0;z-index:-2;width:100%;height:100%;pointer-events:none}
+.flow path{fill:none;stroke:url(#fg);stroke-width:1.2;stroke-linecap:round;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s cubic-bezier(.2,.8,.2,1) forwards,breath 9s ease-in-out 3.2s infinite}
+.flow path:nth-child(2){animation-delay:.25s,3.45s;opacity:.7}.flow path:nth-child(3){animation-delay:.5s,3.7s;opacity:.45}.flow path:nth-child(4){animation-delay:.75s,3.95s;opacity:.3}
+@keyframes draw{to{stroke-dashoffset:0}}@keyframes breath{50%{opacity:.25}}
+.spark{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff3d6;box-shadow:0 0 14px 4px rgba(255,214,140,.9),0 0 40px 10px rgba(242,180,90,.5);offset-path:path("M -40 820 C 160 700, 160 420, 420 360");animation:ride 7s ease-in-out infinite;z-index:-1;opacity:0}
+@keyframes ride{0%{offset-distance:0%;opacity:0}15%{opacity:1}85%{opacity:1}100%{offset-distance:100%;opacity:0}}
+/* wordmark */
+.wm{direction:ltr;display:flex;align-items:center;justify-content:center;font:900 clamp(5.2rem,21vw,19rem)/.86 Outfit,Cairo,sans-serif;letter-spacing:-.045em;user-select:none}
+.wm span{background:linear-gradient(180deg,#ffffff 0%,#fbf3e4 45%,#f3d199 78%,#d9a25a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 10px 40px rgba(242,180,90,.25));opacity:0;transform:translateY(.12em);animation:up 1.1s cubic-bezier(.2,.8,.2,1) forwards;padding-bottom:.06em}
+.wm span:nth-of-type(1){animation-delay:.25s}.wm span:nth-of-type(2){animation-delay:.35s}.wm span:nth-of-type(3){animation-delay:.45s}.wm span:nth-of-type(4){animation-delay:.55s}
+@keyframes up{to{opacity:1;transform:none}}
+.lens{position:relative;width:.82em;height:.82em;margin-right:-.02em;flex:none;opacity:0;transform:scale(.6) rotate(-40deg);animation:lin 1.6s cubic-bezier(.2,.9,.2,1) .1s forwards}
+@keyframes lin{to{opacity:1;transform:none}}
+.lens canvas{position:absolute;left:50%;top:50%;width:150%!important;height:150%!important;translate:-50% -50%}
+.lens .fb{position:absolute;inset:4%;border-radius:50%;display:none;background:radial-gradient(circle at 35% 30%,#fff2d0,#f2b45a 40%,#8f5a1d 80%);box-shadow:inset 0 0 0 .05em rgba(255,240,205,.6)}
+.lens.nogl .fb{display:block}
+.lens::after{content:"";position:absolute;left:50%;top:50%;width:1.6em;height:1.6em;translate:-50% -50%;z-index:-1;background:radial-gradient(closest-side,rgba(242,180,90,.32),transparent 70%);filter:blur(10px);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.55;transform:scale(.9)}}
+/* copy */
+.kick{margin-top:clamp(1.4rem,3vw,2.2rem);display:inline-flex;align-items:center;gap:.7rem;font:800 clamp(.95rem,1.6vw,1.15rem) Cairo,sans-serif;color:var(--gold1);opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) .9s forwards;transform:translateY(10px)}
+.kick::before,.kick::after{content:"";width:2.2rem;height:1px;background:linear-gradient(90deg,transparent,var(--amber))}.kick::after{transform:scaleX(-1)}
+h1{margin-top:.8rem;text-align:center;font:900 clamp(2rem,5vw,3.9rem)/1.2 Cairo,sans-serif;max-width:18ch;opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) 1.05s forwards;transform:translateY(14px)}
+h1 em{font-style:normal;background:linear-gradient(100deg,#c98a35,#ffe2a8 35%,#f2b45a 60%,#fff0cc);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.12em}
+.lead{margin-top:1rem;max-width:38rem;text-align:center;color:var(--mute);font-size:clamp(1rem,1.5vw,1.15rem);line-height:1.9;opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) 1.2s forwards;transform:translateY(14px)}
+.cta{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-top:2rem;opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) 1.35s forwards;transform:translateY(14px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.4rem;padding:0 1.8rem;border-radius:999px;font:800 1rem Tajawal,sans-serif;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.b1{color:#170f04;background:linear-gradient(135deg,#ffe8b8,#f2b45a 50%,#d6912f);box-shadow:0 14px 40px -14px rgba(242,180,90,.85)}
+.b2{color:var(--text);border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04)}
+.btn:hover{transform:translateY(-2px)}
+.note{position:fixed;top:1rem;left:50%;translate:-50% 0;z-index:9;padding:.45rem 1rem;border-radius:999px;background:rgba(20,22,30,.8);border:1px solid rgba(242,180,90,.3);font-size:.8rem;color:var(--gold1);backdrop-filter:blur(8px)}
+.after{height:60vh;display:grid;place-items:center;color:var(--mute);font-size:.95rem}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important}}
+</style>
+</head>
+<body>
+<div class="note">معاينة خاصة · مو منشورة في الموقع</div>
+<section class="os" id="os">
+<svg class="flow" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="fg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#f2b45a" stop-opacity="0"/><stop offset=".5" stop-color="#f2b45a" stop-opacity=".7"/><stop offset="1" stop-color="#ffe2a8" stop-opacity=".1"/></linearGradient></defs>
+<path d="M -40 820 C 160 700, 160 420, 420 360"/><path d="M -40 860 C 200 720, 220 440, 520 380"/><path d="M -40 900 C 240 760, 300 470, 640 400"/><path d="M 1480 120 C 1280 200, 1220 380, 1010 420"/></svg>
+<div class="spark" aria-hidden="true"></div>
+<div class="streak" aria-hidden="true"></div><div class="streak b" aria-hidden="true"></div>
+<div class="wm" aria-label="OSMAN"><div class="lens" id="lens" aria-hidden="true"><div class="fb"></div></div><span>S</span><span>M</span><span>A</span><span>N</span></div>
+<p class="kick">إسماعيل عثمان</p>
+<h1>صورة <em>تجذب</em>، وتسويق <em>يبيع</em>.</h1>
+<p class="lead">مصوّر ومسوّق ومصمّم ومطوّر. أصوّر منتجك، وأصمّم إعلانه، وأبني موقعه، وأوصله للناس اللي يشترون.</p>
+<div class="cta"><a class="btn b1" href="/work/">شاهد أعمالي</a><a class="btn b2" href="/consultation/">استشارة مجانية</a></div>
+</section>
+<div class="after">انزل وارجع فوق، وحرّك الماوس على العدسة</div>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+const host=document.getElementById('lens'),os=document.getElementById('os');
+/* مكان خط الضوء على مستوى العدسة */
+function placeStreak(){const r=host.getBoundingClientRect(),o=os.getBoundingClientRect();os.style.setProperty('--sy',(r.top-o.top+r.height/2)+'px')}
+addEventListener('resize',placeStreak);setTimeout(placeStreak,50);setTimeout(placeStreak,1700);
+let renderer;
+try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'})}catch(e){host.classList.add('nogl')}
+if(renderer){
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;renderer.outputColorSpace=THREE.SRGBColorSpace;
+host.appendChild(renderer.domElement);
+const scene=new THREE.Scene();
+const pm=new THREE.PMREMGenerator(renderer);scene.environment=pm.fromScene(new RoomEnvironment(),.04).texture;
+const cam=new THREE.PerspectiveCamera(28,1,.1,50);cam.position.set(0,0,6.2);
+const lens=new THREE.Group();scene.add(lens);
+const gold=new THREE.MeshPhysicalMaterial({color:0xe7ad55,metalness:1,roughness:.2,clearcoat:.7,clearcoatRoughness:.15});
+const goldDeep=new THREE.MeshPhysicalMaterial({color:0xb07630,metalness:1,roughness:.32});
+const black=new THREE.MeshPhysicalMaterial({color:0x0b0b0e,metalness:.4,roughness:.55,clearcoat:.3});
+const inner=new THREE.MeshStandardMaterial({color:0x050506,metalness:.2,roughness:.9,side:THREE.DoubleSide});
+/* جسم العدسة: مقطع دوّار بحلقات متدرجة */
+const prof=[[.6,.55],[.92,.55],[1,.5],[1,.3],[.97,.28],[.97,.22],[1,.2],[1,-.05],[.96,-.08],[.9,-.5],[.7,-.55]].map(p=>new THREE.Vector2(p[0],p[1]));
+const body=new THREE.Mesh(new THREE.LatheGeometry(prof,160),gold);body.rotation.x=Math.PI/2;lens.add(body);
+/* حلقة القبضة السوداء بخطوط */
+const grip=new THREE.Mesh(new THREE.CylinderGeometry(1.025,1.025,.2,160,1,true),black);grip.rotation.x=Math.PI/2;grip.position.z=.1;lens.add(grip);
+for(let i=0;i<72;i++){const r=new THREE.Mesh(new THREE.BoxGeometry(.012,.018,.2),goldDeep);const a=i/72*Math.PI*2;r.position.set(Math.cos(a)*1.032,Math.sin(a)*1.032,.1);r.rotation.z=a;lens.add(r)}
+/* حلقة أمامية رفيعة مضيئة */
+const lip=new THREE.Mesh(new THREE.TorusGeometry(.76,.028,24,160),gold);lip.position.z=.55;lens.add(lip);
+/* الأنبوب الداخلي */
+const tube=new THREE.Mesh(new THREE.CylinderGeometry(.6,.5,.9,96,1,true),inner);tube.rotation.x=Math.PI/2;tube.position.z=.1;lens.add(tube);
+/* شفرات فتحة العدسة */
+const blades=new THREE.Group();blades.position.z=.18;lens.add(blades);
+const bm=new THREE.MeshPhysicalMaterial({color:0x17120c,metalness:.9,roughness:.35,side:THREE.DoubleSide});
+const N=7,bl=[];
+for(let i=0;i<N;i++){const s=new THREE.Shape();s.moveTo(0,0);s.lineTo(.62,0);s.quadraticCurveTo(.66,.32,.42,.5);s.lineTo(0,.16);s.closePath();
+const m=new THREE.Mesh(new THREE.ShapeGeometry(s,24),bm);const piv=new THREE.Group();piv.rotation.z=i/N*Math.PI*2;const arm=new THREE.Group();arm.position.x=.58;arm.add(m);m.position.x=-.62;piv.add(arm);piv.position.z=i*.002;blades.add(piv);bl.push(arm)}
+const back=new THREE.Mesh(new THREE.CircleGeometry(.6,64),new THREE.MeshBasicMaterial({color:0x020203}));back.position.z=-.2;lens.add(back);
+/* الزجاج الأمامي بطبقة ألوان */
+const glass=new THREE.Mesh(new THREE.SphereGeometry(1.15,96,48,0,Math.PI*2,0,.56),new THREE.MeshPhysicalMaterial({color:0x0a0d18,metalness:.1,roughness:.02,clearcoat:1,clearcoatRoughness:0,iridescence:1,iridescenceIOR:1.45,iridescenceThicknessRange:[200,700],transparent:true,opacity:.55,envMapIntensity:2.4}));
+glass.rotation.x=Math.PI/2;glass.position.z=-.5;lens.add(glass);
+const key=new THREE.PointLight(0xffd9a0,40,20);key.position.set(-3,3,4);scene.add(key);
+const rim=new THREE.PointLight(0x8fb8ff,18,20);rim.position.set(3,-2,2);scene.add(rim);
+scene.add(new THREE.AmbientLight(0xffffff,.25));
+lens.scale.setScalar(1.18);
+function size(){const w=renderer.domElement.parentElement.clientWidth*1.5;renderer.setSize(w,w,false);cam.aspect=1;cam.updateProjectionMatrix()}
+size();addEventListener('resize',size);
+let mx=0,my=0,tx=0,ty=0;
+addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth*2-1);ty=(e.clientY/innerHeight*2-1)},{passive:true});
+const calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let vis=true;new IntersectionObserver(es=>{vis=es[0].isIntersecting}).observe(host);
+const clock=new THREE.Clock();
+function frame(){requestAnimationFrame(frame);if(!vis)return;const t=calm?1.2:clock.getElapsedTime();
+mx+=(tx-mx)*.06;my+=(ty-my)*.06;
+const sp=Math.min(1,Math.max(0,scrollY/(innerHeight*.8)));
+lens.rotation.y=Math.sin(t*.55)*.42+mx*.5+sp*1.2;
+lens.rotation.x=.12+Math.sin(t*.4)*.12+my*.35;
+lens.rotation.z=t*.05;
+/* الفتحة: تتنفس، وتتسكّر مع النزول */
+const open=(.55+Math.sin(t*.9)*.35)*(1-sp*.9);
+bl.forEach(a=>{a.rotation.z=-.15-open*.75});
+scene.environmentRotation.y=t*.25;
+renderer.render(scene,cam)}
+frame();
+}
+</script>
+</body>
+</html>
