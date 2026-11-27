@@ -745,7 +745,35 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 </style>
     <div class="wrap">
       <header class="sh fade"><p class="ab-k">منصات وواجهات</p><h2 class="fit" id="plfH">أبني المنصة، مو بس الموقع</h2><p class="d">واجهات ومنصات احترافية بتصميم عربي، تشتغل بسلاسة على الجوال والحاسب، ومبنية لتخدم شغل حقيقي كل يوم.</p></header>
-      <div class="plg">
+      <style>
+.dvb{position:relative;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:1.5rem;margin-top:2.2rem;min-height:17rem;border-radius:1.6rem;border:1px solid rgba(242,180,90,.35);background:radial-gradient(70% 90% at 25% 110%,rgba(242,180,90,.22),transparent 60%),linear-gradient(180deg,#0d0e14,#07080b);overflow:hidden;text-decoration:none;color:inherit;isolation:isolate;transition:border-color .3s,transform .3s}
+.dvb:hover{border-color:rgba(242,180,90,.7);transform:translateY(-3px)}
+.dvb-w{position:relative;height:100%;min-height:17rem;perspective:900px}
+.dvb-p{position:absolute;left:50%;bottom:-27rem;width:38rem;height:38rem;translate:-50% 0;border-radius:50%;overflow:hidden;background:#07070a;box-shadow:0 -2px 0 rgba(255,226,168,.55),0 -18px 50px -6px rgba(242,180,90,.55),inset 0 30px 60px -20px rgba(255,226,168,.35)}
+.dvb-p .sf{position:absolute;inset:0;background:url(/assets/img/dev-planet.webp) 0 0/80% 40% repeat;animation:dvbS 90s linear infinite}
+.dvb-p::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 55% at 50% 0%,transparent 35%,rgba(6,7,10,.65) 62%,#06070a 80%)}
+@keyframes dvbS{to{background-position:-160% 0}}
+.dvb-c{--s:4.6rem;position:absolute;width:var(--s);height:var(--s);transform-style:preserve-3d;animation:dvbF 6s ease-in-out infinite}
+.dvb-c .c{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(-12deg) rotateY(var(--ry,20deg))}
+.dvb-c .c i{position:absolute;inset:0;border-radius:50%;background:linear-gradient(90deg,#5e3a12,#b9782c 40%,#8a5a20)}
+.dvb-c .c i:nth-child(1){transform:translateZ(-2px)}.dvb-c .c i:nth-child(2){transform:translateZ(-4px)}.dvb-c .c i:nth-child(3){transform:translateZ(-6px)}.dvb-c .c i:nth-child(4){transform:translateZ(-8px)}.dvb-c .c i:nth-child(5){transform:translateZ(-10px)}.dvb-c .c i:nth-child(6){transform:translateZ(-12px);background:#3a2409}
+.dvb-c .f{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 28%,#fff3d2,#ffd98f 22%,#f2b45a 48%,#c7852f 76%,#8f5a1d);box-shadow:inset 0 0 0 3px rgba(255,240,205,.55),inset 0 -8px 18px rgba(90,52,12,.5)}
+.dvb-c .f svg{width:42%;height:42%;fill:none;stroke:#5a3510;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dvb-c.k1{left:12%;top:2.2rem;--ry:28deg;animation-delay:-1s}.dvb-c.k2{left:50%;top:.8rem;margin-left:-2.9rem;--s:5.8rem;animation-delay:-3s}.dvb-c.k3{right:12%;top:2.6rem;animation-delay:-5s}.dvb-c.k3 .c{--ry:-26deg}
+@keyframes dvbF{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.dvb-t{position:relative;z-index:2;padding:2rem 2.2rem;display:flex;flex-direction:column;gap:.55rem}
+.dvb-k{font:600 .68rem/1 var(--mono,ui-monospace),monospace;letter-spacing:.18em;color:var(--amber,#f2b45a);direction:ltr;align-self:flex-start}
+.dvb-t b{font:900 clamp(1.5rem,2.6vw,2.2rem)/1.25 Cairo,sans-serif;background:linear-gradient(100deg,#fff,#ffe2a8 45%,#f2b45a);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.dvb-d{color:#a3a9b8;font-size:1rem}
+.dvb-btns{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.6rem}
+.dvb-b1,.dvb-b2{display:inline-flex;align-items:center;min-height:2.9rem;padding:0 1.3rem;border-radius:999px;font:800 .95rem Tajawal,sans-serif;text-decoration:none}
+.dvb-b1{color:#170f04;background:linear-gradient(135deg,#ffe8b8,#f2b45a 50%,#d6912f)}
+.dvb-b2{color:#eef0f5;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
+@media (max-width:760px){.dvb{grid-template-columns:1fr}.dvb-t{padding:0 1.3rem 1.6rem!important;order:2}.dvb-w{min-height:11rem;overflow:hidden}.dvb-p{bottom:-31rem}.dvb-c{--s:3.8rem}.dvb-c.k2{--s:4.8rem;margin-left:-2.4rem}}
+@media (prefers-reduced-motion:reduce){.dvb-c,.dvb-p .sf{animation:none}}
+</style>
+<div class="dvb fade"><div class="dvb-w" aria-hidden="true"><div class="dvb-p"><div class="sf"></div></div><div class="dvb-c k1"><div class="c"><i></i><i></i><i></i><i></i><i></i><i></i><div class="f"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 8h6M7 11h10"/></svg></div></div></div><div class="dvb-c k2"><div class="c"><i></i><i></i><i></i><i></i><i></i><i></i><div class="f"><svg viewBox="0 0 24 24"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg></div></div></div><div class="dvb-c k3"><div class="c"><i></i><i></i><i></i><i></i><i></i><i></i><div class="f"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3M9 7h6M9 10h4"/></svg></div></div></div></div><div class="dvb-t"><span class="dvb-k">DEVELOPER · WEB · APPS · PLATFORMS</span><b>مطوّر مواقع وتطبيقات ومنصات</b><span class="dvb-d">هذي نماذج من شغلي في التطوير، والتفاصيل كاملة في صفحة المطوّر.</span><span class="dvb-btns"><a class="dvb-b1" href="/web-development/">صفحة المطوّر ←</a><a class="dvb-b2" href="/consultation/?svc=dev">أبي موقع مثلها</a></span></div></div>
+<div class="plg">
         <article class="plc ft fade"><div class="in">
           <div>
             <span class="k">إنجاز جديد · منصة داخلية</span>
