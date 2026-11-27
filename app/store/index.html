@@ -533,7 +533,7 @@ function sheet(keep){var F={};if(keep)['o-name','o-phone','o-notes','o-code','o-
    (needDate()?'<div class="fld"><label for="o-city"><span>'+(en?'Shoot city':'مدينة التصوير')+'</span> <em>*</em></label><select class="fi" id="o-city"><option value="">'+(en?'Choose the city':'اختر المدينة')+'</option>'+CITY.map(function(c){return '<option value="'+c[0]+'">'+(en?c[1]:c[0])+'</option>'}).join('')+'<optgroup label="'+(en?'Coming soon':'قريبًا')+'">'+SOON.map(function(c){return '<option disabled>'+(en?c[1]:c[0])+' · '+(en?'soon':'قريبًا')+'</option>'}).join('')+'</optgroup></select><small class="okc" style="color:var(--mute)">'+(en?'📍 On-site shoots: Makkah, Jeddah and Riyadh. More cities soon.':'📍 التصوير حاليًا في مكة وجدة والرياض، وباقي المدن قريبًا.')+'</small><small class="err" id="e-city"></small></div>':'')+
    (needDate()?'<div class="fld"><label for="o-date"><span>'+(en?'Shoot day':'موعد التصوير')+'</span> <small>'+(en?'(one client per day · optional)':'(عميل واحد في اليوم · اختياري)')+'</small></label><input class="fi ltr" id="o-date" type="date"><small class="err" id="e-date"></small></div>':'')+
    '<div class="fld"><label for="o-code"><span>'+(en?'Discount code':'كود الخصم')+'</span> <small>'+(en?'(optional)':'(اختياري)')+'</small></label><input class="fi ltr" id="o-code" maxlength="20" placeholder="ISM20" autocapitalize="characters"><small class="okc" id="k-code"></small><small class="okc" id="k-loy"></small></div>'+
-   '<input class="hp" id="o-hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="button" class="btn go" id="send" style="width:100%">'+(en?'Confirm order':'أكّد الطلب')+'</button>';
+   '<div data-ioauth></div><input class="hp" id="o-hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="button" class="btn go" id="send" style="width:100%">'+(en?'Confirm order':'أكّد الطلب')+'</button>';
   B.appendChild(form);form.querySelector('.tot span').textContent=en?'Total':'الإجمالي';
   if(me.name)$('o-name').value=me.name;if(me.phone)$('o-phone').value=me.phone;var rw=ls('reward');if(rw||promo)$('o-code').value=rw||promo;
   Object.keys(F).forEach(function(i){if(i==='xp'){if($('o-xp'))$('o-xp').checked=F.xp}else if($(i))$(i).value=F[i]});
@@ -553,6 +553,7 @@ function digits(v){v=(v||'').replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥
 function err(id,e,m){$(id).textContent=m||'';e.classList.toggle('bad',!!m);return !m}
 function send(){var name=$('o-name').value.trim(),ph=digits($('o-phone').value);
   var ok=err('e-name',$('o-name'),name.length<2?(en?'Enter your name':'اكتب اسمك'):'');ok=err('e-phone',$('o-phone'),/^05\d{8}$/.test(ph)?'':(en?'Saudi mobile: 10 digits starting with 05':'رقم جوال سعودي من 10 أرقام يبدأ بـ 05'))&&ok;if(!chkDate())ok=false;if(!chkCity())ok=false;if(!ok){var bad=D.querySelector('#shB .bad');bad&&bad.scrollIntoView({block:'center',behavior:'smooth'});return}
+  if(window.ioAuth&&!ioAuth.token()){ioAuth.require(send,en?'One last step: sign in with your email so we can confirm your order and send you its details.':'خطوة أخيرة: سجّل دخولك بالإيميل عشان نأكد طلبك ونرسل لك تفاصيله.');return}
   me.name=name;me.phone=ph;ls('me',JSON.stringify(me));var b=$('send');b.disabled=true;b.textContent=en?'Sending…':'جارٍ الإرسال…';
   var p=pct(),xa=xpAdd(),t=total()+xa,dc=disc(t,p),fin=t-dc;
   var R=Object.keys(cart).map(function(k){return {t:TT(k,true),q:cart[k],u:PR(k),s:LT(k)}});
@@ -560,15 +561,15 @@ function send(){var name=$('o-name').value.trim(),ph=digits($('o-phone').value);
   if(xa)lines.push('⚡ تسليم مستعجل خلال 24 ساعة = '+n(xa)+' ر.س');var G=GIFT.filter(function(g){return total()>=g[0]}).map(function(g){return g[1][0]});G.forEach(function(g){lines.push(g+' = 0 ر.س')});var summary=lines.join(' | ')+' | الإجمالي: '+n(t)+' ر.س'+(p?' | بعد خصم '+(p[3]?'تعدد الخدمات':p[0])+' ('+p[1]+'%'+(p[2]?' حتى '+p[2]+' ريال':'')+'): '+n(fin)+' ر.س':'');
   var notes=($('o-notes').value.trim()||'—')+' | الطلب: '+summary+' | من متجر التطبيق';
   var svc='خدمات: '+R.map(function(r){return r.t}).join('، ');
-  var dt=$('o-date')?$('o-date').value:'';var cy=$('o-city')?$('o-city').value:'';var g={name:name,phone:ph,activity:'متجر التطبيق',service:svc.slice(0,300),city:cy||'—',notes:notes,page:location.href,code:p&&!p[3]?p[0]:'',date:dt,refBy:(window.ioRefBy?window.ioRefBy():'')};
+  var dt=$('o-date')?$('o-date').value:'';var cy=$('o-city')?$('o-city').value:'';var g={name:name,phone:ph,activity:'متجر التطبيق',service:svc.slice(0,300),city:cy||'—',notes:notes,page:location.href,code:p&&!p[3]?p[0]:'',date:dt,refBy:(window.ioRefBy?window.ioRefBy():''),auth:(window.ioAuth?ioAuth.token():'')};
   var wa=WA+'?text='+encodeURIComponent('السلام عليكم، طلبت من التطبيق:\n'+lines.join('\n')+'\nالإجمالي: '+n(fin)+' ر.س'+(cy?'\nالمدينة: '+cy:'')+(dt?'\nالموعد: '+dt:'')+'\nالاسم: '+name);
   var O={G:G,R:R,xa:xa,t:t,dc:dc,p:p,fin:fin,dt:dt,name:name,ph:ph};
   if($('o-hp').value){done(wa,O,'');return}
   var c=new AbortController();setTimeout(function(){c.abort()},15000);
   fetch(GS,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(g),signal:c.signal}).then(function(r){return r.json()})
-   .then(function(j){if(j&&j.ok===false&&j.error==='code'){throw 'code'}if(j&&j.ok===false&&(j.error==='taken'||j.error==='date')){if(j.booked)BK=j.booked;throw 'taken'}if(!j||j.ok===false)throw 0;return j})
-   .catch(function(e){if(e==='taken'||e==='code')return e;return fetch(EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'الاسم':name,'الجوال':ph,'الطلب':summary,'التفاصيل':$('o-notes').value.trim()||'—','الموعد':dt||'—','_subject':'طلب من متجر التطبيق: '+name,'_template':'table','_captcha':'false'})}).then(function(){return {}}).catch(function(){return {}})})
-   .then(function(j){var rb=function(){b.disabled=false;b.textContent=en?'Confirm order':'أكّد الطلب'};if(j==='code'){$('o-code').classList.add('bad');$('k-code').style.color='#ff8a8f';$('k-code').textContent=en?'This code is not valid':'الكود غير صحيح';rb();$('o-code').scrollIntoView({block:'center',behavior:'smooth'});return}if(j==='taken'){chkDate();err('e-date',$('o-date'),en?'Sorry, that day was just booked. Pick another day.':'للأسف هذا اليوم انحجز قبل شوي، اختر يوم ثاني.');rb();$('o-date').scrollIntoView({block:'center',behavior:'smooth'});return}done(wa,O,j&&j.id,j&&j.ref)})}
+   .then(function(j){if(j&&j.ok===false&&j.error==='auth'){throw 'auth'}if(j&&j.ok===false&&j.error==='code'){throw 'code'}if(j&&j.ok===false&&(j.error==='taken'||j.error==='date')){if(j.booked)BK=j.booked;throw 'taken'}if(!j||j.ok===false)throw 0;return j})
+   .catch(function(e){if(e==='taken'||e==='code'||e==='auth')return e;return fetch(EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({'الاسم':name,'الجوال':ph,'الطلب':summary,'التفاصيل':$('o-notes').value.trim()||'—','الموعد':dt||'—','_subject':'طلب من متجر التطبيق: '+name,'_template':'table','_captcha':'false'})}).then(function(){return {}}).catch(function(){return {}})})
+   .then(function(j){var rb=function(){b.disabled=false;b.textContent=en?'Confirm order':'أكّد الطلب'};if(j==='auth'){rb();if(window.ioAuth){ioAuth.clear();ioAuth.require(send)}return}if(j==='code'){$('o-code').classList.add('bad');$('k-code').style.color='#ff8a8f';$('k-code').textContent=en?'This code is not valid':'الكود غير صحيح';rb();$('o-code').scrollIntoView({block:'center',behavior:'smooth'});return}if(j==='taken'){chkDate();err('e-date',$('o-date'),en?'Sorry, that day was just booked. Pick another day.':'للأسف هذا اليوم انحجز قبل شوي، اختر يوم ثاني.');rb();$('o-date').scrollIntoView({block:'center',behavior:'smooth'});return}done(wa,O,j&&j.id,j&&j.ref)})}
 function done(wa,O,id,ref){var list0=[];try{list0=JSON.parse(ls('myOrders')||'[]')}catch(e){}
   list0.unshift({s:(en?'Services':'خدمات')+' ('+count()+')',k:'store',a:money(O.fin),d:Date.now(),ok:true,id:id||'',r:ref||''});ls('myOrders',JSON.stringify(list0.slice(0,20)));if(ref){me.ref=ref;ls('me',JSON.stringify(me))}
   ev('store_order');cart={};save();render();var no=id?String(id).slice(0,6).toUpperCase():'';
@@ -637,6 +638,7 @@ hashGo();addEventListener('hashchange',hashGo);
 </script>
 
 <script src="/js/fx.js?v=20261025b" defer></script>
+<script src="/app/auth.js?v=1" defer></script>
 <script src="/app/app.js?v=8" defer></script>
 </body>
 </html>
