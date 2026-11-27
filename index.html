@@ -826,6 +826,15 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 .osx-dn i{width:15px;height:24px;border:1.5px solid #a9afbf;border-radius:9px;position:relative}
 .osx-dn i::after{content:"";position:absolute;left:50%;top:4px;width:2px;height:6px;margin-left:-1px;border-radius:2px;background:#f2b45a;animation:osxWh 1.8s ease-in-out infinite}
 @keyframes osxWh{0%{opacity:0;transform:translateY(-2px)}40%{opacity:1}100%{opacity:0;transform:translateY(8px)}}
+.osx-h{margin-top:.8rem;font:900 clamp(2rem,5vw,3.9rem)/1.2 Cairo,sans-serif;max-width:24ch;color:#eef0f5;opacity:0;animation:osxUp 1s cubic-bezier(.2,.8,.2,1) 1.05s forwards;transform:translateY(14px)}
+.osx-h em{font-style:normal;background:linear-gradient(100deg,#c98a35,#ffe2a8 35%,#f2b45a 60%,#fff0cc);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.12em}
+.osx-l{margin-top:1rem;max-width:38rem;color:#a3a9b8;font-size:clamp(1rem,1.5vw,1.15rem);line-height:1.9;opacity:0;animation:osxUp 1s cubic-bezier(.2,.8,.2,1) 1.2s forwards;transform:translateY(14px)}
+.osx-c{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-top:2rem;opacity:0;animation:osxUp 1s cubic-bezier(.2,.8,.2,1) 1.35s forwards;transform:translateY(14px)}
+.osx-c a{display:inline-flex;align-items:center;justify-content:center;min-height:3.4rem;padding:0 1.8rem;border-radius:999px;font:800 1rem Tajawal,sans-serif;text-decoration:none;transition:transform .25s}
+.osx-c a:hover{transform:translateY(-2px)}
+.osx-b1{color:#170f04;background:linear-gradient(135deg,#ffe8b8,#f2b45a 50%,#d6912f);box-shadow:0 14px 40px -14px rgba(242,180,90,.85)}
+.osx-b2{color:#eef0f5;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04)}
+@media (max-width:640px){.osx-dn{display:none}}
 @media (prefers-reduced-motion:reduce){.osx *,.osx *::before,.osx *::after{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important}}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@900&text=OSMAN&display=swap">
@@ -978,7 +987,9 @@ img,video,canvas{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:non
 <div class="osx-st" aria-hidden="true"></div><div class="osx-st b" aria-hidden="true"></div>
 <div class="osx-wm" aria-hidden="true"><div class="osx-ln" id="osxLens"><i></i></div><span>S</span><span>M</span><span>A</span><span>N</span></div>
 <p class="osx-k" data-en="Ismueil Osman">إسماعيل عثمان</p>
-<p class="osx-t" data-en-h="From the camera shot &lt;b&gt;to an ad that sells.&lt;/b&gt;">من لقطة الكاميرا، <b>إلى إعلان يبيع.</b></p>
+<p class="osx-h" data-en-h="Visuals that &lt;em&gt;attract&lt;/em&gt;, marketing that &lt;em&gt;sells&lt;/em&gt;.">صورة <em>تجذب</em>، وتسويق <em>يبيع</em>.</p>
+<p class="osx-l" data-en="Photographer, marketer, designer and developer. I shoot your product, design its ad, build its website and put it in front of people who buy.">مصوّر ومسوّق ومصمّم ومطوّر. أصوّر منتجك، وأصمّم إعلانه، وأبني موقعه، وأوصله للناس اللي يشترون.</p>
+<div class="osx-c"><a class="osx-b1" href="/work/" data-en="See my work">شاهد أعمالي</a><a class="osx-b2" href="/consultation/" data-en="Free consultation">استشارة مجانية</a></div>
 <a class="osx-dn" href="#hero"><i></i><span data-en="Scroll">انزل</span></a>
 </section>
 <section id="hero" class="hx" aria-labelledby="hxH">
