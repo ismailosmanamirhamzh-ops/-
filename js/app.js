@@ -100,7 +100,9 @@ try{
   /* يشتغل على كل الأجهزة، حتى مع «تقليل الحركة» أو «توفير البيانات» (الملف أقل من 1 ميقا) */
   var cur='';
   function pick(){
-    var want=innerWidth/innerHeight>1.05?'assets/media/hero-bg-wide.mp4':'assets/media/hero-bg-portrait.mp4';
+    /* الشاشات العريضة (الكمبيوتر): صورة احترافية حادة بحركة سينمائية بدل الفيديو. الجوال: مونتاج طولي قصير */
+    if(innerWidth/innerHeight>1.05){if(cur==='still')return;cur='still';v.pause();v.removeAttribute('src');v.load();v.classList.remove('on');if(ph)ph.classList.remove('off');return}
+    var want='assets/media/hero-bg-portrait-v2.mp4';
     if(want===cur)return;cur=want;v.src=want;v.load();var p=v.play();if(p&&p.catch)p.catch(function(){});
   }
   v.addEventListener('playing',function(){v.classList.add('on');if(ph)ph.classList.add('off')});
