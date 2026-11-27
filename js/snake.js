@@ -2,7 +2,7 @@
 /* شريط ذهبي من خيوط رفيعة يتلوّى مثل الثعبان وينرسم مع التمرير، من الافتتاحية إلى آخر الصفحة.
    بعد الواجهة يمشي على أطراف الصفحة ويعبر بين الأقسام، عشان ما يغطي المحتوى. */
 (function(){
-  var a=document.getElementById('osx'),b=document.getElementById('hero');
+  var a=document.querySelector('[data-snake]'),b=a&&a.nextElementSibling;while(b&&b.offsetHeight<50)b=b.nextElementSibling;
   if(!a||!b||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var cv=document.createElement('canvas');cv.setAttribute('aria-hidden','true');
   cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;mix-blend-mode:screen';
@@ -24,12 +24,11 @@
     if(cam&&cam===el){var ct=absTop(cam),run=Math.max(1,cam.offsetHeight-H),turns=mob?2:2.5,M=Math.round(turns*16),Rx=Math.min(W*(mob?.42:.3),460),Ry=H*(mob?.3:.36);
       for(var c=0;c<=M;c++){var th=c/M*turns*6.2832,sc=c/M*run;P.push([W/2+Rx*Math.cos(th),ct+sc+H*.5+Ry*Math.sin(th)]);A.push(ct+sc)}
       el=cam.nextElementSibling}
-    /* باقي الصفحة: على الطرف بتموّج خفيف، بدون ما يقطع المحتوى */
-    var flip=0;
-    while(el){if(el.offsetHeight>240){var tp=absTop(el),h=el.offsetHeight,n=Math.max(2,Math.round(h/700));
-      for(var j2=0;j2<=n;j2++){var yy=tp+h*j2/n,xx=(eR+(flip?-.025:.015))*W;flip=1-flip;P.push([Math.min(xx,W-6),yy]);A.push(yy-H*.62)}}
-      el=el.nextElementSibling}
-    var ft=document.querySelector('footer');if(ft){var fy=absTop(ft)+ft.offsetHeight*.6;P.push([eR*W,fy]);A.push(fy-H*.62)}
+    /* باقي الصفحة: يتعرّج يمين ويسار بعرض الشاشة حتى آخر الصفحة */
+    var y0=el?absTop(el):P[P.length-1][1],ft=document.querySelector('footer'),yEnd=ft?absTop(ft)+ft.offsetHeight*.6:document.documentElement.scrollHeight-200;
+    var step=mob?620:820,xs=mob?[.1,.9]:[.12,.88],sd=P[P.length-1][0]>W/2?0:1,yy=y0+step*.35;
+    while(yy<yEnd){var jit=Math.sin(yy*.0013)*.04;P.push([(xs[sd]+jit)*W,yy]);A.push(yy-H*.62);sd=1-sd;yy+=step}
+    P.push([W*.5,yEnd]);A.push(yEnd-H*.62);
     /* مرساة التمرير لكل نقطة مفتاحية لازم تكون تصاعدية */
     for(var z=1;z<A.length;z++)if(A[z]<A[z-1])A[z]=A[z-1];
     P.unshift(P[0]);P.push(P[P.length-1]);A.unshift(A[0]);A.push(A[A.length-1]);
