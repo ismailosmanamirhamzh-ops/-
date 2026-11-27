@@ -28,7 +28,7 @@ body{font-family:Tajawal,system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .spark{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff3d6;box-shadow:0 0 14px 4px rgba(255,214,140,.9),0 0 40px 10px rgba(242,180,90,.5);offset-path:path("M -40 820 C 160 700, 160 420, 420 360");animation:ride 7s ease-in-out infinite;z-index:-1;opacity:0}
 @keyframes ride{0%{offset-distance:0%;opacity:0}15%{opacity:1}85%{opacity:1}100%{offset-distance:100%;opacity:0}}
 /* wordmark */
-.wm{direction:ltr;display:flex;align-items:center;justify-content:center;font:900 clamp(5.2rem,21vw,19rem)/.86 Outfit,Cairo,sans-serif;letter-spacing:-.045em;user-select:none}
+.wm{direction:ltr;display:flex;align-items:center;justify-content:center;font:900 clamp(4.6rem,18vw,16rem)/.86 Outfit,Cairo,sans-serif;letter-spacing:-.045em;user-select:none}
 .wm span{background:linear-gradient(180deg,#ffffff 0%,#fbf3e4 45%,#f3d199 78%,#d9a25a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 10px 40px rgba(242,180,90,.25));opacity:0;transform:translateY(.12em);animation:up 1.1s cubic-bezier(.2,.8,.2,1) forwards;padding-bottom:.06em}
 .wm span:nth-of-type(1){animation-delay:.25s}.wm span:nth-of-type(2){animation-delay:.35s}.wm span:nth-of-type(3){animation-delay:.45s}.wm span:nth-of-type(4){animation-delay:.55s}
 @keyframes up{to{opacity:1;transform:none}}
@@ -42,7 +42,7 @@ body{font-family:Tajawal,system-ui,sans-serif;-webkit-font-smoothing:antialiased
 /* copy */
 .kick{margin-top:clamp(1.4rem,3vw,2.2rem);display:inline-flex;align-items:center;gap:.7rem;font:800 clamp(.95rem,1.6vw,1.15rem) Cairo,sans-serif;color:var(--gold1);opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) .9s forwards;transform:translateY(10px)}
 .kick::before,.kick::after{content:"";width:2.2rem;height:1px;background:linear-gradient(90deg,transparent,var(--amber))}.kick::after{transform:scaleX(-1)}
-h1{margin-top:.8rem;text-align:center;font:900 clamp(2rem,5vw,3.9rem)/1.2 Cairo,sans-serif;max-width:18ch;opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) 1.05s forwards;transform:translateY(14px)}
+h1{margin-top:.8rem;text-align:center;font:900 clamp(2rem,5vw,3.9rem)/1.2 Cairo,sans-serif;max-width:24ch;opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) 1.05s forwards;transform:translateY(14px)}
 h1 em{font-style:normal;background:linear-gradient(100deg,#c98a35,#ffe2a8 35%,#f2b45a 60%,#fff0cc);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.12em}
 .lead{margin-top:1rem;max-width:38rem;text-align:center;color:var(--mute);font-size:clamp(1rem,1.5vw,1.15rem);line-height:1.9;opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) 1.2s forwards;transform:translateY(14px)}
 .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-top:2rem;opacity:0;animation:up 1s cubic-bezier(.2,.8,.2,1) 1.35s forwards;transform:translateY(14px)}
@@ -100,12 +100,21 @@ for(let i=0;i<72;i++){const r=new THREE.Mesh(new THREE.BoxGeometry(.012,.018,.2)
 const lip=new THREE.Mesh(new THREE.TorusGeometry(.76,.028,24,160),gold);lip.position.z=.55;lens.add(lip);
 /* الأنبوب الداخلي */
 const tube=new THREE.Mesh(new THREE.CylinderGeometry(.6,.5,.9,96,1,true),inner);tube.rotation.x=Math.PI/2;tube.position.z=.1;lens.add(tube);
-/* شفرات فتحة العدسة */
-const blades=new THREE.Group();blades.position.z=.18;lens.add(blades);
-const bm=new THREE.MeshPhysicalMaterial({color:0x17120c,metalness:.9,roughness:.35,side:THREE.DoubleSide});
-const N=7,bl=[];
-for(let i=0;i<N;i++){const s=new THREE.Shape();s.moveTo(0,0);s.lineTo(.62,0);s.quadraticCurveTo(.66,.32,.42,.5);s.lineTo(0,.16);s.closePath();
-const m=new THREE.Mesh(new THREE.ShapeGeometry(s,24),bm);const piv=new THREE.Group();piv.rotation.z=i/N*Math.PI*2;const arm=new THREE.Group();arm.position.x=.58;arm.add(m);m.position.x=-.62;piv.add(arm);piv.position.z=i*.002;blades.add(piv);bl.push(arm)}
+/* فتحة العدسة: شفرات سباعية تنفتح وتتسكّر */
+const N=7,R=.6,irisMat=new THREE.MeshPhysicalMaterial({color:0x15110b,metalness:.85,roughness:.38,side:THREE.DoubleSide});
+const iris=new THREE.Mesh(new THREE.BufferGeometry(),irisMat);iris.position.z=.18;lens.add(iris);
+const edges=new THREE.LineSegments(new THREE.BufferGeometry(),new THREE.LineBasicMaterial({color:0x9c6a2a,transparent:true,opacity:.75}));edges.position.z=.181;lens.add(edges);
+let lastO=-1;
+function setIris(o){if(Math.abs(o-lastO)<.004)return;lastO=o;const r=.06+o*.46,tw=(1-o)*.9;
+const sh=new THREE.Shape();sh.absarc(0,0,R,0,Math.PI*2,false);const h=new THREE.Path();
+for(let i=0;i<N;i++){const a=i/N*Math.PI*2+tw;const x=Math.cos(a)*r,y=Math.sin(a)*r;i?h.lineTo(x,y):h.moveTo(x,y)}h.closePath();sh.holes.push(h);
+iris.geometry.dispose();iris.geometry=new THREE.ShapeGeometry(sh,64);
+const v=[];for(let i=0;i<N;i++){const a=i/N*Math.PI*2+tw,a2=(i+1)/N*Math.PI*2+tw;const x=Math.cos(a)*r,y=Math.sin(a)*r;
+/* حافة كل شفرة: تمتد من رأس الفتحة باتجاه حافة الشفرة التالية حتى الإطار */
+const dx=Math.cos(a2)*r-x,dy=Math.sin(a2)*r-y,L=Math.hypot(dx,dy);let ux=dx/L,uy=dy/L;
+const b=x*ux+y*uy,c=x*x+y*y-R*R,t=-b+Math.sqrt(b*b-c);v.push(x,y,0,x+ux*t,y+uy*t,0)}
+edges.geometry.dispose();edges.geometry=new THREE.BufferGeometry();edges.geometry.setAttribute('position',new THREE.Float32BufferAttribute(v,3))}
+setIris(.6);
 const back=new THREE.Mesh(new THREE.CircleGeometry(.6,64),new THREE.MeshBasicMaterial({color:0x020203}));back.position.z=-.2;lens.add(back);
 /* الزجاج الأمامي بطبقة ألوان */
 const glass=new THREE.Mesh(new THREE.SphereGeometry(1.15,96,48,0,Math.PI*2,0,.56),new THREE.MeshPhysicalMaterial({color:0x0a0d18,metalness:.1,roughness:.02,clearcoat:1,clearcoatRoughness:0,iridescence:1,iridescenceIOR:1.45,iridescenceThicknessRange:[200,700],transparent:true,opacity:.55,envMapIntensity:2.4}));
@@ -113,7 +122,7 @@ glass.rotation.x=Math.PI/2;glass.position.z=-.5;lens.add(glass);
 const key=new THREE.PointLight(0xffd9a0,40,20);key.position.set(-3,3,4);scene.add(key);
 const rim=new THREE.PointLight(0x8fb8ff,18,20);rim.position.set(3,-2,2);scene.add(rim);
 scene.add(new THREE.AmbientLight(0xffffff,.25));
-lens.scale.setScalar(1.18);
+lens.scale.setScalar(1.02);
 function size(){const w=renderer.domElement.parentElement.clientWidth*1.5;renderer.setSize(w,w,false);cam.aspect=1;cam.updateProjectionMatrix()}
 size();addEventListener('resize',size);
 let mx=0,my=0,tx=0,ty=0;
@@ -129,7 +138,7 @@ lens.rotation.x=.12+Math.sin(t*.4)*.12+my*.35;
 lens.rotation.z=t*.05;
 /* الفتحة: تتنفس، وتتسكّر مع النزول */
 const open=(.55+Math.sin(t*.9)*.35)*(1-sp*.9);
-bl.forEach(a=>{a.rotation.z=-.15-open*.75});
+setIris(Math.min(1,Math.max(0,open)));
 scene.environmentRotation.y=t*.25;
 renderer.render(scene,cam)}
 frame();
