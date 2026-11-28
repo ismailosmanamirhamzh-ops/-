@@ -5,6 +5,7 @@
   if (window.ioAuth) return;
   var GS = 'https://script.google.com/macros/s/AKfycbw0Nvt6rPQ2l_KJ5o8XXgzud4ehrnEEkDOWRf7wEuUlxS8MWmKbkWCyTJPrkJMRrzbjmw/exec';
   var K = 'ioAuth', D = document;
+  var GID = '348353990276-jo1mfdmptd0bmf0pu9r56tkf0he3vdua.apps.googleusercontent.com'; /* Google OAuth Client ID (تسجيل الدخول بحساب Google) */
   function en() { try { return localStorage.getItem('lang') === 'en'; } catch (e) { return false; } }
   function T(ar, e) { return en() ? e : ar; }
   function get() { try { return JSON.parse(localStorage.getItem(K) || 'null'); } catch (e) { return null; } }
@@ -55,6 +56,9 @@
   '.iaW{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding:.75rem .9rem;border-radius:1rem;border:1px solid rgba(242,180,90,.3);background:rgba(242,180,90,.07);font-size:.88rem;color:#e7dcc8}' +
   '.iaW b{color:#ffe2a8;direction:ltr;unicode-bidi:isolate}' +
   '.iaW button{margin-inline-start:auto;background:none;border:0;color:#f2b45a;font:700 .82rem Tajawal,sans-serif;cursor:pointer}' +
+  '.iaGg{margin-top:1.2rem;display:flex;justify-content:center;min-height:44px}.iaGg>div{width:100%;display:flex;justify-content:center}' +
+  '.iaGf{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;height:2.9rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:#131314;color:#e3e3e3;font:600 .95rem system-ui,sans-serif}' +
+  '.iaOr{display:flex;align-items:center;gap:.8rem;margin:1.1rem 0 -.3rem;color:#6d7384;font-size:.8rem}.iaOr::before,.iaOr::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.1)}' +
   '.iaH{margin-top:1rem;text-align:start;padding:.85rem 1rem;border-radius:1rem;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);font-size:.82rem;color:#a9afbf;line-height:1.75}' +
   '.iaH b{display:block;color:#ffe2a8;font:800 .86rem Tajawal,sans-serif;margin-bottom:.2rem}.iaH ol{margin:0;padding-inline-start:1.1rem}.iaH em{font-style:normal;color:#eceef4;font-weight:700}.iaH bdi{color:#f2b45a;direction:ltr}' +
   '.iaD{position:fixed;inset:0;z-index:99990;display:flex;justify-content:flex-end;background:rgba(3,4,6,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .3s}.iaD.on{opacity:1}' +
@@ -80,6 +84,7 @@
 
   var I_MAIL = '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>';
   var I_LOCK = '<svg viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5M12 14.5v2.5"/></svg>';
+  var I_G = '<svg viewBox="0 0 48 48" style="width:1.15rem;height:1.15rem"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>';
   var I_USER = '<svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5"/></svg>';
 
   /* زر الهيدر */
@@ -132,14 +137,42 @@
   function open(cb, why) {
     done = cb || null;
     var o = get();
-    shell('<div class="iaI">' + I_MAIL + '</div><h3>' + T('سجّل دخولك بالإيميل', 'Sign in with your email') + '</h3>' +
+    shell('<div class="iaI">' + I_MAIL + '</div><h3>' + T('سجّل دخولك', 'Sign in') + '</h3>' +
       '<p>' + (why || T('عشان نأكد طلبك ونرسل لك تفاصيله وحالته على بريدك.', 'So we can confirm your order and send its details and status to your inbox.')) + '</p>' +
+      (GID ? '<div class="iaGg"><div id="iaGb"><button type="button" class="iaGf" disabled>' + I_G + '<span>' + T('المتابعة مع Google', 'Continue with Google') + '</span></button></div></div><div class="iaOr"><span>' + T('أو بالإيميل', 'or with email') + '</span></div>' : '') +
       '<form class="iaF" novalidate><input type="email" id="iaEm" autocomplete="email" inputmode="email" placeholder="name@example.com" aria-label="' + T('البريد الإلكتروني', 'Email') + '" maxlength="120"><div class="iaE" id="iaErr"></div>' +
       '<button class="iaG" id="iaGo" type="submit">' + T('أرسل رمز التحقق', 'Send verification code') + '</button></form>' +
-      '<div class="iaN">' + I_LOCK.replace('<svg', '<svg style="width:.9rem;height:.9rem;vertical-align:-2px;fill:none;stroke:#6d7384;stroke-width:2"') + ' ' + T('بدون كلمة مرور. بريدك يُستخدم لطلباتك فقط.', 'No password. Your email is used for your orders only.') + '</div>');
+      '<div class="iaN">' + I_LOCK.replace('<svg', '<svg style="width:.9rem;height:.9rem;vertical-align:-2px;fill:none;stroke:#6d7384;stroke-width:2"') + ' ' + T('بدون كلمة مرور. بريدك يُستخدم لطلباتك فقط.', 'No password. Your email is used for your orders only.') + ' <a href="/privacy/" target="_blank" style="color:#a9afbf">' + T('سياسة الخصوصية', 'Privacy policy') + '</a>' + '</div>');
     var em = C.querySelector('#iaEm'); if (o && o.e) em.value = o.e;
     setTimeout(function () { em.focus(); }, 250);
     C.querySelector('form').onsubmit = function (e) { e.preventDefault(); send(em.value); };
+    if (GID) gInit();
+  }
+
+  /* تسجيل الدخول بحساب Google */
+  var gLoad = null;
+  function gScript() {
+    if (gLoad) return gLoad;
+    gLoad = new Promise(function (res, rej) { var sc = D.createElement('script'); sc.src = 'https://accounts.google.com/gsi/client'; sc.async = true; sc.onload = res; sc.onerror = function () { gLoad = null; rej(); }; D.head.appendChild(sc); });
+    return gLoad;
+  }
+  function gInit() {
+    gScript().then(function () {
+      var box = C && C.querySelector('#iaGb'); if (!box || !window.google || !google.accounts) return;
+      google.accounts.id.initialize({ client_id: GID, callback: gDone, ux_mode: 'popup', auto_select: false, cancel_on_tap_outside: true, itp_support: true });
+      var w = Math.min(360, Math.max(220, box.clientWidth || 300));
+      box.innerHTML = '';
+      google.accounts.id.renderButton(box, { type: 'standard', theme: 'filled_black', size: 'large', shape: 'pill', text: 'continue_with', logo_alignment: 'center', width: w, locale: en() ? 'en' : 'ar' });
+    }).catch(function () { var b = C && C.querySelector('#iaGb'); if (b) b.parentNode.style.display = 'none'; var o = C && C.querySelector('.iaOr'); if (o) o.style.display = 'none'; });
+  }
+  function gDone(r) {
+    if (!C || !r || !r.credential) return;
+    var err = C.querySelector('#iaErr'), box = C.querySelector('#iaGb');
+    if (box) box.style.opacity = '.5';
+    api('otp=google&cred=' + encodeURIComponent(r.credential)).then(function (j) {
+      if (j && j.ok && j.token) { save({ e: j.email, t: j.token, x: Date.now() + 89 * 864e5 }); paint(); success(); return; }
+      if (box) box.style.opacity = ''; if (err) err.textContent = T('تعذّر الدخول بحساب Google، جرّب مرة ثانية أو استخدم الإيميل', 'Google sign-in failed, try again or use your email');
+    }).catch(function () { if (box) box.style.opacity = ''; if (err) err.textContent = msg('net'); });
   }
 
   function send(v) {
